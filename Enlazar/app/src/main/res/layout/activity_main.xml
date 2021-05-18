@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/backGroundCustom">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_proximo_servicio"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#006d46"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.031">
+
+        <ImageView
+            android:id="@+id/imageView0"
+            android:layout_width="78dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_proximo_servicio"
+            android:translationX="5dp"
+            android:translationY="20dp" />
+
+        <TextView
+            android:id="@+id/txtProximoServ"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_card_proximo_servicio"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/textWhite"
+            android:textSize="24sp"
+            android:translationX="90dp"
+            android:translationY="15dp" />
+
+        <TextView
+            android:id="@+id/txtProximoServSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle_proximos_servicio"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/subTextWhite"
+            android:translationX="90dp"
+            android:translationY="50dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVieww4"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#006d46"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardVieww3"
+        app:layout_constraintVertical_bias="0.263">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="78dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_baseline_info_24"
+            android:translationX="5dp"
+            android:translationY="20dp" />
+
+        <TextView
+            android:id="@+id/txtSeccionInformativa"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_card_seccic_n_informativa"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/textWhite"
+            android:textSize="24sp"
+            android:translationX="90dp"
+            android:translationY="15dp" />
+
+        <TextView
+            android:id="@+id/txtSeccionInformativaSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subTitle_seccion_informativa"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/subTextWhite"
+            android:translationX="90dp"
+            android:translationY="50dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_mis_servicios"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#006d46"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_proximo_servicio"
+        app:layout_constraintVertical_bias="0.041">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="78dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_mis_servicios"
+            android:translationX="5dp"
+            android:translationY="20dp" />
+
+        <TextView
+            android:id="@+id/txtMisServicios"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_card_mis_servicios"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/textWhite"
+            android:textSize="24sp"
+            android:translationX="90dp"
+            android:translationY="15dp" />
+
+        <TextView
+            android:id="@+id/txtMisServiciosSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle_mis_servicios"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/subTextWhite"
+            android:translationX="90dp"
+            android:translationY="50dp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVieww2"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#006d46"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_mis_servicios"
+        app:layout_constraintVertical_bias="0.062">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="78dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_mis_puntos"
+            android:translationX="5dp"
+            android:translationY="20dp"
+            android:visibility="visible"
+            tools:srcCompat="@drawable/ic_mis_puntos"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txtMisPuntos"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_card_mis_puntos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/textWhite"
+            android:textSize="24sp"
+            android:translationX="90dp"
+            android:translationY="15dp" />
+
+        <TextView
+            android:id="@+id/txtMisPuntosSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle__mis_puntos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/subTextWhite"
+            android:translationX="90dp"
+            android:translationY="50dp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVieww3"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#006d46"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardVieww2"
+        app:layout_constraintVertical_bias="0.107">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="78dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_mis_encuentros"
+            android:translationX="5dp"
+            android:translationY="20dp" />
+
+        <TextView
+            android:id="@+id/txtMisEncuentros"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_card_mis_encuentros"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/textWhite"
+            android:textSize="24sp"
+            android:translationX="90dp"
+            android:translationY="15dp" />
+
+        <TextView
+            android:id="@+id/txtMisEncuentrosSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle_proximo_encuentro"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/subTextWhite"
+            android:translationX="90dp"
+            android:translationY="50dp" />
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
