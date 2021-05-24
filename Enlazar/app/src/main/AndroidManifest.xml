@@ -9,14 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Enlazar">
-        <activity android:name=".DetalleServicioActivity"></activity>
-        <activity android:name=".misServicios" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.SplashScreenActivity"
+            android:theme="@style/Theme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.DetalleServicioActivity" />
+        <activity android:name=".ui.misServicios" />
+        <activity android:name=".ui.MainActivity">
+
         </activity>
     </application>
 
