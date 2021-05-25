@@ -10,4 +10,9 @@
     <string name="subtitle__mis_puntos">190 Puntos</string>
     <string name="subtitle_mis_servicios">14 bolsas recicladas</string>
     <string name="subtitle_proximos_servicio">Sábado 29 de mayo, Turno: mañana</string>
+    <string name="email">Ingrese su Email</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="no_tenes_cuenta">No tenes cuenta ?</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
 </resources>
