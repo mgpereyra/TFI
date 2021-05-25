@@ -37,7 +37,7 @@
         android:id="@+id/label_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:fontFamily="@font/signika"
         android:text="Email"
         android:textColor="@color/white"
@@ -90,7 +90,7 @@
         android:id="@+id/label_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:fontFamily="@font/signika"
         android:text="@string/contrasenia"
         android:textColor="@color/white"
@@ -122,7 +122,6 @@
         app:helperTextTextColor="@color/white"
         app:hintEnabled="true"
         app:hintTextColor="@color/white"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_password">
@@ -130,7 +129,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapSentences|textAutoCorrect"
+            android:inputType="textPassword"
             android:outlineSpotShadowColor="@color/white"
             android:shadowColor="@color/white"
             android:singleLine="true"
@@ -139,12 +138,39 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         app:strokeColor="@color/emerald"
+        android:layout_width="190dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/sin_cuenta"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        android:text="@string/iniciar_sesion"
+        android:textColor="@color/white"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/sin_cuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/signika"
+        android:text="@string/no_tenes_cuenta"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
+        />
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="60dp"
+        android:textSize="20dp"
+        android:textColor="@color/blue"
+        android:text="@string/crear_cuenta"
+        app:layout_constraintTop_toBottomOf="@id/sin_cuenta"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password"
-        android:text="Iniciar Sesion"
-        android:textColor="@color/white"/>
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
