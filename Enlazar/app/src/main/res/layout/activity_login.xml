@@ -12,7 +12,7 @@
         android:id="@+id/barra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/emerald"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
