@@ -21,6 +21,7 @@
     <string name="numero_de_calle">Direccion</string>
     <string name="Localidad">Localidad</string>
     <string name="Telefono" >Telefono</string>
+    <string name="registrarme">registrar</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>
