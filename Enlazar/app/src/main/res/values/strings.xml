@@ -15,4 +15,20 @@
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="no_tenes_cuenta">No tenes cuenta ?</string>
     <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="Calle">Calle</string>
+    <string name="numero_de_calle">Direccion</string>
+    <string name="Localidad">Localidad</string>
+    <string name="Telefono" >Telefono</string>
+    <string-array name="locations_array">
+        <item>Ramos Mejia</item>
+        <item>San Justo</item>
+        <item>Casanova</item>
+    </string-array>
+    <string-array name="partidos_array">
+        <item>La Matanza</item>
+        <item>3 de Febrero</item>
+        <item>Avellaneda</item>
+    </string-array>
 </resources>
