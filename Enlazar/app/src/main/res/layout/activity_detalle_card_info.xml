@@ -78,6 +78,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/picture"
                     tools:text="Titulo de Informacion" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_bookmark_border"
+                    app:layout_constraintTop_toTopOf="@id/title"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/title"
+                />
 
 
 
@@ -103,6 +112,7 @@
                     app:layout_constraintHorizontal_bias="0.029"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/labelTipoDeInfo"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     tools:text="Una guía para ayudarte en esos momentos de dudas." />
 
 
