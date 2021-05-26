@@ -24,3 +24,12 @@ textarea {
 .bg-ocre {
     background-color: #bb6517;
 }
+
+body {
+    background-color: #464646;
+    color: white;
+}
+
+a {
+    color: #bb6517;
+}
