@@ -30,6 +30,7 @@
     <string name="mi_cuenta">Mi cuenta</string>
     <string name="card_resumen">breve resumen de la composicion de la card</string>
     <string name="ver">ver</string>
+    <string name="tipo_de_info">tipo De Info</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>
