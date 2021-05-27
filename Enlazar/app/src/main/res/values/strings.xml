@@ -20,8 +20,17 @@
     <string name="Calle">Calle</string>
     <string name="numero_de_calle">Direccion</string>
     <string name="Localidad">Localidad</string>
-    <string name="Telefono" >Telefono</string>
+    <string name="Telefono">Telefono</string>
     <string name="registrarme">registrar</string>
+    <string name="inicio">Inicio</string>
+    <string name="mis_direcciones">Mis direcciones</string>
+    <string name="mis_canjes">Mis canjes</string>
+    <string name="invita_a_amigos">Invita a amigos</string>
+    <string name="guardado">Guardado</string>
+    <string name="mi_cuenta">Mi cuenta</string>
+    <string name="card_resumen">breve resumen de la composicion de la card</string>
+    <string name="ver">ver</string>
+    <string name="tipo_de_info">tipo De Info</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>
