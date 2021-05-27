@@ -16,9 +16,13 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="@Url.Action("Index", "Home")" class="nav-link disabled">Home</a>
+                    <a href="@Url.Action("Index", "Home")" class="nav-link disabled">
+
+                        Home
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="@Url.Action("-Action", "-Controller")" class="nav-link disabled">Rutas</a>
@@ -38,10 +42,16 @@
             <div class="form-inline my-2 my-lg-0">
                 <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Cerrar sesión</button>
             </div>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
         </div>
     </nav>
 
     <div class="container body-content">
+   
         @RenderBody()
         <hr />
         <footer>

@@ -188,7 +188,6 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar-AdminMVC.csproj.App.config
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar-AdminMVC.csprojAssemblyReference.cache
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar-AdminMVC.csproj.CopyComplete
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar-AdminMVC.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar-AdminMVC.pdb
