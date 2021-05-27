@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
     val intent: Intent = Intent(this, misServicios::class.java)
     startActivity(intent)
                     }
-        cardView_mis_puntos.setOnClickListener {
+
+       /* cardView_mis_puntos.setOnClickListener {
             val intent: Intent = Intent(this, MisPuntosActivity::class.java)
             startActivity(intent)
         }
@@ -32,10 +33,16 @@ class MainActivity : AppCompatActivity() {
             val intent: Intent = Intent(this, MisEncuentrosActivity::class.java)
             startActivity(intent)
 
-        }
+        }*/
         cardView_seccion_informativa.setOnClickListener {
             val intent: Intent = Intent(this, SeccionInformativaActivity::class.java)
             startActivity(intent)
+        }
+        btn_new_service.setOnClickListener{
+            this@MainActivity.finish()
+            val intent: Intent = Intent(this, NuevoServicioActivity::class.java)
+            startActivity(intent)
+
         }
 
     }
