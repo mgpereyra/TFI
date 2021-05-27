@@ -24,7 +24,9 @@ namespace Enlazar_AdminMVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                       "~/Content/fontawesome.css",
+                       "~/Content/all.min.css"));
         }
     }
 }

@@ -1,16 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Enlazar</title>
+    <title>@ViewBag.Title - enlazar</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-ocre">
-         @Html.ActionLink("Enlazar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("enlazar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,9 +20,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a href="@Url.Action("Index", "Home")" class="nav-link disabled">
-
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home")" class="nav-link">
                         Home
                     </a>
                 </li>
@@ -31,7 +32,7 @@
                     <a href="@Url.Action("-Action", "-Controller")" class="nav-link disabled">Puntos de encuentro</a>
                 </li>
                 <li class="nav-item">
-                    <a href="@Url.Action("-Action", "-Controller")" class="nav-link disabled">Consejos</a>
+                    <a href="@Url.Action("-Action", "-Controller")" class="nav-link ">Consejos</a>
 
                 </li>
                 <li class="nav-item">
@@ -42,16 +43,13 @@
             <div class="form-inline my-2 my-lg-0">
                 <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Cerrar sesión</button>
             </div>
-            <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-user"></i>
+
         </div>
     </nav>
 
+
     <div class="container body-content">
-   
+
         @RenderBody()
         <hr />
         <footer>
@@ -62,5 +60,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    
 </body>
 </html>

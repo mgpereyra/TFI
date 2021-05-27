@@ -2,7 +2,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-top: 10px;
+    padding-top: 30px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -32,4 +32,20 @@ body {
 
 a {
     color: #bb6517;
+}
+
+h1, h2, h3, h4, h5, h6, a {
+    font-family: "Signika", sans-serif;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+i{
+    padding-right: 5px;
+}
+
+.active{
+    text-decoration:underline;
 }
