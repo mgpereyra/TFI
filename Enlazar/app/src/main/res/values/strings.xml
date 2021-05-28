@@ -45,6 +45,8 @@
     <string name="coordinar">Coordinar</string>
     <string name="horario">Horario</string>
     <string name="d_a">día</string>
+    <string name="succes">Cambio efectuado correctamente</string>
+    <string name="error">A ocurrido un error </string>
     <string name="finalizar">Finalizar</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>

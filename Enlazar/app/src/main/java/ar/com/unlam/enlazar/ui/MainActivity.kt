@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        toolbar("Enlazar")
+        toolbar()
 
 
         cardView_proximo_servicio.setOnClickListener{
@@ -46,13 +46,13 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-fun toolbar(title:String){
+fun toolbar(){
 setSupportActionBar(toolbar)
     var ab:ActionBar?=supportActionBar
     if (ab!=null){
         ab.setHomeAsUpIndicator(R.drawable.menu)
         ab.setDisplayHomeAsUpEnabled(true)
-        ab.title=title
+
     }
 
 }
