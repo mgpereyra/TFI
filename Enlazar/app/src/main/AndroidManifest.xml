@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Enlazar">
-        <activity android:name=".ui.CrearCuentaActivity"></activity>
+        <activity android:name=".ui.DetalleCardInfoActivity"></activity>
+        <activity android:name=".ui.SeccionInformativaActivity" />
+        <activity android:name=".ui.CrearCuentaActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity
             android:name=".ui.SplashScreenActivity"

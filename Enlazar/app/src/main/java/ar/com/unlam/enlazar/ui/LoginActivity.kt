@@ -10,10 +10,13 @@ class LoginActivity : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        btn_login.setOnClickListener {
+            startActivity(Intent(this,MainActivity::class.java))
+        }
         ir_crear_cuenta.setOnClickListener {
             startActivity(Intent(this,CrearCuentaActivity::class.java))
         }
+
     }
 
 

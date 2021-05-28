@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/inicio"
+        android:id="@+id/op1"> </item>
+    <item android:title="@string/mis_direcciones"
+        android:id="@+id/op2"> </item>
+    <item android:title="@string/mis_canjes"
+        android:id="@+id/op3"> </item>
+    <item android:title="@string/invita_a_amigos"
+        android:id="@+id/op4"> </item>
+    <item android:title="@string/guardado"
+        android:id="@+id/op5"> </item>
+    <item android:title="@string/mi_cuenta"
+        android:id="@+id/op6"> </item>
+</menu>
