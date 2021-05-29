@@ -31,6 +31,23 @@
     <string name="card_resumen">breve resumen de la composicion de la card</string>
     <string name="ver">ver</string>
     <string name="tipo_de_info">tipo De Info</string>
+    <string name="donde_estas">Donde Estas</string>
+    <string name="direccion">Direccion</string>
+    <string name="material">Material</string>
+    <string name="envases_plastico">Envases Plastico</string>
+    <string name="latas">Latas</string>
+    <string name="bricks">Bricks</string>
+    <string name="cant_bolsas">cant.Bolsas</string>
+    <string name="envases_de_vidrios">Envases de Vidrios</string>
+    <string name="papel_y_cart_n">Papel y Cartón</string>
+    <string name="diarios_o_revistas">Diarios o revistas</string>
+    <string name="envases_de_cart_n">Envases de cartón</string>
+    <string name="coordinar">Coordinar</string>
+    <string name="horario">Horario</string>
+    <string name="d_a">día</string>
+    <string name="succes">Cambio efectuado correctamente</string>
+    <string name="error">A ocurrido un error </string>
+    <string name="finalizar">Finalizar</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>

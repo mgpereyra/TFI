@@ -32,7 +32,7 @@ var cardInfoList=ArrayList<CardInfo>()
     override fun getItemCount(): Int {
         return cardInfoList.size
     }
-    class CardInfoViewHolder(view: View, var card:CardInfo?=null):RecyclerView.ViewHolder(){
+    class CardInfoViewHolder(view: View, var card:CardInfo?=null):RecyclerView.ViewHolder(view){
         init {
                 view.btn_ver_card_info.setOnClickListener {
                     val intent= Intent(view.context, DetalleCardInfoActivity::class.java)

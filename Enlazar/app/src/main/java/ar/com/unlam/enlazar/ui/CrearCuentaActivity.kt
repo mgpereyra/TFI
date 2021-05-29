@@ -1,5 +1,6 @@
 package ar.com.unlam.enlazar.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,12 @@ class CrearCuentaActivity : AppCompatActivity() {
         setContentView(R.layout.activity_crear_cuenta)
         btnVolver.setOnClickListener {
             this@CrearCuentaActivity.finish()
+        }
+        btn_login.setOnClickListener{
+            this@CrearCuentaActivity.finish()
+            val intent: Intent = Intent(this, NuevoServicioActivity::class.java)
+            startActivity(intent)
+
         }
         val spinner2 = findViewById<Spinner>(R.id.partido_spinner)
         val listaSipnner2 = resources.getStringArray(R.array.partidos_array)

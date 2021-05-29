@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/drawerNewService"
+    tools:context=".ui.NuevoServicioActivity">
+    <androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity"
+    android:background="@color/backGroundCustom"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/barra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="200dp"
+            android:layout_height="67dp"
+            app:title="@string/app_name"
+
+            />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnVolver"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_arrow_back" />
+    </LinearLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/barra"
+    android:orientation="vertical">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_ubicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/donde_estas"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ubicacion"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:hint="@string/direccion"
+                android:maxWidth="150dp"
+                android:minWidth="100dp"
+                android:textColorHint="@color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/backGroundCustom"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/white"
+                app:helperTextTextColor="@color/white"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_ubicacion">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/backGroundCustom"
+                    android:inputType="textCapSentences|textAutoCorrect"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:shadowColor="@color/white"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/localidad"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:hint="@string/Localidad"
+                android:maxWidth="150dp"
+                android:minWidth="100dp"
+                android:textColorHint="@color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/backGroundCustom"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/white"
+                app:helperTextTextColor="@color/white"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/label_material"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ubicacion">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/backGroundCustom"
+                    android:inputType="textCapSentences|textAutoCorrect"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:shadowColor="@color/white"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_material"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/material"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/localidad" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_envase_plastico"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/envases_plastico"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_material" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_cantidad_bolsas"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/cant_bolsas"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.918"
+                app:layout_constraintStart_toEndOf="@id/label_envase_plastico"
+                app:layout_constraintTop_toBottomOf="@id/label_material" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_latas"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/latas"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="@id/label_envase_plastico"
+                app:layout_constraintStart_toStartOf="@id/label_envase_plastico"
+                app:layout_constraintTop_toBottomOf="@id/label_envase_plastico" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_bricks"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/bricks"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="@id/label_latas"
+                app:layout_constraintStart_toStartOf="@id/label_latas"
+                app:layout_constraintTop_toBottomOf="@id/label_latas" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cant_tipo1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="71dp"
+                android:layout_height="55dp"
+                android:layout_margin="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="76dp"
+                android:hint="0"
+                android:maxWidth="150dp"
+                android:minWidth="100dp"
+                android:textColorHint="@color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/backGroundCustom"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/white"
+                app:helperTextTextColor="@color/white"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@id/label_cantidad_bolsas"
+
+                app:layout_constraintTop_toBottomOf="@id/label_cantidad_bolsas">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:shadowColor="@color/white"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_envase_vidrio"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/envases_de_vidrios"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_bricks" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cant_tipo2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="71dp"
+                android:layout_height="55dp"
+                android:layout_margin="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="76dp"
+                android:hint="0"
+                android:maxWidth="150dp"
+                android:minWidth="100dp"
+                android:textColorHint="@color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/backGroundCustom"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/white"
+                app:helperTextTextColor="@color/white"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@id/cant_tipo1"
+                app:layout_constraintHorizontal_bias="0.447"
+                app:layout_constraintStart_toStartOf="@id/cant_tipo1"
+                app:layout_constraintTop_toBottomOf="@id/cant_tipo1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:shadowColor="@color/white"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_papel_carton"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/papel_y_cart_n"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_envase_vidrio" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_diarios_revistas"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/diarios_o_revistas"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="@id/label_papel_carton"
+                app:layout_constraintStart_toStartOf="@id/label_papel_carton"
+                app:layout_constraintTop_toBottomOf="@id/label_papel_carton" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_envase_carton"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/envases_de_cart_n"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="@id/label_diarios_revistas"
+                app:layout_constraintStart_toStartOf="@id/label_diarios_revistas"
+                app:layout_constraintTop_toBottomOf="@id/label_diarios_revistas" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cant_tipo3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="70dp"
+                android:layout_height="55dp"
+                android:layout_margin="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="50dp"
+                android:hint="0"
+                android:maxWidth="150dp"
+                android:minWidth="100dp"
+                android:textColorHint="@color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/backGroundCustom"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/white"
+                app:helperTextTextColor="@color/white"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@id/cant_tipo1"
+                app:layout_constraintHorizontal_bias="0.379"
+                app:layout_constraintStart_toStartOf="@id/cant_tipo1"
+                app:layout_constraintTop_toBottomOf="@id/cant_tipo2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:shadowColor="@color/white"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_coordinar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/signika"
+                android:text="@string/coordinar"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_envase_carton" />
+
+            <Spinner
+                android:id="@+id/dia_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/white"
+                android:hint="@string/d_a"
+                android:textColorHint="@color/white"
+                android:textSize="30sp"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/white"
+                app:helperTextTextColor="@color/white"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_coordinar" />
+
+            <Spinner
+                android:id="@+id/horario_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/white"
+                android:hint="@string/horario"
+                android:textColorHint="@color/white"
+                android:textSize="30sp"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/white"
+                app:helperTextTextColor="@color/white"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dia_spinner" />
+
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ocre"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/label_material"
+                app:layout_constraintTop_toBottomOf="@id/localidad"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="207dp" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:background="@color/ocre"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/label_coordinar"
+                app:layout_constraintTop_toBottomOf="@id/label_envase_carton"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="207dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_finalizar"
+                android:layout_width="190dp"
+                android:layout_height="60dp"
+                android:layout_margin="20dp"
+                android:layout_marginBottom="100dp"
+                android:backgroundTint="@color/emerald"
+                android:text="@string/finalizar"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horario_spinner"
+                app:strokeColor="@color/emerald" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+</ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <com.google.android.material.navigation.NavigationView
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu"
+        android:fitsSystemWindows="true"/>
+</androidx.drawerlayout.widget.DrawerLayout>

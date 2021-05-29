@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 <com.google.android.material.appbar.MaterialToolbar
     android:id="@+id/toolbar"
-    android:layout_width="match_parent"
+    android:layout_width="200dp"
     android:layout_height="67dp"
     app:title="@string/app_name"
 
@@ -269,7 +269,20 @@
             android:translationX="90dp"
             android:translationY="50dp" />
     </androidx.cardview.widget.CardView>
-
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_new_service"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/ocre"
+        android:src="@drawable/add"
+        style="@style/Buscar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView

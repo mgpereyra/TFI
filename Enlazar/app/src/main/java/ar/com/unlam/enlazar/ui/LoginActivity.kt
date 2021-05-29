@@ -11,9 +11,11 @@ class LoginActivity : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         btn_login.setOnClickListener {
+            this@LoginActivity.finish()
             startActivity(Intent(this,MainActivity::class.java))
         }
         ir_crear_cuenta.setOnClickListener {
+            this@LoginActivity.finish()
             startActivity(Intent(this,CrearCuentaActivity::class.java))
         }
 
