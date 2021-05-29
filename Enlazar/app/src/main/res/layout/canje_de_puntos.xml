@@ -64,9 +64,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cardInfo_image"
                 android:textSize="29sp"
-                android:maxLength="25"
+                android:maxLength="11"
                 app:layout_constraintBottom_toTopOf="@id/cardInfo_content"
-                tools:text="titulo canje"
+                tools:text="notes title"
                 tools:visibility="visible"/>
 
             <TextView
@@ -84,7 +84,7 @@
                 app:layout_constraintStart_toEndOf="@id/cardInfo_image"
                 app:layout_constraintTop_toBottomOf="@+id/cardInfo_title"
                 tools:visibility="visible"
-                tools:text="Puntos que cuesta aqui " />
+                tools:text="this is a example of a content " />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_ver_card_info"
@@ -104,14 +104,5 @@
 
 
     </com.google.android.material.card.MaterialCardView>
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/ocre"
-        android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@id/dataContainer"
-        app:layout_constraintBottom_toBottomOf="@id/dataContainer"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="207dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

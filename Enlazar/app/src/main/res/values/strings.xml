@@ -48,6 +48,10 @@
     <string name="succes">Cambio efectuado correctamente</string>
     <string name="error">A ocurrido un error </string>
     <string name="finalizar">Finalizar</string>
+    <string name="Ejemplo_cant_puntos">190</string>
+    <string name="puntos_acumulados">Puntos Acumulados</string>
+    <string name="historial_de_puntos">Historial de Puntos</string>
+    <string name="canjear_puntos">Canjear Puntos</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>
