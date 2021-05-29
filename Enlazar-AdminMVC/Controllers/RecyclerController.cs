@@ -57,7 +57,7 @@ namespace Enlazar_AdminMVC.Controllers
             client = new FireSharp.FirebaseClient(config);
             var data = recycler;
             PushResponse response = client.Push("Recyclers/", data);
-            data.id = response.Result.name;
+            data.Id = response.Result.name;
             SetResponse setResponse = client.Set("Recyclers/" + response.Result.name, data);
 
         }
@@ -111,7 +111,7 @@ namespace Enlazar_AdminMVC.Controllers
         public ActionResult Edit(Recycler recycler)
         {
             client = new FireSharp.FirebaseClient(config);
-            SetResponse response = client.Set("Recyclers/" + recycler.id, recycler);
+            SetResponse response = client.Set("Recyclers/" + recycler.Id, recycler);
 
             return RedirectToAction("ListRecyclers");
 
