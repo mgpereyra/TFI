@@ -143,6 +143,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecyclerController.cs" />
+    <Compile Include="Enum\UserTypes.cs" />
+    <Compile Include="Models\Extensions\Recycler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

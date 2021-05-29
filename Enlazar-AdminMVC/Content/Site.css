@@ -1,10 +1,21 @@
 ﻿
+h1, h2, h3, h4 {
+    font-family: 'Signika', sans-serif;
+}
 
+body, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-top: 30px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -14,16 +25,49 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+/* Set width on the form input elements since they're 100% wide by default
 input,
 select,
 textarea {
     max-width: 280px;
+} */
+
+.color-primary {
+    color: #006e46 !important;
 }
+
+.color-secondary {
+    color: #a21b50 !important;
+}
+
+.color-third {
+    color: #be6419;
+}
+
 
 .bg-ocre {
     background-color: #bb6517;
 }
+
+.btn-primary {
+    background-color: #bb6517 !important;
+    border-color: #bb6517!important;
+}
+
+    .btn-primary:focus, .btn-primary:hover, .btn-primary.focus {
+        background-color: #a0540f !important;
+        border-color: #a0540f !important;
+    }
+
+.btn-outline-primary {
+    border-color: #bb6517 !important;
+    color: #bb6517 !important;
+}
+
+    .btn-outline-primary:hover {
+        color: #fff !important;
+        background-color: #bb6517;
+    }
 
 body {
     background-color: #464646;
@@ -34,13 +78,6 @@ a {
     color: #bb6517;
 }
 
-h1, h2, h3, h4, h5, h6, a {
-    font-family: "Signika", sans-serif;
-}
-
-body {
-    font-family: "Roboto", sans-serif;
-}
 
 i{
     padding-right: 5px;
@@ -49,3 +86,16 @@ i{
 .active{
     text-decoration:underline;
 }
+
+.card {
+    padding: 1rem;
+    margin-top: 0.2rem;
+    /* background-color: #ea872d!import;*/
+    border-radius:1rem;
+    
+}
+
+hr {
+    border-color: #a0540f !important;
+}
+

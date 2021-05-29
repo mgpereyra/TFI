@@ -40,6 +40,9 @@ namespace Enlazar_AdminMVC.Controllers
         {
             try
             {
+                recycler.InitDate = DateTime.Now;
+                recycler.Active = true;
+                recycler.Password = "123456";
                 AddReciyclerToFirebase(recycler);
                 ModelState.AddModelError(string.Empty, "Se ha agregado correctamente");
                 return RedirectToAction("ListRecyclers");
@@ -47,7 +50,6 @@ namespace Enlazar_AdminMVC.Controllers
             catch (Exception e)
             {
                 ModelState.AddModelError(string.Empty, e.Message);
-
                 return View();
             }
         }
