@@ -35,26 +35,79 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:visibility="invisible"
                 tools:visibility="invisible" />
-            <ImageView
-                android:id="@+id/cardInfo_image"
-                android:layout_width="170dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="10dp"
-                android:maxHeight="200dp"
-                android:minHeight="150dp"
-                android:minWidth="160dp"
-                android:maxWidth="165dp"
-                app:layout_constraintEnd_toStartOf="@id/cardInfo_title"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:visibility="visible"
-                android:src="@drawable/ic_baseline_image_24"
-                android:contentDescription="@string/card_resumen" />
 
+            <ImageView
+                android:id="@+id/circle_bolsas_amarillo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/circle_border_yellow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.051"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cantidad_de_bolsas_amarillo"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                app:flow_verticalAlign="center"
+                app:layout_constraintEnd_toEndOf="@id/circle_bolsas_amarillo"
+                app:layout_constraintStart_toStartOf="@id/circle_bolsas_amarillo"
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_amarillo"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_amarillo"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+            <ImageView
+                android:id="@+id/circle_bolsas_azul"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/circle_border_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.051"
+                app:layout_constraintStart_toEndOf="@id/cantidad_de_bolsas_amarillo"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cantidad_de_bolsas_azul"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                app:flow_verticalAlign="center"
+                app:layout_constraintEnd_toEndOf="@id/circle_bolsas_azul"
+                app:layout_constraintStart_toStartOf="@id/circle_bolsas_azul"
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_azul"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_azul"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+
+
+
+            <ImageView
+                android:id="@+id/circle_bolsas_verdes"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/circle_border_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.051"
+                app:layout_constraintStart_toEndOf="@id/circle_bolsas_azul"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cantidad_de_puntos"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                app:flow_verticalAlign="center"
+                app:layout_constraintEnd_toEndOf="@id/circle_bolsas_verdes"
+                app:layout_constraintStart_toStartOf="@id/circle_bolsas_verdes"
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_verdes"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
             <TextView
                 android:id="@+id/cardInfo_title"
                 android:layout_width="200dp"
