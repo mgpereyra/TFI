@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Enlazar"
         android:vmSafeMode="false">
-        <activity android:name=".ui.MisPuntosActivity"></activity>
+        <activity android:name=".ui.MisEncuentrosActivity"></activity>
+        <activity android:name=".ui.MisServiciosPendientesActivity" />
+        <activity android:name=".ui.MisPuntosActivity" />
         <activity
             android:name=".ui.SplashScreenActivity"
             android:theme="@style/Theme.SplashScreen">
@@ -23,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.DetalleServicioActivity" />
-        <activity android:name=".ui.misServicios" />
+        <activity android:name=".ui.MisServiciosConfirmadosActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.NuevoServicioActivity" />
         <activity android:name=".ui.DetalleCardInfoActivity" />
