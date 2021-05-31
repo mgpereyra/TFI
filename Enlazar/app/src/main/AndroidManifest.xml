@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ar.com.unlam.enlazar"
-    android:hardwareAccelerated="true"
-    >
+    android:hardwareAccelerated="true">
 
     <application
-        android:hardwareAccelerated="true"
-        android:vmSafeMode="false"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Enlazar">
-
+        android:theme="@style/Theme.Enlazar"
+        android:vmSafeMode="false">
+        <activity android:name=".ui.MisPuntosActivity"></activity>
         <activity
             android:name=".ui.SplashScreenActivity"
             android:theme="@style/Theme.SplashScreen">
@@ -26,7 +25,7 @@
         <activity android:name=".ui.DetalleServicioActivity" />
         <activity android:name=".ui.misServicios" />
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.NuevoServicioActivity"/>
+        <activity android:name=".ui.NuevoServicioActivity" />
         <activity android:name=".ui.DetalleCardInfoActivity" />
         <activity android:name=".ui.SeccionInformativaActivity" />
         <activity android:name=".ui.CrearCuentaActivity" />

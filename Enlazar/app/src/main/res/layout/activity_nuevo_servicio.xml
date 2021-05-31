@@ -463,7 +463,6 @@
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-
                 android:background="@color/ocre"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@id/label_coordinar"
@@ -485,6 +484,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/horario_spinner"
                 app:strokeColor="@color/emerald" />
+
+            <View
+                android:id="@+id/divider_plastico"
+                android:layout_width="3dp"
+                android:layout_height="100dp"
+                android:background="@color/yellow"
+                app:layout_constraintTop_toTopOf="@id/label_envase_plastico"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/label_bricks"
+                android:layout_marginStart="10dp"/>
+            <View
+                android:id="@+id/divider_vidrio"
+                android:layout_width="3dp"
+                android:layout_height="50dp"
+                android:background="@color/green"
+                app:layout_constraintTop_toTopOf="@id/label_envase_vidrio"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/label_envase_vidrio"
+                android:layout_marginStart="10dp"/>
+           <View
+            android:id="@+id/divider_papel"
+            android:layout_width="3dp"
+            android:layout_height="110dp"
+            android:background="@color/blue"
+            app:layout_constraintTop_toTopOf="@id/label_papel_carton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/label_envase_carton"
+            android:layout_marginStart="10dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

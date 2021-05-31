@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
     startActivity(intent)
                     }
 
-       /* cardView_mis_puntos.setOnClickListener {
+        cardView_mis_puntos.setOnClickListener {
             val intent: Intent = Intent(this, MisPuntosActivity::class.java)
             startActivity(intent)
         }
-        cardView_mis_encuentros.setOnClickListener{
+      /*  cardView_mis_encuentros.setOnClickListener{
             val intent: Intent = Intent(this, MisEncuentrosActivity::class.java)
             startActivity(intent)
 

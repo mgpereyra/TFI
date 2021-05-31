@@ -291,8 +291,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/menu"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"/>
 
-
-    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

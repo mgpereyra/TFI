@@ -35,6 +35,8 @@
     <string name="direccion">Direccion</string>
     <string name="material">Material</string>
     <string name="envases_plastico">Envases Plastico</string>
+    <string name="ejemplo_tipo1">Envases Plastico<br/>Latas<br/>Bricks</string>
+    <string name="ejemplo_tipo2">Papel y Cartón<br/>Diarios o revistas<br/>Envases de cartón</string>
     <string name="latas">Latas</string>
     <string name="bricks">Bricks</string>
     <string name="cant_bolsas">cant.Bolsas</string>
@@ -48,6 +50,11 @@
     <string name="succes">Cambio efectuado correctamente</string>
     <string name="error">A ocurrido un error </string>
     <string name="finalizar">Finalizar</string>
+    <string name="Ejemplo_cant_puntos">190</string>
+    <string name="puntos_acumulados">Puntos Acumulados</string>
+    <string name="historial_de_puntos">Historial de Puntos</string>
+    <string name="canjear_puntos">Canjear Puntos</string>
+    <string name="nuevo_servicio">Nuevo Servicio</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>
