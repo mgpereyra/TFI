@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.DetalleServicioActivity"
     android:background="@color/backGroundCustom">
+    <LinearLayout
+        android:id="@+id/barra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="200dp"
+        android:layout_height="67dp"
+        app:title="@string/app_name"
+
+        />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="52dp"
         android:layout_height="40dp"
-        android:layout_marginTop="464dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/ic_estado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imageView8" />
 
     <TextView
         android:id="@+id/txtProxServDirSubDetalle"
@@ -78,23 +97,23 @@
         android:id="@+id/imageView8"
         android:layout_width="52dp"
         android:layout_height="40dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/ic_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/envase_papel_detalle" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="52dp"
         android:layout_height="40dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/ic_mis_servicios"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imageView6" />
 
     <TextView
         android:id="@+id/txtProximoServ3"
@@ -110,6 +129,80 @@
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="@+id/imageView7"
         app:layout_constraintVertical_bias="1.0" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/envase_plastico_detalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ejemplo_tipo1"
+        app:layout_constraintTop_toBottomOf="@+id/txtProximoServ3"
+        app:layout_constraintEnd_toStartOf="@id/cant_envase_plastico"
+      app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cant_envase_plastico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:hint="30"
+        app:layout_constraintBottom_toBottomOf="@id/envase_plastico_detalle"
+        app:layout_constraintStart_toEndOf="@id/envase_plastico_detalle"
+        app:layout_constraintTop_toTopOf="@+id/envase_plastico_detalle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/envase_vidrio_detalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/envases_de_vidrios"
+        app:layout_constraintEnd_toEndOf="@id/envase_plastico_detalle"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="@id/envase_plastico_detalle"
+        app:layout_constraintTop_toBottomOf="@+id/envase_plastico_detalle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cant_envase_vidrio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="30"
+        app:layout_constraintTop_toTopOf="@+id/envase_vidrio_detalle"
+        app:layout_constraintBottom_toBottomOf="@id/envase_vidrio_detalle"
+        app:layout_constraintStart_toEndOf="@id/envase_vidrio_detalle"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="0dp"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/envase_papel_detalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/ejemplo_tipo2"
+        app:layout_constraintEnd_toEndOf="@id/envase_plastico_detalle"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="@id/envase_plastico_detalle"
+        app:layout_constraintTop_toBottomOf="@+id/envase_vidrio_detalle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cant_envase_papel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="30"
+        app:layout_constraintTop_toTopOf="@+id/envase_papel_detalle"
+        app:layout_constraintBottom_toBottomOf="@id/envase_papel_detalle"
+        app:layout_constraintStart_toEndOf="@id/envase_papel_detalle"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="0dp"
+        />
+
+
 
     <TextView
         android:id="@+id/txtProxServTurnSubDetalle"
@@ -128,12 +221,12 @@
         android:id="@+id/imageView6"
         android:layout_width="52dp"
         android:layout_height="40dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/ic_proximo_servicio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtProximoServ" />
 
     <TextView
         android:id="@+id/txtProximoServ2"
@@ -160,7 +253,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/barra" />
 
     <TextView
         android:id="@+id/txtProximoServ"
@@ -192,3 +285,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

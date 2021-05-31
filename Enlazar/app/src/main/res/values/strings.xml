@@ -35,6 +35,8 @@
     <string name="direccion">Direccion</string>
     <string name="material">Material</string>
     <string name="envases_plastico">Envases Plastico</string>
+    <string name="ejemplo_tipo1">Envases Plastico<br/>Latas<br/>Bricks</string>
+    <string name="ejemplo_tipo2">Papel y Cartón<br/>Diarios o revistas<br/>Envases de cartón</string>
     <string name="latas">Latas</string>
     <string name="bricks">Bricks</string>
     <string name="cant_bolsas">cant.Bolsas</string>
