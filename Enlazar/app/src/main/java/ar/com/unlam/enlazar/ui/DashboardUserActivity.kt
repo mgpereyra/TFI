@@ -9,11 +9,11 @@ import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class DashboardUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        toolbar("Enlazar")
+        toolbar()
 
 
         cardView_proximo_servicio.setOnClickListener{
@@ -24,28 +24,35 @@ class MainActivity : AppCompatActivity() {
     val intent: Intent = Intent(this, misServicios::class.java)
     startActivity(intent)
                     }
+
         cardView_mis_puntos.setOnClickListener {
             val intent: Intent = Intent(this, MisPuntosActivity::class.java)
             startActivity(intent)
         }
-        cardView_mis_encuentros.setOnClickListener{
+      /*  cardView_mis_encuentros.setOnClickListener{
             val intent: Intent = Intent(this, MisEncuentrosActivity::class.java)
             startActivity(intent)
 
-        }
+        }*/
         cardView_seccion_informativa.setOnClickListener {
             val intent: Intent = Intent(this, SeccionInformativaActivity::class.java)
             startActivity(intent)
         }
+        btn_new_service.setOnClickListener{
+            this@DashboardUserActivity.finish()
+            val intent: Intent = Intent(this, NuevoServicioActivity::class.java)
+            startActivity(intent)
+
+        }
 
     }
-fun toolbar(title:String){
+fun toolbar(){
 setSupportActionBar(toolbar)
     var ab:ActionBar?=supportActionBar
     if (ab!=null){
         ab.setHomeAsUpIndicator(R.drawable.menu)
         ab.setDisplayHomeAsUpEnabled(true)
-        ab.title=title
+
     }
 
 }

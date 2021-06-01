@@ -14,6 +14,9 @@
     <color name="backGroundCustom">#DF232222</color>
     <color name="textWhite">#FFFFFF</color>
     <color name="subTextWhite">#C1FFFFFF</color>
+    <color name="ocre">#bb6517</color>
+    <color name="yellow">#D6C319</color>
+    <color name="green">#1BA80B</color>
 
 
 </resources>
