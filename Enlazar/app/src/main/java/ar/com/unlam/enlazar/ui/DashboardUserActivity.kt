@@ -9,7 +9,7 @@ import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class DashboardUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btn_new_service.setOnClickListener{
-            this@MainActivity.finish()
+            this@DashboardUserActivity.finish()
             val intent: Intent = Intent(this, NuevoServicioActivity::class.java)
             startActivity(intent)
 
