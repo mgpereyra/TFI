@@ -1,26 +1,54 @@
 ﻿@model Enlazar_AdminMVC.Models.Recycler
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle";
 }
 
-<h2>Details</h2>
+    <div class="d-flex mb-4">
+        <div class="pb-lg-2 w-100">
+            <h2><i class="fa fa-hand-holding-heart pt-2 mr-2" aria-hidden="true"></i><b>@Model.Name @Model.Surname</b> ~ DNI @Model.Dni</h2>
+        </div>
+        <div class="flex-shrink-1"> <a class="btn btn-primary m-2" href="../Edit/@Model.Id"><i class="fa fa-edit"></i>Editar</a></div>
+    </div>
 
-<div>
-    <h4>Recycler</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<div class="card text-white bg-dark">
+    <div class="card-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <label class="color-third">Direccion</label>
+                <h5>@Model.Address</h5>
 
-    </dl>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <label class="color-third">Localidad</label>
+                <h5>@Model.Location</h5>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <label class="color-third">Partido</label>
+                <h5>@Model.District</h5>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <label class="color-third">Teléfono</label>
+                <h5>@Model.Phone</h5>
+
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <label class="color-third">Email</label>
+                <h5>@Model.Email</h5>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <label class="color-third">Contraseña</label>
+                <h5>@Model.Password</h5>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "ListRecyclers")
-</p>
+
+<div class="mt-4">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver al listado", "ListRecyclers")
+</div>

@@ -40,12 +40,21 @@ namespace Enlazar_AdminMVC.Controllers
         {
             try
             {
-                recycler.InitDate = DateTime.Now;
-                recycler.Active = true;
-                recycler.Password = "123456";
-                AddReciyclerToFirebase(recycler);
-                ModelState.AddModelError(string.Empty, "Se ha agregado correctamente");
-                return RedirectToAction("ListRecyclers");
+                if (ModelState.IsValid)
+                {
+                    recycler.InitDate = DateTime.Now;
+                    recycler.Active = true;
+                    recycler.Password = "123456";
+                    recycler.TypeUser = Enum.UserTypes.RECYCLER;
+                    AddReciyclerToFirebase(recycler);
+                    ModelState.AddModelError(string.Empty, "Se ha agregado correctamente");
+                    return RedirectToAction("ListRecyclers");
+                }
+                else
+                {
+                    return View();
+                }
+
             }
             catch (Exception e)
             {

@@ -144,7 +144,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecyclerController.cs" />
     <Compile Include="Enum\UserTypes.cs" />
-    <Compile Include="Models\Extensions\Recycler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -273,6 +272,7 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="Views\Shared\pv_footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

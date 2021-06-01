@@ -54,15 +54,16 @@
     <div class="container body-content mt-2">
 
         @RenderBody()
-        <footer class="mt-5 text-center">
-            <p>&copy; @DateTime.Now.Year - Enlazar App</p>
-        </footer>
     </div>
+   
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    
+<div class="footer-copyright text-center py-1 mt-5">
+    <p>&copy; @DateTime.Now.Year - Enlazar App</p>
+</div>
+
 </body>
 </html>

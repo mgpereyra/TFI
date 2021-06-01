@@ -13,9 +13,11 @@ body, html {
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-top: 30px;
+    padding-top: 1.5rem;
     padding-left: 5rem;
     padding-right: 5rem;
+    padding-bottom:2rem;
+    min-height:72%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -86,6 +88,13 @@ i{
 .active{
     text-decoration:underline;
 }
+.error {
+    color: #d9534f;
+    font-size: 15px;
+    padding-top: 0.25rem;
+    padding-top: 0.4rem;
+}
+
 
 .card {
     padding: 1rem;
@@ -95,7 +104,44 @@ i{
     
 }
 
-hr {
+hr, .border-primary {
     border-color: #a0540f !important;
 }
 
+.flechas-out::-webkit-inner-spin-button, .flechasOut::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.acciones {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+a:hover {
+    font-weight: 600;
+    color: #be6419;
+    text-decoration: underline;
+}
+ .encabezado {
+    padding: 0.5em;
+    vertical-align: top;
+    border-top: 0px solid #dee2e6!important; 
+}
+
+.table-dark {
+    color: #fff;
+    background-color: #343a40!important;
+}
+
+    .table-dark.table-striped tbody tr:nth-of-type(odd) {
+        background-color: #212529!important;
+    }
+
+.footer-copyright {
+    position: absolute;
+    right: 0;
+    left: 0;
+    width: 100%;
+   
+}
