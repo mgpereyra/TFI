@@ -12,7 +12,7 @@ class LoginActivity : AppCompatActivity()  {
         setContentView(R.layout.activity_login)
         btn_login.setOnClickListener {
             this@LoginActivity.finish()
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,DashboardUserActivity::class.java))
         }
         ir_crear_cuenta.setOnClickListener {
             this@LoginActivity.finish()
