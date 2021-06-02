@@ -32,7 +32,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.DetalleServicioActivity" />
-        <activity android:name=".ui.misServicios" />
         <activity android:name=".ui.DashboardUserActivity" />
         <activity android:name=".ui.NuevoServicioActivity" />
         <activity android:name=".ui.DetalleCardInfoActivity" />

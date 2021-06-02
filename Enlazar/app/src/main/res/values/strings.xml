@@ -56,6 +56,7 @@
     <string name="canjear_puntos">Canjear Puntos</string>
     <string name="nuevo_servicio">Nuevo Servicio</string>
     <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="compartir_enlzar">Compartir Enlzar</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>
