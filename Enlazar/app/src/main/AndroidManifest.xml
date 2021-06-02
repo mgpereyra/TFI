@@ -3,6 +3,10 @@
     package="ar.com.unlam.enlazar"
     android:hardwareAccelerated="true">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -12,8 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Enlazar"
         android:vmSafeMode="false">
-        <activity android:name=".ui.MisEncuentrosActivity"></activity>
-        <activity android:name=".ui.MisServiciosPendientesActivity" />
+        <activity android:name=".ui.recolector.MiRutaActivity"></activity>
+        <activity android:name=".ui.recolector.DashboardRecolectorActivity" />
+        <activity android:name=".ui.recolector.RecuperarPassActivity" />
         <activity android:name=".ui.MisPuntosActivity" />
         <activity
             android:name=".ui.SplashScreenActivity"
@@ -25,8 +30,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.DetalleServicioActivity" />
-        <activity android:name=".ui.MisServiciosConfirmadosActivity" />
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.misServicios" />
+        <activity android:name=".ui.DashboardUserActivity" />
         <activity android:name=".ui.NuevoServicioActivity" />
         <activity android:name=".ui.DetalleCardInfoActivity" />
         <activity android:name=".ui.SeccionInformativaActivity" />

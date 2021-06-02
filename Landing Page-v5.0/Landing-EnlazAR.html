@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<title>Enlazar</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="estilos.css">
+
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a href="#home" class="w3-button w3-wide" style="display: contents;">	
+        <img src="./marca.png" class="w3-bar-item brand" >
+    </a>
+      
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small w3-padding">
+      <span class="fondo-titulo">
+        <a href="#home" class="w3-bar-item w3-button-nav">HOME</a>
+        <a href="#about" class="w3-bar-item w3-button-nav">APP</a>
+        <a href="#team" class="w3-bar-item w3-button-nav">EQUIPO</a>
+        <a href="#contact" class="w3-bar-item w3-button-nav">CONTACTO</a>
+        <a href="#download" class="w3-bar-item w3-button-nav">NOVEDADES</a>
+     
+      <a href="https://www.instagram.com/enlazar.app/" class="w3-bar-item color-secondary" target="_blank"><b>
+        <i class="w3-xxlarge fa fa-instagram w3-hover-opacity"></i></a>
+      </span>
+    </div>
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+      <a href="javascript:void(0)" class="w3-bar-item w3-right w3-hide-large w3-hide-medium w3-xlarge " onclick="w3_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+  </div>  
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-white  w3-animate-left w3-hide-medium w3-hide-large color-primary barrita" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-xlarge w3-padding-16">Cerrar ×</a>
+  <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-large">HOME</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-large">APP</a>
+  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button w3-large">EQUIPO</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-large">CONTACTO</a>
+  <a href="#download" onclick="w3_close()" class="w3-bar-item w3-button w3-large">NOVEDADES</a>
+  <a href="https://www.instagram.com/enlazar.app/" onclick="w3_close()"  class="w3-bar-item color-secondary" target="_blank"><b>
+    <i class="w3-xlarge fa fa-instagram w3-hover-opacity "></i>¡Seguinos!</a>
+
+
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container " id="home">
+  <div class="w3-display-left w3-text-white container">
+    
+        <h4 class="w3-jumbo titulo"><span class="fondo-titulo">Otro futuro es posible.</span></h4>
+        <hr>
+        <h6 class="subtitulo color-secondary w3-hide-small"><span class="fondo-titulo">Vos podés ser parte.</span></h6>
+        <h6 class="subtitulo">
+          <span class="fondo-titulo">
+             Convertir tus residuos en nuevos recursos ahora es más fácil.
+          </span>
+        </h6>
+        <h6 class="w3-hide-small subtitulo"><span class="fondo-titulo">Y además, ¡podés obtener beneficios!</span></h6>
+        <br/>
+        <p class="w3-large color-secondary"><span class="fondo-titulo"><b>Enlazate.</b> Dejanos tu email y enterate de todas las novedades.</span></p>
+        <div class="w3-row">
+          <div class="w3-col l10 m10 s12">
+              <!--<a href="https://play.google.com/store?hl=es_AR&gl=US" target="_blank" class="w3-btn boton-enlazate">
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>Enlazate
+              </a>-->
+              <form class="example" action="action_page.php">
+                <input type="text" placeholder="Email" name="email">
+                <button type="submit" class="w3-btn boton-enlazate"><i class="fa fa-heart-o" aria-hidden="true"></i>Enviar</button>
+              </form>
+              
+            </div>
+            
+            <div class="w3-col l2 m2"></div>
+          </div>
+  </div> 
+</header>
+
+<!-- About Section style="color:#006e46"-->
+<div class="w3-container container-secciones"  id="about">
+  <h4 class="w3-center w3-xxlarge titulo w3-margin-bottom"><span class="fondo-titulo"> <i class="fa fa-eye"></i></span></h4>
+  <h3 class="w3-center w3-xxlarge titulo"><span class="fondo-titulo">Acerca de la aplicación</span></h3>
+  <h5 class="w3-center w3-large"><span class="fondo-titulo">Los componentes clave</span></h5>
+  <div class="w3-row-padding w3-center" style="margin-top:75px">
+    <div class="w3-third">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo w3-center icon color-secondary"></i>
+      <h3><span class="fondo-titulo">Pasión</span></h3>
+      <p class="w3-large"><span class="fondo-titulo">Compromiso con una causa justa</br>y necesaria para un mundo mejor.</span></p>
+    </div>
+    <div class="w3-third">
+      <i class="fa fa-recycle w3-margin-bottom w3-jumbo w3-center icon color-primary"></i>
+      <h3><span class="fondo-titulo">Reciclaje</span></h3>
+      <p class="w3-large"><span class="fondo-titulo">Creemos que la separación en origen</br>debe convertirse en un hábito.</span></p>
+    </div>
+    <div class="w3-third">
+      <i class="fa fa-map-marker w3-margin-bottom w3-jumbo w3-center icon color-third" style="padding:15px 30px 15px 30px;"></i>
+      <h3><span class="fondo-titulo">Enlazamos</span></h3>
+      <p class="w3-large"><span class="fondo-titulo">El módulo de armado de rutas<br/> facilita el trabajo de los recolectores.</span></p>
+    </div>
+  </div>
+  
+</div>
+
+
+
+<!-- Team Section -->
+<div class="w3-container container-secciones"  id="team">
+  <h4 class="w3-center w3-xxlarge titulo w3-margin-bottom"><span class="fondo-titulo"> <i class="fa fa-code"></i></span></h4>
+  <h3 class="w3-center w3-xxlarge titulo"><span class="fondo-titulo">El equipo detrás del enfoque</span></h3>
+  <!--<h2 class="w3-center w3-xlarge"><span class="fondo-titulo">Las personas detrás de la aplicación</span></h2>-->
+  <div class="w3-card ">
+  <div class="w3-row"  style="margin-top:20px ">
+      <div class="w3-col l3 m6 w3-margin-bottom">
+          <img src="https://miel.unlam.edu.ar/data2/avatares/4b99dee718470534fdb31068af8aaf19.jpg" alt="Foto de Marcia" width="100%" style="border-radius: 10px 0 0 0;">
+          <div class="w3-container" >
+            <h4 class="titulo-card">Marcia Toledo</h4>
+            <p class="color-third w3-medium subtitulo-card">Diseñadora gráfica</p>
+            <p class="w3-medium cuerpo-card">Ambientalista comprometida<br/>y desarrolladora frontend.</p>
+          </div>
+        </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+          <img src="https://miel.unlam.edu.ar/data2/avatares/41150523.jpg" alt="Foto de Leonel" width="100%">
+          <div class="w3-container">
+            <h4 class="titulo-card">Leonel Zapata</h4>
+            <p class="color-third w3-medium subtitulo-card">Desarrollador Backend</p>
+            <p class="w3-medium cuerpo-card">Desarrollador con experiencia en amplia gama de tecnologías.</p>
+          </div>
+        </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+          <img src="https://miel.unlam.edu.ar/data2/avatares/39756173.jpg" alt="Foto de Maximiliano" width="100%">
+          <div class="w3-container">
+            <h4 class="titulo-card">Maximiliano Pereyra</h4>
+            <p class="w3-medium subtitulo-card color-third">Desarrollador Frontend</p>
+            <p class="w3-medium cuerpo-card" >Técnico en Desarrollo de Aplicaciones Móviles.</p>
+          </div>
+        </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+          <img src="https://miel.unlam.edu.ar/data2/avatares/8856638da4354266a53ba0fe9aef68dd.jpg" alt="Foto de Martin" width="100%" style="border-radius: 0 10px 0;">
+          <div class="w3-container">
+            <h4 class="titulo-card">Martin Mendez</h4>
+            <p class="color-third w3-medium subtitulo-card">Consultor técnico</p>
+            <p class="w3-medium cuerpo-card">Investigador, desarrollador<br/>y amante de la tecnología.</p>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Contact Section -->
+<div class="w3-container container-secciones"  id="contact">
+  <h4 class="w3-center w3-xxlarge titulo w3-margin-bottom"><span class="fondo-titulo"> <i class="fa fa-comments-o"></i></span></h4>
+  <h3 class="w3-center w3-xxlarge titulo"><span class="fondo-titulo">Estamos en contacto</span></h3>
+  <h5 class="w3-center w3-large"><span class="fondo-titulo">Dejanos cualquier inquietud que tengas</span></h5>
+  <div class="w3-row">
+
+      <div class="w3-col l2 m1 s0"><p></p></div>
+      <div class="w3-col l8 m10 s12 s w3-center">
+    <!--<p class="w3-xlarge"><i class="fa fa-map-marker fa-fw w3-margin-right"></i> La Matanza, Buenos Aires</p>
+    <p class="w3-xlarge"><i class="fa fa-phone fa-fw w3-margin-right"></i> Teléfono: + 54 (11) 6455 9922</p>
+    <p class="w3-xlarge"><i class="fa fa-envelope fa-fw w3-margin-right"> </i> Email: enlazarunlam@gmail.com</p><br>-->
+    <form action="/action_page.php" target="_blank">
+      <input class="w3-input w3-border w3-xlarge"  type="text" placeholder="Nombre" required name="Nombre">
+      <input class="w3-input w3-border w3-xlarge"  type="text" placeholder="Email" required name="Email">
+      <textarea class="w3-input w3-border w3-xlarge"  type="text" placeholder="Mensaje" required name="Mensaje"></textarea>
+      
+        <a href="https://play.google.com/store?hl=es_AR&gl=US" target="_blank" type="submit" class="w3-btn boton-mensaje">
+          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>Enviar mensaje
+      </a>
+      
+    </form>
+  </div>
+  <div class="w3-col l2 m1 s0"><p></p></div>
+</div>
+</div>
+
+
+<!-- Promo Section -  -->
+
+<div class="w3-container container-ultima-seccion" id="download">
+  <div class="w3-row " style="margin-top:30px">
+    <div class="w3-col l5 m8 s12">
+      <h4 class="w3-xxlarge titulo w3-margin-bottom">
+        <span class="fondo-titulo"><i class="fa fa-recycle"></i></span></h4>
+      <h4 class=" w3-xxlarge titulo"><span class="fondo-titulo">Cada vez falta menos</span></h4>
+      <h5><span class="fondo-titulo">Seguimos trabajando para cambiar la manera<br/> en la que nos relacionamos con los residuos.<br/> La app será totalmente gratis.</span></h5>
+      <hr>
+      <!--<a href="https://play.google.com/store?hl=es_AR&gl=US" target="_blank" class="w3-btn boton-enlazate">
+        <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>Descargar
+    </a>
+         <img class="w3-round-large disabled" src="https://es.logodownload.org/wp-content/uploads/2019/06/disponible-en-google-play-badge.png" alt="Disponible en Google Play"  style="max-width: 30%;min-width: 200px;">-->
+      <div class="w3-xlarge w3-section">
+         <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook w3-hover-opacity color-secondary"></i></a>
+         <a href="https://www.instagram.com/enlazar.app/" target="_blank"><i class="fa fa-instagram w3-hover-opacity color-secondary"></i></a>
+         <a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter w3-hover-opacity color-secondary"></i></a>
+         <a  href="mailto:enlazarunlam@gmail.com?Subject=Consulta" target="_blank"><i class="fa fa-envelope w3-hover-opacity color-secondary "></i></a>
+         <!-- <h5 class="color-secondary"><span class="fondo-titulo ">Podés mantenerte al tanto nuestras redes sociales.</span></h5>-->
+      </div>
+    </div>
+
+    <div class="w3-col l7 m4 s12 w3-center">
+      <img class="w3-image w3-round-large" src="Office.jpg" alt="Office" width="80%">
+    </div>
+  </div>
+    <div class="w3-row"  style="margin-top:50px">
+      <div class="w3-col l3 m3 s6 w3-padding-right">
+        <div class="w3-card w3-round-large w3-center ">
+          <div class="w3-container">
+            <h6 class="titulo-card">Días</h6s>
+            <h3 class=" w3-xxlarge titulo" id="dias"></h3>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col l3 m3 s6 w3-padding-right">
+        <div class="w3-card w3-round-large w3-center ">
+          <div class="w3-container">
+            <h6 class="titulo-card">Horas</h6>
+            <h3 class=" w3-xxlarge titulo" id="horas"></h3>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col l3 m3 s6 w3-padding-right">
+        <div class="w3-card w3-round-large w3-center">
+          <div class="w3-container">
+            <h6 class="titulo-card">Minutos</h6>
+            <h3 class=" w3-xxlarge titulo" id="minutos"></h3>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col l3 m3 s6 w3-padding-right">
+        <div class="w3-card w3-round-large w3-center ">
+          <div class="w3-container">
+            <h6 class="titulo-card">Segundos</h6>
+            <h3 class=" w3-xxlarge titulo" id="segundos"></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Footer -->
+<footer class="w3-center">
+  <div class="w3-xxlarge w3-section">
+    <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i> -->
+    <span>
+        <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook w3-hover-opacity color-third"></i></a>
+        <a href="https://www.instagram.com/enlazar.app/" target="_blank"><i class="fa fa-instagram w3-hover-opacity color-third"></i></a>
+        <a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter w3-hover-opacity color-third"></i></a>
+        <a  href="mailto:enlazarunlam@gmail.com?Subject=Consulta" target="_blank"><i class="fa fa-envelope w3-hover-opacity color-third"></i></a>
+    </span>
+  </div>
+  <p class="w3-medium w3-wide w3-padding">Gracias por tu compromiso con nuestra casa común.</p>
+  <p class="w3-small color-third">&copy; 2021 ~ Todos los derechos reservados</p>
+
+
+</footer>
+ 
+<script src="script.js"> </script>
+
+</body>
+
+</html>
