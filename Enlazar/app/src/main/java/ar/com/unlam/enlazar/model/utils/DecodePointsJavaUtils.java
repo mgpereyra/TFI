@@ -2,6 +2,8 @@ package ar.com.unlam.enlazar.model.utils;
 
 //import com.google.android.gms.maps.model.LatLng;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,7 @@ public class DecodePointsJavaUtils {
 
 
 
-   /* public static List decodePoly(String encoded) {
+    public static List decodePoly(String encoded) {
 
         List poly = new ArrayList();
         int index = 0, len = encoded.length();
@@ -41,6 +43,6 @@ public class DecodePointsJavaUtils {
         }
 
         return poly;
-    }*/
+    }
 
 }

@@ -56,6 +56,8 @@
     <string name="canjear_puntos">Canjear Puntos</string>
     <string name="nuevo_servicio">Nuevo Servicio</string>
     <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="search_call_error">Hubo un error en la búqueda</string>
+    <string name="google_api_key2">AIzaSyD63Ptld6R6m6o8p3HkX9an3ksAw_faFBs</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>
