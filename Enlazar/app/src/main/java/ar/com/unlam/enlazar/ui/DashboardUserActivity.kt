@@ -21,7 +21,7 @@ class DashboardUserActivity : AppCompatActivity() {
             startActivity(intent)
         }
         cardView_mis_servicios.setOnClickListener{
-    val intent: Intent = Intent(this, misServicios::class.java)
+    val intent: Intent = Intent(this, MisServiciosConfirmadosActivity::class.java)
     startActivity(intent)
                     }
 
@@ -29,11 +29,11 @@ class DashboardUserActivity : AppCompatActivity() {
             val intent: Intent = Intent(this, MisPuntosActivity::class.java)
             startActivity(intent)
         }
-      /*  cardView_mis_encuentros.setOnClickListener{
+       cardView_mis_encuentros.setOnClickListener{
             val intent: Intent = Intent(this, MisEncuentrosActivity::class.java)
             startActivity(intent)
 
-        }*/
+        }
         cardView_seccion_informativa.setOnClickListener {
             val intent: Intent = Intent(this, SeccionInformativaActivity::class.java)
             startActivity(intent)
