@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -269,6 +271,7 @@
             android:translationX="90dp"
             android:translationY="50dp" />
     </androidx.cardview.widget.CardView>
+
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_new_service"
         android:layout_width="70dp"
@@ -279,12 +282,13 @@
         android:backgroundTint="@color/ocre"
         android:src="@drawable/add"
         style="@style/Buscar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView_seccion_informativa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
 
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
     <com.google.android.material.navigation.NavigationView
         android:visibility="visible"
         android:layout_width="wrap_content"
