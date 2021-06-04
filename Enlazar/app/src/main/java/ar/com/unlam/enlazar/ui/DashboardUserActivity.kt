@@ -7,9 +7,14 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-
+enum class ProviderType{
+    BASIC
+}
 class DashboardUserActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,7 +26,7 @@ class DashboardUserActivity : AppCompatActivity() {
             startActivity(intent)
         }
         cardView_mis_servicios.setOnClickListener{
-    val intent: Intent = Intent(this, misServicios::class.java)
+    val intent: Intent = Intent(this, MisServiciosConfirmadosActivity::class.java)
     startActivity(intent)
                     }
 
@@ -29,11 +34,11 @@ class DashboardUserActivity : AppCompatActivity() {
             val intent: Intent = Intent(this, MisPuntosActivity::class.java)
             startActivity(intent)
         }
-      /*  cardView_mis_encuentros.setOnClickListener{
+       cardView_mis_encuentros.setOnClickListener{
             val intent: Intent = Intent(this, MisEncuentrosActivity::class.java)
             startActivity(intent)
 
-        }*/
+        }
         cardView_seccion_informativa.setOnClickListener {
             val intent: Intent = Intent(this, SeccionInformativaActivity::class.java)
             startActivity(intent)
@@ -44,6 +49,13 @@ class DashboardUserActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+/*//DESARROLLAR BOTON DE LOG OUT
+        btn_log_out.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            onBackPressed()
+
+        }*/
 
     }
 fun toolbar(){

@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ar.com.unlam.enlazar.R
 
-class misServicios : AppCompatActivity() {
+class MisCanjesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mis_servicios)
+        setContentView(R.layout.activity_mis_canjes)
     }
-
-
 }

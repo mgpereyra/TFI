@@ -7,8 +7,12 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.get
 import ar.com.unlam.enlazar.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*
+import kotlinx.android.synthetic.main.activity_crear_cuenta.view.*
 
 class CrearCuentaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +46,46 @@ class CrearCuentaActivity : AppCompatActivity() {
         )
         spinner.adapter = adapterSpinner
         itemSelectedSipnner(spinner)
-
-
-
-
+        setup()
     }
+
+    private fun setup(){
+        btn_login.setOnClickListener {
+            if(email.editText?.text.toString().isNotEmpty() && password.editText?.text.toString().isNotEmpty()){
+                val mailString = email.editText?.text.toString()
+                val passString = password.editText?.text.toString()
+
+                 FirebaseAuth.getInstance().
+                 createUserWithEmailAndPassword(mailString,
+                     passString).addOnCompleteListener{
+                    if (it.isSuccessful){
+                        irDashboardUserActivity(it.result?.user?.email.toString() ?: "",
+                            ProviderType.BASIC)
+                    }else{
+                        showAlert()
+                    }
+                 }
+             }
+        }
+    }
+private fun showAlert(){
+    val builder = AlertDialog.Builder(this)
+    builder.setTitle("Error")
+    builder.setMessage("Se ha producido un error autenticando al usuario")
+    builder.setPositiveButton("Aceptar",null)
+    val dialog: AlertDialog=builder.create()
+    dialog.show()
+
+}
+
+    private fun irDashboardUserActivity(email:String, provider:ProviderType){
+        val darsheboardActivity = Intent(this,DashboardUserActivity::class.java).apply {
+         putExtra("email",email)
+         putExtra("provider",provider)
+        }
+        startActivity(darsheboardActivity)
+    }
+
 
     private fun itemSelectedSipnner(obj: Spinner?) {
         obj?.onItemSelectedListener = object :
