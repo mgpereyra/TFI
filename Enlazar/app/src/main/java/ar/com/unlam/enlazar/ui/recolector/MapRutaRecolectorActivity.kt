@@ -51,7 +51,7 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
        // map.setOnMyLocationButtonClickListener(this)
       //  map.setOnMyLocationClickListener(this)
         enableLocation()
-        //trazarRutasLista(listaPuntos)
+      //  trazarRutasLista(listaPuntos)
         trazarRuta(LatLng(-34.744774, -58.695204), LatLng(-34.746859, -58.717010))
     }
 

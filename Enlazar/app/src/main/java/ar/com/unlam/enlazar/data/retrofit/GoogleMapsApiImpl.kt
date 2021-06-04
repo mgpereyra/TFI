@@ -23,7 +23,7 @@ class GoogleMapsApiImpl {
         var query = "/maps/api/directions/json?origin=" + origen.latitude + "," + origen.longitude +
                 "&destination=" + destino.latitude + "," + destino.longitude +
                 "&key=" + R.string.google_api_key
-        val keyy ="AIzaSyB9-jdnXRAMIcZMmuIrzMzcAohcW66bz2w" //"AIzaSyDulhHt1YltEBYDSjDTm8_avq0CNnl93lA"
+        val keyy ="AIzaSyB9-jdnXRAMIcZMmuIrzMzcAohcW66bz2w"
         var origenString = origen.latitude.toString() + "," + origen.longitude.toString()
         var destinString = destino.latitude.toString() + "," + destino.longitude.toString()
         getApi().search(origenString, destinString, keyy).enqueue(callback)

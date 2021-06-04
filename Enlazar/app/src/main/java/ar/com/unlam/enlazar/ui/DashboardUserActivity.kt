@@ -7,9 +7,14 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-
+enum class ProviderType{
+    BASIC
+}
 class DashboardUserActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -44,6 +49,13 @@ class DashboardUserActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+/*//DESARROLLAR BOTON DE LOG OUT
+        btn_log_out.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            onBackPressed()
+
+        }*/
 
     }
 fun toolbar(){
