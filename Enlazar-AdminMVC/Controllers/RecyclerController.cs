@@ -4,6 +4,7 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Proyecto.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace Enlazar_AdminMVC.Controllers
                     recycler.InitDate = DateTime.Now;
                     recycler.Active = true;
                     recycler.Password = "123456";
-                    recycler.TypeUser = Enum.UserTypes.RECYCLER;
+                    //recycler.TypeUser = Enum.UserTypes.RECYCLER;
                     AddReciyclerToFirebase(recycler);
                     ModelState.AddModelError(string.Empty, "Se ha agregado correctamente");
                     return RedirectToAction("ListRecyclers");

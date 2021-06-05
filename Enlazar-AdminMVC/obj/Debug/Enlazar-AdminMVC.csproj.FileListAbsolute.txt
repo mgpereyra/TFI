@@ -155,6 +155,7 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Microsoft.Threading.Tasks.Extensions.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Newtonsoft.Json.dll
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Proyecto.Database.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\System.Net.Http.Extensions.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\System.Net.Http.Primitives.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\System.Web.Helpers.dll
@@ -165,6 +166,8 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\System.Web.WebPages.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\System.Web.WebPages.Razor.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\WebGrease.dll
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Proyecto.Database.pdb
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Proyecto.Database.dll.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Microsoft.Threading.Tasks.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Microsoft.Threading.Tasks.Extensions.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
