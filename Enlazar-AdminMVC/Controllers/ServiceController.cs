@@ -26,7 +26,7 @@ namespace Enlazar_AdminMVC.Controllers
         public ActionResult List()
         {
             client = new FireSharp.FirebaseClient(database.createConfig());
-
+           // database.AddServiceToFirebase();
             FirebaseResponse response = client.Get("Service");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
             var list = new List<Service>();

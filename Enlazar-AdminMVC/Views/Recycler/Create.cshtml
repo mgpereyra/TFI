@@ -173,20 +173,7 @@
         position: { lat:-34.6705129, lng: -58.5628652}, 
         draggable: true
     });
-   /* google.maps.event.addListener(marker, 'dragend', function (evt) {
-        $("#txtLat").val(evt.latLng.lat().toFixed(6));
-        $("#txtLng").val(evt.latLng.lng().toFixed(6));
-
-        map.panTo(evt.latLng);
-
-       
-
-    });*/
-
-  
-    //map.setCenter(marker.position);
-   // marker.setMap(map);
-
+ 
     $("#txtCiudad, #txtEstado, #txtDireccion").on("change", function() {
         movePin();
     });

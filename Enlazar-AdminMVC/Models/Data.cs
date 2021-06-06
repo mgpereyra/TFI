@@ -28,7 +28,7 @@ namespace Enlazar_AdminMVC.Models
         public IFirebaseConfig GetRecyclers()
         {
             char chard = (char)34;
-            string orderBy = "TypeUser";
+            string orderBy = "\"TypeUser\"";
 
             string path = "https://enlazar-admin-default-rtdb.firebaseio.com/User.json?orderBy="+orderBy;
             IFirebaseConfig config = new FirebaseConfig
@@ -46,8 +46,10 @@ namespace Enlazar_AdminMVC.Models
         public Service AddServiceToFirebase()
         {
             Service service = new Service();
-            service.Title = "rutauno";
-
+            service.Latitud = "- 34.7107234";
+            service.Longitud = "- 58.594205";
+            service.Address = "Andalgala 3355";
+            service.IdUser = "-MbTJSgaEqzD5NumoUAK";
 
 
             client = new FireSharp.FirebaseClient(createConfig());

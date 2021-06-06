@@ -32,18 +32,12 @@ namespace Enlazar_AdminMVC.Controllers
         {
             try
             {
-                List<Service> services = new List<Service>();
-
-                services.Add(new Service() { Title = "nuevoServicio" });
-                services.Add(new Service() { Title = "nuevoServicioDos" });
-
 
                 if (ModelState.IsValid)
                 {
                     recycler.InitDate = DateTime.Now;
                     recycler.Active = true;
                     recycler.Password = "123456";
-                    recycler.Services = services;
                     recycler.TypeUser = UserTypes.RECYCLER;
                     database.AddReciyclerToFirebase(recycler);
                     ModelState.AddModelError(string.Empty, "Se ha agregado correctamente");
