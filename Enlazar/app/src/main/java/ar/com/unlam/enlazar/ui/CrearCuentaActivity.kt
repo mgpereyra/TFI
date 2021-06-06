@@ -7,14 +7,32 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.get
 import ar.com.unlam.enlazar.R
+import com.google.android.gms.common.api.Status
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.net.PlacesClient
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*
 import kotlinx.android.synthetic.main.activity_crear_cuenta.view.*
+import java.util.*
 
 class CrearCuentaActivity : AppCompatActivity() {
+ private val db= FirebaseDatabase.getInstance()
+     var ref: DatabaseReference = db.getReference("User")
+    lateinit var mPlaces:PlacesClient
+     var mOriginLat:Double? = null
+    var mOriginLng:Double? = null
+     var  mAutocomplete:AutocompleteSupportFragment? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_cuenta)
@@ -23,10 +41,13 @@ class CrearCuentaActivity : AppCompatActivity() {
         }
         btn_login.setOnClickListener{
             this@CrearCuentaActivity.finish()
-            val intent: Intent = Intent(this, NuevoServicioActivity::class.java)
+            val intent: Intent = Intent(this, DashboardUserActivity::class.java)
             startActivity(intent)
 
         }
+
+
+
         val spinner2 = findViewById<Spinner>(R.id.partido_spinner)
         val listaSipnner2 = resources.getStringArray(R.array.partidos_array)
         val adapterSpinner2 = ArrayAdapter(
@@ -47,6 +68,7 @@ class CrearCuentaActivity : AppCompatActivity() {
         spinner.adapter = adapterSpinner
         itemSelectedSipnner(spinner)
         setup()
+        setUpPlaces()
     }
 
     private fun setup(){
@@ -54,7 +76,7 @@ class CrearCuentaActivity : AppCompatActivity() {
             if(email.editText?.text.toString().isNotEmpty() && password.editText?.text.toString().isNotEmpty()){
                 val mailString = email.editText?.text.toString()
                 val passString = password.editText?.text.toString()
-
+                db.getReference("User").setValue()
                  FirebaseAuth.getInstance().
                  createUserWithEmailAndPassword(mailString,
                      passString).addOnCompleteListener{
@@ -67,6 +89,31 @@ class CrearCuentaActivity : AppCompatActivity() {
                  }
              }
         }
+    }
+    private fun setUpPlaces(){
+        if(!Places.isInitialized()){
+            Places.initialize(applicationContext,resources.getString(R.string.google_maps_key))
+
+        }
+        mPlaces=Places.createClient(this)
+        mAutocomplete= supportFragmentManager?.findFragmentById(R.id.streetAutocompleteOrigin)  as? AutocompleteSupportFragment
+        mAutocomplete?.setPlaceFields(Arrays.asList(Place.Field.ID,Place.Field.LAT_LNG,Place.Field.NAME))
+        mAutocomplete?.setOnPlaceSelectedListener(object:PlaceSelectionListener{
+            override fun onPlaceSelected(place: Place) {
+                mOriginLat=place.latLng?.latitude
+                mOriginLng=place.latLng?.longitude
+
+            }
+
+            override fun onError(place: Status) {
+                Toast.makeText(this@CrearCuentaActivity,
+                    getString(R.string.place_not_found), Toast.LENGTH_LONG).show()
+            }
+
+
+        })
+
+
     }
 private fun showAlert(){
     val builder = AlertDialog.Builder(this)
