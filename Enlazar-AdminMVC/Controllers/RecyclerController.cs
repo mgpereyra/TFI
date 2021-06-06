@@ -1,5 +1,6 @@
-﻿using Enlazar_AdminMVC.Models;
-using FireSharp.Config;
+﻿
+using Enlazar.Database.Utilities;
+using Enlazar_AdminMVC.Models;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
@@ -7,24 +8,14 @@ using Newtonsoft.Json.Linq;
 using Proyecto.Database;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Enlazar_AdminMVC.Controllers
 {
     public class RecyclerController : Controller
     {
-        IFirebaseConfig config = new FirebaseConfig
-        {
-            AuthSecret = "Oee3WwwQxBBCDkMBj9habJEBaNKwdx5rvHOJTqNI ",
-            BasePath = "https://enlazar-admin-default-rtdb.firebaseio.com/"
-
-        };
-
         IFirebaseClient client;
-
-
+         Data database = new Data();             
 
         // GET: Recycler/Details/5
         [HttpGet]
@@ -37,17 +28,24 @@ namespace Enlazar_AdminMVC.Controllers
 
         // POST: Recycler/Create
         [HttpPost]
-        public ActionResult Create(Recycler recycler)
+        public ActionResult Create(User recycler)
         {
             try
             {
+                List<Service> services = new List<Service>();
+
+                services.Add(new Service() { Title = "nuevoServicio" });
+                services.Add(new Service() { Title = "nuevoServicioDos" });
+
+
                 if (ModelState.IsValid)
                 {
                     recycler.InitDate = DateTime.Now;
                     recycler.Active = true;
                     recycler.Password = "123456";
-                    //recycler.TypeUser = Enum.UserTypes.RECYCLER;
-                    AddReciyclerToFirebase(recycler);
+                    recycler.Services = services;
+                    recycler.TypeUser = UserTypes.RECYCLER;
+                    database.AddReciyclerToFirebase(recycler);
                     ModelState.AddModelError(string.Empty, "Se ha agregado correctamente");
                     return RedirectToAction("ListRecyclers");
                 }
@@ -64,29 +62,25 @@ namespace Enlazar_AdminMVC.Controllers
             }
         }
 
-        private void AddReciyclerToFirebase(Recycler recycler)
-        {
-            client = new FireSharp.FirebaseClient(config);
-            var data = recycler;
-            PushResponse response = client.Push("Recyclers/", data);
-            data.Id = response.Result.name;
-            SetResponse setResponse = client.Set("Recyclers/" + response.Result.name, data);
-
-        }
-
+  
 
 
         // GET: Recycler
         public ActionResult ListRecyclers()
         {
-            client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Get("Recyclers");
-            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+          
 
-            var list = new List<Recycler>();
+
+            client = new FireSharp.FirebaseClient(database.GetRecyclers());
+            FirebaseResponse response = client.Get("User");
+
+
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+            var list = new List<User>();
             foreach( var item in data)
             {
-                list.Add(JsonConvert.DeserializeObject<Recycler>(((JProperty)item).Value.ToString()));
+                //if (item[0].TypeUser == 2) { };
+                list.Add(JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString()));
             }
 
 
@@ -97,9 +91,9 @@ namespace Enlazar_AdminMVC.Controllers
         [HttpGet]
         public ActionResult Details(string id)
         {
-            client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Get("Recyclers/"+ id);
-            Recycler data = JsonConvert.DeserializeObject<Recycler>(response.Body);
+            client = new FireSharp.FirebaseClient(database.createConfig());
+            FirebaseResponse response = client.Get("User/"+ id);
+            User data = JsonConvert.DeserializeObject<User>(response.Body);
 
 
             return View(data);
@@ -110,9 +104,9 @@ namespace Enlazar_AdminMVC.Controllers
         [HttpGet]
         public ActionResult Edit(string id)
         {
-                client = new FireSharp.FirebaseClient(config);
-                FirebaseResponse response = client.Get("Recyclers/" + id);
-                Recycler data = JsonConvert.DeserializeObject<Recycler>(response.Body);
+                client = new FireSharp.FirebaseClient(database.createConfig());
+                FirebaseResponse response = client.Get("User/" + id);
+                User data = JsonConvert.DeserializeObject<User>(response.Body);
 
                 return View(data);
             
@@ -120,10 +114,10 @@ namespace Enlazar_AdminMVC.Controllers
 
         // POST: Recycler/Edit/5
         [HttpPost]
-        public ActionResult Edit(Recycler recycler)
+        public ActionResult Edit(User recycler)
         {
-            client = new FireSharp.FirebaseClient(config);
-            SetResponse response = client.Set("Recyclers/" + recycler.Id, recycler);
+            client = new FireSharp.FirebaseClient(database.createConfig());
+            SetResponse response = client.Set("User/" + recycler.Id, recycler);
 
             return RedirectToAction("ListRecyclers");
 
@@ -133,8 +127,8 @@ namespace Enlazar_AdminMVC.Controllers
         [HttpGet]
         public ActionResult Delete(string id)
         {
-            client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Delete("Recyclers/" + id);
+            client = new FireSharp.FirebaseClient(database.createConfig());
+            FirebaseResponse response = client.Delete("User/" + id);
 
             return RedirectToAction("ListRecyclers");
         }

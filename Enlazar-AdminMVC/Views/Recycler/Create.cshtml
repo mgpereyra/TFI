@@ -1,4 +1,4 @@
-﻿@model Proyecto.Database.Recycler
+﻿@model Proyecto.Database.User
 
 @{
     ViewBag.Title = "Crear reciclador";
@@ -12,62 +12,81 @@
 </div>
 
 
-    <div class="card text-white bg-dark">
-        <div class="card-body">
-            <form class="needs-validation" novalidate method="post">
+<div class="card text-white bg-dark">
+    <div class="card-body">
+        <form class="needs-validation" novalidate method="post">
             <h5 class="card-title">Datos personales</h5>
             <hr />
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Nombre</label>
                         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Apellido</label>
                         @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control " } })
                         @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">N° de documento</label>
-
                         @Html.EditorFor(model => model.Dni, new { htmlAttributes = new { @class = "form-control flechas-out", required = "required" } })
                         @Html.ValidationMessageFor(model => model.Dni, "", new { @class = "error" })
 
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+            </div>
+            <br/>
+            <h5 class="card-title">Ubicación</h5>
+            <hr />
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label class="control-label">Dirección</label>
-                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        <label class="control-label">Calle y número</label>
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @id = "txtDireccion" } })
                         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Partido</label>
                         @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Localidad</label>
-                        @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Locality, new { htmlAttributes = new { @class = "form-control", @id = "txtCiudad" } })
+                        @Html.ValidationMessageFor(model => model.Locality, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
+
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-ssm-12">
+                    <div class="form-group">
+                        <div class="card-body" id="map_canvas"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "d-none", @id = "txtLat" } })
+                        @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "d-none", @id = "txtLng" } })
+                    </div>
+                </div>
+            </div>
+
+
             <br />
             <h5 class="card-title">Datos de contacto</h5>
             <hr />
@@ -92,36 +111,112 @@
                 <a class="btn btn-outline-primary mr-2" href="ListRecyclers">Cancelar</a>
                 <button class="btn  btn-primary" type="submit">Crear Reciclador</button>
             </div>
+
+
+
+
+
         </form>
-        </div>
     </div>
+</div>
 
-    <div class="mt-4">
-        @Html.ActionLink("Volver al listado", "ListRecyclers")
-    </div>
+<div class="mt-4">
+    @Html.ActionLink("Volver al listado", "ListRecyclers")
+</div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
 
 <script>
     (function () {
-  'use strict'
+        'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD63Ptld6R6m6o8p3HkX9an3ksAw_faFBs">
+</script>
+
+<script>
+    let marker;
+    let map;
+
+    map = new google.maps.Map(document.getElementById('map_canvas'), {
+        zoom: 14,
+        center: { lat:-34.6705129, lng: -58.5628652}, 
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+       marker = new google.maps.Marker({
+        position: { lat:-34.6705129, lng: -58.5628652}, 
+        draggable: true
+    });
+   /* google.maps.event.addListener(marker, 'dragend', function (evt) {
+        $("#txtLat").val(evt.latLng.lat().toFixed(6));
+        $("#txtLng").val(evt.latLng.lng().toFixed(6));
+
+        map.panTo(evt.latLng);
+
+       
+
+    });*/
+
+  
+    //map.setCenter(marker.position);
+   // marker.setMap(map);
+
+    $("#txtCiudad, #txtEstado, #txtDireccion").on("change", function() {
+        movePin();
+    });
+
+    function movePin() {
+        var geocoder = new google.maps.Geocoder();
+        var textSelectM = $("#txtCiudad").val();
+
+        var inputAddress = $("#txtDireccion").val() + ' ' + textSelectM + ' ' + "Argentina";
+
+        geocoder.geocode({
+            "address": inputAddress
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                //marker.setPosition(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+                crearMarcador(results);
+                map.panTo(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+                $("#txtLat").val(results[0].geometry.location.lat());
+                $("#txtLng").val(results[0].geometry.location.lng());
+            }
+
+        });
+    }
+
+
+    function crearMarcador(results) {
+
+        marker.setPosition(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+      //  map.panTo(evt.latLng);
+        map.setCenter(marker.position);
+        marker.setMap(map);
+    }
 </script>
