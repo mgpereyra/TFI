@@ -30,7 +30,7 @@ namespace Enlazar_AdminMVC.Models
             //char chard = (char)34;
             //string orderBy = "\"TypeUser\"";
 
-            string path = "https://enlazar-admin-default-rtdb.firebaseio.com/User";
+            string path = "https://enlazar-admin-default-rtdb.firebaseio.com/";
             IFirebaseConfig config = new FirebaseConfig
             {
                 AuthSecret = "Oee3WwwQxBBCDkMBj9habJEBaNKwdx5rvHOJTqNI ",

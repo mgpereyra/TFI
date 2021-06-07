@@ -136,6 +136,10 @@ a:hover {
     background-color: #212529 !important;
 }
 
+.table{
+    margin-bottom: 0;
+}
+
 
 
     .table-dark.table-striped tbody tr:nth-of-type(odd) {

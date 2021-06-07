@@ -71,10 +71,14 @@ namespace Enlazar_AdminMVC.Controllers
 
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
             var list = new List<User>();
+            User user;
             foreach( var item in data)
             {
-                //if (item[0].TypeUser == 2) { };
-                list.Add(JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString()));
+                user = JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString());
+
+                if (user.TypeUser == UserTypes.RECYCLER) { 
+                    list.Add(JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString()));
+                };
             }
 
 
