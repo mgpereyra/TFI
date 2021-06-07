@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import ar.com.unlam.enlazar.R
+import ar.com.unlam.enlazar.model.Services
+import ar.com.unlam.enlazar.model.User
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
@@ -24,14 +25,16 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*
 import kotlinx.android.synthetic.main.activity_crear_cuenta.view.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class CrearCuentaActivity : AppCompatActivity() {
- private val db= FirebaseDatabase.getInstance()
-     var ref: DatabaseReference = db.getReference("User")
+ private val db= FirebaseDatabase.getInstance().getReference("User")
     lateinit var mPlaces:PlacesClient
      var mOriginLat:Double? = null
     var mOriginLng:Double? = null
+    var mAdress:String? = null
+    var id:String=""
      var  mAutocomplete:AutocompleteSupportFragment? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,34 +43,18 @@ class CrearCuentaActivity : AppCompatActivity() {
             this@CrearCuentaActivity.finish()
         }
         btn_login.setOnClickListener{
+
+            setup()
+            createUser()
+            val intent= Intent(this, DashboardUserActivity::class.java)
             this@CrearCuentaActivity.finish()
-            val intent: Intent = Intent(this, DashboardUserActivity::class.java)
-            startActivity(intent)
+            intent.putExtra(DashboardUserActivity.IDKEY,id!!)
+
+           this.startActivity(intent)
+
 
         }
 
-
-
-        val spinner2 = findViewById<Spinner>(R.id.partido_spinner)
-        val listaSipnner2 = resources.getStringArray(R.array.partidos_array)
-        val adapterSpinner2 = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            listaSipnner2
-        )
-        spinner2.adapter = adapterSpinner2
-       itemSelectedSipnner(spinner2)
-
-        val spinner = findViewById<Spinner>(R.id.location_spinner)
-        val listaSipnner = resources.getStringArray(R.array.locations_array)
-        val adapterSpinner = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            listaSipnner
-        )
-        spinner.adapter = adapterSpinner
-        itemSelectedSipnner(spinner)
-        setup()
         setUpPlaces()
     }
 
@@ -76,13 +63,13 @@ class CrearCuentaActivity : AppCompatActivity() {
             if(email.editText?.text.toString().isNotEmpty() && password.editText?.text.toString().isNotEmpty()){
                 val mailString = email.editText?.text.toString()
                 val passString = password.editText?.text.toString()
-                db.getReference("User").setValue()
                  FirebaseAuth.getInstance().
                  createUserWithEmailAndPassword(mailString,
                      passString).addOnCompleteListener{
                     if (it.isSuccessful){
-                        irDashboardUserActivity(it.result?.user?.email.toString() ?: "",
-                            ProviderType.BASIC)
+
+                       /* irDashboardUserActivity(it.result?.user?.email.toString() ?: "",
+                            ProviderType.BASIC)*/
                     }else{
                         showAlert()
                     }
@@ -100,6 +87,7 @@ class CrearCuentaActivity : AppCompatActivity() {
         mAutocomplete?.setPlaceFields(Arrays.asList(Place.Field.ID,Place.Field.LAT_LNG,Place.Field.NAME))
         mAutocomplete?.setOnPlaceSelectedListener(object:PlaceSelectionListener{
             override fun onPlaceSelected(place: Place) {
+                mAdress= place.name
                 mOriginLat=place.latLng?.latitude
                 mOriginLng=place.latLng?.longitude
 
@@ -133,23 +121,31 @@ private fun showAlert(){
         startActivity(darsheboardActivity)
     }
 
+private fun createUser(){
+    val emptyArray=ArrayList<Services>()
+    val date = getCurrentDateTime()
+    val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")
+    var userId= db.push().key.toString()
+   id=userId
+    var user=User(mAdress.toString(),partido.editText?.text.toString(),
+       dni.editText?.text.toString().toInt(),email.editText?.text.toString(),
+       userId,dateInString,mOriginLat,mOriginLng,location.editText?.text.toString(),
+        name.editText?.text.toString(), password.editText?.text.toString(),
+       telephone.editText?.text.toString(),Service = emptyArray)
+    if (userId != null) {
+        db.child(userId).setValue(user).addOnCompleteListener{
+            Toast.makeText(this, "Te has registrado correctamente",Toast.LENGTH_LONG).show()
 
-    private fun itemSelectedSipnner(obj: Spinner?) {
-        obj?.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
         }
     }
 
+
+}
+    fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
+    }
+    fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
+    }
 }

@@ -60,6 +60,8 @@
     <string name="google_api_key2">AIzaSyD63Ptld6R6m6o8p3HkX9an3ksAw_faFBs</string>
     <string name="ingrese_la_calle">Ingrese la calle</string>
     <string name="place_not_found">Lugar no Encontrado</string>
+    <string name="Dni">Ingrese su DNI</string>
+    <string name="Partido">Partido</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>

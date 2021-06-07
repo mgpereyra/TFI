@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
@@ -15,10 +16,15 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class NuevoServicioActivity : AppCompatActivity() {
+    var id:String=""
+    private val db= FirebaseDatabase.getInstance().getReference("User")
     val newServiceViewModel: NewServiceViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_servicio)
+        if (intent.hasExtra(ID)) {
+            id= intent.extras!!.getString(ID, "").toString()
+        }
      //   setObservers()
         toolbar()
 btnVolver.setOnClickListener {
@@ -57,5 +63,8 @@ btnVolver.setOnClickListener {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    companion object {
+        val ID: String = "id"
     }
 }
