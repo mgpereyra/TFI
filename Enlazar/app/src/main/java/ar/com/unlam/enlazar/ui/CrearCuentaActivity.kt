@@ -45,16 +45,14 @@ class CrearCuentaActivity : AppCompatActivity() {
         btn_login.setOnClickListener{
 
             setup()
-            createUser()
+
             val intent= Intent(this, DashboardUserActivity::class.java)
             this@CrearCuentaActivity.finish()
-            intent.putExtra(DashboardUserActivity.IDKEY,id!!)
 
-           this.startActivity(intent)
 
 
         }
-
+        setup()
         setUpPlaces()
     }
 
@@ -67,9 +65,8 @@ class CrearCuentaActivity : AppCompatActivity() {
                  createUserWithEmailAndPassword(mailString,
                      passString).addOnCompleteListener{
                     if (it.isSuccessful){
-
-                       /* irDashboardUserActivity(it.result?.user?.email.toString() ?: "",
-                            ProviderType.BASIC)*/
+                        createUser()
+                        irDashboardUserActivity()
                     }else{
                         showAlert()
                     }
@@ -113,12 +110,16 @@ private fun showAlert(){
 
 }
 
-    private fun irDashboardUserActivity(email:String, provider:ProviderType){
-        val darsheboardActivity = Intent(this,DashboardUserActivity::class.java).apply {
+    private fun irDashboardUserActivity(){
+        val darsheboardActivity = Intent(this,DashboardUserActivity::class.java)
+        darsheboardActivity.putExtra(DashboardUserActivity.IDKEY,id!!)
+
+        this.startActivity(darsheboardActivity)
+            /*.apply {
          putExtra("email",email)
          putExtra("provider",provider)
-        }
-        startActivity(darsheboardActivity)
+        }*/
+        //startActivity(darsheboardActivity)
     }
 
 private fun createUser(){
@@ -126,14 +127,14 @@ private fun createUser(){
     val date = getCurrentDateTime()
     val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")
     var userId= db.push().key.toString()
-   id=userId
+   id=FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
     var user=User(mAdress.toString(),partido.editText?.text.toString(),
        dni.editText?.text.toString().toInt(),email.editText?.text.toString(),
        userId,dateInString,mOriginLat,mOriginLng,location.editText?.text.toString(),
         name.editText?.text.toString(), password.editText?.text.toString(),
        telephone.editText?.text.toString(),Service = emptyArray)
     if (userId != null) {
-        db.child(userId).setValue(user).addOnCompleteListener{
+        db.child(id).setValue(user).addOnCompleteListener{
             Toast.makeText(this, "Te has registrado correctamente",Toast.LENGTH_LONG).show()
 
         }
