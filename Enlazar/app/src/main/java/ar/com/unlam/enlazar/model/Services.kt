@@ -13,7 +13,7 @@ data class Services (
         val Date: Date,
         val time:Date,
         val UserId:String,
-        val RecolectorId:String
-
+        val RecolectorId:String,
+        val Estado:Int
 
         )

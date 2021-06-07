@@ -20,7 +20,11 @@ import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
-
+enum class Estado{
+    PENDIENTE,
+    ASIGNADO,
+    FINALIZADO
+}
 
 class NuevoServicioActivity : AppCompatActivity() {
     var id:String=""
@@ -84,7 +88,7 @@ db.child("User").child(idForLocation).addValueEventListener(object:ValueEventLis
        var serviceId= db.push().key.toString()
         var service= Services(u,serviceId,lat,long,cant_tipo1.editText?.text.toString().toIntOrNull(),
         cant_tipo2.editText?.text.toString().toIntOrNull(),cant_tipo3.editText?.text.toString().toIntOrNull(),
-            Date(),Date(),id,"")
+            Date(),Date(),id,"",Estado.PENDIENTE.ordinal)
         if (serviceId!= null) {
             db.child("Service").child(serviceId).setValue(service).addOnCompleteListener{
                 Toast.makeText(this, "Tu Servicio ha sido registrado correctamente",Toast.LENGTH_LONG).show()

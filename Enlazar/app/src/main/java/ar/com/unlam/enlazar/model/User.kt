@@ -16,5 +16,5 @@ data class User (
         var Password:String,
         var Phone:String,
         var TypeUser:Int=1,
-        var Service:ArrayList<Services>?
+
         )

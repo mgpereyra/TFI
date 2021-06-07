@@ -132,7 +132,7 @@ private fun createUser(){
        dni.editText?.text.toString().toInt(),email.editText?.text.toString(),
        userId,dateInString,mOriginLat,mOriginLng,location.editText?.text.toString(),
         name.editText?.text.toString(), password.editText?.text.toString(),
-       telephone.editText?.text.toString(),Service = emptyArray)
+       telephone.editText?.text.toString())
     if (userId != null) {
         db.child(id).setValue(user).addOnCompleteListener{
             Toast.makeText(this, "Te has registrado correctamente",Toast.LENGTH_LONG).show()
