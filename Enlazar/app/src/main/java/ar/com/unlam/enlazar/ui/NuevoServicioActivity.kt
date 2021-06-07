@@ -27,7 +27,7 @@ class NuevoServicioActivity : AppCompatActivity() {
      var u:String=""
     var lat:Double=0.0
     var long:Double=0.0
-    private val db= FirebaseDatabase.getInstance().getReference("User")
+    private val db= FirebaseDatabase.getInstance().getReference()
     val newServiceViewModel: NewServiceViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,7 @@ btnVolver.setOnClickListener {
     }
 
     private fun setDirection(idForLocation:String) {
-db.child(idForLocation).addValueEventListener(object:ValueEventListener{
+db.child("User").child(idForLocation).addValueEventListener(object:ValueEventListener{
     override fun onDataChange(snapshot: DataSnapshot) {
         u=snapshot.child("address").value.toString()
         lat=snapshot.child("latitud").value.toString().toDouble()
@@ -79,15 +79,15 @@ db.child(idForLocation).addValueEventListener(object:ValueEventListener{
     private fun createService(){
         /*val date = getCurrentDateTime()
         val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")*/
+
         id= FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
        var serviceId= db.push().key.toString()
-        var service= Services(serviceId,lat,long,cant_tipo1.editText?.text.toString().toInt(),
-        cant_tipo2.editText?.text.toString().toInt(),cant_tipo3.editText?.text.toString().toInt(),
-            Date(),Date()
-        )
+        var service= Services(serviceId,lat,long,cant_tipo1.editText?.text.toString().toIntOrNull(),
+        cant_tipo2.editText?.text.toString().toIntOrNull(),cant_tipo3.editText?.text.toString().toIntOrNull(),
+            Date(),Date(),id,"")
         if (serviceId!= null) {
-            db.child(id).child("Services").setValue(service).addOnCompleteListener{
-                Toast.makeText(this, "Te has registrado correctamente",Toast.LENGTH_LONG).show()
+            db.child("Service").child(serviceId).setValue(service).addOnCompleteListener{
+                Toast.makeText(this, "Tu Servicio ha sido registrado correctamente",Toast.LENGTH_LONG).show()
 
             }
         }
