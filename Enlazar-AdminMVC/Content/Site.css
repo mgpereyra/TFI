@@ -106,6 +106,8 @@ i{
 
 hr, .border-primary {
     border-color: #a0540f !important;
+    margin-top: 0rem;
+    margin-bottom: 0.5rem;
 }
 
 .flechas-out::-webkit-inner-spin-button, .flechasOut::-webkit-outer-spin-button {
@@ -131,8 +133,10 @@ a:hover {
 
 .table-dark {
     color: #fff;
-    background-color: #343a40!important;
+    background-color: #212529 !important;
 }
+
+
 
     .table-dark.table-striped tbody tr:nth-of-type(odd) {
         background-color: #212529!important;

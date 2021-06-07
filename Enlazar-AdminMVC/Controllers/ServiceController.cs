@@ -30,16 +30,30 @@ namespace Enlazar_AdminMVC.Controllers
             // database.AddServiceToFirebase();
 
             ServiceViewModel serviceViewModel = new ServiceViewModel();
+
             FirebaseResponse response = client.Get("Service");
+            FirebaseResponse responseUser = client.Get("User");
+
+
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+            dynamic dataUser = JsonConvert.DeserializeObject<dynamic>(responseUser.Body);
+
+
             var listServices = new List<Service>();
+            var listRecyclers = new List<User>();
 
             foreach (var item in data)
             {
                 listServices.Add(JsonConvert.DeserializeObject<Service>(((JProperty)item).Value.ToString()));
             }
-            serviceViewModel.ListServices = listServices;
 
+            foreach (var item in dataUser)
+            {
+                listRecyclers.Add(JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString()));
+            }
+
+            serviceViewModel.ListServices = listServices;
+            serviceViewModel.ListRecyclers = listRecyclers;
             return View(serviceViewModel);
         }
 
@@ -51,7 +65,7 @@ namespace Enlazar_AdminMVC.Controllers
 
         // GET: Service/Create
         [HttpPost]
-        public ActionResult List(string agregar)
+        public ActionResult List(string servicio, string reciclador)
         {
             try
             {
