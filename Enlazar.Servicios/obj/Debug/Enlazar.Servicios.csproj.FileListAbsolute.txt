@@ -1,4 +1,3 @@
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\obj\Debug\Enlazar.Servicios.csprojAssemblyReference.cache
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.dll.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.pdb
@@ -62,6 +61,7 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Newtonsoft.Json.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\System.Reactive.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\obj\Debug\Enlazar.Servicios.csprojAssemblyReference.cache
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\obj\Debug\Enlazar.Servicios.csproj.CopyComplete
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\obj\Debug\Enlazar.Servicios.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\obj\Debug\Enlazar.Servicios.pdb

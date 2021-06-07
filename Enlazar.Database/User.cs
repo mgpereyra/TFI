@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Proyecto.Database
+namespace Enlazar.Database
 {
     public class User
     {

@@ -1,4 +1,3 @@
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar.ProyectoWeb.csproj.App.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Enlazar-AdminMVC.dll.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Enlazar-AdminMVC.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\Enlazar-AdminMVC.pdb
@@ -170,6 +169,7 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\es\System.Web.WebPages.resources.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar.ProyectoWeb.csproj.App.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar.ProyectoWeb.csprojAssemblyReference.cache
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar.ProyectoWeb.csproj.CopyComplete
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar-AdminMVC\obj\Debug\Enlazar-AdminMVC.dll

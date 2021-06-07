@@ -1,10 +1,11 @@
-﻿using Enlazar.Servicios;
+﻿using Enlazar.Database;
+using Enlazar.Servicios;
 using Enlazar_AdminMVC.Models;
+using Enlazar_AdminMVC.ViewModels;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Proyecto.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,15 +28,19 @@ namespace Enlazar_AdminMVC.Controllers
         {
             client = new FireSharp.FirebaseClient(database.createConfig());
             // database.AddServiceToFirebase();
+
+            ServiceViewModel serviceViewModel = new ServiceViewModel();
             FirebaseResponse response = client.Get("Service");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            var list = new List<Service>();
+            var listServices = new List<Service>();
+
             foreach (var item in data)
             {
-                list.Add(JsonConvert.DeserializeObject<Service>(((JProperty)item).Value.ToString()));
+                listServices.Add(JsonConvert.DeserializeObject<Service>(((JProperty)item).Value.ToString()));
             }
+            serviceViewModel.ListServices = listServices;
 
-            return View(list);
+            return View(serviceViewModel);
         }
 
         // GET: Service/Details/5
@@ -68,7 +73,6 @@ namespace Enlazar_AdminMVC.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
                 return View();
             }
-            return View();
         }
 
         // POST: Service/Create
