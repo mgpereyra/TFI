@@ -1,4 +1,5 @@
 ﻿using Enlazar.Database;
+using Enlazar.Database.Utilities;
 using Enlazar.Database.ViewModels;
 using Enlazar.Servicios;
 using Enlazar_AdminMVC.Models;
@@ -38,9 +39,9 @@ namespace Enlazar_AdminMVC.Controllers
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
             dynamic dataUser = JsonConvert.DeserializeObject<dynamic>(responseUser.Body);
 
-
             var listServices = new List<Service>();
             var listRecyclers = new List<User>();
+            User user;
 
             foreach (var item in data)
             {
@@ -49,11 +50,17 @@ namespace Enlazar_AdminMVC.Controllers
 
             foreach (var item in dataUser)
             {
-                listRecyclers.Add(JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString()));
+                user = JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString());
+
+                if (user.TypeUser == UserTypes.RECYCLER)
+                {
+                    listRecyclers.Add(user);
+                };
             }
 
             serviceViewModel.ListServices = listServices;
             serviceViewModel.ListRecyclers = listRecyclers;
+
             return View(serviceViewModel);
         }
 
