@@ -8,7 +8,8 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.Services
-import ar.com.unlam.enlazar.model.User
+import ar.com.unlam.enlazar.ui.pickers.DatePickerFragent
+import ar.com.unlam.enlazar.ui.pickers.TimePickerFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -40,6 +41,8 @@ class NuevoServicioActivity : AppCompatActivity() {
             id= intent.extras!!.getString(ID, "").toString()
             setDirection(id)
         }
+        dia_picker.setOnClickListener{showDatePicker()  }
+        horario_picker.setOnClickListener { showTimePicker() }
 btn_finalizar.setOnClickListener {
     createService()
 
@@ -52,6 +55,17 @@ btnVolver.setOnClickListener {
     }
 }
 
+    }
+
+    private fun showTimePicker() {
+        val timePicker =TimePickerFragment{onTimeSelected(it)}
+        timePicker.show(supportFragmentManager,"time")
+
+
+    }
+    private fun onTimeSelected(time:String){
+
+        horario_picker.setText(time)
     }
 
     private fun setDirection(idForLocation:String) {
@@ -88,7 +102,7 @@ db.child("User").child(idForLocation).addValueEventListener(object:ValueEventLis
        var serviceId= db.push().key.toString()
         var service= Services(u,serviceId,lat,long,cant_tipo1.editText?.text.toString().toIntOrNull(),
         cant_tipo2.editText?.text.toString().toIntOrNull(),cant_tipo3.editText?.text.toString().toIntOrNull(),
-            Date(),Date(),id,"",Estado.PENDIENTE.ordinal)
+            dia_picker.text.toString(),horario_picker.text.toString(),id,"",Estado.PENDIENTE.ordinal)
         if (serviceId!= null) {
             db.child("Service").child(serviceId).setValue(service).addOnCompleteListener{
                 Toast.makeText(this, "Tu Servicio ha sido registrado correctamente",Toast.LENGTH_LONG).show()
@@ -117,6 +131,16 @@ db.child("User").child(idForLocation).addValueEventListener(object:ValueEventLis
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showDatePicker(){
+        val datePicker= DatePickerFragent{ day, month, year->onDateSelected(day,month,year)}
+        datePicker.show(supportFragmentManager,"datePicker")
+
+    }
+    private fun onDateSelected(day:Int,month:Int,year:Int){
+        dia_picker.setText("$day/$month/$year")
+
     }
     companion object {
         val ID: String = "id"

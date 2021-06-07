@@ -10,8 +10,8 @@ data class Services (
         val EnvasesPlasticos:Int?,
         val EnvasesVidrio:Int?,
         val EnvasesCarton:Int?,
-        val Date: Date,
-        val time:Date,
+        val Date: String,
+        val time:String,
         val UserId:String,
         val RecolectorId:String,
         val Estado:Int

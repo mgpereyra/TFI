@@ -45,7 +45,7 @@
     <string name="diarios_o_revistas">Diarios o revistas</string>
     <string name="envases_de_cart_n">Envases de cartón</string>
     <string name="coordinar">Coordinar</string>
-    <string name="horario">Horario</string>
+    <string name="horario">Seleccione un Horario</string>
     <string name="d_a">día</string>
     <string name="succes">Cambio efectuado correctamente</string>
     <string name="error">A ocurrido un error </string>
@@ -62,6 +62,7 @@
     <string name="place_not_found">Lugar no Encontrado</string>
     <string name="Dni">Ingrese su DNI</string>
     <string name="Partido">Partido</string>
+    <string name="selecciona_el_d_a">Selecciona el día</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>

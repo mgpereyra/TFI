@@ -68,7 +68,7 @@
                 android:id="@+id/ubicacion"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
@@ -107,7 +107,7 @@
                 android:id="@+id/localidad"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
@@ -167,15 +167,15 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_material" />
+                app:layout_constraintTop_toBottomOf="@id/label_cantidad_bolsas" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/label_cantidad_bolsas"
-                android:layout_width="150sp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/signika"
                 android:text="@string/cant_bolsas"
                 android:textColor="@color/white"
@@ -217,7 +217,7 @@
                 android:id="@+id/cant_tipo1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="71dp"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="76dp"
@@ -267,7 +267,7 @@
                 android:id="@+id/cant_tipo2"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="71dp"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="76dp"
@@ -347,7 +347,7 @@
                 android:id="@+id/cant_tipo3"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="70dp"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="44dp"
@@ -393,20 +393,22 @@
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_envase_carton" />
+                app:layout_constraintTop_toBottomOf="@id/divider2" />
 
-            <Spinner
-                android:id="@+id/dia_spinner"
+            <EditText
+                android:id="@+id/dia_picker"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
+                android:clickable="false"
+                android:focusable="false"
                 android:layout_marginEnd="30dp"
                 android:backgroundTint="@color/white"
-                android:hint="@string/d_a"
+                android:hint="@string/selecciona_el_d_a"
                 android:textColorHint="@color/white"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:visibility="visible"
                 app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="20dp"
@@ -421,10 +423,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/label_coordinar" />
 
-            <Spinner
-                android:id="@+id/horario_spinner"
+            <EditText
+                android:id="@+id/horario_picker"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
@@ -432,7 +434,7 @@
                 android:backgroundTint="@color/white"
                 android:hint="@string/horario"
                 android:textColorHint="@color/white"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:visibility="visible"
                 app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="20dp"
@@ -445,7 +447,9 @@
                 app:hintTextColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dia_spinner" />
+                android:clickable="false"
+                android:focusable="false"
+                app:layout_constraintTop_toBottomOf="@id/dia_picker" />
 
 
             <View
@@ -465,6 +469,7 @@
                 android:layout_height="1dp"
                 android:background="@color/ocre"
                 android:visibility="visible"
+                android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toTopOf="@id/label_coordinar"
                 app:layout_constraintTop_toBottomOf="@id/label_envase_carton"
                 tools:layout_editor_absoluteX="1dp"
@@ -482,7 +487,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/horario_spinner"
+                app:layout_constraintTop_toBottomOf="@id/horario_picker"
                 app:strokeColor="@color/emerald" />
 
             <View
