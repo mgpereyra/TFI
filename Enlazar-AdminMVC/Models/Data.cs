@@ -27,10 +27,10 @@ namespace Enlazar_AdminMVC.Models
         }
         public IFirebaseConfig GetRecyclers()
         {
-            char chard = (char)34;
-            string orderBy = "\"TypeUser\"";
+            //char chard = (char)34;
+            //string orderBy = "\"TypeUser\"";
 
-            string path = "https://enlazar-admin-default-rtdb.firebaseio.com/User.json?orderBy="+orderBy;
+            string path = "https://enlazar-admin-default-rtdb.firebaseio.com/User";
             IFirebaseConfig config = new FirebaseConfig
             {
                 AuthSecret = "Oee3WwwQxBBCDkMBj9habJEBaNKwdx5rvHOJTqNI ",

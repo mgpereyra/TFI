@@ -50,17 +50,14 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\vbc.rsp
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\VBCSCompiler.exe
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Firebase.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\LiteDB.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Newtonsoft.Json.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\System.Reactive.dll
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Firebase.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\LiteDB.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Newtonsoft.Json.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\System.Reactive.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.csprojAssemblyReference.cache
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.csproj.CopyComplete
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.pdb

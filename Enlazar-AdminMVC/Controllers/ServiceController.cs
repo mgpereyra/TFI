@@ -16,17 +16,17 @@ namespace Enlazar_AdminMVC.Controllers
 {
     public class ServiceController : Controller
     {
-        Services Services = new Services();
         Data database = new Data();
         IFirebaseClient client;
 
 
 
         // GET: Service
+        [HttpGet]
         public ActionResult List()
         {
             client = new FireSharp.FirebaseClient(database.createConfig());
-           // database.AddServiceToFirebase();
+            // database.AddServiceToFirebase();
             FirebaseResponse response = client.Get("Service");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
             var list = new List<Service>();
@@ -45,8 +45,29 @@ namespace Enlazar_AdminMVC.Controllers
         }
 
         // GET: Service/Create
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult List(string agregar)
         {
+            try
+            {
+
+                if (ModelState.IsValid)
+                {
+                    //database.AddServiceToRoute(service);
+                    ModelState.AddModelError(string.Empty, "Se ha agregado correctamente");
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    return View();
+                }
+
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError(string.Empty, e.Message);
+                return View();
+            }
             return View();
         }
 
