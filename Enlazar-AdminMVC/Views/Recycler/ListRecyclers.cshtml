@@ -19,7 +19,7 @@
                 <td>Telefono</td>
                 <td>Documento</td>
                 <td>Email</td>
-                <td>Estado</td>
+                <td>Password</td>
                 <td width="40%"></td>
 
             <tr>
@@ -33,10 +33,7 @@
                     <td>@item.Dni</td>
                     <td>@item.Email</td>
                     <td>
-                        @if (item.Active)
-                        {<p>Activo</p> }
-                        else
-                        { <p>Inactivo</p>}
+                        @item.Password
                     </td>
 
 

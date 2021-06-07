@@ -20,6 +20,7 @@ namespace Enlazar.Database
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Ingrese un email.")]
+        [Key]
         public string Email { get; set; }
         public string Phone { get; set; }
        
