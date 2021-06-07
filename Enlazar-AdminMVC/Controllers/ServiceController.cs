@@ -1,7 +1,7 @@
 ﻿using Enlazar.Database;
+using Enlazar.Databases.ViewModels;
 using Enlazar.Servicios;
 using Enlazar_AdminMVC.Models;
-using Enlazar_AdminMVC.ViewModels;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;

@@ -87,6 +87,7 @@
     <Compile Include="User.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Utilities\UserTypes.cs" />
+    <Compile Include="ViewModels\ServiceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Enlazar_AdminMVC.ViewModels
+namespace Enlazar.Databases.ViewModels
 {
     public class ServiceViewModel
     {
