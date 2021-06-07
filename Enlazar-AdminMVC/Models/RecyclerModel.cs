@@ -1,15 +1,11 @@
 ﻿using Enlazar.Database;
 using Enlazar.Database.Utilities;
-using Enlazar.Servicios;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using static Enlazar_AdminMVC.Utilities.Utilities;
 
 namespace Enlazar_AdminMVC.Models
@@ -17,12 +13,11 @@ namespace Enlazar_AdminMVC.Models
     public class RecyclerModel
     {
         IFirebaseClient client;
-        Data database = new Data();
-        PasswordGenerator passwordGenerator = new PasswordGenerator();
-        RecyclerService recyclerservice = new RecyclerService();
+        private readonly Data database = new Data();
+        private readonly PasswordGenerator passwordGenerator = new PasswordGenerator();
 
         //GET RECYCLERS
-        public List<User> GetUsers()
+        public List<User> GetRecyclers()
         {
             client = database.GetConnection();
             FirebaseResponse response = client.Get("User");
@@ -37,7 +32,7 @@ namespace Enlazar_AdminMVC.Models
 
                 if (user.TypeUser == UserTypes.RECYCLER)
                 {
-                    listRecyclers.Add(JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString()));
+                    listRecyclers.Add(user);
                 };
             }
 

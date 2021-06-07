@@ -1,3 +1,4 @@
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Enlazar.Database.dll.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Enlazar.Database.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Enlazar.Database.pdb
@@ -8,7 +9,6 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\csi.exe.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\csi.rsp
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
@@ -58,7 +58,7 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Newtonsoft.Json.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\System.Reactive.xml
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.csprojAssemblyReference.cache
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.csproj.CopyComplete
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.pdb
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Database\obj\Debug\Enlazar.Database.csprojAssemblyReference.cache

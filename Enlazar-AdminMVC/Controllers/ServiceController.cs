@@ -1,65 +1,24 @@
-﻿using Enlazar.Database;
-using Enlazar.Database.Utilities;
-using Enlazar.Database.ViewModels;
-using Enlazar.Servicios;
+﻿using Enlazar.Database.ViewModels;
 using Enlazar_AdminMVC.Models;
-using FireSharp.Interfaces;
-using FireSharp.Response;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web;
+
 
 namespace Enlazar_AdminMVC.Controllers
 
 {
     public class ServiceController : Controller
     {
-        Data database = new Data();
-        IFirebaseClient client;
-
-
-
+        private readonly RecyclerModel recyclerModel = new RecyclerModel();
+        private readonly ServiceModel serviceModel = new ServiceModel();
+        private readonly ServiceViewModel serviceViewModel = new ServiceViewModel();
         // GET: Service
         [HttpGet]
         public ActionResult List()
         {
-            client = new FireSharp.FirebaseClient(database.createConfig());
-            // database.AddServiceToFirebase();
-
-            ServiceViewModel serviceViewModel = new ServiceViewModel();
-
-            FirebaseResponse response = client.Get("Service");
-            FirebaseResponse responseUser = client.Get("User");
-
-
-            dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            dynamic dataUser = JsonConvert.DeserializeObject<dynamic>(responseUser.Body);
-
-            var listServices = new List<Service>();
-            var listRecyclers = new List<User>();
-            User user;
-
-            foreach (var item in data)
-            {
-                listServices.Add(JsonConvert.DeserializeObject<Service>(((JProperty)item).Value.ToString()));
-            }
-
-            foreach (var item in dataUser)
-            {
-                user = JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString());
-
-                if (user.TypeUser == UserTypes.RECYCLER)
-                {
-                    listRecyclers.Add(user);
-                };
-            }
-
-            serviceViewModel.ListServices = listServices;
-            serviceViewModel.ListRecyclers = listRecyclers;
+            serviceViewModel.ListServices = serviceModel.GetServices();
+            serviceViewModel.ListRecyclers = recyclerModel.GetRecyclers();
 
             return View(serviceViewModel);
         }

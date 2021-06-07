@@ -1,4 +1,3 @@
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.dll.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.pdb
@@ -9,6 +8,7 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\roslyn\csi.exe.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\roslyn\csi.rsp
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll

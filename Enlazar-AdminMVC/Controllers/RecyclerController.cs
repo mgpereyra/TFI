@@ -2,14 +2,16 @@
 using Enlazar.Database;
 using Enlazar_AdminMVC.Models;
 using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace Enlazar_AdminMVC.Controllers
 {
     public class RecyclerController : Controller
     {
-        RecyclerModel recyclerModel = new RecyclerModel();
+        private readonly RecyclerModel recyclerModel = new RecyclerModel();
 
         // GET: Recycler/Details/5
         [HttpGet]
@@ -48,7 +50,7 @@ namespace Enlazar_AdminMVC.Controllers
         // GET: Recycler
         public ActionResult ListRecyclers()
         {
-            List <User> list = recyclerModel.GetUsers();
+            List <User> list = recyclerModel.GetRecyclers();
             return View(list);
         }
 
