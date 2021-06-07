@@ -1,5 +1,5 @@
 ﻿using Enlazar.Database;
-using Enlazar.Databases.ViewModels;
+using Enlazar.Database.ViewModels;
 using Enlazar.Servicios;
 using Enlazar_AdminMVC.Models;
 using FireSharp.Interfaces;

@@ -1,4 +1,7 @@
-﻿@model Enlazar.Database.ViewModels.Ser
+﻿@using Enlazar.Database.ViewModels
+
+@model ServiceViewModel
+
 @{
     ViewBag.Title = "Rutas";
 
@@ -33,7 +36,7 @@
                         <tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.ListServices)
                         {
                             <tr>
                                 <td>@item.Address</td>
@@ -90,7 +93,7 @@
 </script>
 
 <script>
-    var marcadores = @Html.Raw(Json.Encode(Model));
+    var marcadores = @Html.Raw(Json.Encode(Model.ListServices));
     console.log(marcadores);
 
     let map;
