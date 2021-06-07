@@ -7,19 +7,21 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
-import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 enum class ProviderType{
     BASIC
 }
+var userId:String=""
 class DashboardUserActivity : AppCompatActivity() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        toolbar()
 
+        if (intent.hasExtra(IDKEY)) {
+            userId = intent.extras!!.getString(IDKEY, "").toString()
+        }
+        toolbar()
 
         cardView_proximo_servicio.setOnClickListener{
             val intent: Intent = Intent(this, DetalleServicioActivity::class.java)
@@ -44,9 +46,12 @@ class DashboardUserActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btn_new_service.setOnClickListener{
+
+            val intent= Intent(this, NuevoServicioActivity::class.java)
+            intent.putExtra(NuevoServicioActivity.ID,userId)
+            userId
             this@DashboardUserActivity.finish()
-            val intent: Intent = Intent(this, NuevoServicioActivity::class.java)
-            startActivity(intent)
+            this.startActivity(intent)
 
         }
 
@@ -76,5 +81,8 @@ setSupportActionBar(toolbar)
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    companion object {
+        val IDKEY: String = "id"
     }
 }

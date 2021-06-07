@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_login.password
 
 class LoginActivity : AppCompatActivity()  {
 
-
+    var id:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -30,8 +30,8 @@ class LoginActivity : AppCompatActivity()  {
                 signInWithEmailAndPassword(mailString,
                     passString).addOnCompleteListener{
                     if (it.isSuccessful){
-                        irDashboardUserActivity(it.result?.user?.email.toString() ?: "",
-                            ProviderType.BASIC)
+                        id=FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
+                        irDashboardUserActivity(id)
                     }else{
                         showAlert()
                     }
@@ -51,11 +51,11 @@ class LoginActivity : AppCompatActivity()  {
         }
 
     }
-    private fun irDashboardUserActivity(email:String, provider:ProviderType){
-        val darsheboardActivity = Intent(this,DashboardUserActivity::class.java).apply {
-            putExtra("email",email)
-            putExtra("provider",provider)
-        }
+    private fun irDashboardUserActivity(idUser:String){
+        val darsheboardActivity = Intent(this,DashboardUserActivity::class.java)
+        darsheboardActivity.putExtra(DashboardUserActivity.IDKEY,idUser!!)
+
+        this.startActivity(darsheboardActivity)
         this@LoginActivity.finish()
         startActivity(darsheboardActivity)
     }
