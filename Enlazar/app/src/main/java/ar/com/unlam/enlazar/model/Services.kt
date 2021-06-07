@@ -3,6 +3,7 @@ package ar.com.unlam.enlazar.model
 import java.util.*
 
 data class Services (
+        val Address:String,
         val Id:String,
         val Latitud:Double,
         val Longitud:Double,
