@@ -10,13 +10,13 @@
         android:id="@+id/buttonIrMapa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/circle"
         android:backgroundTint="@color/orange"
         android:text="Map"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,11 +24,23 @@
         android:id="@+id/buttonRutas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
         android:text="Rutas"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/buttonIrMapa"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="@+id/buttonIrMapa"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIrMapa" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toEndOf="@+id/buttonIrMapa"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ruta_servicios_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIrMapa"
+        app:layout_constraintVertical_bias="1.0"
+        tools:itemCount="10"
+        tools:listitem="@layout/servicios_recolector_ruta_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    viewBinding {
+        enabled = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -52,9 +55,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     //ViewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    implementation 'androidx.activity:activity-ktx:1.1.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.activity:activity-ktx:1.2.3'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1'
+
 
     def koin_version="2.2.0"
     implementation "org.koin:koin-android:$koin_version"

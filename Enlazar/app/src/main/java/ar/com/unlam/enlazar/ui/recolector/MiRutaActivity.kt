@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import ar.com.unlam.enlazar.R
+import ar.com.unlam.enlazar.adapter.MisServiciosRecolectorAdapter
 import ar.com.unlam.enlazar.model.clasesDePrueba.Direccion
 import ar.com.unlam.enlazar.model.clasesDePrueba.PuntoLatLong
 import ar.com.unlam.enlazar.model.clasesDePrueba.Recolector
@@ -15,11 +17,14 @@ import kotlinx.android.synthetic.main.activity_mi_ruta.*
 
 class MiRutaActivity : AppCompatActivity() {
    //lateinit var  database :DatabaseReference
+   private lateinit var adapter: MisServiciosRecolectorAdapter
+    private val viewModelServices: MiRutaViewModel by viewModels()
+
+
     private lateinit var database: FirebaseDatabase
     private lateinit var referaceUsuario:DatabaseReference
     private lateinit var referaceServicio:DatabaseReference
 
-    //val myRef = database.getReference("message")
     val puntoLatLOng= PuntoLatLong(-34.744774, -58.695204)
     val direccion = Direccion("","Pontevedra","Azul",4097,puntoLatLOng)
     val listaServicio :ArrayList<Servicio> = ArrayList()
