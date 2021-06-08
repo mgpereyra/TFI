@@ -1,12 +1,18 @@
 package ar.com.unlam.enlazar.ui.recolector
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.adapter.MisServiciosRecolectorAdapter
+import ar.com.unlam.enlazar.databinding.ActivityMiRutaBinding
+import ar.com.unlam.enlazar.model.Services
 import ar.com.unlam.enlazar.model.clasesDePrueba.Direccion
 import ar.com.unlam.enlazar.model.clasesDePrueba.PuntoLatLong
 import ar.com.unlam.enlazar.model.clasesDePrueba.Recolector
@@ -16,57 +22,72 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_mi_ruta.*
 
 class MiRutaActivity : AppCompatActivity() {
-   //lateinit var  database :DatabaseReference
-   private lateinit var adapter: MisServiciosRecolectorAdapter
+
+    private lateinit var binding: ActivityMiRutaBinding
+    private lateinit var adapter: MisServiciosRecolectorAdapter
     private val viewModelServices: MiRutaViewModel by viewModels()
-
-
-    private lateinit var database: FirebaseDatabase
-    private lateinit var referaceUsuario:DatabaseReference
-    private lateinit var referaceServicio:DatabaseReference
-
-    val puntoLatLOng= PuntoLatLong(-34.744774, -58.695204)
-    val direccion = Direccion("","Pontevedra","Azul",4097,puntoLatLOng)
-    val listaServicio :ArrayList<Servicio> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mi_ruta)
-        buttonIrMapa.setOnClickListener{
+        binding = ActivityMiRutaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-
-            referaceServicio.orderByChild("idRecolector").equalTo("Iduno").get().addOnSuccessListener {
-                Log.i("firebase", "Got value ${it.value}")
-            }.addOnFailureListener{
-                Log.e("firebase", "Error getting data", it)
-            }
-           /* val intent: Intent = Intent(this, MapRutaRecolectorActivity::class.java)
-            startActivity(intent)*/
+        adapter = MisServiciosRecolectorAdapter { service -> toOnItemViewClick(service) }
+        with(binding.rvRutaServiciosList) {
+            // layoutManager = GridLayoutManager(applicationContext,2,LinearLayoutManager.VERTICAL,false) // Para implementar en con otro estilo
+            layoutManager =
+                LinearLayoutManager(this@MiRutaActivity, LinearLayoutManager.VERTICAL, false)
+            this.adapter = this@MiRutaActivity.adapter
         }
+        setListeners()
 
-
-            var recolector = Recolector("Iduno","NombreRecolector1",)
-
-        val servicioUno = Servicio("",recolector.id,"IdUsuarioUno",0,direccion)
-
-        database = FirebaseDatabase.getInstance()
-            referaceUsuario = database.getReference("UsuarioKotlin")
-        referaceServicio= database.getReference("ServicioKotlin")
-            buttonRutas.setOnClickListener {
-
-             /*   referaceUsuario.push().setValue(recolector).addOnSuccessListener {
-                    Toast.makeText(this,"Operacion1 exitosa",Toast.LENGTH_SHORT).show()
-                }*/
-                referaceServicio.push().setValue(servicioUno).addOnSuccessListener {
-                    Toast.makeText(this,"Operacion2 exitosa",Toast.LENGTH_SHORT).show()
-
-                }
-
-            }
     }
 
-    /*  val analytics = FirebaseAnalytics.getInstance(this)
-            val bundle=Bundle()
-            bundle.putString("message", "integracion de firebase completa")
-            analytics.logEvent("InitScreen",bundle)*/
+    override fun onStart() {
+        getServicesResponde()
+        //viewModelServices.getServices()
+        setObservers()
+        super.onStart()
+    }
+
+    private fun getServicesResponde() {
+        viewModelServices.responseLiveData.observe(this, {
+            it.listService?.let { it1 -> adapter.submitList(it1) }
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun setObservers() {
+        viewModelServices.misServicios.observe(this, Observer {
+            adapter.submitList(it)
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun setListeners() {
+        buttonIrMapa.setOnClickListener {
+
+        }
+        buttonRutas.setOnClickListener {
+
+        }
+    }
+
+    private fun toOnItemViewClick(servicio: Services) {
+        val intent = Intent(this, MapRutaRecolectorActivity::class.java)
+        intent.putExtra("idNote", servicio.Id)
+        startActivity(intent)
+    }
+
+    fun generarRecolector() {
+        var recolector = Recolector("Iduno", "NombreRecolector1")
+        val puntoLatLOng = PuntoLatLong(-34.744774, -58.695204)
+        val direccion = Direccion("", "Pontevedra", "Azul", 4097, puntoLatLOng)
+        val servicioUno = Servicio("", recolector.id, "IdUsuarioUno", 0, direccion)
+    }
+/*  val analytics = FirebaseAnalytics.getInstance(this)
+        val bundle=Bundle()
+        bundle.putString("message", "integracion de firebase completa")
+        analytics.logEvent("InitScreen",bundle)*/
 }

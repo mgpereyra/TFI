@@ -100,7 +100,7 @@ db.child("User").child(idForLocation).addValueEventListener(object:ValueEventLis
 
         id= FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
        var serviceId= db.push().key.toString()
-        var service= Services(u,serviceId,lat,long,cant_tipo1.editText?.text.toString().toIntOrNull(),
+        var service= Services(u,serviceId,lat.toString(),long.toString(),cant_tipo1.editText?.text.toString().toIntOrNull(),
         cant_tipo2.editText?.text.toString().toIntOrNull(),cant_tipo3.editText?.text.toString().toIntOrNull(),
             dia_picker.text.toString(),horario_picker.text.toString(),id,"",Estado.PENDIENTE.ordinal)
         if (serviceId!= null) {
