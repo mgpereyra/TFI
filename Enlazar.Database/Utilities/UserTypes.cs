@@ -14,4 +14,13 @@ namespace Enlazar.Database.Utilities
         //recolectores
         RECYCLER = 2
     }
+    public enum StateServices
+    {
+        //vecinos
+        PENDIENTE = 0,
+        //admin de la cooperativa
+        ASIGNADO = 1,
+        //recolectores
+        FINALIZADO = 2
+    }
 }

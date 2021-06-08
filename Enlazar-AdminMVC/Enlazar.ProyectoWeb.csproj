@@ -400,6 +400,7 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\Shared\pv_footer.cshtml" />
+    <Content Include="Views\Service\Manage.cshtml" />
     <Content Include="Views\Service\List.cshtml" />
   </ItemGroup>
   <ItemGroup>

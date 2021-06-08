@@ -13,32 +13,28 @@ namespace Enlazar_AdminMVC.Controllers
         private readonly RecyclerModel recyclerModel = new RecyclerModel();
         private readonly ServiceModel serviceModel = new ServiceModel();
         private readonly ServiceViewModel serviceViewModel = new ServiceViewModel();
-        // GET: Service
+        // GET: Service/Manage
         [HttpGet]
-        public ActionResult List()
+        public ActionResult Manage()
         {
-            serviceViewModel.ListServices = serviceModel.GetServices();
+            serviceViewModel.ListServices = serviceModel.GetServicesPendings();
             serviceViewModel.ListRecyclers = recyclerModel.GetRecyclers();
 
             return View(serviceViewModel);
         }
 
-        // GET: Service/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Service/Create
+      
+        // GET: Service/Manage
         [HttpPost]
-        public ActionResult List(string servicio, string reciclador)
+        public ActionResult Manage(string  servicio, string reciclador)
         {
             try
             {
+                string[] listaServicios = servicio.Split(',');
 
                 if (ModelState.IsValid)
                 {
-                    //database.AddServiceToRoute(service);
+                    serviceModel.EditListServices(listaServicios, reciclador);
                     ModelState.AddModelError(string.Empty, "Se ha agregado correctamente");
                     return RedirectToAction("List");
                 }
@@ -53,6 +49,19 @@ namespace Enlazar_AdminMVC.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
                 return View();
             }
+        }
+        [HttpGet]
+        public ActionResult List()
+        {
+            serviceViewModel.ListServices = serviceModel.GetServicesAssigned();
+
+            return View(serviceViewModel);
+        }
+
+        // GET: Service/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
         }
 
         // POST: Service/Create
@@ -74,7 +83,9 @@ namespace Enlazar_AdminMVC.Controllers
         // GET: Service/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            serviceViewModel.ListServices = serviceModel.GetServicesAssigned();
+
+            return View(serviceViewModel);
         }
 
         // POST: Service/Edit/5

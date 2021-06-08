@@ -14,8 +14,6 @@ body, html {
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-top: 1.5rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
     padding-bottom:2rem;
     min-height:72%;
 }
@@ -157,7 +155,9 @@ a:hover {
 .navbar-dark .navbar-nav .nav-link {
     color: rgb(255 255 255 / 80%)!important;
 }
-
+.navbar-dark .navbar-nav .disabled {
+    color: rgb(255 255 255 / 31%) !important;
+}
 #map_canvas {
     height: 300px;
     margin-top: 0.5rem;
@@ -167,3 +167,5 @@ a:hover {
 .color-green {
     color:#06ca82 ;
 }
+
+    

@@ -3,227 +3,54 @@
 @model ServiceViewModel
 
 @{
-    ViewBag.Title = "Rutas";
-
+    ViewBag.Title = "Lista de servicios";
 }
 
 <div class="d-flex mb-4">
     <div class="pb-lg-2 w-100">
-        <h2><i class="fas fa-map-marked-alt pt-2 mr-2"></i>Crear ruta</h2>
+        <h2><i class="fas fa-street-view pt-2 mr-2" aria-hidden="true"></i>Listado de servicios asignados</h2>
     </div>
+    <div class="flex-shrink-1"> <a class="btn btn-primary m-2" href="Manage"><i class="fa fa-plus-circle"></i>Administrar servicios</a></div>
 </div>
-
-<div class="row">
-
-    <div class="col-sm-5">
-        <div class="card text-white bg-dark">
-            <div class="card-body" id="map_canvas">
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-7">
-        <form method="POST">
-            <div class="card text-white bg-dark">
-                <h5 class="card-title">Agregue los servicios</h5>
-                <hr />
-                <table class="table table-dark table-responsive">
-                    <thead class="font-weight-bold text-uppercase">
-                        <tr class="border-bottom border-primary ">
-                            <td width="40%">Dirección</td>
-                            <td width="40%">Estado</td>
-                            <td width="500px"></td>
-
-                        <tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.ListServices)
-                        {
-                            <tr>
-                                <td>@item.Address</td>
-                                <td>
-
-                                    <button type="button" class="btn btn-outline-primary mr-2"
-                                            onclick="quitarServicio( '@item.Id')">
-                                        Quitar
-                                    </button>
-
-                                    <button type="button" class="btn btn-primary mr-2"
-                                            onclick="agregarServicio( '@item.Id')">
-                                        Agregar
-                                    </button>
-
-
-                                    <div class="form-check">
-
-                                    </div>
-                                </td>
-                                <td class="text-center" id="@item.Id"></td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <br />
-                <h5 class="card-title ">Seleccione un reciclador</h5>
-                <hr />
-
-                <select class="custom-select" aria-label="Recicladores" onchange="obtenerReciclador()" id="listaRecicladores">
-                    <option selected>Seleccione un reciclador...</option>
-
-                    @foreach (var item in Model.ListRecyclers)
-                    {
-                        <option value="@item.Id">@item.Name @item.Surname - @item.Dni</option>
-                    }
-                </select>
-               
-            </div>
-            <div class="d-grid d-md-flex justify-content-md-end d-sm-flex justify-content-sm-end mt-3">
-                <a class="btn btn-outline-primary mr-2" href="ListRecyclers">Cancelar</a>
-                <input type="hidden" id="servicio" name="servicio">
-                <input type="hidden" id="reciclador" name="reciclador">
-                <button class="btn  btn-primary " id="crearRutaBtn" disabled type="submit"><i class="fa fa-plus-circle"></i>Crear Ruta</button>
-            </div>
-        </form>
-    </div>
-
+@if (Model.ListServices.Count() == 0)
+{
+<div class="alert alert-dark text-center" role="alert">
+   No hay servicios asignados
 </div>
-
-
-
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jquery")
+   
 }
+else
+{
+    <div class="card text-white bg-dark">
+        <table class="table  table-striped table-dark table-responsive">
+            <thead class="font-weight-bold text-uppercase">
+                <tr class="border-bottom border-primary">
+                    <td width="20%">Fecha</td>
+                    <td width="25%">Direccion</td>
+                    <td width="20%">Vecino</td>
+                    <td width="20%">Reciclador</td>
+                    <td width="500px"></td>
 
 
+                <tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListServices)
+                {
+                    <tr>
 
-<style>
-    #map_canvas {
-        height: 400px;
-    }
-</style>
+                        <td>@item.Date @item.Time</td>
+                        <td>@item.Address</td>
+                        <td>@item.UserId</td>
+                        <td>@item.RecolectorId</td>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD63Ptld6R6m6o8p3HkX9an3ksAw_faFBs">
-</script>
-
-<script>
-    var marcadores = @Html.Raw(Json.Encode(Model.ListServices));
-    console.log(marcadores);
-
-    let map;
-    let marker;
-    let infowindow;
-    let position;
-    let bounds = new google.maps.LatLngBounds();
-    var infoWindow = new google.maps.InfoWindow();
-
-    map = new google.maps.Map(document.getElementById("map_canvas"), {
-        center: { lat: -34.6705129, lng: -58.5628652 },
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        zoom: 14,
-    });
-
-    // Add multiple markers to map
-
-    function initMarkers() {
-
-        for (var i = 0; i < marcadores.length; i++) {
-            // init markers
-            position = new google.maps.LatLng(marcadores[i].Latitud, marcadores[i].Longitud);
-
-            marker = new google.maps.Marker({
-                position: position,
-                map: map,
-                title: marcadores[i].Address,
-                number: i
-            });
-            // Add info window to marker
-            google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                return function () {
-                    infoWindow.setContent(
-                        '<div>' +
-                        '<p class="color-third my-1">' + marker.title + '</p>' +
-                        '</div>');
-                    infoWindow.open(map, marker);
+                        <td class="acciones">
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Detalle", "Details", new { id = item.Id }) 
+                        </td>
+                    </tr>
                 }
-            })(marker, i));
-
-            // markers(marker);
-            marker.setMap(map);
-            bounds.extend(position);
-
-        }
-        map.fitBounds(bounds);
-
-    }
-
-    initMarkers();
-
-//document.getElementsByClassName("agregar").addEventListener("click", agregarServicio);
-
-let indices = [];
-var icon = document.getElementById('icon');
-var btn = document.getElementById('crearRutaBtn');
-
-
-function agregarServicio(x){
-    var isCheck = indices.filter( function( indice ) {
-        return indice === x  });
-
-    if (isCheck.length === 0) {
-        indices.push(x);
-        document.getElementById("servicio").value = indices;
-        agregarIcono(x);
-        btn.removeAttribute("disabled");
-    }
+            </tbody>
+        </table>
+    </div>
 }
-
-
-function agregarIcono(x){
-var counter;
-var bandera = false;
-    if (!bandera) {
-        counter = 1;
-        bandera = true;
-    }
-     var newdiv = document.createElement('i');
-
-    newdiv.id = "icon["+x+"]";
-    newdiv.className = ("fas fa-check-circle color-green fa-2x");
-    ++counter;
-    document.getElementById(x).appendChild(newdiv);
-}
-
-function quitarServicio(x){
-    var hayElementos = indices.filter( function( indice ) {
-        return indice === x  });
-
-    if(hayElementos.length !== 0){
-        remove(x);
-    }
-    indices = filtrar(x);
-    indices.length === 0 && btn.setAttribute("disabled", true) ;
-    document.getElementById("servicio").value = indices;
-}
-
-function remove(id) {
-   var elem = document.getElementById("icon["+id+"]");
-   return elem.parentNode.removeChild(elem);
-};
-
-
-function filtrar(x){
-      return indices.filter( function( e ) {
-        return e !== x;
-    } );
-    }
-
-
-    function obtenerReciclador() {
-        var seleccion = document.getElementById("listaRecicladores").value;
-        document.getElementById("reciclador").value = seleccion;
-
-    }
-</script>

@@ -32,7 +32,6 @@ namespace Enlazar.Database
         public string District { get; set; }
         public string Latitud { get; set; }
         public string Longitud { get; set; }
-        public List<Service> Services { get; set; }
 
     }
 }

@@ -10,5 +10,8 @@ namespace Enlazar.Database.ViewModels
     {
         public List<Service> ListServices { get; set; }
         public List<User> ListRecyclers { get; set; }
+        public String NameRecycler { get; set; }
+        public String NameUser { get; set; }
+
     }
 }

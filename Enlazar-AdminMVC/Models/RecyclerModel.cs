@@ -23,7 +23,7 @@ namespace Enlazar_AdminMVC.Models
             FirebaseResponse response = client.Get("User");
 
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            var listRecyclers = new List<User>();
+            List<User> listRecyclers = new List<User>();
             User user;
 
             foreach (var item in data)
