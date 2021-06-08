@@ -13,7 +13,7 @@ class SplashScreenActivity : Activity() {
         setContentView(R.layout.activity_splash_screen)
         sp_logo.alpha=0f
         sp_logo.animate().setDuration(1500).alpha(1f).withEndAction {
-            val i= Intent(this, MiRutaActivity::class.java)
+            val i= Intent(this, LoginActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             finish()
