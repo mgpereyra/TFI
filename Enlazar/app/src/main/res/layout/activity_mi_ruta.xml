@@ -10,13 +10,25 @@
         android:id="@+id/buttonIrMapa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="56dp"
         android:background="@drawable/circle"
         android:backgroundTint="@color/orange"
-        android:text="Button"
+        android:text="Map"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRutas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Rutas"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/buttonIrMapa"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/buttonIrMapa"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIrMapa" />
 </androidx.constraintlayout.widget.ConstraintLayout>

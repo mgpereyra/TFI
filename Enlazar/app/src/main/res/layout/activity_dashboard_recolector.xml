@@ -4,6 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.recolector.DashboardRecolectorActivity">
+    tools:context=".ui.recolector.DashboardRecolectorActivity"
+    >
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_ir_mis_servicios"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@android:color/holo_purple"
+        app:cardCornerRadius="30dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="78dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_mis_servicios"
+            android:translationX="100dp"
+            android:translationY="20dp" />
+
+        <TextView
+            android:id="@+id/txtIrMisServicios"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mi ruta"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/textWhite"
+            android:textSize="24sp"
+            android:translationX="100dp"
+            android:translationY="100dp" />
+
+        <TextView
+            android:id="@+id/txtIrMisServiciosSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle_mis_servicios"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/subTextWhite"
+            android:translationX="80dp"
+            android:translationY="200dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_ir_hist_mis_servicios"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="416dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@android:color/holo_purple"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageHistRutas"
+            android:layout_width="78dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_proximo_servicio"
+            android:translationX="100dp"
+            android:translationY="20dp" />
+
+        <TextView
+            android:id="@+id/txtMiHistRuta"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mi historial de rutas"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/textWhite"
+            android:textSize="24sp"
+            android:translationX="50dp"
+            android:translationY="100dp" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
