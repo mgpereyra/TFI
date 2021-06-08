@@ -254,13 +254,14 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
         }
     }
 
-    /*override fun onMyLocationButtonClick(): Boolean {
-        Toast.makeText(this, "Boton pulsado", Toast.LENGTH_SHORT).show()
 
-        return false //en false te lleva a la ubicacion actual al abrir. En true no
-    }
+/* override fun onMyLocationButtonClick(): Boolean {
+     Toast.makeText(this, "Boton pulsado", Toast.LENGTH_SHORT).show()
 
-    override fun onMyLocationClick(p0: Location) {
-        Toast.makeText(this, "Estas en ${p0.latitude},${p0.longitude}", Toast.LENGTH_SHORT).show()
-    }*/
+     return false //en false te lleva a la ubicacion actual al abrir. En true no
+ }
+
+override n onMyLocationClick(p0: Location) {
+     Toast.makeText(this, "Estas en ${p0.latitude},${p0.longitude}", Toast.LENGTH_SHORT).show()
+ }*/
 }
