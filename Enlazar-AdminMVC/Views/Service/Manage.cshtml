@@ -28,7 +28,7 @@
             <div class="card text-white bg-dark">
                 <h5 class="card-title">Agregue los servicios</h5>
                 <hr />
-                <table class="table table-dark table-responsive">
+                <table class="table table-dark table-responsive rounded">
                     <thead class="font-weight-bold text-uppercase">
                         <tr class="border-bottom border-primary ">
                             <td width="40%">Dirección</td>
@@ -46,12 +46,13 @@
                             <td>@item.Date @item.Time</td>
 
                             <td>
-                                <div class="mr-2 d-inline" onclick="quitarServicio('@item.Id')">
-                                    <i class="fas fa-minus-circle fa-2x color-third"></i>      
+
+                                <div class=" d-inline" onclick="quitarServicio('@item.Id')">
+                                    <a href="#" class="text-decoration-none"> <i class="fas fa-minus-circle fa-2x color-secondary"></i>   </a>   
                                 </div>
                                
                                 <div class="d-inline" onclick="agregarServicio( '@item.Id')">
-                                    <i class="fas fa-plus-circle fa-2x color-third"></i>      
+                                    <a href="#"> <i class="fas fa-plus-circle fa-2x color-third"></i>  </a>    
                                 </div>
                              
                                
