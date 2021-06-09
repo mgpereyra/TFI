@@ -25,12 +25,19 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
-    private  lateinit var map :GoogleMap
+class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
+    GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener {
+    private lateinit var map: GoogleMap
     private var rutasResult: RouteResult? = null
     private var mPolylineList = listOf<LatLng>()
     private lateinit var mPolylineOptions: PolylineOptions
-    private var listaPuntos: List<LatLng> = listOf(LatLng(-34.744774, -58.695204), LatLng(-34.746859, -58.717010),LatLng(  -34.757320, -58.711366), LatLng(-34.762085, -58.706405))
+    private var listaPuntos: List<LatLng> = listOf(
+        LatLng(-34.744774, -58.695204),
+        LatLng(-34.746859, -58.717010),
+        LatLng(-34.757320, -58.711366),
+        LatLng(-34.762085, -58.706405)
+    )
+
     companion object {
         const val REQUEST_CODE_LOCATION = 0
         const val SERVICE_ID = "idService"
@@ -38,52 +45,55 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
         const val SERVICE_LONG = "lon"
 
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_ruta_recolector)
         createFragment()
 
-
-
-
         //viewModel.getNoteById(idNoteEditable)
 
     }
 
-    private fun createFragment(){
-        val mapFragment=supportFragmentManager.findFragmentById(R.id.mapRecolector) as SupportMapFragment
+    private fun createFragment() {
+        val mapFragment =
+            supportFragmentManager.findFragmentById(R.id.mapRecolector) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
+
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         // createMarker()
         // createPolylines()
-       // map.setOnMyLocationButtonClickListener(this)
-      //  map.setOnMyLocationClickListener(this)
+        // map.setOnMyLocationButtonClickListener(this)
+        //  map.setOnMyLocationClickListener(this)
         enableLocation()
         val idService = intent.getStringExtra(SERVICE_ID)
         val serviceLat = intent.getStringExtra(SERVICE_LAT)
         val serviceLon = intent.getStringExtra(SERVICE_LONG)
-      //  trazarRutasLista(listaPuntos)
+        //  trazarRutasLista(listaPuntos)
         if (serviceLat != null) {
             if (serviceLon != null) {
-                trazarRuta(LatLng(-34.744774, -58.695204), LatLng(serviceLat.toDouble(),serviceLon.toDouble()))
+                trazarRuta(
+                    LatLng(-34.744774, -58.695204),
+                    LatLng(serviceLat.toDouble(), serviceLon.toDouble())
+                )
             }
         }
     }
 
-    private fun trazarRutasLista(listaUbi : List<LatLng>){
-        var i =0
-        val ultimo=listaUbi.size-1
-        while (i <ultimo){
-            trazarRuta(listaUbi[i],listaUbi[i+1])
+    private fun trazarRutasLista(listaUbi: List<LatLng>) {
+        var i = 0
+        val ultimo = listaUbi.size - 1
+        while (i < ultimo) {
+            trazarRuta(listaUbi[i], listaUbi[i + 1])
             i++
         }
 
     }
 
 
-    private  fun trazarRuta(origen: LatLng, destino: LatLng) {
+    private fun trazarRuta(origen: LatLng, destino: LatLng) {
         CoroutineScope(Dispatchers.IO).launch {
 
             GoogleMapsApiImpl().getRoutesAp(origen, destino, object : Callback<RouteResult> {
@@ -95,8 +105,8 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
                                 DecodePointsJavaUtils.decodePoly(rutasResult!!.routes[0].overview_polyline.points) as List<LatLng>
 
                             mPolylineOptions = PolylineOptions()
-                            mPolylineOptions.color(Color.GREEN)
-                            mPolylineOptions.width(8f)
+                            mPolylineOptions.color(ContextCompat.getColor(this@RutaRecolectorMapActivity,R.color.green2))
+                            mPolylineOptions.width(13f)
                             mPolylineOptions.startCap(SquareCap())
                             mPolylineOptions.jointType(JointType.ROUND)
                             mPolylineOptions.addAll(mPolylineList)
@@ -104,19 +114,22 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
                             polyLine.jointType
                             var marker: MarkerOptions = MarkerOptions().position(destino)
                             map.addMarker(marker)
-                            map.animateCamera(
-                                CameraUpdateFactory.newLatLngZoom(LatLng(-34.744774, -58.695204), 18f),
+                      /*      map.animateCamera(
+                                CameraUpdateFactory.newLatLngZoom(
+                                    LatLng(-34.744774, -58.695204),
+                                    10f
+                                ),
                                 2000, null
-                            )
+                            )*/
                             Toast.makeText(
-                                this@MapRutaRecolectorActivity,
+                                this@RutaRecolectorMapActivity,
                                 "Trazado exitoso",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                         else -> {
                             Toast.makeText(
-                                this@MapRutaRecolectorActivity,
+                                this@RutaRecolectorMapActivity,
                                 getString((response.code())),
                                 Toast.LENGTH_LONG
                             ).show()
@@ -128,7 +141,7 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
 
                 override fun onFailure(call: Call<RouteResult>, t: Throwable) {
                     Toast.makeText(
-                        this@MapRutaRecolectorActivity,
+                        this@RutaRecolectorMapActivity,
                         getString(R.string.search_call_error),
                         Toast.LENGTH_LONG
                     ).show()
@@ -145,15 +158,16 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
         val polyLine = map.addPolyline(polylineOptions)
         polyLine.jointType
     }
+
     private fun createMarker() {
         val coordinates = LatLng(-34.744774, -58.695204)
         val marker: MarkerOptions = MarkerOptions().position(coordinates).title("Mi calle")
         map.addMarker(marker)
-        map.animateCamera(
+  /*      map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(LatLng(-34.744774, -58.695204), 18f),
             4000,
             null
-        )
+        )*/
     }
 
     private fun isLocarionPermissionGranted() = ContextCompat.checkSelfPermission(
@@ -251,6 +265,14 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    override fun onMyLocationClick(p0: Location) {
+        Toast.makeText(this, "Tú ubicacion", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onMyLocationButtonClick(): Boolean {
+        return false
     }
 
 

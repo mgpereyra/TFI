@@ -4,7 +4,7 @@ import java.lang.Exception
 
 data class ResponseServicios
     (
-    var listService: List<Services>? = null,
+    var listService: List<Service>? = null,
     var exception: Exception? = null
 
 )

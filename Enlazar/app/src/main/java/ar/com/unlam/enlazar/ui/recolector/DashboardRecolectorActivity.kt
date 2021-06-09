@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import ar.com.unlam.enlazar.R
-import ar.com.unlam.enlazar.ui.DetalleServicioActivity
 import kotlinx.android.synthetic.main.activity_dashboard_recolector.*
 
 class DashboardRecolectorActivity : AppCompatActivity() {
@@ -17,7 +16,7 @@ class DashboardRecolectorActivity : AppCompatActivity() {
 
 
         cardView_ir_mis_servicios.setOnClickListener {
-            val intent: Intent = Intent(this, MiRutaActivity::class.java)
+            val intent: Intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
             startActivity(intent)
         }
 

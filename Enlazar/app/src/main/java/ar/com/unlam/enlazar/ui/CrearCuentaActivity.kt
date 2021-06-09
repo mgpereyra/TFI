@@ -3,26 +3,19 @@ package ar.com.unlam.enlazar.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import ar.com.unlam.enlazar.R
-import ar.com.unlam.enlazar.model.Services
+import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.model.User
 import com.google.android.gms.common.api.Status
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.PlacesClient
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*
 import kotlinx.android.synthetic.main.activity_crear_cuenta.view.*
 import java.text.SimpleDateFormat
@@ -123,7 +116,7 @@ private fun showAlert(){
     }
 
 private fun createUser(){
-    val emptyArray=ArrayList<Services>()
+    val emptyArray=ArrayList<Service>()
     val date = getCurrentDateTime()
     val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")
     var userId= db.push().key.toString()

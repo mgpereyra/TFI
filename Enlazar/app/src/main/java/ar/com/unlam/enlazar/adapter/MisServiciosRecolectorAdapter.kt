@@ -4,20 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.databinding.ServiciosRecolectorRutaItemBinding
-import ar.com.unlam.enlazar.model.Services
+import ar.com.unlam.enlazar.model.Service
 
-class MisServiciosRecolectorAdapter(val onItemDetailViewClick: (servicioItem: Services) -> Unit) :
+class MisServiciosRecolectorAdapter(val onItemDetailViewClick: (servicioItem: Service) -> Unit) :
     RecyclerView.Adapter<MisServiciosRecolectorAdapter.ServiciosHolder>() {
 
-    private val servicesList = mutableListOf<Services>()
+    private val servicesList = mutableListOf<Service>()
 
 
     class ServiciosHolder(private val binding: ServiciosRecolectorRutaItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun binNote(servicioItem: Services) {
-            binding.etNombreNote.text = servicioItem.Address
-            binding.etCommentNote.text = servicioItem.Date
+        fun binNote(servicioItem: Service) {
+            binding.etNombreNote.text = servicioItem.address
+            binding.etCommentNote.text = servicioItem.date
             /*Picasso.get()
                 .load(
                     note.imagen
@@ -49,7 +49,7 @@ class MisServiciosRecolectorAdapter(val onItemDetailViewClick: (servicioItem: Se
 
     }
 
-    fun submitList(it: List<Services>) {
+    fun submitList(it: List<Service>) {
         servicesList.clear()
         servicesList.addAll(it)
     }

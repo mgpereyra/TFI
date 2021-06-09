@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
-import ar.com.unlam.enlazar.model.Services
+import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.pickers.DatePickerFragent
 import ar.com.unlam.enlazar.ui.pickers.TimePickerFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -100,7 +100,7 @@ db.child("User").child(idForLocation).addValueEventListener(object:ValueEventLis
 
         id= FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
        var serviceId= db.push().key.toString()
-        var service= Services(u,serviceId,lat.toString(),long.toString(),cant_tipo1.editText?.text.toString().toIntOrNull(),
+        var service= Service(u,serviceId,lat.toString(),long.toString(),cant_tipo1.editText?.text.toString().toIntOrNull(),
         cant_tipo2.editText?.text.toString().toIntOrNull(),cant_tipo3.editText?.text.toString().toIntOrNull(),
             dia_picker.text.toString(),horario_picker.text.toString(),id,"",Estado.PENDIENTE.ordinal)
         if (serviceId!= null) {

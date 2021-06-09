@@ -18,13 +18,13 @@
         android:vmSafeMode="false">
         <activity android:name=".ui.MisCanjesActivity"></activity>
         <activity android:name=".ui.MiCuentaActivity" />
-        <activity android:name=".ui.recolector.MapRutaRecolectorActivity"></activity>
+        <activity android:name=".ui.recolector.RutaRecolectorMapActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_api_key2" />
 
-        <activity android:name=".ui.recolector.MiRutaActivity" />
+        <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity" />
         <activity android:name=".ui.recolector.DashboardRecolectorActivity" />
         <activity android:name=".ui.recolector.RecuperarPassActivity" />
         <activity android:name=".ui.MisPuntosActivity" />

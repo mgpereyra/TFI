@@ -3,11 +3,8 @@ package ar.com.unlam.enlazar.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import ar.com.unlam.enlazar.R
-import ar.com.unlam.enlazar.ui.recolector.DashboardRecolectorActivity
-import ar.com.unlam.enlazar.ui.recolector.MiRutaActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
