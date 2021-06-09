@@ -54,7 +54,7 @@
                     android:id="@+id/email"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
@@ -94,7 +94,7 @@
                     android:id="@+id/name"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
@@ -127,56 +127,28 @@
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/street"
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/cardAutocomplete"
+    android:layout_width="match_parent"
+    android:maxWidth="150dp"
+    android:minWidth="100dp"
+    android:layout_height="55dp"
+    android:layout_margin="20dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    app:cardCornerRadius="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/name"
+
+    >
+                <fragment
+                    android:id="@+id/streetAutocompleteOrigin"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_margin="20dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:hint="@string/ingrese_la_calle"
-                    android:maxWidth="150dp"
-                    android:minWidth="100dp"
-                    android:textColorHint="@color/white"
-                    android:textSize="20sp"
-                    android:visibility="visible"
-                    app:boxBackgroundColor="@color/backGroundCustom"
-                    app:boxCornerRadiusBottomEnd="20dp"
-                    app:boxCornerRadiusBottomStart="20dp"
-                    app:boxCornerRadiusTopEnd="20dp"
-                    app:boxCornerRadiusTopStart="20dp"
-                    app:boxStrokeColor="@color/white"
-                    app:helperTextTextColor="@color/white"
-                    app:hintAnimationEnabled="true"
-                    app:hintEnabled="true"
-                    app:hintTextColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/name">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/backGroundCustom"
-                        android:inputType="textCapSentences|textAutoCorrect"
-                        android:outlineSpotShadowColor="@color/white"
-                        android:shadowColor="@color/white"
-                        android:singleLine="true"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/street_number"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_margin="20dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_height="match_parent"
                     android:hint="@string/numero_de_calle"
-                    android:maxWidth="150dp"
-                    android:minWidth="100dp"
                     android:textColorHint="@color/white"
                     android:textSize="20sp"
                     android:visibility="visible"
@@ -189,24 +161,14 @@
                     app:helperTextTextColor="@color/white"
                     app:hintEnabled="true"
                     app:hintTextColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/street">
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"/>
+</androidx.cardview.widget.CardView>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:outlineSpotShadowColor="@color/white"
-                        android:shadowColor="@color/white"
-                        android:singleLine="true"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/location_spinner"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/location"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
@@ -215,7 +177,7 @@
             android:textColorHint="@color/white"
             android:textSize="30sp"
             android:visibility="visible"
-            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundColor="@color/backGroundCustom"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
@@ -226,21 +188,27 @@
             app:hintTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/street_number"/>
-                <Spinner
-                    android:id="@+id/partido_spinner"
+            app:layout_constraintTop_toBottomOf="@id/cardAutocomplete">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/partido"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:layout_margin="20dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:backgroundTint="@color/white"
-                    android:hint="@string/Localidad"
+                    android:hint="@string/Partido"
                     android:textColorHint="@color/white"
                     android:textSize="30sp"
                     android:visibility="visible"
-                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundColor="@color/backGroundCustom"
                     app:boxCornerRadiusBottomEnd="20dp"
                     app:boxCornerRadiusBottomStart="20dp"
                     app:boxCornerRadiusTopEnd="20dp"
@@ -251,14 +219,56 @@
                     app:hintTextColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/location_spinner"/>
+                    app:layout_constraintTop_toBottomOf="@id/location">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:outlineSpotShadowColor="@color/white"
+                        android:shadowColor="@color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dni"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:hint="@string/Dni"
+                    android:maxWidth="150dp"
+                    android:minWidth="100dp"
+                    android:textColorHint="@color/white"
+                    android:textSize="20sp"
+                    android:visibility="visible"
+                    app:boxBackgroundColor="@color/backGroundCustom"
+                    app:boxCornerRadiusBottomEnd="20dp"
+                    app:boxCornerRadiusBottomStart="20dp"
+                    app:boxCornerRadiusTopEnd="20dp"
+                    app:boxCornerRadiusTopStart="20dp"
+                    app:boxStrokeColor="@color/white"
+                    app:helperTextTextColor="@color/white"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/telephone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:outlineSpotShadowColor="@color/white"
+                        android:shadowColor="@color/white"
+                        android:singleLine="true"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/telephone"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
@@ -279,12 +289,12 @@
                     app:hintTextColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/partido_spinner">
+                    app:layout_constraintTop_toBottomOf="@+id/partido">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
+                        android:inputType="number"
                         android:outlineSpotShadowColor="@color/white"
                         android:shadowColor="@color/white"
                         android:singleLine="true"
@@ -296,7 +306,7 @@
                     android:id="@+id/password"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
@@ -317,7 +327,7 @@
                     app:hintTextColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/telephone">
+                    app:layout_constraintTop_toBottomOf="@+id/dni">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/password_input"
