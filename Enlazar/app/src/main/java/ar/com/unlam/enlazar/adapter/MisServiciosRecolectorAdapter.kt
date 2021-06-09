@@ -16,7 +16,7 @@ class MisServiciosRecolectorAdapter(val onItemDetailViewClick: (servicioItem: Se
         RecyclerView.ViewHolder(binding.root) {
 
         fun binNote(servicioItem: Services) {
-            binding.etNombreNote.text = servicioItem.Id
+            binding.etNombreNote.text = servicioItem.Address
             binding.etCommentNote.text = servicioItem.Date
             /*Picasso.get()
                 .load(

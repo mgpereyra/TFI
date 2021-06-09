@@ -33,11 +33,21 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
     private var listaPuntos: List<LatLng> = listOf(LatLng(-34.744774, -58.695204), LatLng(-34.746859, -58.717010),LatLng(  -34.757320, -58.711366), LatLng(-34.762085, -58.706405))
     companion object {
         const val REQUEST_CODE_LOCATION = 0
+        const val SERVICE_ID = "idService"
+        const val SERVICE_LAT = "lat"
+        const val SERVICE_LONG = "lon"
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_ruta_recolector)
         createFragment()
+
+
+
+
+        //viewModel.getNoteById(idNoteEditable)
+
     }
 
     private fun createFragment(){
@@ -51,8 +61,15 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
        // map.setOnMyLocationButtonClickListener(this)
       //  map.setOnMyLocationClickListener(this)
         enableLocation()
+        val idService = intent.getStringExtra(SERVICE_ID)
+        val serviceLat = intent.getStringExtra(SERVICE_LAT)
+        val serviceLon = intent.getStringExtra(SERVICE_LONG)
       //  trazarRutasLista(listaPuntos)
-        trazarRuta(LatLng(-34.744774, -58.695204), LatLng(-34.746859, -58.717010))
+        if (serviceLat != null) {
+            if (serviceLon != null) {
+                trazarRuta(LatLng(-34.744774, -58.695204), LatLng(serviceLat.toDouble(),serviceLon.toDouble()))
+            }
+        }
     }
 
     private fun trazarRutasLista(listaUbi : List<LatLng>){
@@ -154,13 +171,7 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
+
                 return
             }
             map.isMyLocationEnabled = true
@@ -202,13 +213,7 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
                         Manifest.permission.ACCESS_COARSE_LOCATION
                     ) != PackageManager.PERMISSION_GRANTED
                 ) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
+
                     return
                 }
                 map.isMyLocationEnabled = true
@@ -236,13 +241,7 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
+
                 return
             }
             map.isMyLocationEnabled = false
@@ -261,7 +260,7 @@ class MapRutaRecolectorActivity : AppCompatActivity(),OnMapReadyCallback{
      return false //en false te lleva a la ubicacion actual al abrir. En true no
  }
 
-override n onMyLocationClick(p0: Location) {
+override fun onMyLocationClick(p0: Location) {
      Toast.makeText(this, "Estas en ${p0.latitude},${p0.longitude}", Toast.LENGTH_SHORT).show()
  }*/
 }
