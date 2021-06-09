@@ -47,6 +47,8 @@ namespace Enlazar_AdminMVC.Models
             recycler.typeUser = UserTypes.RECYCLER;
 
             var data = recycler;
+
+            client = database.GetConnection();
             PushResponse response = client.Push("User/", data);
             data.id = response.Result.name;
             SetResponse setResponse = client.Set("User/" + response.Result.name, data);
