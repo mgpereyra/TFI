@@ -28,19 +28,19 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Name @item.Surname</td>
-                    <td>@item.Phone</td>
-                    <td>@item.Dni</td>
-                    <td>@item.Email</td>
+                    <td>@item.name @item.surname</td>
+                    <td>@item.phone</td>
+                    <td>@item.dni</td>
+                    <td>@item.email</td>
                     <td>
-                        @item.Password
+                        @item.password
                     </td>
 
 
                     <td class="acciones">
-                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Detalle", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Detalle", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id })
                     </td>
                 </tr>
             }

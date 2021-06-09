@@ -30,7 +30,7 @@ namespace Enlazar_AdminMVC.Models
             {
                 user = JsonConvert.DeserializeObject<User>(((JProperty)item).Value.ToString());
 
-                if (user.TypeUser == UserTypes.RECYCLER)
+                if (user.typeUser == UserTypes.RECYCLER)
                 {
                     listRecyclers.Add(user);
                 };
@@ -41,14 +41,14 @@ namespace Enlazar_AdminMVC.Models
 
         public User CreateRecycler(User recycler)
         {
-            recycler.InitDate = DateTime.Now;
-            recycler.Active = true;
-            recycler.Password = passwordGenerator.RandomPassword();
-            recycler.TypeUser = UserTypes.RECYCLER;
+            recycler.initDate = DateTime.Now;
+            recycler.active = true;
+            recycler.password = passwordGenerator.RandomPassword();
+            recycler.typeUser = UserTypes.RECYCLER;
 
             var data = recycler;
             PushResponse response = client.Push("User/", data);
-            data.Id = response.Result.name;
+            data.id = response.Result.name;
             SetResponse setResponse = client.Set("User/" + response.Result.name, data);
             return recycler;
         }
@@ -64,11 +64,11 @@ namespace Enlazar_AdminMVC.Models
         public User EditRecycler(User recycler)
         {
             client = database.GetConnection();
-            FirebaseResponse response = client.Get("User/" + recycler.Id);
+            FirebaseResponse response = client.Get("User/" + recycler.id);
             User anterior = JsonConvert.DeserializeObject<User>(response.Body);
             ActualizarCampos(anterior, recycler);
 
-            SetResponse setResponse = client.Set("User/" + recycler.Id, anterior);
+            SetResponse setResponse = client.Set("User/" + recycler.id, anterior);
 
             return anterior;
         }
@@ -81,14 +81,14 @@ namespace Enlazar_AdminMVC.Models
 
         public void ActualizarCampos(User anterior, User recycler)
         {
-            anterior.Address = recycler.Address;
-            anterior.District = recycler.District;
-            anterior.Dni = recycler.Dni;
-            anterior.Email = recycler.Email;
-            anterior.Name = recycler.Name;
-            anterior.Surname = recycler.Surname;
-            anterior.Phone = recycler.Phone;
-            anterior.Locality = recycler.Locality;
+            anterior.address = recycler.address;
+            anterior.district = recycler.district;
+            anterior.dni = recycler.dni;
+            anterior.email = recycler.email;
+            anterior.name = recycler.name;
+            anterior.surname = recycler.surname;
+            anterior.phone = recycler.phone;
+            anterior.locality = recycler.locality;
         }
 
     }

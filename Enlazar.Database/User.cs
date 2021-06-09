@@ -11,27 +11,27 @@ namespace Enlazar.Database
     public class User
     {
 
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public string id { get; set; }
+        public string name { get; set; }
+        public string surname { get; set; }
 
         [Required(ErrorMessage = "Ingrese un dni.")]
-        public int Dni { get; set; }
-        public string Password { get; set; }
+        public int dni { get; set; }
+        public string password { get; set; }
 
         [Required(ErrorMessage = "Ingrese un email.")]
         [Key]
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
        
-        public UserTypes TypeUser { get; set; }
-        public System.DateTime InitDate { get; set; }
-        public bool Active { get; set; }
-        public string Address { get; set; }
-        public string Locality { get; set; }
-        public string District { get; set; }
-        public string Latitud { get; set; }
-        public string Longitud { get; set; }
+        public UserTypes typeUser { get; set; }
+        public System.DateTime initDate { get; set; }
+        public bool active { get; set; }
+        public string address { get; set; }
+        public string locality { get; set; }
+        public string district { get; set; }
+        public string latitud { get; set; }
+        public string longitud { get; set; }
 
     }
 }

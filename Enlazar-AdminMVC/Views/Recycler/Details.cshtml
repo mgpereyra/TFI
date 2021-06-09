@@ -6,9 +6,9 @@
 
 <div class="d-flex mb-4">
     <div class="pb-lg-2 w-100">
-        <h2><i class="fa fa-hand-holding-heart pt-2 mr-2" aria-hidden="true"></i><b>@Model.Name @Model.Surname</b> ~ DNI @Model.Dni</h2>
+        <h2><i class="fa fa-hand-holding-heart pt-2 mr-2" aria-hidden="true"></i><b>@Model.name @Model.surname</b> ~ DNI @Model.dni</h2>
     </div>
-    <div class="flex-shrink-1"> <a class="btn btn-primary m-2" href="../Edit/@Model.Id"><i class="fa fa-edit"></i>Editar</a></div>
+    <div class="flex-shrink-1"> <a class="btn btn-primary m-2" href="../Edit/@Model.id"><i class="fa fa-edit"></i>Editar</a></div>
 </div>
 
 <div class="card text-white bg-dark">
@@ -17,38 +17,38 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <label class="color-third">Direccion</label>
-                <h5>@Model.Address</h5>
+                <h5>@Model.address</h5>
 
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <label class="color-third">Localidad</label>
-                <h5>@Model.Locality</h5>
+                <h5>@Model.locality</h5>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <label class="color-third">Partido</label>
-                <h5>@Model.District</h5>
+                <h5>@Model.district</h5>
             </div>
         </div>
         <hr />
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <label class="color-third">Teléfono</label>
-                <h5>@Model.Phone</h5>
+                <h5>@Model.phone</h5>
 
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <label class="color-third">Email</label>
-                <h5>@Model.Email</h5>
+                <h5>@Model.email</h5>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <label class="color-third">Contraseña</label>
-                <h5>@Model.Password</h5>
+                <h5>@Model.password</h5>
             </div>
         </div>
     </div>
 </div>
 
 <div class="mt-4">
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Volver al listado", "ListRecyclers")
 </div>

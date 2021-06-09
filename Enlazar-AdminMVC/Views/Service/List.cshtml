@@ -39,14 +39,14 @@ else
                 {
                     <tr>
 
-                        <td>@item.Date @item.Time</td>
-                        <td>@item.Address</td>
-                        <td>@item.UserId</td>
-                        <td>@item.RecolectorId</td>
+                        <td>@item.date @item.time</td>
+                        <td>@item.address</td>
+                        <td>@item.userId</td>
+                        <td>@item.recolectorId</td>
 
                         <td class="acciones">
-                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Detalle", "Details", new { id = item.Id }) 
+                            @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                            @Html.ActionLink("Detalle", "Details", new { id = item.id }) 
                         </td>
                     </tr>
                 }

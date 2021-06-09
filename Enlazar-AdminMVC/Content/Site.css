@@ -171,3 +171,10 @@ a:hover {
 .i-hover :hover {
     text-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
+.navbar-brand {
+    font-family: 'Signika';
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}

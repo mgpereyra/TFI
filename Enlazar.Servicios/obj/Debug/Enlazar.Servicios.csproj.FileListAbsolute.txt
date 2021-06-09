@@ -1,4 +1,3 @@
-C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Newtonsoft.Json.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.dll.config
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Servicios.pdb
@@ -54,6 +53,7 @@ C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Database.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\LiteDB.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Newtonsoft.Json.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\System.Reactive.dll
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Database.pdb
 C:\Users\margi\Desktop\FACULTAD\TALLER INTEGRADOR\Repo\TFI\Enlazar.Servicios\bin\Enlazar.Database.dll.config

@@ -1,5 +1,4 @@
 ﻿@model Enlazar.Database.User
-
 @{
     ViewBag.Title = "Crear reciclador";
 }
@@ -21,49 +20,49 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Nombre</label>
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Apellido</label>
-                        @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control " } })
-                        @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.surname, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.surname, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">N° de documento</label>
-                        @Html.EditorFor(model => model.Dni, new { htmlAttributes = new { @class = "form-control flechas-out", required = "required" } })
-                        @Html.ValidationMessageFor(model => model.Dni, "", new { @class = "error" })
+                        @Html.EditorFor(model => model.dni, new { htmlAttributes = new { @class = "form-control flechas-out", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.dni, "", new { @class = "error" })
 
                     </div>
                 </div>
             </div>
-            <br/>
+            <br />
             <h5 class="card-title">Ubicación</h5>
             <hr />
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Calle y número</label>
-                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @id = "txtDireccion" } })
-                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", @id = "txtDireccion" } })
+                        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Partido</label>
-                        @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.district, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.district, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Localidad</label>
-                        @Html.EditorFor(model => model.Locality, new { htmlAttributes = new { @class = "form-control", @id = "txtCiudad" } })
-                        @Html.ValidationMessageFor(model => model.Locality, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.locality, new { htmlAttributes = new { @class = "form-control", @id = "txtCiudad" } })
+                        @Html.ValidationMessageFor(model => model.locality, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -80,8 +79,8 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "d-none", @id = "txtLat" } })
-                        @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "d-none", @id = "txtLng" } })
+                        @Html.EditorFor(model => model.latitud, new { htmlAttributes = new { @class = "d-none", @id = "txtLat" } })
+                        @Html.EditorFor(model => model.longitud, new { htmlAttributes = new { @class = "d-none", @id = "txtLng" } })
                     </div>
                 </div>
             </div>
@@ -94,15 +93,15 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="control-label">Teléfono</label>
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "error" })
+                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "error" })
                     </div>
                 </div>
             </div>
@@ -165,16 +164,16 @@
 
     map = new google.maps.Map(document.getElementById('map_canvas'), {
         zoom: 14,
-        center: { lat:-34.6705129, lng: -58.5628652}, 
+        center: { lat: -34.6705129, lng: -58.5628652 },
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-       marker = new google.maps.Marker({
-        position: { lat:-34.6705129, lng: -58.5628652}, 
+    marker = new google.maps.Marker({
+        position: { lat: -34.6705129, lng: -58.5628652 },
         draggable: true
     });
- 
-    $("#txtCiudad, #txtEstado, #txtDireccion").on("change", function() {
+
+    $("#txtCiudad, #txtEstado, #txtDireccion").on("change", function () {
         movePin();
     });
 
@@ -202,7 +201,7 @@
     function crearMarcador(results) {
 
         marker.setPosition(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
-      //  map.panTo(evt.latLng);
+        //  map.panTo(evt.latLng);
         map.setCenter(marker.position);
         marker.setMap(map);
     }

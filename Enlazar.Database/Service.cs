@@ -8,18 +8,18 @@ namespace Enlazar.Database
 {
     public class Service
     {
-        public string Id { get; set; }
-        public string Longitud { get; set; }
-        public string Latitud { get; set; }
-        public string RecolectorId { get; set; }
-        public string UserId { get; set; }
-        public string Address { get; set; }
-        public string Date { get ; set; }
-        public string Time { get ; set; }
-        public int EnvasesCarton { get; set; }
-        public int EnvasesPlasticos { get; set; }
-        public int EnvasesVidrio { get; set; }
-        public StateServices Estado { get; set; }
+        public string id { get; set; }
+        public string longitud { get; set; }
+        public string latitud { get; set; }
+        public string recolectorId { get; set; }
+        public string userId { get; set; }
+        public string address { get; set; }
+        public string date { get ; set; }
+        public string time { get ; set; }
+        public int envasesCarton { get; set; }
+        public int envasesPlasticos { get; set; }
+        public int envasesVidrio { get; set; }
+        public StateServices estado { get; set; }
 
 
     }

@@ -3,7 +3,7 @@
 @model ServiceViewModel
 
 @{
-    ViewBag.Title = "Rutas";
+    ViewBag.Title = "Administrar servicios";
 
 }
 
@@ -42,22 +42,22 @@
                         @foreach (var item in Model.ListServices)
                         {
                         <tr>
-                            <td>@item.Address</td>
-                            <td>@item.Date @item.Time</td>
+                            <td>@item.address</td>
+                            <td>@item.date @item.time</td>
 
                             <td>
 
-                                <div class=" d-inline" onclick="quitarServicio('@item.Id')">
-                                    <a href="#" class="text-decoration-none"> <i class="fas fa-minus-circle fa-2x color-secondary"></i>   </a>   
+                                <div class=" d-inline" onclick="quitarServicio('@item.id')">
+                                    <i class="fas fa-minus-circle fa-2x color-secondary btn"></i>   
                                 </div>
                                
-                                <div class="d-inline" onclick="agregarServicio( '@item.Id')">
-                                    <a href="#"> <i class="fas fa-plus-circle fa-2x color-third"></i>  </a>    
+                                <div class="d-inline" onclick="agregarServicio( '@item.id')">
+                                 <i class="fas fa-plus-circle fa-2x color-third btn"></i> 
                                 </div>
                              
                                
                             </td>
-                            <td class="text-center" id="@item.Id"></td>
+                            <td class="text-center" id="@item.id"></td>
                         </tr>
                         }
                     </tbody>
@@ -71,7 +71,7 @@
 
                     @foreach (var item in Model.ListRecyclers)
                     {
-                        <option value="@item.Id">@item.Name @item.Surname - @item.Dni</option>
+                        <option value="@item.id">@item.name @item.surname - @item.dni</option>
                     }
                 </select>
                
@@ -129,12 +129,12 @@
 
         for (var i = 0; i < marcadores.length; i++) {
             // init markers
-            position = new google.maps.LatLng(marcadores[i].Latitud, marcadores[i].Longitud);
+            position = new google.maps.LatLng(marcadores[i].latitud, marcadores[i].longitud);
 
             marker = new google.maps.Marker({
                 position: position,
                 map: map,
-                title: marcadores[i].Address,
+                title: marcadores[i].address,
                 number: i
             });
             // Add info window to marker

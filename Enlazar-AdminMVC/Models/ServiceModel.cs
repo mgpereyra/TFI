@@ -31,12 +31,13 @@ namespace Enlazar_AdminMVC.Models
             {
                 service = JsonConvert.DeserializeObject<Service>(((JProperty)item).Value.ToString());
                
-                if (service.Estado == StateServices.ASIGNADO) { 
+                if (service.estado == StateServices.ASIGNADO) { 
 
-                    recycler = recyclerModel.GetRecycler(service.RecolectorId);
-                    user = recyclerModel.GetRecycler(service.UserId);
-                    service.RecolectorId = recycler.Name + " " + recycler.Surname;
-                    service.UserId = user.Name + " " + user.Surname;
+                    recycler = recyclerModel.GetRecycler(service.recolectorId);
+                    user = recyclerModel.GetRecycler(service.userId);
+                    service.recolectorId = recycler.name;
+
+                    service.userId = user.name ;
                 
                     listservices.Add(service);
                 }
@@ -56,7 +57,7 @@ namespace Enlazar_AdminMVC.Models
             foreach (var item in data)
             {
                 service = JsonConvert.DeserializeObject<Service>(((JProperty)item).Value.ToString());
-                if (service.Estado == StateServices.PENDIENTE)
+                if (service.estado == StateServices.PENDIENTE)
                 {
                     listservices.Add(service);
 
@@ -72,8 +73,8 @@ namespace Enlazar_AdminMVC.Models
             {
                 FirebaseResponse response = client.Get("Service/" + item);
                 Service anterior = JsonConvert.DeserializeObject<Service>(response.Body);
-                anterior.RecolectorId = idRecycler;
-                anterior.Estado = StateServices.ASIGNADO;
+                anterior.recolectorId = idRecycler;
+                anterior.estado = StateServices.ASIGNADO;
 
                 SetResponse setResponse = client.Set("Service/" + item, anterior);
             }
@@ -93,13 +94,13 @@ namespace Enlazar_AdminMVC.Models
             {
                 service = JsonConvert.DeserializeObject<Service>(((JProperty)item).Value.ToString());
 
-                if (service.Estado != StateServices.FINALIZADO)
+                if (service.estado != StateServices.FINALIZADO)
                 {
 
-                    recycler = recyclerModel.GetRecycler(service.RecolectorId);
-                    user = recyclerModel.GetRecycler(service.UserId);
-                    service.RecolectorId = recycler.Name + " " + recycler.Surname;
-                    service.UserId = user.Name + " " + user.Surname;
+                    recycler = recyclerModel.GetRecycler(service.recolectorId);
+                    user = recyclerModel.GetRecycler(service.userId);
+                    service.recolectorId = recycler.name + " " + recycler.surname;
+                    service.userId = user.name + " " + user.surname;
 
                     listservices.Add(service);
                 }
