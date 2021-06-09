@@ -76,7 +76,9 @@ class MiRutaActivity : AppCompatActivity() {
 
     private fun toOnItemViewClick(servicio: Services) {
         val intent = Intent(this, MapRutaRecolectorActivity::class.java)
-        intent.putExtra("idNote", servicio.Id)
+        intent.putExtra("idService", servicio.Id)
+        intent.putExtra("lat", servicio.Latitud)
+        intent.putExtra("lon", servicio.Longitud)
         startActivity(intent)
     }
 
