@@ -1,5 +1,6 @@
 package ar.com.unlam.enlazar.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -107,10 +108,18 @@ db.child("User").child(idForLocation).addValueEventListener(object:ValueEventLis
             db.child("Service").child(serviceId).setValue(service).addOnCompleteListener{
                 Toast.makeText(this, "Tu Servicio ha sido registrado correctamente",Toast.LENGTH_LONG).show()
 
+                irDashboardUserActivity()
             }
         }
 
 
+    }
+    private fun irDashboardUserActivity() {
+        val darsheboardActivity = Intent(this, DashboardUserActivity::class.java)
+
+        this.startActivity(darsheboardActivity)
+        this@NuevoServicioActivity.finish()
+        startActivity(darsheboardActivity)
     }
     private fun setObservers() {
         newServiceViewModel.estados.observe(this,{estado(it)})

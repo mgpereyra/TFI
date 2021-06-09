@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import ar.com.unlam.enlazar.R
+import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.data.retrofit.GoogleMapsApiImpl
 import ar.com.unlam.enlazar.model.utils.DecodePointsJavaUtils
 import ar.com.unlam.mapexample.geoClases.RouteResult
@@ -18,6 +19,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,6 +46,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         const val SERVICE_ID = "idService"
         const val SERVICE_LAT = "lat"
         const val SERVICE_LONG = "lon"
+        const val SERVICE_ADDRESS = "address"
 
     }
 
@@ -66,11 +70,14 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         // createMarker()
         // createPolylines()
         // map.setOnMyLocationButtonClickListener(this)
-        //  map.setOnMyLocationClickListener(this)
+        map.setOnMyLocationClickListener(this)
+
+
         enableLocation()
         val idService = intent.getStringExtra(SERVICE_ID)
         val serviceLat = intent.getStringExtra(SERVICE_LAT)
         val serviceLon = intent.getStringExtra(SERVICE_LONG)
+
         //  trazarRutasLista(listaPuntos)
         if (serviceLat != null) {
             if (serviceLon != null) {
@@ -92,8 +99,8 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
 
     }
 
-
     private fun trazarRuta(origen: LatLng, destino: LatLng) {
+        val serviceAddress = intent.getStringExtra(SERVICE_ADDRESS)
         CoroutineScope(Dispatchers.IO).launch {
 
             GoogleMapsApiImpl().getRoutesAp(origen, destino, object : Callback<RouteResult> {
@@ -105,22 +112,29 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                                 DecodePointsJavaUtils.decodePoly(rutasResult!!.routes[0].overview_polyline.points) as List<LatLng>
 
                             mPolylineOptions = PolylineOptions()
-                            mPolylineOptions.color(ContextCompat.getColor(this@RutaRecolectorMapActivity,R.color.green2))
+                            mPolylineOptions.color(
+                                ContextCompat.getColor(
+                                    this@RutaRecolectorMapActivity,
+                                    R.color.green2
+                                )
+                            )
                             mPolylineOptions.width(13f)
                             mPolylineOptions.startCap(SquareCap())
                             mPolylineOptions.jointType(JointType.ROUND)
                             mPolylineOptions.addAll(mPolylineList)
                             val polyLine = map.addPolyline(mPolylineOptions)
                             polyLine.jointType
-                            var marker: MarkerOptions = MarkerOptions().position(destino)
+                            var marker: MarkerOptions =
+                                MarkerOptions().position(destino).title(serviceAddress)
+                            // .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_service_v_uno
                             map.addMarker(marker)
-                      /*      map.animateCamera(
-                                CameraUpdateFactory.newLatLngZoom(
-                                    LatLng(-34.744774, -58.695204),
-                                    10f
-                                ),
-                                2000, null
-                            )*/
+                                 map.animateCamera(
+                                      CameraUpdateFactory.newLatLngZoom(
+                                          LatLng(-34.744774, -58.695204),
+                                          15f
+                                      ),
+                                      2000, null
+                                  )
                             Toast.makeText(
                                 this@RutaRecolectorMapActivity,
                                 "Trazado exitoso",
@@ -150,7 +164,13 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
             })
         }
     }
+private fun actualizarServicio(){
+     val rootRef: DatabaseReference = FirebaseDatabase.getInstance().reference
+     val referenciaUser: DatabaseReference =rootRef.child(Constants.SERVICE_REF)
 
+    //referenciaUser.updateChildren()
+
+}
     private fun createPolylines() {
         val polylineOptions = PolylineOptions()
             .add(LatLng(-34.744774, -58.695204))
@@ -163,11 +183,11 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         val coordinates = LatLng(-34.744774, -58.695204)
         val marker: MarkerOptions = MarkerOptions().position(coordinates).title("Mi calle")
         map.addMarker(marker)
-  /*      map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(LatLng(-34.744774, -58.695204), 18f),
-            4000,
-            null
-        )*/
+        /*      map.animateCamera(
+                  CameraUpdateFactory.newLatLngZoom(LatLng(-34.744774, -58.695204), 18f),
+                  4000,
+                  null
+              )*/
     }
 
     private fun isLocarionPermissionGranted() = ContextCompat.checkSelfPermission(

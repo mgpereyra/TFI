@@ -50,7 +50,6 @@ class DashboardUserActivity : AppCompatActivity() {
             val intent= Intent(this, NuevoServicioActivity::class.java)
             intent.putExtra(NuevoServicioActivity.ID,userId)
             userId
-            this@DashboardUserActivity.finish()
             this.startActivity(intent)
 
         }
@@ -69,20 +68,22 @@ setSupportActionBar(toolbar)
     if (ab!=null){
         ab.setHomeAsUpIndicator(R.drawable.menu)
         ab.setDisplayHomeAsUpEnabled(true)
-
     }
 
 }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            android.R.id.home->{
+           android.R.id.home->{
                 drawer.openDrawer(GravityCompat.START)
             }
+
         }
         return super.onOptionsItemSelected(item)
     }
     companion object {
         val IDKEY: String = "id"
     }
+
+
 }

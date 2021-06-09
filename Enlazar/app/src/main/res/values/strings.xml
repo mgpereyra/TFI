@@ -63,6 +63,8 @@
     <string name="Dni">Ingrese su DNI</string>
     <string name="Partido">Partido</string>
     <string name="selecciona_el_d_a">Selecciona el día</string>
+    <string name="prefs_file">datosSession</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>

@@ -2,6 +2,7 @@ package ar.com.unlam.enlazar.data.retrofit
 
 import ar.com.unlam.enlazar.model.ResponseServicios
 import ar.com.unlam.enlazar.model.Service
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
@@ -23,10 +24,8 @@ private val serviceReference:DatabaseReference=rootRef.child(Constants.SERVICE_R
     }
 
     suspend fun getResponseFromRealtimeDatabaseUsingCoroutines(): ResponseServicios {
-      // val id = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
-
+        val idRecolector = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
         val response = ResponseServicios()
-        val idRecolector = "IogPUzpZOGXzBJxJJeP24IWVSA73"
         try {
             response.listService = serviceReference.orderByChild("recolectorId").equalTo(idRecolector).get().await().children.map { snapShot ->
                 snapShot.getValue(Service::class.java)!!

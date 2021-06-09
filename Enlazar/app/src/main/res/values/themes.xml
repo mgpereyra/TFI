@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-     <style name="Theme.Enlazar" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.Enlazar" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#001c12</item>
         <item name="colorPrimaryVariant">#CB3D3E39</item>
@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Buscar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -22,13 +23,29 @@
         <item name="android:layout_marginRight">25dp</item>
         <item name="android:background">@drawable/circle</item>
     </style>
+
     <style name="datePickerTheme" parent="android:Theme.Material.Light.Dialog">
         <item name="android:colorAccent">@color/teal_700</item>
 
     </style>
+
     <style name="timePicker" parent="android:Theme.Material.Light.Dialog">
 
         <item name="android:colorAccent">@color/teal_700</item>
 
+    </style>
+
+    <style name="Theme.SplashScreen" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#006D46</item>
+        <item name="colorPrimaryVariant">#001c12</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
     </style>
 </resources>

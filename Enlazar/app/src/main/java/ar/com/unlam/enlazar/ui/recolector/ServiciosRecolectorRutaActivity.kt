@@ -16,6 +16,7 @@ import ar.com.unlam.enlazar.model.clasesDePrueba.Recolector
 import ar.com.unlam.enlazar.model.clasesDePrueba.Servicio
 import ar.com.unlam.enlazar.ui.Estado
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_servicios_recolector_ruta.*
 
@@ -66,10 +67,12 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
     private fun setListeners() {
    /*     buttonIrMapa.setOnClickListener {
 
-        }*/
+        }
         binding.buttonRutas.setOnClickListener {
     createServicesPruebas()
-        }
+        }*/
+
+
     }
 
     private fun toOnItemViewClick(servicio: Service) {
@@ -77,6 +80,7 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
         intent.putExtra("idService", servicio.id)
         intent.putExtra("lat", servicio.latitud)
         intent.putExtra("lon", servicio.longitud)
+        intent.putExtra("address", servicio.address)
         startActivity(intent)
     }
 
