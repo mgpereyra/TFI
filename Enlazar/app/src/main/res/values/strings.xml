@@ -4,7 +4,7 @@
     <string name="title_card_mis_servicios">Mis Servicios</string>
     <string name="title_card_mis_puntos">Mis puntos</string>
     <string name="title_card_mis_encuentros">Mis encuentros</string>
-    <string name="title_card_seccic_n_informativa">Seccicón Informativa</string>
+    <string name="title_card_seccic_n_informativa">Sección Informativa</string>
     <string name="subTitle_seccion_informativa">¡Aprende todo sobre reciclaje!</string>
     <string name="subtitle_proximo_encuentro">Proximo encuentro</string>
     <string name="subtitle__mis_puntos">190 Puntos</string>
@@ -65,6 +65,8 @@
     <string name="selecciona_el_d_a">Selecciona el día</string>
     <string name="prefs_file">datosSession</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="iniciar_servicio">Iniciar Servicio</string>
+    <string name="finalizar_servicio">Finalizar Servicio</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>

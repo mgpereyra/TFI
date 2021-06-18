@@ -2,25 +2,32 @@ package ar.com.unlam.enlazar.ui.recolector
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.data.retrofit.GoogleMapsApiImpl
+import ar.com.unlam.enlazar.data.retrofit.ServiceFields
+import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.model.utils.DecodePointsJavaUtils
 import ar.com.unlam.mapexample.geoClases.RouteResult
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_map_ruta_recolector.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,6 +41,20 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     private var rutasResult: RouteResult? = null
     private var mPolylineList = listOf<LatLng>()
     private lateinit var mPolylineOptions: PolylineOptions
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var mCurrentLatLng: LatLng = LatLng(0.0, 0.0)
+    private var mCurrentDistance: Int = 0
+    private var idService = ""
+    private var serviceLat = ""
+    private var serviceLon = ""
+    private var driverLat = ""
+    private var driverLon = ""
+
+    private lateinit var database: FirebaseDatabase
+
+    //  private lateinit var referaceUsuario: DatabaseReference
+    private lateinit var referaceServicio: DatabaseReference
+    var handler = Handler(Looper.getMainLooper())
     private var listaPuntos: List<LatLng> = listOf(
         LatLng(-34.744774, -58.695204),
         LatLng(-34.746859, -58.717010),
@@ -46,18 +67,58 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         const val SERVICE_ID = "idService"
         const val SERVICE_LAT = "lat"
         const val SERVICE_LONG = "lon"
+        const val DRIVER_LAT = "currentlat"
+        const val DRIVER_LONG = "currentlon"
         const val SERVICE_ADDRESS = "address"
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_ruta_recolector)
+
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
         createFragment()
 
-        //viewModel.getNoteById(idNoteEditable)
+        btnIniciarServicio.setOnClickListener {
+            // obtenerCurretPositionLoop(false)
+            btnIniciarServicio.visibility = View.GONE
+            btnFinalizarServicio.visibility = View.VISIBLE
+        }
+
+        btnFinalizarServicio.setOnClickListener {
+            //obtenerCurretPositionLoop(true)
+            btnFinalizarServicio.visibility = View.GONE
+            btnIniciarServicio.visibility = View.VISIBLE
+            getLastLocation()
+            if (mCurrentDistance < 500) {
+                actualizarServicio()
+            } else {
+                Toast.makeText(
+                    this,
+                    "No estas lo suficientemente cerca del servicio para finalizarlo.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    fun obtenerCurretPositionLoop(cancelarServicio: Boolean) {
+        val TIEMPO: Long = 10000
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+
+                getLastLocation()
+                if (cancelarServicio) {
+                    finishAndRemoveTask()
+                }// función para refrescar la ubicación del conductor, creada en otra línea de código
+                handler.postDelayed(this, TIEMPO)
+            }
+        }, TIEMPO)
 
     }
+
 
     private fun createFragment() {
         val mapFragment =
@@ -74,18 +135,80 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
 
 
         enableLocation()
-        val idService = intent.getStringExtra(SERVICE_ID)
-        val serviceLat = intent.getStringExtra(SERVICE_LAT)
-        val serviceLon = intent.getStringExtra(SERVICE_LONG)
 
+
+        idService = intent.getStringExtra(SERVICE_ID).toString()
+        serviceLat = intent.getStringExtra(SERVICE_LAT).toString()
+        serviceLon = intent.getStringExtra(SERVICE_LONG).toString()
+        driverLat = intent.getStringExtra(DRIVER_LAT).toString()
+        driverLon = intent.getStringExtra(DRIVER_LONG).toString()
         //  trazarRutasLista(listaPuntos)
-        if (serviceLat != null) {
-            if (serviceLon != null) {
-                trazarRuta(
-                    LatLng(-34.744774, -58.695204),
-                    LatLng(serviceLat.toDouble(), serviceLon.toDouble())
-                )
-            }
+
+        getLastLocation()
+        trazarRuta(
+            LatLng(driverLat.toDouble(), driverLon.toDouble()),
+            LatLng(serviceLat.toDouble(), serviceLon.toDouble())
+        )
+    }
+
+
+    fun getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+
+                    mCurrentLatLng = LatLng(location!!.latitude, location.longitude)
+                    GoogleMapsApiImpl().getRoutesAp(
+                        mCurrentLatLng,
+                        LatLng(serviceLat!!.toDouble(), serviceLon!!.toDouble()),
+                        object : Callback<RouteResult> {
+                            override fun onResponse(
+                                call: Call<RouteResult>,
+                                response: Response<RouteResult>
+                            ) {
+                                when (response.code()) {
+                                    in 200..299 -> {
+                                        rutasResult = response.body()!!
+                                        mCurrentDistance =
+                                            rutasResult!!.routes[0].legs[0].distance.value
+                              /*          Toast.makeText(
+                                            this@RutaRecolectorMapActivity,
+                                            "Current Distance: " + mCurrentDistance,
+                                            Toast.LENGTH_SHORT
+                                        ).show()*/
+
+                                    }
+                                    else -> {
+                                        Toast.makeText(
+                                            this@RutaRecolectorMapActivity,
+                                            getString((response.code())),
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }
+
+                                }
+                            }
+
+                            override fun onFailure(call: Call<RouteResult>, t: Throwable) {
+                                Toast.makeText(
+                                    this@RutaRecolectorMapActivity,
+                                    getString(R.string.search_call_error),
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+
+                        })
+                }
         }
     }
 
@@ -128,13 +251,13 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                                 MarkerOptions().position(destino).title(serviceAddress)
                             // .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_service_v_uno
                             map.addMarker(marker)
-                                 map.animateCamera(
-                                      CameraUpdateFactory.newLatLngZoom(
-                                          LatLng(-34.744774, -58.695204),
-                                          15f
-                                      ),
-                                      2000, null
-                                  )
+                            map.animateCamera(
+                                CameraUpdateFactory.newLatLngZoom(
+                                    LatLng(origen.latitude,origen.longitude),
+                                    15f
+                                ),
+                                2000, null
+                            )
                             Toast.makeText(
                                 this@RutaRecolectorMapActivity,
                                 "Trazado exitoso",
@@ -164,13 +287,14 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
             })
         }
     }
-private fun actualizarServicio(){
-     val rootRef: DatabaseReference = FirebaseDatabase.getInstance().reference
-     val referenciaUser: DatabaseReference =rootRef.child(Constants.SERVICE_REF)
 
-    //referenciaUser.updateChildren()
+    private fun actualizarServicio() {
+        database = FirebaseDatabase.getInstance()
+        referaceServicio = database.getReference(Constants.SERVICE_REF)
+        referaceServicio.child(idService).child(ServiceFields.ESTADO).setValue(Constants.ESTADO_SERV_FINALIZADO)
 
-}
+    }
+
     private fun createPolylines() {
         val polylineOptions = PolylineOptions()
             .add(LatLng(-34.744774, -58.695204))
@@ -295,14 +419,4 @@ private fun actualizarServicio(){
         return false
     }
 
-
-/* override fun onMyLocationButtonClick(): Boolean {
-     Toast.makeText(this, "Boton pulsado", Toast.LENGTH_SHORT).show()
-
-     return false //en false te lleva a la ubicacion actual al abrir. En true no
- }
-
-override fun onMyLocationClick(p0: Location) {
-     Toast.makeText(this, "Estas en ${p0.latitude},${p0.longitude}", Toast.LENGTH_SHORT).show()
- }*/
 }

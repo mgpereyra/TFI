@@ -6,15 +6,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.recolector.RutaRecolectorMapActivity">
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.recolector.RutaRecolectorMapActivity"
-    android:id="@+id/mapRecolector">
 
-</fragment>
+    <fragment
+        android:id="@+id/mapRecolector"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.recolector.RutaRecolectorMapActivity">
+
+    </fragment>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnIniciarServicio"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/emerald"
+        android:text="@string/iniciar_servicio"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/emerald" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFinalizarServicio"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="84dp"
+        android:backgroundTint="@color/emerald"
+        android:text="@string/finalizar_servicio"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/emerald" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
