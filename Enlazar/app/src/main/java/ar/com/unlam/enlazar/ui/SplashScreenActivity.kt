@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import ar.com.unlam.enlazar.R
-import ar.com.unlam.enlazar.ui.recolector.ServiciosRecolectorRutaActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreenActivity : Activity() {

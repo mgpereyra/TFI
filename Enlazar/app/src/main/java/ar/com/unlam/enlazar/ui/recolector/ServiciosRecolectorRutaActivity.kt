@@ -1,13 +1,19 @@
 package ar.com.unlam.enlazar.ui.recolector
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.adapter.MisServiciosRecolectorAdapter
+import ar.com.unlam.enlazar.data.retrofit.GoogleMapsApiImpl
 import ar.com.unlam.enlazar.databinding.ActivityServiciosRecolectorRutaBinding
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.model.clasesDePrueba.Direccion
@@ -15,17 +21,27 @@ import ar.com.unlam.enlazar.model.clasesDePrueba.PuntoLatLong
 import ar.com.unlam.enlazar.model.clasesDePrueba.Recolector
 import ar.com.unlam.enlazar.model.clasesDePrueba.Servicio
 import ar.com.unlam.enlazar.ui.Estado
+import ar.com.unlam.mapexample.geoClases.RouteResult
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_servicios_recolector_ruta.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ServiciosRecolectorRutaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityServiciosRecolectorRutaBinding
     private lateinit var adapter: MisServiciosRecolectorAdapter
     private val viewModelServices: ServiciosRecolectorViewModel by viewModels()
-
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var mCurrentLatLng: LatLng = LatLng(0.0, 0.0)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_servicios_recolector_ruta)
@@ -34,28 +50,42 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
 
         adapter = MisServiciosRecolectorAdapter { service -> toOnItemViewClick(service) }
         with(binding.rvRutaServiciosList) {
-            // layoutManager = GridLayoutManager(applicationContext,2,LinearLayoutManager.VERTICAL,false) // Para implementar en con otro estilo
             layoutManager =
-                LinearLayoutManager(this@ServiciosRecolectorRutaActivity, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(
+                    this@ServiciosRecolectorRutaActivity,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
             this.adapter = this@ServiciosRecolectorRutaActivity.adapter
         }
-        setListeners()
 
+
+        setListeners()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getLastLocation()
     }
 
     override fun onStart() {
-        getServicesResponde()
+        getServicesResponde2()
         //viewModelServices.getServices()
         setObservers()
         super.onStart()
     }
 
-    private fun getServicesResponde() {
-        viewModelServices.responseLiveData.observe(this, {
-            it.listService?.let { it1 -> adapter.submitList(it1) }
+    private fun getServicesResponde2() {
+        viewModelServices.misServicios.observe(this, {
+            adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
     }
+
+
+    /*   private fun getServicesResponde() {
+           viewModelServices.responseLiveData.observe(this, {
+               it.listService?.let { it1 -> adapter.submitList(it1) }
+               adapter.notifyDataSetChanged()
+           })
+       }*/
 
     private fun setObservers() {
         viewModelServices.misServicios.observe(this, Observer {
@@ -65,13 +95,35 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-   /*     buttonIrMapa.setOnClickListener {
+        /*     buttonIrMapa.setOnClickListener {
+
+             }
+             binding.buttonRutas.setOnClickListener {
+         createServicesPruebas()
+             }*/
+
+
+    }
+
+    fun getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+                    // Got last known location. In some rare situations this can be null.
+                    mCurrentLatLng = LatLng(location!!.latitude, location.longitude)
+                }
 
         }
-        binding.buttonRutas.setOnClickListener {
-    createServicesPruebas()
-        }*/
-
 
     }
 
@@ -80,6 +132,8 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
         intent.putExtra("idService", servicio.id)
         intent.putExtra("lat", servicio.latitud)
         intent.putExtra("lon", servicio.longitud)
+        intent.putExtra("currentlat", mCurrentLatLng.latitude.toString())
+        intent.putExtra("currentlon", mCurrentLatLng.longitude.toString())
         intent.putExtra("address", servicio.address)
         startActivity(intent)
     }
@@ -92,14 +146,14 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
     }
 
 
-    val ser1= LatLng(-34.743781, -58.697613)
-    val ser3= LatLng(-34.745782, -58.699168)
-    val ser2= LatLng( -34.745570, -58.696870)
+    val ser1 = LatLng(-34.743781, -58.697613)
+    val ser3 = LatLng(-34.745782, -58.699168)
+    val ser2 = LatLng(-34.745570, -58.696870)
 
     private fun createServicesPruebas() {
         /*val date = getCurrentDateTime()
         val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")*/
-        val db= FirebaseDatabase.getInstance().getReference()
+        val db = FirebaseDatabase.getInstance().getReference()
 
         var serviceId = db.push().key.toString()
         var service = Service(
@@ -133,8 +187,18 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
         )
         var serviceId2 = db.push().key.toString()
 
-        var service2 = Service("Avenida Díaz 526", serviceId2, ser2.latitude.toString(), ser2.longitude.toString(),3,
-            4,5,    "14/5/2021",  "10:00", "fUSJ6q9xbfdYODe3jvP0eG5ksN23","IogPUzpZOGXzBJxJJeP24IWVSA73",
+        var service2 = Service(
+            "Avenida Díaz 526",
+            serviceId2,
+            ser2.latitude.toString(),
+            ser2.longitude.toString(),
+            3,
+            4,
+            5,
+            "14/5/2021",
+            "10:00",
+            "fUSJ6q9xbfdYODe3jvP0eG5ksN23",
+            "IogPUzpZOGXzBJxJJeP24IWVSA73",
             Estado.PENDIENTE.ordinal
         )
         var serviceId3 = db.push().key.toString()
