@@ -136,8 +136,8 @@ class CrearCuentaActivity : AppCompatActivity() {
         id = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
         var user = User(
             mAdress.toString(), partido.editText?.text.toString(),
-            dni.editText?.text.toString().toInt(), email.editText?.text.toString(),
-            id, dateInString, mOriginLat, mOriginLng, location.editText?.text.toString(),
+            dni.editText?.text.toString(), email.editText?.text.toString(),
+            id, dateInString, mOriginLat.toString(), mOriginLng.toString(), location.editText?.text.toString(),
             name.editText?.text.toString(), password.editText?.text.toString(),
             telephone.editText?.text.toString()
         )

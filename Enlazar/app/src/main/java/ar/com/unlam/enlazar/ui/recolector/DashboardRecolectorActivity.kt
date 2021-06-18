@@ -15,11 +15,15 @@ class DashboardRecolectorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard_recolector)
 
-        val prefs=getSharedPreferences(getString(R.string.prefs_file),Context.MODE_PRIVATE).edit()
-    /*    prefs.putString("idUsuario",id)
-        prefs.putString("email",email)
-        prefs.putString("typeUser",typeruser)
-            prefs.apply()*/
+  /*      val bundle = intent.extras
+        val idUser = bundle?.getString("idUser")
+        val email = bundle?.getString("email")
+        val typeUser = bundle?.getInt("typeUser")
+        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
+        pref.putString("idUser", idUser)
+        pref.putString("email", email)
+        pref.putInt("typeUser", typeUser!!)
+        pref.apply()*/
 
         cardView_ir_mis_servicios.setOnClickListener {
             val intent: Intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
