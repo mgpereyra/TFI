@@ -78,4 +78,7 @@
         <item>3 de Febrero</item>
         <item>Avellaneda</item>
     </string-array>
+
+    <string name="user_login">USERLOGIN</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package ar.com.unlam.enlazar.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
@@ -17,7 +18,13 @@ class DashboardUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+/*        val bundle = intent.extras
+        val idUser = bundle?.getString("idUser")
+        val email = bundle?.getString("email")
+        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
+        pref.putString("idUser", idUser)
+        pref.putString("email", email)
+        pref.apply()*/
         if (intent.hasExtra(IDKEY)) {
             userId = intent.extras!!.getString(IDKEY, "").toString()
         }

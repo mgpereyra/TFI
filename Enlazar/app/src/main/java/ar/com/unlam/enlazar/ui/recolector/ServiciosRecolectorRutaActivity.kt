@@ -42,6 +42,7 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
     private val viewModelServices: ServiciosRecolectorViewModel by viewModels()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var mCurrentLatLng: LatLng = LatLng(0.0, 0.0)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_servicios_recolector_ruta)
@@ -122,7 +123,6 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
                     // Got last known location. In some rare situations this can be null.
                     mCurrentLatLng = LatLng(location!!.latitude, location.longitude)
                 }
-
         }
 
     }
