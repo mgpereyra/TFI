@@ -1,5 +1,6 @@
 package ar.com.unlam.enlazar.model
 
+import java.io.Serializable
 import java.util.*
 
 data class Service (
@@ -16,4 +17,4 @@ data class Service (
         val recolectorId:String? = null,
         val estado:Int? = null,
 
-        )
+        ): Serializable

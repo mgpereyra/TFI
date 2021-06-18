@@ -67,6 +67,7 @@
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="iniciar_servicio">Iniciar Servicio</string>
     <string name="finalizar_servicio">Finalizar Servicio</string>
+    <string name="comentarios_sobre_el_servicio">Comentarios sobre el servicio</string>
     <string-array name="locations_array">
         <item>Ramos Mejia</item>
         <item>San Justo</item>

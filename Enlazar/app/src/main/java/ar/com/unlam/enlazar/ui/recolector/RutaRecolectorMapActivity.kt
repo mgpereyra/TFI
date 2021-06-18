@@ -1,6 +1,7 @@
 package ar.com.unlam.enlazar.ui.recolector
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -49,6 +50,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     private var serviceLon = ""
     private var driverLat = ""
     private var driverLon = ""
+    private  lateinit var service: Service
 
     private lateinit var database: FirebaseDatabase
 
@@ -82,25 +84,33 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         createFragment()
 
         btnIniciarServicio.setOnClickListener {
-            // obtenerCurretPositionLoop(false)
             btnIniciarServicio.visibility = View.GONE
             btnFinalizarServicio.visibility = View.VISIBLE
+
         }
 
         btnFinalizarServicio.setOnClickListener {
             //obtenerCurretPositionLoop(true)
-            btnFinalizarServicio.visibility = View.GONE
-            btnIniciarServicio.visibility = View.VISIBLE
+
             getLastLocation()
             if (mCurrentDistance < 500) {
-                actualizarServicio()
+                btnFinalizarServicio.visibility = View.GONE
+                cardViewFinalizarServicio.visibility = View.VISIBLE
             } else {
                 Toast.makeText(
                     this,
-                    "No estas lo suficientemente cerca del servicio para finalizarlo.",
+                    "Debes estar cerca del servicio para poder finalizarlo.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+
+        btnTerminarServConfirm.setOnClickListener {
+            var comentario = comentarioTerminarServicio.text.toString()
+            actualizarServicio(comentario)
+           // btnIniciarServicio.visibility = View.VISIBLE
+            btnFinalizarServicio.visibility = View.VISIBLE
+            cardViewFinalizarServicio.visibility = View.GONE
         }
     }
 
@@ -136,7 +146,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
 
         enableLocation()
 
-
+        service = intent.getSerializableExtra("Service") as Service
         idService = intent.getStringExtra(SERVICE_ID).toString()
         serviceLat = intent.getStringExtra(SERVICE_LAT).toString()
         serviceLon = intent.getStringExtra(SERVICE_LONG).toString()
@@ -147,7 +157,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         getLastLocation()
         trazarRuta(
             LatLng(driverLat.toDouble(), driverLon.toDouble()),
-            LatLng(serviceLat.toDouble(), serviceLon.toDouble())
+            LatLng(service.latitud!!.toDouble(), service.longitud!!.toDouble())
         )
     }
 
@@ -164,13 +174,15 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
             return
         }
         CoroutineScope(Dispatchers.IO).launch {
+            val servDestination =
+                LatLng(service.latitud!!.toDouble(), service.longitud!!.toDouble())
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location: Location? ->
 
                     mCurrentLatLng = LatLng(location!!.latitude, location.longitude)
                     GoogleMapsApiImpl().getRoutesAp(
                         mCurrentLatLng,
-                        LatLng(serviceLat!!.toDouble(), serviceLon!!.toDouble()),
+                        servDestination,
                         object : Callback<RouteResult> {
                             override fun onResponse(
                                 call: Call<RouteResult>,
@@ -181,11 +193,11 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                                         rutasResult = response.body()!!
                                         mCurrentDistance =
                                             rutasResult!!.routes[0].legs[0].distance.value
-                              /*          Toast.makeText(
-                                            this@RutaRecolectorMapActivity,
-                                            "Current Distance: " + mCurrentDistance,
-                                            Toast.LENGTH_SHORT
-                                        ).show()*/
+                                        /*          Toast.makeText(
+                                                      this@RutaRecolectorMapActivity,
+                                                      "Current Distance: " + mCurrentDistance,
+                                                      Toast.LENGTH_SHORT
+                                                  ).show()*/
 
                                     }
                                     else -> {
@@ -253,7 +265,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                             map.addMarker(marker)
                             map.animateCamera(
                                 CameraUpdateFactory.newLatLngZoom(
-                                    LatLng(origen.latitude,origen.longitude),
+                                    LatLng(origen.latitude, origen.longitude),
                                     15f
                                 ),
                                 2000, null
@@ -288,10 +300,16 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         }
     }
 
-    private fun actualizarServicio() {
+    private fun actualizarServicio(comentario: String?) {
         database = FirebaseDatabase.getInstance()
         referaceServicio = database.getReference(Constants.SERVICE_REF)
-        referaceServicio.child(idService).child(ServiceFields.ESTADO).setValue(Constants.ESTADO_SERV_FINALIZADO)
+        referaceServicio.child(idService).child(ServiceFields.ESTADO)
+            .setValue(Constants.ESTADO_SERV_FINALIZADO)
+        referaceServicio.child(idService).child(ServiceFields.COMENTARIO).setValue(comentario)
+
+        val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
+        startActivity(intent)
+        finish()
 
     }
 

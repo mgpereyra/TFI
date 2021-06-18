@@ -16,6 +16,77 @@
 
     </fragment>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewFinalizarServicio"
+        style="@style/CardView.Light"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_margin="8dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="#F3FFFFFF"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/mapRecolector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:id="@+id/comentarioTerminarServicio"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:backgroundTint="@color/backGroundCustom"
+                android:hint="@string/comentarios_sobre_el_servicio"
+                android:padding="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/black"
+                android:textColorHint="#A9000000"
+                app:layout_constraintBottom_toTopOf="@+id/btnTerminarServConfirm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleTerminarServicio"
+                app:layout_constraintVertical_bias="0.9" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTerminarServConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="@color/emerald"
+                android:text="TERMINAR SERVICIO"
+                android:textColor="@color/white"
+                android:visibility="visible"
+                app:cornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:strokeColor="@color/emerald" />
+
+            <TextView
+                android:id="@+id/tvTitleTerminarServicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Servicio nombre"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/btnTerminarServConfirm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnIniciarServicio"
         android:layout_width="200dp"
@@ -24,7 +95,7 @@
         android:backgroundTint="@color/emerald"
         android:text="@string/iniciar_servicio"
         android:textColor="@color/white"
-        android:visibility="visible"
+        android:visibility="gone"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,11 +107,11 @@
         android:id="@+id/btnFinalizarServicio"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="36dp"
         android:backgroundTint="@color/emerald"
         android:text="@string/finalizar_servicio"
         android:textColor="@color/white"
-        android:visibility="gone"
+        android:visibility="visible"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

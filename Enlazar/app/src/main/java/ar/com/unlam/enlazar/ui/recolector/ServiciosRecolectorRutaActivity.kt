@@ -135,6 +135,7 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
         intent.putExtra("currentlat", mCurrentLatLng.latitude.toString())
         intent.putExtra("currentlon", mCurrentLatLng.longitude.toString())
         intent.putExtra("address", servicio.address)
+        intent.putExtra("Service",servicio)
         startActivity(intent)
     }
 

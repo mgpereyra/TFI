@@ -9,4 +9,6 @@ object ServiceFields {
     const val DATE = "date"
     const val LATITUD = "latitud"
     const val LONGITUD = "longitud"
+    const val COMENTARIO = "comentario"
+
 }
