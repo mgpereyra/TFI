@@ -10,6 +10,8 @@ import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.model.User
 import ar.com.unlam.enlazar.ui.recolector.DashboardRecolectorActivity
+import ar.com.unlam.enlazar.ui.vecino.CrearCuentaActivity
+import ar.com.unlam.enlazar.ui.vecino.DashboardUserActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*

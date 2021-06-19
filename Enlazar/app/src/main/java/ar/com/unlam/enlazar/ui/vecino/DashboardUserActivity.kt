@@ -1,6 +1,5 @@
-package ar.com.unlam.enlazar.ui
+package ar.com.unlam.enlazar.ui.vecino
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
@@ -55,7 +54,7 @@ class DashboardUserActivity : AppCompatActivity() {
         btn_new_service.setOnClickListener{
 
             val intent= Intent(this, NuevoServicioActivity::class.java)
-            intent.putExtra(NuevoServicioActivity.ID,userId)
+            intent.putExtra(NuevoServicioActivity.ID, userId)
             userId
             this.startActivity(intent)
 

@@ -13,7 +13,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DashboardUserActivity"
+    tools:context=".ui.vecino.DashboardUserActivity"
     android:background="@color/backGroundCustom">
     <LinearLayout
         android:id="@+id/barra"

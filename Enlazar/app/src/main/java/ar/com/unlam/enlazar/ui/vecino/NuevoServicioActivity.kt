@@ -1,4 +1,4 @@
-package ar.com.unlam.enlazar.ui
+package ar.com.unlam.enlazar.ui.vecino
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.Service
+import ar.com.unlam.enlazar.ui.Estado
 import ar.com.unlam.enlazar.ui.pickers.DatePickerFragent
 import ar.com.unlam.enlazar.ui.pickers.TimePickerFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -22,11 +23,7 @@ import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
-enum class Estado{
-    PENDIENTE,
-    ASIGNADO,
-    FINALIZADO
-}
+
 
 class NuevoServicioActivity : AppCompatActivity() {
     var id:String=""
@@ -103,7 +100,7 @@ db.child("User").child(idForLocation).addValueEventListener(object:ValueEventLis
        var serviceId= db.push().key.toString()
         var service= Service(u,serviceId,lat.toString(),long.toString(),cant_tipo1.editText?.text.toString().toIntOrNull(),
         cant_tipo2.editText?.text.toString().toIntOrNull(),cant_tipo3.editText?.text.toString().toIntOrNull(),
-            dia_picker.text.toString(),horario_picker.text.toString(),id,"",Estado.PENDIENTE.ordinal)
+            dia_picker.text.toString(),horario_picker.text.toString(),id,"", Estado.PENDIENTE.ordinal)
         if (serviceId!= null) {
             db.child("Service").child(serviceId).setValue(service).addOnCompleteListener{
                 Toast.makeText(this, "Tu Servicio ha sido registrado correctamente",Toast.LENGTH_LONG).show()

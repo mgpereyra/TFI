@@ -6,34 +6,26 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.adapter.MisServiciosRecolectorAdapter
-import ar.com.unlam.enlazar.data.retrofit.GoogleMapsApiImpl
 import ar.com.unlam.enlazar.databinding.ActivityServiciosRecolectorRutaBinding
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.model.clasesDePrueba.Direccion
 import ar.com.unlam.enlazar.model.clasesDePrueba.PuntoLatLong
 import ar.com.unlam.enlazar.model.clasesDePrueba.Recolector
 import ar.com.unlam.enlazar.model.clasesDePrueba.Servicio
-import ar.com.unlam.enlazar.ui.Estado
-import ar.com.unlam.mapexample.geoClases.RouteResult
+import ar.com.unlam.enlazar.ui.vecino.Estado
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_servicios_recolector_ruta.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ServiciosRecolectorRutaActivity : AppCompatActivity() {
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.databinding.ServiciosRecolectorRutaItemBinding
 import ar.com.unlam.enlazar.model.Service
 
-class MisServiciosRecolectorAdapter(val onItemDetailViewClick: (servicioItem: Service) -> Unit) :
+class   MisServiciosRecolectorAdapter(val onItemDetailViewClick: (servicioItem: Service) -> Unit) :
     RecyclerView.Adapter<MisServiciosRecolectorAdapter.ServiciosHolder>() {
 
     private val servicesList = mutableListOf<Service>()

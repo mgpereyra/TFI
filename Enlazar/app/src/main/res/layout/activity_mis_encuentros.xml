@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MisEncuentrosActivity">
+    tools:context=".ui.vecino.MisEncuentrosActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.DetalleServicioActivity"
+        tools:context=".ui.vecino.DetalleServicioActivity"
         android:background="@color/backGroundCustom">
     <LinearLayout
         android:id="@+id/barra"
