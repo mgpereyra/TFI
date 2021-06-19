@@ -120,15 +120,21 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
     }
 
     private fun toOnItemViewClick(servicio: Service) {
-        val intent = Intent(this, RutaRecolectorMapActivity::class.java)
-        intent.putExtra("idService", servicio.id)
-        intent.putExtra("lat", servicio.latitud)
-        intent.putExtra("lon", servicio.longitud)
-        intent.putExtra("currentlat", mCurrentLatLng.latitude.toString())
-        intent.putExtra("currentlon", mCurrentLatLng.longitude.toString())
-        intent.putExtra("address", servicio.address)
-        intent.putExtra("Service",servicio)
-        startActivity(intent)
+        if(servicio.estado==3){
+            Toast.makeText(this, "no se puede ir a servicio finalizado loco",Toast.LENGTH_LONG).show()
+        }else{
+
+            val intent = Intent(this, RutaRecolectorMapActivity::class.java)
+            intent.putExtra("idService", servicio.id)
+            intent.putExtra("lat", servicio.latitud)
+            intent.putExtra("lon", servicio.longitud)
+            intent.putExtra("currentlat", mCurrentLatLng.latitude.toString())
+            intent.putExtra("currentlon", mCurrentLatLng.longitude.toString())
+            intent.putExtra("address", servicio.address)
+            intent.putExtra("Service",servicio)
+            startActivity(intent)
+        }
+
     }
 
     fun generarRecolector() {
