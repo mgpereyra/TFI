@@ -1,12 +1,24 @@
-import React , {useState, useContext} from 'react'
+import React , {useState, useContext, useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import alertaContext from '../../context/alerta/alertaContext';
 import authContext from '../../context/auth/authContext';
 
-const Login = () => {
+const Login = (props) => {
 
   const {alerta, mostrarAlerta} = useContext(alertaContext);
   const {iniciarSesion, mensaje, autenticado} = useContext(authContext);
+  
+  //en caso de q el password o usuario no existe
+  useEffect(() => {
+    if(autenticado){
+      props.history.push('/dashboard')
+    }
+
+    if(mensaje){
+      mostrarAlerta(mensaje.msg, mensaje.categoria)
+    }
+
+  }, [mensaje, autenticado, props.history])
   
   //state para iniciar sesion
 const [user, setUser] = useState({
@@ -35,10 +47,12 @@ const onSubmitLogin = e =>{
   }
 
   //
+  iniciarSesion({email, password});
 }
 
     return (
       <div className='form-usuario'>
+        {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
       <div className='contenedor-form sombra-dark'>
           <h1>Enlazar</h1>
         <h2>Iniciar Sesión</h2>
@@ -71,7 +85,7 @@ const onSubmitLogin = e =>{
           <div className='campo-form'>
             <input
               type='submit'
-              className='btn btn-primario btn-block'
+              className='btn btn-primary btn-block'
               value='Iniciar Sesión'
             />
 

@@ -17,44 +17,38 @@ exports.authentication =  async (req, res)=>{
     try {
         
         const snapshot = await db.child("User").orderByChild("email").equalTo(email).limitToFirst(1).once("value",snapshot => {
+            console.log(key)
             return snapshot
         });
+        
+        //validando existencia de usuario
 
-        //validando existencia
         if(! snapshot.exists()){
-            return res.status(400).json({msg: 'El usuario no existe'})
-        }else{
-            const data = await snapshot.val()
-            let user;
-            let id;
-
-            for(const prop in data){
-                id = prop
-                user = data[prop]
-            }
-
-            const passCorrect = await bcryptj.compare(password,user.password)
-            if(!passCorrect){
-                return res.status(400).json({msg: 'El password es incorrecto'})
-            }
-
-            //crear y firmar el token
-            const payload = {
-                user :{
-                    id: id
-                }
-            }
-
-            //firmar el jsonwebtoken
-            jwt.sign(payload, process.env.SECRETA, {
-            expiresIn: 3600 //1hora              
-            },(error, token)=>{
-                if(error) throw error;
-                res.json({token})
-            })
-
-
+            return res.status(402).json({msg: 'El usuario no existe'})
         }
+        var key =  Object.keys( await snapshot.val())[0];
+        const data = await snapshot.val()[key]
+        
+        //revisar el password
+        const passCorrect = await bcryptj.compare(password,data.password)
+        if(!passCorrect){
+            return res.status(400).json({msg: 'El password es incorrecto'})
+        }
+
+        //si todo es correcto crear y firmar el token
+        const payload = {
+            user :{
+                id: key
+            }
+        }
+
+        //firmar el jsonwebtoken
+        jwt.sign(payload, process.env.SECRETA, {
+        expiresIn: 3600 //1hora              
+        },(error, token)=>{
+            if(error) throw error;
+            res.json({token})
+        })
 
     } catch (error) {
         console.log('error')
