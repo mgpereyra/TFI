@@ -24,7 +24,7 @@
 
             />
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btnVolver_deMisPuntos"
+            android:id="@+id/btnVolver_mis_servicios"
             android:layout_width="70dp"
             android:layout_height="50dp"
             android:layout_marginStart="120dp"
@@ -33,26 +33,29 @@
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_arrow_back" />
     </LinearLayout>
-        <androidx.appcompat.widget.AppCompatTextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/servicios_confirmados"
             android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:text="Confirmados"
-            android:textSize="20sp"
+            android:layout_height="50dp"
+            android:text="@string/confirmados"
+            android:textSize="15sp"
             android:gravity="center"
-
+            android:textColor="@color/white"
+            android:enabled="true"
             app:layout_constraintTop_toBottomOf="@id/barra"
             app:layout_constraintStart_toStartOf="parent"
             />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/servicios_pendientes"
             android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:textSize="20sp"
+            android:layout_height="50dp"
+            android:textSize="15sp"
             android:gravity="center"
-            android:text="Pendientes"
+            android:enabled="false"
+            android:textColor="@color/white"
+            android:text="@string/pendientes"
             app:layout_constraintTop_toBottomOf="@id/barra"
             app:layout_constraintStart_toEndOf="@id/servicios_confirmados"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -61,6 +64,7 @@
             android:id="@+id/listado_servicios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             tools:listitem="@layout/mis_servicios_card"
             app:layout_constraintTop_toBottomOf="@id/servicios_confirmados"
             app:layout_constraintStart_toStartOf="parent"

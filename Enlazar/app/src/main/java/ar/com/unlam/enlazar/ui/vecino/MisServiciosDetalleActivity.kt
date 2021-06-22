@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ar.com.unlam.enlazar.R
 
-class MisServiciosPendientesActivity : AppCompatActivity() {
+class MisServiciosDetalleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_servicios_pendientes)
     }
+companion object{
+val ID:String="ID"
+}
 }

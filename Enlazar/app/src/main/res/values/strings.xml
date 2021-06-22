@@ -80,5 +80,8 @@
     </string-array>
 
     <string name="user_login">USERLOGIN</string>
+    <string name="pendientes">Pendientes</string>
+    <string name="confirmados">Confirmados</string>
+    <string name="places_cancelar">cancelar</string>
 
 </resources>

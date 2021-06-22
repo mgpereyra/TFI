@@ -99,7 +99,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/cantidad_de_puntos"
+                android:id="@+id/cantidad_bolsas_verdes"
                 android:layout_width="45dp"
                 android:layout_height="30dp"
                 app:flow_verticalAlign="center"
@@ -159,7 +159,18 @@
                     app:layout_constraintStart_toEndOf="@id/circle_bolsas_verdes"
                     app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes"
                     app:layout_constraintVertical_bias="1.0" />
-
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/btn_cancel_servicio"
+    app:layout_constraintTop_toBottomOf="@id/cardInfo_direccion"
+    app:layout_constraintStart_toStartOf="@id/turno"
+    app:layout_constraintEnd_toEndOf="@id/turno"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:text="@string/places_cancelar"
+    android:textColor="@color/white"
+    android:visibility="gone"
+    android:backgroundTint="@color/emerald"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
