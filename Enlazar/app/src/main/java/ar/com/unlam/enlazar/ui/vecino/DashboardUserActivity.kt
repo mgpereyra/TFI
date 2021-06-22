@@ -1,4 +1,4 @@
-package ar.com.unlam.enlazar.ui
+package ar.com.unlam.enlazar.ui.vecino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,7 +17,13 @@ class DashboardUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+/*        val bundle = intent.extras
+        val idUser = bundle?.getString("idUser")
+        val email = bundle?.getString("email")
+        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
+        pref.putString("idUser", idUser)
+        pref.putString("email", email)
+        pref.apply()*/
         if (intent.hasExtra(IDKEY)) {
             userId = intent.extras!!.getString(IDKEY, "").toString()
         }
@@ -48,9 +54,8 @@ class DashboardUserActivity : AppCompatActivity() {
         btn_new_service.setOnClickListener{
 
             val intent= Intent(this, NuevoServicioActivity::class.java)
-            intent.putExtra(NuevoServicioActivity.ID,userId)
+            intent.putExtra(NuevoServicioActivity.ID, userId)
             userId
-            this@DashboardUserActivity.finish()
             this.startActivity(intent)
 
         }
@@ -69,20 +74,22 @@ setSupportActionBar(toolbar)
     if (ab!=null){
         ab.setHomeAsUpIndicator(R.drawable.menu)
         ab.setDisplayHomeAsUpEnabled(true)
-
     }
 
 }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            android.R.id.home->{
+           android.R.id.home->{
                 drawer.openDrawer(GravityCompat.START)
             }
+
         }
         return super.onOptionsItemSelected(item)
     }
     companion object {
         val IDKEY: String = "id"
     }
+
+
 }

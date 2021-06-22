@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import ar.com.unlam.enlazar.R
-import ar.com.unlam.enlazar.ui.recolector.ServiciosRecolectorRutaActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreenActivity : Activity() {
@@ -13,7 +12,7 @@ class SplashScreenActivity : Activity() {
         setContentView(R.layout.activity_splash_screen)
         sp_logo.alpha=0f
         sp_logo.animate().setDuration(1500).alpha(1f).withEndAction {
-            val i= Intent(this, ServiciosRecolectorRutaActivity::class.java)
+            val i= Intent(this, LoginActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             finish()

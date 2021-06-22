@@ -7,7 +7,7 @@
     android:backgroundTint="@color/backGroundCustom"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CrearCuentaActivity">
+    tools:context=".ui.vecino.CrearCuentaActivity">
     <LinearLayout
         android:id="@+id/barra"
         android:layout_width="match_parent"

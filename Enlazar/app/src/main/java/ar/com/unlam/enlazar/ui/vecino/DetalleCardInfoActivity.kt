@@ -1,4 +1,4 @@
-package ar.com.unlam.enlazar.ui
+package ar.com.unlam.enlazar.ui.vecino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

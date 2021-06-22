@@ -81,7 +81,9 @@ dependencies {
     //googleMaps
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     implementation 'com.google.android.libraries.places:places:2.4.0'
-
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    //implementation 'com.google.android.gms:play-services-maps:18.0.0'
+    implementation 'com.firebase:geofire-android:2.2.0'
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
     // Add the dependency for the Firebase SDK for Google Analytics

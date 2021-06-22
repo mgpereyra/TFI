@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:id="@+id/drawerNewService"
-    tools:context=".ui.NuevoServicioActivity">
+    tools:context=".ui.vecino.NuevoServicioActivity">
     <androidx.appcompat.widget.LinearLayoutCompat
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DashboardUserActivity"
+    tools:context=".ui.vecino.DashboardUserActivity"
     android:background="@color/backGroundCustom"
     android:orientation="vertical">
     <LinearLayout

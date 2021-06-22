@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.CardInfo
-import ar.com.unlam.enlazar.ui.DetalleCardInfoActivity
+import ar.com.unlam.enlazar.ui.vecino.DetalleCardInfoActivity
 import kotlinx.android.synthetic.main.card_info.view.*
 
 class CardInfoAdapter: RecyclerView.Adapter<CardInfoAdapter.CardInfoViewHolder>()  {
