@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import AlertaState from './context/alerta/alertaState'
 import AuthState from './context/auth/authState'
 import authToken from './config/authToken'
-
+import PrivateRoute from './components/routes/PrivateRoute'
 //revisar si tenemos un token
 const token = localStorage.getItem('token');
 if(token){
@@ -31,8 +31,8 @@ function App() {
               <div className="seccion-principal">
                 <Header/>
                 <main>
-                  <Route exact path="/dashboard" component={Dashboard}/>
-                  <Route exact path="/list-advice" component={ListAdvice}/>
+                  <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+                  <PrivateRoute exact path="/list-advice" component={ListAdvice}/>
               </main>
               </div>
             </div>

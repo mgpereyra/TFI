@@ -5,17 +5,17 @@ module.exports =function(req, res, next){
     const token = req.header('x-auth-token')
     //revisar
     if(!token){
-        res.status(401).json({msg:"No hay token. Permiso no valido"})
+        res.status(401).json({msg:"Por favor, recuerde iniciar sesión"})
     }
-    //validar
 
+    //validar
     try {
         const verificado = jwt.verify(token, process.env.SECRETA)
+        //guardo lo datos del usuario en request
         req.user = verificado.user;
         next(); 
         
     } catch (error) {
         res.status(401).json({msg:"Token no valido"})
-        
     }
 }

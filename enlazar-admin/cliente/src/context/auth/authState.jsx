@@ -75,7 +75,7 @@ const AuthState = props => {
             console.log(error.response);
             const alerta = {
                 msg: error.response.data.msg,
-                categoria: 'alerta-error'
+                categoria: 'alerta-info'
             }
             dispatch({
                 type: LOGIN_ERROR,
@@ -119,7 +119,7 @@ const AuthState = props => {
         }
     }
 
-    const cerrarSesion= () => {
+    const cerrarSesion = () => {
         dispatch({
             type: CERRAR_SESION
         })

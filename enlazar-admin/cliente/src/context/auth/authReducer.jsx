@@ -23,6 +23,7 @@ export default  (state, action) => {
             return{
                 ...state,
                 token: null,
+                usuario:null,
                 autenticado: null,
                 cargando:false,
                 mensaje: action.payload
