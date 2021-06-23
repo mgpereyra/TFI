@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import Advice from './Advice'
 
 const List = () => {
@@ -14,9 +14,10 @@ const advices = [
 ]
 
     return (  
-        <div class="row">
+        <div className="row">
                 {advices.map( advice => (
                 <Advice
+                    key={advice.title}
                     advice={advice}                
                 />
             ))

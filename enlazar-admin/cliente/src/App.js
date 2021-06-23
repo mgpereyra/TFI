@@ -29,17 +29,20 @@ function App() {
         <Switch>
             <Route exact path="/" component={Login}/>
             <Route exact path="/new-account" component={NewAccount}/>
+            </Switch>
             <div className="contenedor-app">
               <Sidebar/>
               <div className="seccion-principal">
                 <Header/>
                 <main>
+                <Switch>
                   <PrivateRoute exact path="/dashboard" component={Dashboard}/>
                   <PrivateRoute exact path="/list-advice" component={ListAdvice}/>
+                  </Switch>
               </main>
               </div>
             </div>
-          </Switch>
+         
         </Router>
       </AuthState>
     </AlertaState>
