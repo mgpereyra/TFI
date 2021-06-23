@@ -9,6 +9,7 @@ import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.Estado
 import ar.com.unlam.enlazar.ui.vecino.MisServiciosDetalleActivity
+import ar.com.unlam.enlazar.ui.vecino.MisServiciosDetalleActivity.Companion.ID
 import kotlinx.android.synthetic.main.mis_servicios_card.view.*
 
 class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.ServicioVecinoHolder>() {
@@ -19,7 +20,7 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
                 view.btn_cancel_servicio.visibility=View.VISIBLE
                 view.btn_cancel_servicio.setOnClickListener {
                     val intent = Intent(view.context, MisServiciosDetalleActivity::class.java)
-                    intent.putExtra(ID,nota!!.id)
+                    intent.putExtra(ID,service!!.id)
                     view.context.startActivity(intent)
                 }
 
