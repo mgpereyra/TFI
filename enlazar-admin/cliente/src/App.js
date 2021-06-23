@@ -11,11 +11,14 @@ import AlertaState from './context/alerta/alertaState'
 import AuthState from './context/auth/authState'
 import authToken from './config/authToken'
 import PrivateRoute from './components/routes/PrivateRoute'
+
 //revisar si tenemos un token
 const token = localStorage.getItem('token');
+
 if(token){
   authToken(token);
 }
+
 
 function App() {
 

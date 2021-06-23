@@ -72,7 +72,6 @@ const AuthState = props => {
             })
             
         } catch (error) {
-            console.log(error.response);
             const alerta = {
                 msg: error.response.data.msg,
                 categoria: 'alerta-info'
@@ -96,8 +95,9 @@ const AuthState = props => {
 
             const respuesta ={
                 method: 'POST',
-                url: await clienteAxios.post('/api/auth', datos)};
+                url: await clienteAxios.post('/api/auth', datos, config)};
 
+               
                 
             dispatch({
                 type: LOGIN_EXITOSO,
