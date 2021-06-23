@@ -39,6 +39,7 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
         servicios_confirmados.setOnClickListener {
             servicios_confirmados.isEnabled=false
             servicios_pendientes.isEnabled=true
+            serviceList.clear()
             setServicios(id,Estado.ASIGNADO)
             //otra pantalla o una query que actualice la lista a las que estan pendientes?
            /* val intent: Intent = Intent(this, MisServiciosPendientesActivity::class.java)
@@ -50,11 +51,12 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
             //query para servicios confirmados
             servicios_confirmados.isEnabled=true
             servicios_pendientes.isEnabled=false
+            serviceList.clear()
             setServicios(id,Estado.PENDIENTE)
 
         }
         btnVolver_mis_servicios.setOnClickListener { finish() }
-
+            
     }
 
     private fun setServicios(idUser: String, estado: Estado) {
@@ -84,7 +86,15 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
                 }
                 if (serviceList.size>0){
                 adapter.servicesList=serviceList.toMutableList()
-                adapter.notifyDataSetChanged()}
+
+                adapter.notifyDataSetChanged()
+                  /*  adapter = MisServiciosVecinoAdapter()
+                    with(listado_servicios) {
+                        layoutManager =
+                            LinearLayoutManager(this@MisServiciosConfirmadosActivity, LinearLayoutManager.VERTICAL, false)
+                        this.adapter = this@MisServiciosConfirmadosActivity.adapter
+                    }*/
+                    listado_servicios.adapter = adapter}
                 else{
                     Toast.makeText(this@MisServiciosConfirmadosActivity,
                         "no se encontraron servicios del estado especificado",

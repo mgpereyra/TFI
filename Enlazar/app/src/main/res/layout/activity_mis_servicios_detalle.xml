@@ -158,7 +158,7 @@
                 app:layout_constraintStart_toEndOf="@id/circle_bolsas_verdes"
                 app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes"
                 app:layout_constraintVertical_bias="1.0" />
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_cancel_servicio"
@@ -168,7 +168,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:text="@string/places_cancelar"
                 android:textColor="@color/white"
-                android:visibility="gone"
                 android:backgroundTint="@color/emerald"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

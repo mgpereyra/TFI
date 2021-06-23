@@ -14,19 +14,7 @@ import kotlinx.android.synthetic.main.mis_servicios_card.view.*
 
 class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.ServicioVecinoHolder>() {
     var servicesList = mutableListOf<Service>()
-   class ServicioVecinoHolder(view: View, var service: Service?=null):RecyclerView.ViewHolder(view){
-        init {
-            if (service?.estado.toString().toInt()==Estado.PENDIENTE.ordinal){
-                view.btn_cancel_servicio.visibility=View.VISIBLE
-                view.btn_cancel_servicio.setOnClickListener {
-                    val intent = Intent(view.context, MisServiciosDetalleActivity::class.java)
-                    intent.putExtra(ID,service!!.id)
-                    view.context.startActivity(intent)
-                }
 
-            }
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServicioVecinoHolder {
         val view= LayoutInflater
@@ -46,7 +34,7 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
             holder.itemView.cardInfo_date.text=service.date.toString()
             holder.itemView.cardInfo_direccion.text=service.address.toString()
             holder.itemView.turno.text=service.time
-            holder?.service=service
+            holder?.service =service
         }
 
     }
@@ -54,5 +42,18 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
     override fun getItemCount(): Int {
        return servicesList.size
 
+    }
+    class ServicioVecinoHolder(view: View, var service:Service?=null):RecyclerView.ViewHolder(view){
+        init {
+           // if (service!!.estado.toString().toInt()==Estado.PENDIENTE.ordinal){
+                view.btn_ver_servicio.visibility=View.VISIBLE
+                view.btn_ver_servicio.setOnClickListener {
+                    val intent = Intent(view.context, MisServiciosDetalleActivity::class.java)
+                    intent.putExtra(ID, service!!.id)
+                    view.context.startActivity(intent)
+                }
+
+      //      }
+        }
     }
 }
