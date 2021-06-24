@@ -1,12 +1,3 @@
-//los types siempre se escriben en mayuscula
-export const FORMULARIO_MATERIA = 'FORMULARIO_MATERIA';
-export const OBTENER_MATERIAS = 'OBTENER_MATERIAS';
-export const AGREGAR_MATERIA = 'AGREGAR_MATERIA';
-export const VALIDAR_FORMULARIO = 'VALIDAR_FORMULARIO';
-export const MATERIA_ACTUAL = 'MATERIA_ACTUAL';
-export const ELIMINAR_MATERIA = 'ELIMINAR_MATERIA';
-export const ERROR_MATERIA = 'ERROR_MATERIA';
-
 //tareas
 export const  SELECCIONAR_TAREAS = 'SELECCIONAR_TAREAS';
 export const AGREGAR_TAREA = 'AGREGAR_TAREA';

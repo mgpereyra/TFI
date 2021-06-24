@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import Advice from './Advice'
 import {Link} from 'react-router-dom'
 
-const List = () => {
+const ListAdvice = () => {
 
 const advices = [
     {title:'Advice 1'},
@@ -34,4 +34,4 @@ const advices = [
     );
 }
  
-export default List;
+export default ListAdvice;

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { Button, Col, Row} from 'react-bootstrap'
 
-const Create = ({createAdvices}) => {
+const CreateAdvice = ({createAdvices}) => {
     const [advice, setAdvice] = useState({
         img:'',
         tipe: '',
@@ -109,4 +109,4 @@ const Create = ({createAdvices}) => {
       );
 }
  
-export default Create;
+export default CreateAdvice;
