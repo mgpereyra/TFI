@@ -1,7 +1,4 @@
 import React, {Fragment, useEffect, useContext} from 'react'
-
-import Welcome from './Welcome';
-import Create from '../advice/Create'
 import authContext from '../../context/auth/authContext';
 
 const Dashboard = () => {
@@ -15,9 +12,9 @@ const Dashboard = () => {
   
     return (
         <Fragment>
-              <Welcome/>
-            </Fragment>
-        );
+          <h1>Welcome</h1>
+        </Fragment>
+    );
 }
  
 export default Dashboard;
