@@ -56,7 +56,7 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
 
         }
         btnVolver_mis_servicios.setOnClickListener { finish() }
-            
+
     }
 
     private fun setServicios(idUser: String, estado: Estado) {

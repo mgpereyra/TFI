@@ -83,5 +83,6 @@
     <string name="pendientes">Pendientes</string>
     <string name="confirmados">Confirmados</string>
     <string name="places_cancelar">cancelar</string>
+    <string name="valor_perdido">Se ha perdido la respuesta</string>
 
 </resources>

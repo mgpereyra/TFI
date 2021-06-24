@@ -34,6 +34,7 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
             holder.itemView.cardInfo_date.text=service.date.toString()
             holder.itemView.cardInfo_direccion.text=service.address.toString()
             holder.itemView.turno.text=service.time
+            holder.itemView.estado.text=service.estado.toString()
             holder?.service =service
         }
 
@@ -44,8 +45,9 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
 
     }
     class ServicioVecinoHolder(view: View, var service:Service?=null):RecyclerView.ViewHolder(view){
+
         init {
-           // if (service!!.estado.toString().toInt()==Estado.PENDIENTE.ordinal){
+
                 view.btn_ver_servicio.visibility=View.VISIBLE
                 view.btn_ver_servicio.setOnClickListener {
                     val intent = Intent(view.context, MisServiciosDetalleActivity::class.java)
@@ -53,7 +55,7 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
                     view.context.startActivity(intent)
                 }
 
-      //      }
+
         }
     }
 }
