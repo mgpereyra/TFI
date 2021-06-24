@@ -37,18 +37,27 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
         }
         listado_servicios.adapter = adapter
         servicios_confirmados.setOnClickListener {
+            servicios_confirmados.setBackgroundColor(
+                resources.getColor(R.color.green)
+            )
+            servicios_pendientes.setBackgroundColor(
+                resources.getColor(R.color.emerald)
+            )
             servicios_confirmados.isEnabled=false
             servicios_pendientes.isEnabled=true
             serviceList.clear()
             setServicios(id,Estado.ASIGNADO)
-            //otra pantalla o una query que actualice la lista a las que estan pendientes?
-           /* val intent: Intent = Intent(this, MisServiciosPendientesActivity::class.java)
-            startActivity(intent)*/
 
         }
 
         servicios_pendientes.setOnClickListener {
-            //query para servicios confirmados
+
+            servicios_pendientes.setBackgroundColor(
+                resources.getColor(R.color.green)
+            )
+            servicios_confirmados.setBackgroundColor(
+                resources.getColor(R.color.emerald)
+            )
             servicios_confirmados.isEnabled=true
             servicios_pendientes.isEnabled=false
             serviceList.clear()
