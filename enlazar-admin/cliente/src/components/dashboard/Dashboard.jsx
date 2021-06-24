@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useContext} from 'react'
 
-import ListAdvices from '../advice/List';
+import Welcome from './Welcome';
 import Create from '../advice/Create'
 import authContext from '../../context/auth/authContext';
 
@@ -10,14 +10,12 @@ const Dashboard = () => {
 
   useEffect(()=>{
     obtenerUsuarioAutenticado();
+      //eslint-disable-next-line
   },[])
   
     return (
         <Fragment>
-            <Create/>
-            <div className="contenedor-tareas"> 
-              <ListAdvices/>
-            </div>
+              <Welcome/>
             </Fragment>
         );
 }

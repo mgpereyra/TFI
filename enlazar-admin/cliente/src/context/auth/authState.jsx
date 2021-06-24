@@ -65,13 +65,12 @@ const AuthState = props => {
                 method: 'GET', 
                 url:  await clienteAxios.get('/api/auth', config),
                 headers: {autorizacion: localStorage.getItem('token'), accept: "Accept: application/json" }};
-    console.log(respuesta.url.data)
-            dispatch({
-                type:OBTENER_USUARIO,
-                payload: respuesta.url.data.userSinPassword
-            })
-            
-        } catch (error) {
+                dispatch({
+                    type:OBTENER_USUARIO,
+                    payload: respuesta.url.data.userSinPassword
+                })
+                
+            } catch (error) {
             const alerta = {
                 msg: error.response.data.msg,
                 categoria: 'alerta-info'

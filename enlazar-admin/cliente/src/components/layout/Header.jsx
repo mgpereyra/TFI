@@ -6,6 +6,7 @@ const Header = () => {
 
     useEffect(()=>{
       obtenerUsuarioAutenticado();
+        //eslint-disable-next-line
     },[])
 
     return (

@@ -7,6 +7,7 @@ const PrivateRoute = ({component: Component, ...props}) => {
 
     useEffect(()=>{
         obtenerUsuarioAutenticado();
+          //eslint-disable-next-line
     },[])
     
     return ( 

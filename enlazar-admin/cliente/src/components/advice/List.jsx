@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import Advice from './Advice'
+import {Link} from 'react-router-dom'
 
 const List = () => {
 
@@ -14,15 +15,22 @@ const advices = [
 ]
 
     return (  
-        <div className="row">
+        <Fragment>       
+             <Link to={'/advice/create'} className='btn btn-primary'>
+                <i className="fas fa-user color-third"></i>
+                   Crear un nuevo consejo
+              </Link>
+             <div className="row">
                 {advices.map( advice => (
-                <Advice
-                    key={advice.title}
-                    advice={advice}                
-                />
-            ))
-            }
-        </div>
+                    <Advice
+                        key={advice.title}
+                        advice={advice}                
+                    />  
+                ))
+                }
+             </div>
+
+        </Fragment>
     );
 }
  

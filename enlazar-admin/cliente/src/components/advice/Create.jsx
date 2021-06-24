@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react'
 import { Button, Col, Row} from 'react-bootstrap'
-import Error from '../Error'
 
 const Create = ({createAdvices}) => {
     const [advice, setAdvice] = useState({
@@ -10,7 +9,7 @@ const Create = ({createAdvices}) => {
         description:''
     });
 
-    const [error, setError] = useState(false);
+    //const [error, setError] = useState(false);
 
     const handleChange = e =>{
         setAdvice({
@@ -26,11 +25,11 @@ const Create = ({createAdvices}) => {
 
         //Validar
         if(tipe.trim() === ''){
-            setError(true);
+            //setError(true);
             return;
         }
 
-        setError(false);
+       // setError(false);
         createAdvices(advice);
 
         //reiniciar el form
@@ -47,7 +46,6 @@ const Create = ({createAdvices}) => {
             <h2>Crear un nuevo consejo</h2>
             <div className="card bg-gris">
                 <div className="card-body">
-                    {error? <Error message="Complete todos los campos"/> : null}
                     <form
                         onSubmit={handleSubmit}
                     >
