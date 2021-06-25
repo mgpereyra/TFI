@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.card_info.view.*
 
 class CardInfoAdapter: RecyclerView.Adapter<CardInfoAdapter.CardInfoViewHolder>()  {
 
-var cardInfoList=ArrayList<CardInfo>()
+var cardInfoList=mutableListOf<CardInfo>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardInfoViewHolder {
         val view= LayoutInflater
