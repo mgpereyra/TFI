@@ -50,7 +50,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     private var serviceLon = ""
     private var driverLat = ""
     private var driverLon = ""
-    private  lateinit var service: Service
+    private lateinit var service: Service
 
     private lateinit var database: FirebaseDatabase
 
@@ -89,9 +89,9 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
             btnCancelarServicio.visibility = View.VISIBLE
 
         }
-btnCancelarServicio.setOnClickListener {
-    onBackPressed()
-}
+        btnCancelarServicio.setOnClickListener {
+            onBackPressed()
+        }
         btnFinalizarServicio.setOnClickListener {
             //obtenerCurretPositionLoop(true)
 
@@ -118,7 +118,13 @@ btnCancelarServicio.setOnClickListener {
             cardViewFinalizarServicio.visibility = View.GONE
             btnCancelarServicio.visibility = View.GONE
         }
+        btnCancelConfirmacion.setOnClickListener {
+            btnFinalizarServicio.visibility = View.VISIBLE
+            cardViewFinalizarServicio.visibility = View.GONE
+            btnCancelarServicio.visibility = View.VISIBLE
+        }
     }
+
 
     fun obtenerCurretPositionLoop(cancelarServicio: Boolean) {
         val TIEMPO: Long = 10000

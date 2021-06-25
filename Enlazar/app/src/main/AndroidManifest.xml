@@ -48,7 +48,7 @@
         <activity android:name=".ui.vecino.DetalleCardInfoActivity" />
         <activity android:name=".ui.vecino.SeccionInformativaActivity" />
         <activity android:name=".ui.vecino.CrearCuentaActivity" />
-        
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
