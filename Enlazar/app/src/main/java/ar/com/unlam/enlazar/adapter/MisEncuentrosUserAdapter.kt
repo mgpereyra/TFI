@@ -19,16 +19,18 @@ class MisEncuentrosUserAdapter(val onItemDetailViewClick: (puntoEncuentroItem: P
         RecyclerView.ViewHolder(binding.root) {
 
         fun binNote(puntoEncuentroItem: PuntoEncuentro) {
-           /* binding.cardInfoLocaclidad.text = puntoEncuentroItem.address
-            binding.cardInfoFecha.text = puntoEncuentroItem.date
-            binding.cardInfoCalles.text = puntoEncuentroItem.date
-            binding.cardInfoLugar.text = untoEncuentroItem.date
-            Picasso.get()
-                .load(
-                    note.imagen
-                )
-                .into(binding.imgItemResult)
-        }*/
+            binding.cardInfoLocaclidad.text = puntoEncuentroItem.localidad
+            binding.cardInfoFecha.text = puntoEncuentroItem.date +" - "+ puntoEncuentroItem.time
+            binding.cardInfoCalles.text = puntoEncuentroItem.calle
+            binding.cardInfoLugar.text = puntoEncuentroItem.lugar
+            binding.cardInfoLugar.text = puntoEncuentroItem.estado.toString()
+
+            /*     Picasso.get()
+                   .load(
+                       note.imagen
+                   )
+                   .into(binding.imgItemResult)
+           }*/
 
         }
     }

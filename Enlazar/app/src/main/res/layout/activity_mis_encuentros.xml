@@ -47,16 +47,17 @@
             />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/encuentros_rechazados"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
-            android:textSize="20sp"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/crear_punto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Rechazados"
-
-            app:layout_constraintTop_toBottomOf="@id/barra"
-            app:layout_constraintStart_toEndOf="@id/encuentros_confirmados" />
+            android:text="Crear punto"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.794"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barra" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/encuentros_pendientes"
@@ -67,17 +68,18 @@
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barra"
-            app:layout_constraintStart_toEndOf="@id/encuentros_rechazados"
+            app:layout_constraintStart_toEndOf="@id/crear_punto"
             />
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/list_encuentros"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/encuentros_rechazados"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    tools:listitem="@layout/card_encuentro"
-    />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_encuentros"
+            android:layout_width="match_parent"
+            android:layout_height="594dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barra"
+            tools:listitem="@layout/card_encuentro" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView
         android:visibility="visible"

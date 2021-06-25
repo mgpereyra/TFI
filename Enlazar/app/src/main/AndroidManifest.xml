@@ -42,6 +42,7 @@
         <activity android:name=".ui.vecino.MisPuntosActivity" />
         <activity android:name=".ui.vecino.MisCanjesActivity" />
         <activity android:name=".ui.vecino.MiCuentaActivity" />
+        <activity android:name=".ui.vecino.MisEncuentrosActivity" />
         <activity android:name=".ui.vecino.DetalleServicioActivity" />
         <activity android:name=".ui.vecino.DashboardUserActivity" />
         <activity android:name=".ui.vecino.NuevoServicioActivity" />
