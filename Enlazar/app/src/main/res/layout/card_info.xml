@@ -36,7 +36,7 @@
                 android:visibility="invisible"
                 tools:visibility="invisible" />
             <ImageView
-                android:id="@+id/cardInfo_image"
+                android:id="@+id/cardInfo_image_advice"
                 android:layout_width="170dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="16dp"
@@ -46,7 +46,7 @@
                 android:minHeight="150dp"
                 android:minWidth="160dp"
                 android:maxWidth="165dp"
-                app:layout_constraintEnd_toStartOf="@id/cardInfo_title"
+                app:layout_constraintEnd_toStartOf="@id/cardInfo_title_advice"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -54,23 +54,35 @@
                 tools:visibility="visible"
                 android:src="@drawable/ic_baseline_image_24"
                 android:contentDescription="@string/card_resumen" />
-
+<TextView
+    android:id="@+id/advice_type"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="@id/cardInfo_image_advice"
+    android:textSize="15sp"
+    android:layout_marginStart="5dp"
+    app:layout_constraintBottom_toTopOf="@id/cardInfo_title_advice"
+    app:layout_constraintStart_toEndOf="@id/cardInfo_image_advice"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:text="Consejo de la Semana"
+    android:gravity="start"
+    />
             <TextView
-                android:id="@+id/cardInfo_title"
+                android:id="@+id/cardInfo_title_advice"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cardInfo_image"
+                app:layout_constraintTop_toBottomOf="@id/advice_type"
+                app:layout_constraintStart_toEndOf="@id/cardInfo_image_advice"
                 android:textSize="29sp"
                 android:maxLength="25"
-                app:layout_constraintBottom_toTopOf="@id/cardInfo_content"
+                app:layout_constraintBottom_toTopOf="@id/cardInfo_content_advice"
                 tools:text="titulo card"
                 tools:visibility="visible"/>
 
             <TextView
-                android:id="@+id/cardInfo_content"
+                android:id="@+id/cardInfo_content_advice"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -81,8 +93,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@id/btn_ver_card_info"
-                app:layout_constraintStart_toEndOf="@id/cardInfo_image"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_title"
+                app:layout_constraintStart_toEndOf="@id/cardInfo_image_advice"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_title_advice"
                 tools:visibility="visible"
                 tools:text="Descripcion de card " />
 
@@ -91,14 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_content"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_title_advice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cardInfo_image"
+                app:layout_constraintStart_toEndOf="@id/cardInfo_image_advice"
                 android:backgroundTint="@color/emerald"
                 android:text="@string/ver"
                 android:layout_marginStart="80dp"
-                android:layout_marginTop="0dp"/>
+                android:layout_marginTop="50dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

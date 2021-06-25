@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.CardInfo
+import ar.com.unlam.enlazar.ui.TipoConsejo
 import ar.com.unlam.enlazar.ui.vecino.DetalleCardInfoActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_info.view.*
 
 class CardInfoAdapter: RecyclerView.Adapter<CardInfoAdapter.CardInfoViewHolder>()  {
@@ -26,7 +28,21 @@ var cardInfoList=ArrayList<CardInfo>()
 //
 
     override fun onBindViewHolder(holder: CardInfoViewHolder, position: Int) {
+        cardInfoList[position].let{
+            holder.itemView.cardInfo_content_advice.text=it.content
+            holder.itemView.cardInfo_title_advice.text=it.title
+            when (it.tipoConsejo){
+                TipoConsejo.COMO_RECICLAR_BIEN.toString()->holder.itemView.advice_type.setText(R.string.como_reciclar)
+                TipoConsejo.CONSEJO_DE_LA_SEMANA.toString()->holder.itemView.advice_type.setText(R.string.consejo_semana)
+                TipoConsejo.ECOINFORME.toString()->holder.itemView.advice_type.setText(R.string.eco_info)
+            }
 
+            Picasso.get()
+                .load(it.img)
+                .into(holder.itemView.cardInfo_image_advice)
+
+
+        }
     }
 
     override fun getItemCount(): Int {

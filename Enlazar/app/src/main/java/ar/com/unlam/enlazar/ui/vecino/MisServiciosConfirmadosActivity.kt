@@ -1,6 +1,5 @@
 package ar.com.unlam.enlazar.ui.vecino
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -97,12 +96,6 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
                 adapter.servicesList=serviceList.toMutableList()
 
                 adapter.notifyDataSetChanged()
-                  /*  adapter = MisServiciosVecinoAdapter()
-                    with(listado_servicios) {
-                        layoutManager =
-                            LinearLayoutManager(this@MisServiciosConfirmadosActivity, LinearLayoutManager.VERTICAL, false)
-                        this.adapter = this@MisServiciosConfirmadosActivity.adapter
-                    }*/
                     listado_servicios.adapter = adapter}
                 else{
                     Toast.makeText(this@MisServiciosConfirmadosActivity,
