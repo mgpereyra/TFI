@@ -9,6 +9,7 @@ import ar.com.unlam.enlazar.databinding.ServiciosRecolectorRutaItemBinding
 import ar.com.unlam.enlazar.model.PuntoEncuentro
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.vecino.MisEncuentrosActivity
+import kotlinx.android.synthetic.main.card_encuentro.view.*
 
 class MisEncuentrosUserAdapter(val onItemDetailViewClick: (puntoEncuentroItem: PuntoEncuentro) -> Unit) :
     RecyclerView.Adapter<MisEncuentrosUserAdapter.EncuentrosHolder>() {
@@ -45,7 +46,7 @@ class MisEncuentrosUserAdapter(val onItemDetailViewClick: (puntoEncuentroItem: P
 
     override fun onBindViewHolder(holder: EncuentrosHolder, position: Int) {
         holder.binNote(puntosEncuentroList[position])
-        holder.itemView.setOnClickListener {
+        holder.itemView.btn_aceptar_encuentro2.setOnClickListener {
             onItemDetailViewClick(puntosEncuentroList[position])
         }
     }

@@ -8,6 +8,8 @@ data class PuntoEncuentro(
     var localidad:String? = null,
     var calle:String? = null,
     var lugar:String? = null,
+    val latitud:String? = null,
+    val longitud:String? = null,
     val estado:Int? = null,
     val date: String? = null,
     val time:String? = null,
