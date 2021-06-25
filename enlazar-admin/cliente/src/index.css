@@ -546,11 +546,12 @@ main {
 }
 
 .alerta-ok {
-  background-color: rgb(109, 211, 109);
+  background-color: rgb(89, 231, 89);
   color: rgb(2, 103, 2);
+  border: 1px solid #006711;
 }
 .alerta-error {
-  background-color: hsla(0, 78%, 60%, 0.9);
+  background-color: hsl(0, 78%, 60%);
   color: var(--blanco);
   border: 1px solid #670000;
 }

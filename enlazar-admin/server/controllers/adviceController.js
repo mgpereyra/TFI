@@ -3,7 +3,7 @@ const firebase = require( "firebase");
 const {validationResult}= require('express-validator');
 
 exports.createAdvice = async (req, res) =>{
-    const {img, tipe, title, description} = req.body;
+    const {img, tipe, title, content} = req.body;
 
     //errores
     const errors = validationResult(req);
@@ -12,15 +12,14 @@ exports.createAdvice = async (req, res) =>{
     }
 
     try {
-        //crear consejo
-        const advice = new AdviceModel(img, tipe, title, description);
-        
+      
         //creador
         const idUser = req.user.id;
+        let likes = 0
 
         //guardar proyecto
-        const advicesave = firebase.database().ref('advice').push({
-            img, tipe, title, description, idUser
+        const advicesave = firebase.database().ref('Advice').push({
+            img, tipe, title, content, idUser, likes
         }); 
 
         res.send(advicesave)

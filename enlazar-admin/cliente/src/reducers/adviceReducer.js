@@ -14,6 +14,24 @@ const initialState = {
 
 export default function (state = initialState, action){
     switch(action.type){
+        case ADD_ADVICE:
+            return {
+                ...state,
+                loading: true
+            }
+            case ADD_ADVICE_SUCCESS:
+                return {
+                    ...state,
+                    loading: false,
+                    advices:[...state.advices, action.payload]
+            }
+            case ADD_ADVICE_ERROR:
+                return {
+                    ...state,
+                    loading: false,
+                    error: true
+            }            
+
         default:
             return state;
     }

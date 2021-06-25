@@ -1,19 +1,26 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import { Button, Col, Row} from 'react-bootstrap'
 import {createNewAdvice} from '../../actions/adviceAction'
 import {   useSelector, useDispatch } from 'react-redux'
+import alertaContext from '../../context/alerta/alertaContext'
 
-const CreateAdvice = () => {
+const CreateAdvice = ({history}) => {
+    const {alerta, mostrarAlerta} = useContext(alertaContext);
+
+    //state del componente 
     const [advice, setAdvice] = useState({
         img:'',
         tipe: '',
         title:'',
-        description:''
+        content:''
     });
 
     const dispatch = useDispatch();
-    const addAdvice = () => dispatch (createNewAdvice());
+    const addAdvice = advice => dispatch (createNewAdvice(advice));
 
+    //acceder al state
+    const loading = useSelector(state => state.advices.loading)
+  
     const handleChange = e =>{
         setAdvice({
             ...advice,
@@ -21,30 +28,33 @@ const CreateAdvice = () => {
         })
     }
 
-    const {img, tipe, title, description} = advice;
+    const {img, tipe, title, content} = advice;
 
     const handleSubmit = e =>{
         e.preventDefault();
 
         //Validar
-        if(tipe.trim() === ''){
-            //setError(true);
+        if(tipe.trim() === '' || img.trim() ==='' || title.trim() ==='' || content.trim() ===''){
+            mostrarAlerta("Por favor complete todos lo campos", "alerta-error")
             return;
         }
 
-       // setError(false);
-        addAdvice();
+        addAdvice(advice);
+        
         //reiniciar el form
         setAdvice({
             img:'',
             tipe: '',
             title:'',
-            description:''
+            content:''
         })
 
+        //redireccion
+        history.push('/list-advice')
     }
     return (
         <Fragment>
+             {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
             <h2>Crear un nuevo consejo</h2>
             <div className="card bg-gris">
                 <div className="card-body">
@@ -92,19 +102,19 @@ const CreateAdvice = () => {
                                     <textarea
                                         className="input-text"
                                         placeholder="Ingresa una descripcion..."
-                                        name="description"
+                                        name="content"
                                         onChange={handleChange}
-                                        value={description}  />
+                                        value={content}  />
                                 </div>
                             </Col>
                             </Row>
                             <Button 
                                 className="btn btn-block"
                                 type="submit"
-                                variant="primary">
-                                    Crear consejo
+                                variant="primary"
+                            >Crear consejo
                             </Button>
-                    </form>               
+                    </form>    
                 </div>
             </div>
             </Fragment>

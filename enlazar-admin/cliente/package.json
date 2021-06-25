@@ -14,7 +14,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^1.1.5",
     "redux": "^4.1.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sweetalert2": "^11.0.18"
   },
   "scripts": {
     "start": "react-scripts start",

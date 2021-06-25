@@ -38,6 +38,7 @@ function App() {
                   <Route exact path="/" component={Login}/>
                   <Route exact path="/new-account" component={NewAccount}/>
               </Switch>
+            
               <div className="contenedor-app">
                 <Sidebar/>
                 <div className="seccion-principal">
@@ -51,7 +52,9 @@ function App() {
                     </Switch>
                     </main>
                 </div>
-              </div>
+            </div>
+             
+              
         </Provider>
         </Router>
       </AuthState>

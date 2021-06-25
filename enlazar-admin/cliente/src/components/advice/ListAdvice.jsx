@@ -1,6 +1,7 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import Advice from './Advice'
 import {Link} from 'react-router-dom'
+
 
 const ListAdvice = () => {
 
@@ -14,8 +15,9 @@ const advices = [
 
 ]
 
+
     return (  
-        <Fragment>       
+        <Fragment>    
              <Link to={'/advice/create'} className='btn btn-primary'>
                 <i className="fas fa-user color-third"></i>
                    Crear un nuevo consejo
