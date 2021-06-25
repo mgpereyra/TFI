@@ -6,26 +6,28 @@ const Advice = ({advice}) => {
             <div className="card">
                 <img className="card-img-top" src="http://www.florespedia.com/Imagenes/flores-bonitas-girasoles.jpg" alt={advice.title}></img>
                 <div className="card-body">
-                    <p className="card-text"><small className="text-muted">Categoria</small></p>
-                    <h5 className="card-title">{advice.title}</h5>
-                    <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p className="card-text"><small>{advice.tipe}</small></p>
+
+                    <h3 className="card-title">{advice.title}</h3>
+                    <p className="card-text">{advice.content}</p>
                     <div className='acciones'>
                 <button
                     type='button'
-                    className='btn btn-primary mr-2'
-                >
+                    className='btn btn-primary mr-2 w-100'
+                ><i class="far fa-edit"></i>
                   Editar  
                 </button>
 
                 <button
                     type='button'
-                    className="btn btn-outline-primary"
-                ><i className="far fa-user "></i>
+                    className="btn btn-outline-primary w-100"
+                ><i class="far fa-trash-alt"></i>
                   Eliminar  
                 </button>
                 
             </div>    
                 </div>
+                <div className="card-footer"><small className="text-muted">{advice.id}</small></div>
             </div>
         </div>
       );

@@ -35,7 +35,7 @@ exports.getAdvices = async(req, res) => {
 
     try {
         const db= firebase.database().ref();
-        const snapshot = await db.child('advice').orderByChild("idUser").equalTo(req.user.id).once("value",snapshot => {
+        const snapshot = await db.child('Advice').orderByChild("idUser").equalTo(req.user.id).once("value",snapshot => {
             return snapshot
         });
         //validando existencia

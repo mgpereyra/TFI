@@ -67,8 +67,9 @@ textarea {
 }
 
   .btn-primary:focus, .btn-primary:hover, .btn-primary.focus {
-      background-color: #a0540f !important;
+      background-color: #8d4603 !important;
       border-color: #a0540f !important;
+      font-weight: 600;
   }
 
 .btn-outline-primary {
@@ -80,7 +81,13 @@ textarea {
   .btn-outline-primary:hover {
       color: var(--blanco)!important;
       background-color: var(--ocre2);
-
+      font-weight: 600;
+  }
+  
+  .card:hover{
+    box-shadow: 6px 4px 32px -3px rgba(0,0,0,0.5);
+-webkit-box-shadow: 6px 4px 32px -3px rgba(0,0,0,0.5);
+-moz-box-shadow: 6px 4px 32px -3px rgba(0,0,0,0.5); 
   }
 
 body {
