@@ -18,3 +18,11 @@ export const OBTENER_USUARIO = 'OBTENER_USUARIO';
 export const LOGIN_EXITOSO = 'LOGIN_EXITOSO';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CERRAR_SESION = 'CERRAR_SESION';
+
+//advice
+export const ADD_ADVICE = 'ADD_ADVICE';
+export const ADD_ADVICE_SUCCESS = 'ADD_ADVICE_SUCCESS';
+export const ADD_ADVICE_ERROR = 'ADD_ADVICE_ERROR';
+
+
+

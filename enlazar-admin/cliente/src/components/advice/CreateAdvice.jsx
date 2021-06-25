@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from 'react'
 import { Button, Col, Row} from 'react-bootstrap'
+import {createNewAdvice} from '../../actions/adviceAction'
+import {   useSelector, useDispatch } from 'react-redux'
 
-const CreateAdvice = ({createAdvices}) => {
+const CreateAdvice = () => {
     const [advice, setAdvice] = useState({
         img:'',
         tipe: '',
@@ -9,7 +11,8 @@ const CreateAdvice = ({createAdvices}) => {
         description:''
     });
 
-    //const [error, setError] = useState(false);
+    const dispatch = useDispatch();
+    const addAdvice = () => dispatch (createNewAdvice());
 
     const handleChange = e =>{
         setAdvice({
@@ -30,8 +33,7 @@ const CreateAdvice = ({createAdvices}) => {
         }
 
        // setError(false);
-        createAdvices(advice);
-
+        addAdvice();
         //reiniciar el form
         setAdvice({
             img:'',

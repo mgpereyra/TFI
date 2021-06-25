@@ -1,3 +1,9 @@
+import {
+    ADD_ADVICE,
+    ADD_ADVICE_SUCCESS,
+    ADD_ADVICE_ERROR
+} from '../types'
+
 // cada reducer tiene su propio state
 
 const initialState = {
