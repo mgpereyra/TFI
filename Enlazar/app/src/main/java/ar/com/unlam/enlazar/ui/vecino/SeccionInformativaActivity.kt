@@ -19,6 +19,7 @@ class SeccionInformativaActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().reference
     lateinit var adapter: CardInfoAdapter
     var listAdvice = ArrayList<CardInfo>()
+    var id=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seccion_informativa)
