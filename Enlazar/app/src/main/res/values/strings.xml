@@ -80,7 +80,14 @@
     </string-array>
 
     <string name="user_login">USERLOGIN</string>
+
+    <string name="pendientes">Pendientes</string>
+    <string name="confirmados">Confirmados</string>
+    <string name="places_cancelar">cancelar</string>
+    <string name="valor_perdido">Se ha perdido la respuesta</string>
+
     <string name="seleccione_el_servicio_a_realizar">Seleccione el servicio a realizar</string>
     <string name="cancelar_servicio">CANCELAR SERVICIO</string>
+
 
 </resources>
