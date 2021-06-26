@@ -50,7 +50,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     private var serviceLon = ""
     private var driverLat = ""
     private var driverLon = ""
-    private  lateinit var service: Service
+    private lateinit var service: Service
 
     private lateinit var database: FirebaseDatabase
 
@@ -86,16 +86,21 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         btnIniciarServicio.setOnClickListener {
             btnIniciarServicio.visibility = View.GONE
             btnFinalizarServicio.visibility = View.VISIBLE
+            btnCancelarServicio.visibility = View.VISIBLE
 
         }
-
+        btnCancelarServicio.setOnClickListener {
+            onBackPressed()
+        }
         btnFinalizarServicio.setOnClickListener {
             //obtenerCurretPositionLoop(true)
 
             getLastLocation()
             if (mCurrentDistance < 500) {
                 btnFinalizarServicio.visibility = View.GONE
+                btnCancelarServicio.visibility = View.GONE
                 cardViewFinalizarServicio.visibility = View.VISIBLE
+
             } else {
                 Toast.makeText(
                     this,
@@ -108,11 +113,18 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         btnTerminarServConfirm.setOnClickListener {
             var comentario = comentarioTerminarServicio.text.toString()
             actualizarServicio(comentario)
-           // btnIniciarServicio.visibility = View.VISIBLE
+            btnIniciarServicio.visibility = View.VISIBLE
+            btnFinalizarServicio.visibility = View.GONE
+            cardViewFinalizarServicio.visibility = View.GONE
+            btnCancelarServicio.visibility = View.GONE
+        }
+        btnCancelConfirmacion.setOnClickListener {
             btnFinalizarServicio.visibility = View.VISIBLE
             cardViewFinalizarServicio.visibility = View.GONE
+            btnCancelarServicio.visibility = View.VISIBLE
         }
     }
+
 
     fun obtenerCurretPositionLoop(cancelarServicio: Boolean) {
         val TIEMPO: Long = 10000
