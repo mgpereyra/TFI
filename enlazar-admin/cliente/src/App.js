@@ -48,6 +48,7 @@ function App() {
                       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
                       <PrivateRoute exact path="/list-advice" component={ListAdvice}/>
                       <PrivateRoute exact path="/advice/edit/:id" component={EditAdvice}/>
+                      <PrivateRoute exact path="/advice/delete/:id"/>
                       <PrivateRoute exact path="/advice/create" component={CreateAdvice}/>
                     </Switch>
                     </main>

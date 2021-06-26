@@ -4,10 +4,14 @@ import {
     ADD_ADVICE_ERROR,
     DOWNLOAD_ADVICES_SUCCESS,
     DOWNLOAD_ADVICES_ERROR,
-    START_DOWNLOAD_ADVICES
+    START_DOWNLOAD_ADVICES,
+    ADVICE_DELETE_ERROR,
+    GET_ADVICE_DELETE,
+    ADVICE_DELETE_SUCCESS
 } from '../types'
 import clientAxios from '../config/axios'
 import Swal from 'sweetalert2'
+import clienteAxios from '../config/axios';
 
 //Crear Consejos
 export function createNewAdvice(advice){
@@ -51,7 +55,7 @@ const addAdviceError = () => ({
 
 
 //Listar consejos
-export function listAdvices(advice){
+export function listAdvices(){
     return async(dispatch) => {
         dispatch({
             type: START_DOWNLOAD_ADVICES
@@ -60,7 +64,6 @@ export function listAdvices(advice){
         try {
             const response = await clientAxios.get('/api/advice')
 
-            console.log(response)
             //actualizo el state
             dispatch( downloadAdvicesSuccess(response.data) )    
 
@@ -87,3 +90,19 @@ const downloadAdvicesSuccess = advices =>({
 const downloadAdvicesError = () =>({
     type: DOWNLOAD_ADVICES_ERROR
 })
+
+//Eliminar un consejo
+export function deleteAdviceAction(id){
+    return async(dispatch) => {
+        dispatch({
+            type: GET_ADVICE_DELETE,
+            payload: id
+        });
+        try {
+            const response = await clienteAxios.delete(`/api/advice/delete/${id}`)
+        } catch (error) {
+            
+        }
+    }
+}
+

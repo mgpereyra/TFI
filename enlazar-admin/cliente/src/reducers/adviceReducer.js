@@ -4,7 +4,10 @@ import {
     ADD_ADVICE_ERROR,
     DOWNLOAD_ADVICES_SUCCESS,
     DOWNLOAD_ADVICES_ERROR,
-    START_DOWNLOAD_ADVICES
+    START_DOWNLOAD_ADVICES,
+    ADVICE_DELETE_ERROR,
+    GET_ADVICE_DELETE,
+    ADVICE_DELETE_SUCCESS
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -12,7 +15,8 @@ import {
 const initialState = {
     advices: [],
     error: null,
-    loading: false
+    loading: false,
+    adviceToDelete: null
 }
 
 export default function (state = initialState, action){
@@ -42,7 +46,12 @@ export default function (state = initialState, action){
                     loading: false,
                     error: false,
                     advices: action.payload
-            }            
+            }
+            case GET_ADVICE_DELETE:
+                return{
+                    ...state,
+                    adviceToDelete: action.payload
+                }            
 
         default:
             return state;

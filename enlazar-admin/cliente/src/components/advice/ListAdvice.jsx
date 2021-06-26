@@ -10,34 +10,34 @@ const ListAdvice = () => {
     const dispatch = useDispatch();
     const listAdvice = () => dispatch (listAdvices());
     const advices = useSelector(state => state.advices.advices)
+    const error = useSelector(state => state.advices.error)
+
    
     useEffect(() => {
        listAdvice()
-    }, [advices])
+    }, [])
 
-    Object.values(advices).forEach(logArrayElements);
+    /*Object.values(advices).forEach(logArrayElements);
 
     function logArrayElements(element, index) {
          var key =  Object.keys(advices)[index];
          const data = element;
          data.id= key;
          newArrayAdvices.push(data)
-     }
+     }*/
     
-
-        
         return (  
         <Fragment>    
              <Link to={'/advice/create'} className='btn btn-primary mb-3'>
-             <i class="fas fa-plus-circle"></i>
+             <i className="fas fa-plus-circle"></i>
                    Crear un nuevo consejo
               </Link>
-                 {newArrayAdvices.length === 0 ?
-                 <div className='alert alert-info text-center p-3'><i class="fas fa-exclamation-circle"></i>No hay consejos creados</div>
+                 {advices.length === 0 && !error ?
+                 <div className='alert alert-info text-center p-3'><i className="fas fa-exclamation-circle"></i>No hay consejos creados</div>
                  :
                  
                  <div className="row">
-                    {newArrayAdvices.map( advice => (
+                    { Object.values(advices).map( advice => (
                         <Advice
                             key={advice.id}
                             advice={advice}                
