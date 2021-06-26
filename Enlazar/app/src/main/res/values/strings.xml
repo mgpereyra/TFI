@@ -85,6 +85,9 @@
     <string name="confirmados">Confirmados</string>
     <string name="places_cancelar">cancelar</string>
     <string name="valor_perdido">Se ha perdido la respuesta</string>
+    <string name="como_reciclar">Como Reciclar Bien</string>
+    <string name="consejo_semana">Consejo de la semana</string>
+    <string name="eco_info">Ecoinforme</string>
 
     <string name="seleccione_el_servicio_a_realizar">Seleccione el servicio a realizar</string>
     <string name="cancelar_servicio">CANCELAR SERVICIO</string>

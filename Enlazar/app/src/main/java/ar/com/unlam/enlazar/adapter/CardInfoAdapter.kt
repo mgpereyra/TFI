@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.CardInfo
-import ar.com.unlam.enlazar.ui.vecino.DetalleCardInfoActivity
+import ar.com.unlam.enlazar.ui.TipoConsejo
+import ar.com.unlam.enlazar.ui.vecino.SeccionInformativaDetalleActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_info.view.*
 
 class CardInfoAdapter: RecyclerView.Adapter<CardInfoAdapter.CardInfoViewHolder>()  {
 
-var cardInfoList=ArrayList<CardInfo>()
+var cardInfoList=mutableListOf<CardInfo>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardInfoViewHolder {
         val view= LayoutInflater
@@ -26,7 +28,26 @@ var cardInfoList=ArrayList<CardInfo>()
 //
 
     override fun onBindViewHolder(holder: CardInfoViewHolder, position: Int) {
+        cardInfoList[position].let{
+            holder.itemView.cardInfo_content_advice.text=it.content
+            holder.itemView.cardInfo_title_advice.text=it.title
+            holder.itemView.cardInfoId.text=it.id
 
+            when (it.tipoConsejo){
+                TipoConsejo.COMO_RECICLAR_BIEN.toString()->holder.itemView.advice_type.setText(R.string.como_reciclar)
+                TipoConsejo.CONSEJO_DE_LA_SEMANA.toString()->holder.itemView.advice_type.setText(R.string.consejo_semana)
+                TipoConsejo.ECOINFORME.toString()->holder.itemView.advice_type.setText(R.string.eco_info)
+            }
+
+            Picasso.get()
+                .load(it.img)
+                //.resize(160,190)
+                .centerCrop()
+                .fit()
+                .into(holder.itemView.cardInfo_image_advice)
+
+                holder.card=it
+        }
     }
 
     override fun getItemCount(): Int {
@@ -35,8 +56,8 @@ var cardInfoList=ArrayList<CardInfo>()
     class CardInfoViewHolder(view: View, var card:CardInfo?=null):RecyclerView.ViewHolder(view){
         init {
                 view.btn_ver_card_info.setOnClickListener {
-                    val intent= Intent(view.context, DetalleCardInfoActivity::class.java)
-                    intent.putExtra(DetalleCardInfoActivity.ID,card!!.id)
+                    val intent= Intent(view.context, SeccionInformativaDetalleActivity::class.java)
+                    intent.putExtra(SeccionInformativaDetalleActivity.ID,card!!.id)
                     view.context.startActivity(intent)
 
                 }

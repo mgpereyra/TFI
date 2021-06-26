@@ -46,7 +46,7 @@
         <activity android:name=".ui.vecino.DetalleServicioActivity" />
         <activity android:name=".ui.vecino.DashboardUserActivity" />
         <activity android:name=".ui.vecino.NuevoServicioActivity" />
-        <activity android:name=".ui.vecino.DetalleCardInfoActivity" />
+        <activity android:name=".ui.vecino.SeccionInformativaDetalleActivity" />
         <activity android:name=".ui.vecino.SeccionInformativaActivity" />
         <activity android:name=".ui.vecino.CrearCuentaActivity" />
         <activity android:name=".ui.LoginActivity" />
