@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useContext } from 'react'
-import { Button, Col, Row} from 'react-bootstrap'
+import {  Col, Row} from 'react-bootstrap'
 import {createNewAdvice} from '../../actions/adviceAction'
-import {   useSelector, useDispatch } from 'react-redux'
+import {  useDispatch } from 'react-redux'
 import alertaContext from '../../context/alerta/alertaContext'
 
 const CreateAdvice = ({history}) => {
@@ -12,15 +12,15 @@ const CreateAdvice = ({history}) => {
         img:'',
         tipe: '',
         title:'',
-        content:''
+        content:'',
+        imagen:null
     });
 
+    const {img, tipe, title, content } = advice;
+    
     const dispatch = useDispatch();
-    const addAdvice = advice => dispatch (createNewAdvice(advice));
-
-    //acceder al state
-    const loading = useSelector(state => state.advices.loading)
-  
+    const addAdvice = ( advice ) => dispatch (createNewAdvice(advice));
+    
     const handleChange = e =>{
         setAdvice({
             ...advice,
@@ -28,13 +28,22 @@ const CreateAdvice = ({history}) => {
         })
     }
 
-    const {img, tipe, title, content} = advice;
+    const handleImg = e =>{
+        let f = new FormData();
+        f.append('file', e.target.files[0]);
+
+        setAdvice({
+            ...advice,
+            imagen : f,
+            img : e.target.files[0].name    
+        });
+    }
 
     const handleSubmit = e =>{
         e.preventDefault();
 
         //Validar
-        if(tipe.trim() === '' || img.trim() ==='' || title.trim() ==='' || content.trim() ===''){
+        if(tipe.trim() === '' ||  img.trim() === '' || title.trim() ==='' || content.trim() ===''){
             mostrarAlerta("Por favor complete todos lo campos", "alerta-error")
             return;
         }
@@ -46,20 +55,27 @@ const CreateAdvice = ({history}) => {
             img:'',
             tipe: '',
             title:'',
-            content:''
+            content:'',
+            imagen:null,
+            uri:''
         })
 
         //redireccion
-        history.push('/list-advice')
+        setTimeout( function(){
+            history.push('/list-advice')
+        },2500)
     }
     return (
         <Fragment>
              {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
-            <h2>Crear un nuevo consejo</h2>
+             <div class="d-flex justify-content-between">
+                <h2><i className="fas fa-plus-circle"></i>Crear un nuevo consejo</h2>
+              </div>
             <div className="card bg-gris">
                 <div className="card-body">
                     <form
                         onSubmit={handleSubmit}
+                        enctype="multipart/form-data"
                     >
                         <Row>
                             <Col lg={4}>
@@ -70,8 +86,8 @@ const CreateAdvice = ({history}) => {
                                             className="input-text"
                                             id="img" 
                                             name="img"
-                                            onChange={handleChange}
-                                            value={img} />
+                                            onChange={handleImg}
+                                            />
                                 </div>
                             </Col>
                             <Col>
@@ -108,12 +124,15 @@ const CreateAdvice = ({history}) => {
                                 </div>
                             </Col>
                             </Row>
-                            <Button 
-                                className="btn btn-block"
-                                type="submit"
-                                variant="primary"
-                            >Crear consejo
-                            </Button>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button 
+                                    className="btn btn-primary me-md-2"
+                                    type="submit"
+                                    variant="primary"
+                                ><i className="far fa-check"></i>
+                                Crear consejo
+                                </button>
+                            </div>
                     </form>    
                 </div>
             </div>

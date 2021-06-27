@@ -7,11 +7,15 @@ import {
     START_DOWNLOAD_ADVICES,
     ADVICE_DELETE_ERROR,
     GET_ADVICE_DELETE,
-    ADVICE_DELETE_SUCCESS
+    ADVICE_DELETE_SUCCESS,
+    GET_ADVICE_MODIFY,
+    ADVICE_MODIFY_ERROR,
+    ADVICE_MODIFY_SUCCESS
 } from '../types'
 import clientAxios from '../config/axios'
 import Swal from 'sweetalert2'
 import clienteAxios from '../config/axios';
+import firebase from 'firebase'
 
 //Crear Consejos
 export function createNewAdvice(advice){
@@ -21,7 +25,28 @@ export function createNewAdvice(advice){
         });
 
         try {
-            await clientAxios.post('/api/advice', advice)
+          
+             const guardarImagen = async (advice) => {
+                const imagen = advice.imagen.get('file');
+                try {
+                    var storageRef =  firebase.storage();
+                    var imageRef =  storageRef.ref().child('advice_image/'+imagen.name);
+                    await imageRef.put(imagen).then(async (snapshot) => {
+                        const uri =  await storageRef.ref('advice_image/'+advice.img).getDownloadURL();
+                        advice.uri = uri;
+                    });
+                } catch (error) {
+                    console.log(error)
+                }
+                
+            };
+
+            async function save(){   
+                await guardarImagen(advice);
+                await clientAxios.post('/api/advice',advice)
+            } 
+            save();
+            
             //actualizo el state
             dispatch( addAdviceSuccess(advice) )    
 
@@ -33,6 +58,7 @@ export function createNewAdvice(advice){
             )
 
         } catch (error) {
+            console.log(error)
             dispatch( addAdviceError() )
             //alerta
             Swal.fire({
@@ -42,6 +68,22 @@ export function createNewAdvice(advice){
             })
         }
     }
+}
+
+const guardarImageng = async (advice) => {
+    const imagen = advice.imagen.get('file');
+    try {
+       var storageRef =  firebase.storage();
+       var imageRef =  storageRef.ref().child('advice_image/'+imagen.name);
+       await imageRef.put(imagen).then(async (snapshot) => {
+            const uri =  await storageRef.ref('advice_image/'+advice.img).getDownloadURL();
+            console.log(uri)
+            return uri;
+      });
+    } catch (error) {
+        console.log(error)
+    }
+ 
 }
 
 const addAdviceSuccess = advice =>({
@@ -62,12 +104,13 @@ export function listAdvices(){
         });
 
         try {
-            const response = await clientAxios.get('/api/advice')
-
+           
+            const response = await clientAxios.get('/api/advice');
             //actualizo el state
             dispatch( downloadAdvicesSuccess(response.data) )    
+        
 
-            //alerta
+            
 
         } catch (error) {
             dispatch( downloadAdvicesError() )
@@ -99,9 +142,68 @@ export function deleteAdviceAction(id){
             payload: id
         });
         try {
-            const response = await clienteAxios.delete(`/api/advice/delete/${id}`)
+        
+            await clienteAxios.delete(`/api/advice/${id}`)
+            dispatch({
+                type: ADVICE_DELETE_SUCCESS
+            });
+
+            //alerta
+            Swal.fire(
+                'Correcto',
+                'El consejo se eliminó',
+                'success'
+            )
         } catch (error) {
+            dispatch({
+                type: ADVICE_DELETE_ERROR
+            });
+            console.log(error)
+            Swal.fire({
+                icon:'error',
+                title: 'Oppss..',
+                text: 'Ha ocurrido un error, intenta nuevamente'
+            })
+        }
+    }
+}
+
+//Coloca el consejo a editar en el state
+export function modifyAdvice(adviceToModify){
+    return async(dispatch) => {
+        dispatch({
+            type: GET_ADVICE_MODIFY,
+            payload: adviceToModify
+        });
+       
+    }
+}
+
+//Modificar un consejo
+export function modifyAdviceAction(advice){
+    return async(dispatch) => {
+        
+        try {
+            if(advice.imagen !==undefined){
+                guardarImageng(advice)
+            }
+          
+            await clienteAxios.put(`/api/advice/${advice.id}`, advice);
             
+            dispatch({
+                type: ADVICE_MODIFY_SUCCESS
+            }); 
+            //alerta
+            Swal.fire(
+                'Genial',
+                'El consejo se modificó correctamente',
+                'success'
+            )
+        } catch (error) {
+            console.log(error)
+            dispatch({
+                type: ADVICE_MODIFY_ERROR
+            }); 
         }
     }
 }

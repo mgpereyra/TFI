@@ -8,7 +8,8 @@ const config =  {
     storageBucket: "enlazar-admin.appspot.com",
     messagingSenderId: "668817016068",
     appId: "1:668817016068:web:3d9d529b4d2461b350bc51",
-    measurementId: "G-PK4PTWB3DW"
+    measurementId: "G-PK4PTWB3DW",
+    storageBucket:"gs://enlazar-admin.appspot.com/"
   };
   
  

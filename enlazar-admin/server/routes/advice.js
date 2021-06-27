@@ -16,4 +16,15 @@ router.get('/',
     adviceController.getAdvices
 )
 
+//api/advice
+router.delete('/:id',
+    auth,
+    adviceController.deleteAdvice
+)
+
+//api/advice
+router.put('/:id',
+    auth,
+    adviceController.putAdvice
+)
 module.exports = router

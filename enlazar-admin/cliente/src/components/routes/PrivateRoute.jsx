@@ -15,6 +15,7 @@ const PrivateRoute = ({component: Component, ...props}) => {
             //no esta autenticado
             <Redirect to="/"/>
         ):(
+            
             <Component {...props}/>
         )}/>
      );

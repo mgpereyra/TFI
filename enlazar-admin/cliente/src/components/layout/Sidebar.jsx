@@ -12,7 +12,7 @@ const Sidebar = () => {
                 </Link>
                 </h1> 
                 <Link to={'/list-advice'} className='color-third nav-link'>
-                <i className="fas fa-user color-third"></i>
+                <i className="fas fa-hands-helping"></i>
                     Listado de consejos
                 </Link>
             </div>
