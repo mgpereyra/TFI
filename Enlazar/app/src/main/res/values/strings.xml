@@ -91,6 +91,8 @@
 
     <string name="seleccione_el_servicio_a_realizar">Seleccione el servicio a realizar</string>
     <string name="cancelar_servicio">CANCELAR SERVICIO</string>
+    <string name="confirmar_asistecia_P_E">CONFIRMAR</string>
+    <string name="cancelar_asistencia_P_E">Cancelar</string>
 
 
 </resources>

@@ -23,7 +23,6 @@
             android:layout_width="200dp"
             android:layout_height="67dp"
             app:title="@string/app_name"
-
             />
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnVolver"
@@ -35,30 +34,8 @@
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_arrow_back" />
     </LinearLayout>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/encuentros_confirmados"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
-            android:text="Confirmados"
-            android:textSize="20sp"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/barra"
-            app:layout_constraintStart_toStartOf="parent"
-            />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/crear_user_punto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="crear asistencia"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barra" />
-
+<!--
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/crear_punto"
             android:layout_width="wrap_content"
@@ -69,26 +46,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.794"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barra" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/encuentros_pendientes"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
-            android:text="Pendientes"
-            android:textSize="20sp"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barra"
-            app:layout_constraintStart_toEndOf="@id/crear_punto"
-            />
+            app:layout_constraintTop_toBottomOf="@id/barra" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list_encuentros"
             android:layout_width="match_parent"
             android:layout_height="594dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="52dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/barra"
             tools:listitem="@layout/card_encuentro" />

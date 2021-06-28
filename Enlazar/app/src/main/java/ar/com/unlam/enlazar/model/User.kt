@@ -18,4 +18,4 @@ data class User (
         var phone:String? = null,
         var typeUser:Int? = 1,
 
-        ):Serializable
+        )
