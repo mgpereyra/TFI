@@ -1,9 +1,5 @@
-const AdviceModel = require('../models/adviceModel');
 const firebase = require( "firebase");
 const {validationResult}= require('express-validator');
-const {Storage} = require('@google-cloud/storage')
-const storage = require( 'firebase/storage');
-global.XMLHttpRequest = require("xhr2");
 
 exports.createAdvice = async (req, res) =>{
     const {img, tipe, title, content, uri} = req.body;
