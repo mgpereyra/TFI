@@ -49,7 +49,8 @@ class SeccionInformativaActivity : AppCompatActivity() {
                             postSnapshot.child("title").value.toString(),
                             postSnapshot.child("content").value.toString(),
                             postSnapshot.child("likes").value.toString().toLong(),
-                            postSnapshot.child("tipoConsejo").value.toString()
+                            postSnapshot.child("tipoConsejo").value.toString(),
+                            postSnapshot.child("uri").value.toString()
                         )
                     )
 

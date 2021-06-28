@@ -9,19 +9,23 @@ import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.CardInfo
 import ar.com.unlam.enlazar.ui.TipoConsejo
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 //import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-enum class ProviderType{
-    BASIC
-}
-var userId:String=""
+
+
 class DashboardUserActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().getReference()
+    var userId:String=""
+    var puntosUser=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+getPuntos()
         if (intent.hasExtra(IDKEY)) {
             userId = intent.extras!!.getString(IDKEY, "").toString()
         }
@@ -37,7 +41,8 @@ class DashboardUserActivity : AppCompatActivity() {
                     }
 
         cardView_mis_puntos.setOnClickListener {
-            val intent: Intent = Intent(this, MisPuntosActivity::class.java)
+            val intent= Intent(this, MisPuntosActivity::class.java)
+            intent.putExtra(MisPuntosActivity.PUNTOS, puntosUser)
             startActivity(intent)
         }
        cardView_mis_encuentros.setOnClickListener{
@@ -84,6 +89,19 @@ setSupportActionBar(toolbar)
 
         }
         return super.onOptionsItemSelected(item)
+    }
+    private fun getPuntos(){
+        db.child("User").child(FirebaseAuth.getInstance().currentUser!!.uid).child("puntos").addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                puntosUser=snapshot.value.toString().toInt()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+
     }
     companion object {
         val IDKEY: String = "id"

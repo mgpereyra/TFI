@@ -6,3 +6,9 @@ enum class TipoConsejo {
     COMO_RECICLAR_BIEN,
     ECOINFORME
 }
+
+enum class EstadoCupon{
+    SIN_USAR,
+    CANJEADO
+
+}
