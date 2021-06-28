@@ -7,7 +7,10 @@ import {
   ADD_MEETING_ERROR,
   GET_MEETING_MODIFY,
   MEETING_MODIFY_SUCCESS,
-  MEETING_MODIFY_ERROR
+  MEETING_MODIFY_ERROR,
+  GET_MEETING_DELETE,
+  MEETING_DELETE_SUCCESS,
+  MEETING_DELETE_ERROR
 } from "../types";
 import Swal from "sweetalert2";
 import clienteAxios from "../config/axios";
@@ -115,6 +118,36 @@ export function modifyMeetingAction(meeting) {
       });
 
       //alerta
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: "Ha ocurrido un error, intenta nuevamente",
+      });
+    }
+  };
+}
+
+
+//Eliminar un consejo
+export function deleteMeetingAction(id) {
+  return async (dispatch) => {
+    dispatch({
+      type: GET_MEETING_DELETE,
+      payload: id,
+    });
+    try {
+      await clienteAxios.delete(`/api/meeting/${id}`);
+      dispatch({
+        type: MEETING_DELETE_SUCCESS,
+      });
+
+      //alerta
+      Swal.fire("Correcto", "El punto de encuentro se eliminó", "success");
+    } catch (error) {
+      dispatch({
+        type: MEETING_DELETE_ERROR,
+      });
+      console.log(error);
       Swal.fire({
         icon: "error",
         title: "Oppss..",

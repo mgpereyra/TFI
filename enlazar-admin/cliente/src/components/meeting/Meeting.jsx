@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { modifyMeeting } from "../../actions/meetingAction"
+import { modifyMeeting, deleteMeetingAction } from "../../actions/meetingAction"
 
 const Meeting = ({ meeting }) => {
 
@@ -12,7 +12,7 @@ const Meeting = ({ meeting }) => {
   
   //eliminar
   const confirmDelete = (id) => {
-    //dispatch(deleteAdviceAction(id));
+    dispatch(deleteMeetingAction(id));
   };
 
   const confirmEdit = (meeting) => {
@@ -34,7 +34,9 @@ const Meeting = ({ meeting }) => {
           <h3 className="card-title">{date} - {time}</h3>
           <p className="card-text cortar-texto">{description}</p>
           <div className="acciones">
-            <button className="btn btn-outline-primary w-100 btn-left">
+            <button
+               onClick = {() => confirmDelete(id)} 
+               className="btn btn-outline-primary w-100 btn-left">
               <i className="far fa-trash-alt"></i>
               Eliminar
             </button>

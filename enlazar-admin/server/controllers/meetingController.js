@@ -61,3 +61,19 @@ exports.putMeeting = async(req, res) => {
         res.status(500).send('Error')
     }
 }
+
+//Eliminar un consejo
+exports.deleteMeeting = async(req, res) => {
+    try {
+        const db= firebase.database().ref();
+        
+        //verificar i existe el consejo
+        //verificar que el usuario sea el propietario
+
+        await db.child('MeetingPoint').child(req.params.id).remove()
+        res.json({msg: 'Consejo eliminado'})
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Error')
+    }
+}

@@ -21,4 +21,11 @@ router.put('/:id',
     auth,
     meetingController.putMeeting
 )
+
+//api/advice
+router.delete('/:id',
+    auth,
+    meetingController.deleteMeeting
+)
+
 module.exports = router

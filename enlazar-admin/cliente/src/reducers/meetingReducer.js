@@ -7,7 +7,10 @@ import {
     ADD_MEETING_ERROR,
     GET_MEETING_MODIFY,
     MEETING_MODIFY_SUCCESS,
-    MEETING_MODIFY_ERROR
+    MEETING_MODIFY_ERROR,
+    GET_MEETING_DELETE,
+    MEETING_DELETE_SUCCESS,
+    MEETING_DELETE_ERROR
   } from "../types";
 
 // cada reducer tiene su propio state
@@ -40,14 +43,6 @@ export default function (state = initialState, action){
                 loading: false,
                 meetings: [...state.meetings, action.payload]
         }
-        case ADD_MEETING_ERROR:
-        case DOWNLOAD_MEETINGS_ERROR: 
-        case MEETING_MODIFY_ERROR:   
-            return {
-                ...state,
-                loading: false,
-                error: true
-        } 
         case GET_MEETING_MODIFY:
             return{
                 ...state,
@@ -57,7 +52,27 @@ export default function (state = initialState, action){
             return{
                 ...state,
                 meetingToModify: null
+        }  
+        case GET_MEETING_DELETE:
+            return{
+                ...state,
+                meetingToDelete: action.payload
             }  
+        case MEETING_DELETE_SUCCESS:
+            return{
+                ...state,
+                meetings:  Object.values(state.meetings).filter(meet => meet.id !== state.meetingToDelete) ,
+                meetingToDelete: null
+            }  
+        case ADD_MEETING_ERROR:
+        case DOWNLOAD_MEETINGS_ERROR: 
+        case MEETING_MODIFY_ERROR: 
+        case MEETING_DELETE_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: true
+        } 
         default:
             return state;
     }
