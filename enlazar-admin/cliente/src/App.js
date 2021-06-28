@@ -1,13 +1,20 @@
 import React from 'react';
 import Login from './components/auth/Login'
 import NewAccount from './components/auth/NewAccount'
+
 import Header from './components/layout/Header' 
 import Footer from './components/layout/Footer' 
 import Sidebar from './components/layout/Sidebar' 
 import Dashboard from './components/dashboard/Dashboard'
+
 import ListAdvice from './components/advice/ListAdvice'
 import EditAdvice from './components/advice/EditAdvice' 
 import CreateAdvice from './components/advice/CreateAdvice' 
+
+import CreateMeeting from './components/meeting/CreateMeeting' 
+import ListMeeting from './components/meeting/ListMeeting' 
+
+import {conectFirebase } from './config/firebase'
 
 import './index.css'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -29,6 +36,8 @@ if(token){
   authToken(token);
 }
 
+conectFirebase()
+
 function App() {
   return (
     <AlertaState>
@@ -47,10 +56,14 @@ function App() {
                     <main>
                     <Switch>
                       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+                      <PrivateRoute exact path="/advice/:id"/>
                       <PrivateRoute exact path="/list-advice" component={ListAdvice}/>
                       <PrivateRoute exact path="/edit-advice/:id" component={EditAdvice}/>
-                      <PrivateRoute exact path="/advice/:id"/>
                       <PrivateRoute exact path="/create-advice" component={CreateAdvice}/>
+
+                      <PrivateRoute exact path="/create-meeting" component={CreateMeeting}/>
+                      <PrivateRoute exact path="/list-meeting" component={ListMeeting}/>
+
                     </Switch>
                     </main>
                     <Footer/>

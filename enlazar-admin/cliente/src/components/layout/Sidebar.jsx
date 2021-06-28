@@ -11,9 +11,15 @@ const Sidebar = () => {
                     Enlazar
                 </Link>
                 </h1> 
+
                 <Link to={'/list-advice'} className='color-third nav-link'>
                 <i className="fas fa-hands-helping"></i>
-                    Listado de consejos
+                    Consejos
+                </Link>
+
+                <Link to={'/list-meeting'} className='color-third nav-link'>
+                <i className="fas fa-hand-holding-heart"></i>
+                    Puntos de encuentro
                 </Link>
             </div>
         </aside>
