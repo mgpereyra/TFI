@@ -2,11 +2,69 @@ package ar.com.unlam.enlazar.ui.vecino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import ar.com.unlam.enlazar.R
+import ar.com.unlam.enlazar.adapter.CuponAdapter
+import ar.com.unlam.enlazar.model.CuponCanje
+import ar.com.unlam.enlazar.model.Item
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MisCanjesActivity : AppCompatActivity() {
+   lateinit var adapter:CuponAdapter
+   var puntos=0
+    var id = FirebaseAuth.getInstance().currentUser!!.uid
+    var canjes=ArrayList<Item>()
+    private val db = FirebaseDatabase.getInstance().getReference()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_canjes)
+        if (intent.hasExtra(PUNTOS_DISPONIBLES)) {
+
+            puntos = intent.extras!!.getInt(PUNTOS_DISPONIBLES, 0)
+        } else {
+            Toast.makeText(
+                this@MisCanjesActivity,
+                getString(R.string.valor_perdido), Toast.LENGTH_LONG
+            ).show()
+        }
+        cargarCanjes()
     }
+private fun cargarCanjes(){
+    db.child("Item").addValueEventListener(object:ValueEventListener{
+        override fun onDataChange(snapshot: DataSnapshot) {
+            for (item in snapshot.children) {
+                if (item.child("amount").value.toString().toInt() > 0) {
+                    canjes.add(
+                        Item(
+                            item.child("title").value.toString(),
+                            item.child("id").value.toString(),
+                            item.child("description").value.toString(),
+                            item.child("amount").value.toString().toInt(),
+                            item.child("imageCode").value.toString(),
+                            item.child("pointsCost").value.toString().toInt(),
+                            item.child("image").value.toString()
+                        )
+                    )
+                }
+            }
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    })
+
+
+
+}
+
+companion object{
+   var PUNTOS_DISPONIBLES=""
+}
+
 }

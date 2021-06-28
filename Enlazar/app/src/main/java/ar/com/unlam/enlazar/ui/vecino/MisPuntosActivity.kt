@@ -1,5 +1,6 @@
 package ar.com.unlam.enlazar.ui.vecino
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,6 +9,7 @@ import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.adapter.CuponAdapter
 import ar.com.unlam.enlazar.model.CuponCanje
 import ar.com.unlam.enlazar.ui.ValorMaterial
+import ar.com.unlam.enlazar.ui.vecino.MisCanjesActivity.Companion.PUNTOS_DISPONIBLES
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -37,6 +39,12 @@ class MisPuntosActivity : AppCompatActivity() {
                 this@MisPuntosActivity,
                 getString(R.string.valor_perdido), Toast.LENGTH_LONG
             ).show()
+        }
+        btn_ir_a_canjear.setOnClickListener {
+            val intent = Intent(this, MisCanjesActivity::class.java)
+            intent.putExtra(PUNTOS_DISPONIBLES, PUNTOS)
+            startActivity(intent)
+
         }
         calcularPuntos()
         cargarData()

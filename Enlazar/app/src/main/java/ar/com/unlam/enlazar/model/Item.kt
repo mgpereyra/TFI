@@ -6,7 +6,8 @@ data class Item(
     val description: String = "",
     val amount: Int = 0,
     val imageCode: String = "",
-    val pointsCost:Int=0
+    val pointsCost:Int=0,
+    val image:String="default"
 
 
 )
