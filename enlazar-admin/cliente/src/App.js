@@ -8,7 +8,6 @@ import Dashboard from './components/dashboard/Dashboard'
 import ListAdvice from './components/advice/ListAdvice'
 import EditAdvice from './components/advice/EditAdvice' 
 import CreateAdvice from './components/advice/CreateAdvice' 
-import {conectFirebase } from './config/firebase'
 
 import './index.css'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -30,7 +29,6 @@ if(token){
   authToken(token);
 }
 
-conectFirebase();
 function App() {
   return (
     <AlertaState>
