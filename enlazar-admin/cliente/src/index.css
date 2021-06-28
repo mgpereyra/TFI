@@ -183,12 +183,11 @@ a:hover {
       background-color: #212529!important;
  }
 
-.footer-copyright {
-  position: absolute;
+footer {
   right: 0;
   left: 0;
   width: 100%;
- 
+  height: 50px;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -360,7 +359,7 @@ aside  {
   justify-content: space-between;
   align-items: center;
   background-color: var(--ocre);
-  padding: 2rem;
+  padding: 1rem 1.5rem;
 }
 .nombre-usuario {
   color: var(--blanco);
@@ -406,6 +405,7 @@ aside  {
 
 main {
   padding: 4rem 10%;
+  min-height: calc(100vh - 75px - 50px);
 }
 
 
