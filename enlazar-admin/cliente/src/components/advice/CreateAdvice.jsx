@@ -68,14 +68,13 @@ const CreateAdvice = ({history}) => {
     return (
         <Fragment>
              {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
-             <div class="d-flex justify-content-between">
+             <div className="d-flex justify-content-between">
                 <h2><i className="fas fa-plus-circle"></i>Crear un nuevo consejo</h2>
               </div>
             <div className="card bg-gris">
                 <div className="card-body">
                     <form
                         onSubmit={handleSubmit}
-                        enctype="multipart/form-data"
                     >
                         <Row>
                             <Col lg={4}>
@@ -124,7 +123,7 @@ const CreateAdvice = ({history}) => {
                                 </div>
                             </Col>
                             </Row>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <button 
                                     className="btn btn-primary me-md-2"
                                     type="submit"
