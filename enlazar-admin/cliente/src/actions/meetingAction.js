@@ -4,7 +4,10 @@ import {
   DOWNLOAD_MEETINGS_ERROR,
   ADD_MEETING,
   ADD_MEETING_SUCCESS,
-  ADD_MEETING_ERROR
+  ADD_MEETING_ERROR,
+  GET_MEETING_MODIFY,
+  MEETING_MODIFY_SUCCESS,
+  MEETING_MODIFY_ERROR
 } from "../types";
 import Swal from "sweetalert2";
 import clienteAxios from "../config/axios";
@@ -22,7 +25,7 @@ export function getListMeetings() {
       //actualizo el state
      dispatch(downloadMeetingsSuccess(response.data));
     } catch (error) {
-      //dispatch(downloadMeetingsError());
+      dispatch(downloadMeetingsError());
 
       //alerta
       Swal.fire({
@@ -54,14 +57,14 @@ export function createNewMeeting(meeting) {
       await clienteAxios.post("/api/meeting", meeting);
 
       //actualizo el state
-      //dispatch(addAdviceSuccess(meeting));
+      dispatch(addMeetingSuccess(meeting));
 
       //alerta
-      Swal.fire("Genial!", "El consejo se agregó correctamente", "success");
+      Swal.fire("Genial!", "El encuentro se agregó correctamente", "success");
     
     } catch (error) {
       console.log(error);
-     // dispatch(addAdviceError());
+      dispatch(addMeetingError());
       //alerta
       Swal.fire({
         icon: "error",
@@ -72,11 +75,51 @@ export function createNewMeeting(meeting) {
   };
 }
 
-const addAdviceSuccess = (meeting) => ({
+const addMeetingSuccess = (meeting) => ({
   type: ADD_MEETING_SUCCESS,
-  payload: meeting,
+  payload: meeting
 });
 
-const addAdviceError = () => ({
+const addMeetingError = () => ({
   type: ADD_MEETING_ERROR
 });
+
+
+
+//Coloca el elemento a editar en el state
+export function modifyMeeting(meeting) {
+  return async (dispatch) => {
+    dispatch({
+      type: GET_MEETING_MODIFY,
+      payload: meeting,
+    });
+  };
+}
+
+//Modificar un consejo
+export function modifyMeetingAction(meeting) {
+  return async (dispatch) => {
+    try {
+      
+      await clienteAxios.put(`/api/meeting/${meeting.id}`, meeting);
+
+      dispatch({
+        type: MEETING_MODIFY_SUCCESS,
+      });
+      //alerta
+      Swal.fire("Genial", "El consejo se modificó correctamente", "success");
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: MEETING_MODIFY_ERROR,
+      });
+
+      //alerta
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: "Ha ocurrido un error, intenta nuevamente",
+      });
+    }
+  };
+}

@@ -74,7 +74,7 @@ const CreateMeeting = ({ history }) => {
       ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-plus-circle"></i>Crear un nuevo punto de
+          <i className="fas fa-plus-circle"></i>Crear punto de
           encuentro
         </h2>
       </div>

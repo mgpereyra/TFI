@@ -19,11 +19,11 @@ const ListMeeting = () => {
 
   return (
     <Fragment>
-      <div className="d-flex justify-content-between px-4">
-        <h2>
-          <i className="fas fa-hand-holding-heart"></i>Listado de punto de
+      <div className="d-flex justify-content-between px-4 mb-5">
+        <h1>
+          <i className="fas fa-hand-holding-heart"></i>Listado de puntos de
           encuentro
-        </h2>
+        </h1>
         <Link to={"/create-meeting"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle"></i>
           Crear un nuevo encuentro

@@ -44,3 +44,20 @@ exports.createMeeting = async (req, res) =>{
         res.status(500).send('Error')
     }
 }
+
+//Modificar meeting
+exports.putMeeting = async(req, res) => {
+    try {
+        const key = req.params.id;
+        const postData = req.body
+
+        const db = firebase.database().ref();
+        await db.child('MeetingPoint').child(key).update(postData)
+        
+        res.json({msg: 'se modifico correctamente'})
+            
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Error')
+    }
+}

@@ -16,4 +16,9 @@ router.post('/',
     meetingController.createMeeting
 )
 
+//api/meeting
+router.put('/:id',
+    auth,
+    meetingController.putMeeting
+)
 module.exports = router

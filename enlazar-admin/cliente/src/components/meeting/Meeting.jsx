@@ -1,8 +1,24 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { modifyMeeting } from "../../actions/meetingAction"
 
 const Meeting = ({ meeting }) => {
-  const {calle, date, description, localidad, lugar, time, estado, asistentes}= meeting;
 
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const {calle, date, description, localidad, lugar, time, estado, asistentes,id}= meeting;
+  
+  //eliminar
+  const confirmDelete = (id) => {
+    //dispatch(deleteAdviceAction(id));
+  };
+
+  const confirmEdit = (meeting) => {
+    dispatch(modifyMeeting(meeting));
+    history.push(`/edit-meeting/${id}`);
+  };
 
   return (
     <div className="col-lg-4">
@@ -22,7 +38,9 @@ const Meeting = ({ meeting }) => {
               <i className="far fa-trash-alt"></i>
               Eliminar
             </button>
-            <button className="btn btn-primary mr-2 w-100 btn-right">
+            <button
+              onClick={() => confirmEdit(meeting)}
+              className="btn btn-primary mr-2 w-100 btn-right">
               <i className="far fa-edit"></i>
               Editar
             </button>
@@ -30,7 +48,7 @@ const Meeting = ({ meeting }) => {
           </div>
         </div>
         <div className="card-footer">
-          <small className="text-muted">{meeting.id}</small>
+          <small className="text-muted">{id}</small>
         </div>
       </div>
     </div>

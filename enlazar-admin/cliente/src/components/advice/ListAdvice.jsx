@@ -17,10 +17,10 @@ const ListAdvice = () => {
 
   return (
     <Fragment>
-      <div className="d-flex justify-content-between px-4">
-        <h2>
+      <div className="d-flex justify-content-between px-4 mb-5">
+        <h1>
           <i className="fas fa-hands-helping"></i>Listado de consejos
-        </h2>
+        </h1>
         <Link to={"/create-advice"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle"></i>
           Crear un nuevo consejo

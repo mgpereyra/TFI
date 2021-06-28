@@ -22,7 +22,7 @@ const Advice = ({ advice }) => {
 
   return (
     <div className="col-lg-4">
-      <div className="card ">
+      <div className="card  border-secondary">
         <img className="card-img-top" src={uri} alt={img}></img>
         <div className="card-body">
           <p className="card-text">
@@ -47,7 +47,7 @@ const Advice = ({ advice }) => {
             </button>
           </div>
         </div>
-        <div className="card-footer">
+        <div className="card-footer  border-secondary">
           <small className="text-muted">{advice.id}</small>
         </div>
       </div>

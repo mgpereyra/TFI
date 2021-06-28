@@ -13,6 +13,8 @@ import CreateAdvice from './components/advice/CreateAdvice'
 
 import CreateMeeting from './components/meeting/CreateMeeting' 
 import ListMeeting from './components/meeting/ListMeeting' 
+import EditMeeting from './components/meeting/EditMeeting' 
+
 
 import {conectFirebase } from './config/firebase'
 
@@ -63,6 +65,8 @@ function App() {
 
                       <PrivateRoute exact path="/create-meeting" component={CreateMeeting}/>
                       <PrivateRoute exact path="/list-meeting" component={ListMeeting}/>
+                      <PrivateRoute exact path="/edit-meeting/:id" component={EditMeeting}/>
+
 
                     </Switch>
                     </main>
