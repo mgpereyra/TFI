@@ -7,7 +7,7 @@ const Meeting = ({ meeting }) => {
   return (
     <div className="col-lg-4">
       <div className="card border-secondary">
-          <div class="card-header border-secondary">
+          <div className="card-header border-secondary">
             {lugar} 
           </div>
         <div className="card-body">

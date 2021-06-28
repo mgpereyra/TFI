@@ -398,9 +398,9 @@ aside  {
   color: var(--gris2);
 }
 .input-text {
-  padding: 1rem;
+  padding: 0.6rem;
   border: none;
-  border-radius: .5rem;
+  border-radius: .3rem;
   flex: 1;
   width: 100%;
 }
@@ -569,6 +569,8 @@ main {
   font-size: 1.8rem;
   text-align: center;
   width: 100%;
+  box-shadow: 4px 4px 30px -3px rgba(0,0,0,0.6);
+
 }
 @media (min-width:768px) {
   .alerta {

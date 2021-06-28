@@ -10,4 +10,10 @@ router.get('/',
     meetingController.getListMeeting
 )
 
+//api/meeting
+router.post('/',
+    auth,
+    meetingController.createMeeting
+)
+
 module.exports = router

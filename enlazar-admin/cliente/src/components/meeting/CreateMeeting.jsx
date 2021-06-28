@@ -14,10 +14,9 @@ const CreateMeeting = ({ history }) => {
     lugar: "",
     description: "",
     localidad: "",
-    lugar: "",
     time: "",
     estado: "",
-    asistentes: [],
+    asistentes: {},
   });
 
   const { calle, date, description, localidad, lugar, time } = meeting;
