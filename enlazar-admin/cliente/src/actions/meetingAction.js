@@ -4,6 +4,7 @@ import {
   DOWNLOAD_MEETINGS_ERROR,
 } from "../types";
 import Swal from "sweetalert2";
+import clienteAxios from "../config/axios";
 
 //Listar consejos
 export function getListMeetings() {
@@ -13,7 +14,7 @@ export function getListMeetings() {
     });
 
     try {
-      //const response = await clientAxios.get("/api/meeting");
+      const response = await clienteAxios.get("/api/meeting");
       //actualizo el state
      dispatch(downloadMeetingsSuccess());
     } catch (error) {
