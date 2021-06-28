@@ -6,7 +6,7 @@ const Sidebar = () => {
     return ( 
         <aside>
             <div className="side">
-                <h1>
+                <h1 className='text-center'>
                 <Link to={'/dashboard'} className='color-third navbar-brand'>
                     Enlazar
                 </Link>

@@ -17,7 +17,7 @@ const ListAdvice = () => {
 
   return (
     <Fragment>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between px-4">
         <h2>
           <i className="fas fa-hands-helping"></i>Listado de consejos
         </h2>

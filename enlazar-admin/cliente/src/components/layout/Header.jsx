@@ -15,7 +15,7 @@ const Header = () => {
             <p className="nombre-usuario">Hola <span>{usuario.name}</span></p>
             :null}
             <nav className="nav-principal">
-                <button className='btn btn-dark'
+                <button className='btn btn-outline-dark'
                     onClick={() => cerrarSesion()}>
                     Cerrar sesión
                 </button>

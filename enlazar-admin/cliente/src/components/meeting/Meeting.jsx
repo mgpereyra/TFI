@@ -18,15 +18,15 @@ const Meeting = ({ meeting }) => {
           <h3 className="card-title">{date} - {time}</h3>
           <p className="card-text cortar-texto">{description}</p>
           <div className="acciones">
-            <button className="btn btn-primary mr-2 w-100">
+            <button className="btn btn-outline-primary w-100 btn-left">
+              <i className="far fa-trash-alt"></i>
+              Eliminar
+            </button>
+            <button className="btn btn-primary mr-2 w-100 btn-right">
               <i className="far fa-edit"></i>
               Editar
             </button>
 
-            <button className="btn btn-outline-primary w-100">
-              <i className="far fa-trash-alt"></i>
-              Eliminar
-            </button>
           </div>
         </div>
         <div className="card-footer">

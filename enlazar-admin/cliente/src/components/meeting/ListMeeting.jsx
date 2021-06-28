@@ -19,7 +19,7 @@ const ListMeeting = () => {
 
   return (
     <Fragment>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between px-4">
         <h2>
           <i className="fas fa-hand-holding-heart"></i>Listado de punto de
           encuentro
