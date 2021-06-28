@@ -1,18 +1,20 @@
 package ar.com.unlam.enlazar.ui.vecino
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.adapter.MisEncuentrosUserAdapter
 import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.databinding.ActivityMisEncuentrosBinding
+import ar.com.unlam.enlazar.model.Asistente
 import ar.com.unlam.enlazar.model.PuntoEncuentro
-import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.model.User
+import ar.com.unlam.enlazar.ui.recolector.RutaRecolectorMapActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -20,12 +22,15 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_mis_encuentros.*
 
-class MisEncuentrosActivity : AppCompatActivity() {
+class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRecyclerItemClick {
 
     private lateinit var binding: ActivityMisEncuentrosBinding
-    private lateinit var adapter: MisEncuentrosUserAdapter
+
+    // private lateinit var adapter: MisEncuentrosUserAdapter
     var contPrueba = 0
     private val viewModelMisPuntosEncuentros: MisEncuentrosViewModel by viewModels()
+    private lateinit var recyclerAdapter: MisEncuentrosUserAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_encuentros)
@@ -33,97 +38,215 @@ class MisEncuentrosActivity : AppCompatActivity() {
         binding = ActivityMisEncuentrosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = MisEncuentrosUserAdapter { encuentro -> toOnItemViewClick(encuentro) }
-        with(binding.rvListEncuentros) {
-            layoutManager =
-                LinearLayoutManager(
-                    this@MisEncuentrosActivity,
-                    androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
-                    false
-                )
-            this.adapter = this@MisEncuentrosActivity.adapter
-        }
+        rv_list_encuentros.layoutManager = LinearLayoutManager(this)
+        recyclerAdapter = MisEncuentrosUserAdapter(this@MisEncuentrosActivity)
+        rv_list_encuentros.adapter = recyclerAdapter
+
+        /* with(binding.rvListEncuentros) {
+             layoutManager = LinearLayoutManager(this@MisEncuentrosActivity,androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,false)
+             recyclerAdapter = MisEncuentrosUserAdapter(this@MisEncuentrosActivity)
+             adapter = recyclerAdapter
+         }*/
+
         setListeners()
     }
 
     private fun setListeners() {
-        crear_punto.setOnClickListener {
+        btnVolver.setOnClickListener {
+            irDashboardUserActivity()
+        }
+ /*      crear_punto.setOnClickListener {
+
+
             val db = FirebaseDatabase.getInstance().getReference()
             var idencuentro = db.push().key.toString()
-            val encuentro = PuntoEncuentro(
-                idencuentro,
-                "Esta es la desc del primer punto de encuentro",
-                "Localidad Punto "+ contPrueba,
-                "Calle punto",
-                "Plaza del punto",
-                "-34.746438", "-58.701689",
-                1,
-                "11/10/2021",
-                "09 a 12 hs"
-            )
-            db.child("MeetingPoint").child(idencuentro).setValue(encuentro).addOnCompleteListener {
+            val idUser = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
 
-            }
-    contPrueba +=1
-        }
+ *//*           db.database.getReference(Constants.USER_REF).child(idUser)
+                .addValueEventListener(object :
+                    ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var currentUser = snapshot.getValue(User::class.java)
+                        val lista = ArrayList<String>()
+                        if (currentUser != null) {
+                            lista.add(currentUser.id.toString())
+                        }
+                        val encuentro = PuntoEncuentro(
+                            lista,
+                            idencuentro,
+                            "Esta es la desc del primer punto de encuentro",
+                            "Localidad Punto " + contPrueba,
+                            "Calle punto",
+                            "Plaza del punto",
+                            "-34.746438", "-58.701689",
+                            1,
+                            "11/10/2021",
+                            "09 a 12 hs"
+                        )
+                        db.child("MeetingPoint").child(idencuentro).setValue(encuentro).addOnCompleteListener {
+
+                        }
+                        contPrueba += 1
+
+                    *//**//*    db.child("Meeting_User").child(puntoEncuentro.id.toString()).child(idUser)
+                            .setValue(currentUser!!.email).addOnCompleteListener {
+                                Toast.makeText(
+                                    this@MisEncuentrosActivity,
+                                    "Su asistencia fue confimada exitosamente",
+                                    Toast.LENGTH_LONG
+                                ).show()
+
+                            }*//**//*
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(
+                            this@MisEncuentrosActivity,
+                            "Ocurrió un error con su confirmacion",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                })*//*
+
+
+
+
+        }*/
     }
 
     override fun onStart() {
         getMeetingPoints()
-        //viewModelServices.getServices()
-        setObservers()
         super.onStart()
     }
-
+    private fun irDashboardUserActivity() {
+        val intent = Intent(this, DashboardUserActivity::class.java)
+        this.finish()
+        startActivity(intent)
+    }
     private fun getMeetingPoints() {
         viewModelMisPuntosEncuentros.misPuntosEncuentro.observe(this, {
-            adapter.submitList(it)
-            adapter.notifyDataSetChanged()
+            recyclerAdapter.submitList(it)
+            recyclerAdapter.notifyDataSetChanged()
         })
     }
 
-    private fun setObservers() {
-        viewModelMisPuntosEncuentros.misPuntosEncuentro.observe(this, Observer {
-            adapter.submitList(it)
-            adapter.notifyDataSetChanged()
-        })
-    }
-
-    private fun toOnItemViewClick(puntoEncuentro: PuntoEncuentro) {
-        Toast.makeText(this,puntoEncuentro.id.toString(),Toast.LENGTH_LONG).show()
+    override fun onItemClickListener(puntoEncuentro: PuntoEncuentro, Action: Int) {
         val db = FirebaseDatabase.getInstance().getReference()
         val idUser = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
-        val userData = db.database.getReference(Constants.USER_REF).child(idUser).addValueEventListener(object :
+
+        if (Action == Constants.ASISTIR) {
+            db.database.getReference(Constants.USER_REF).child(idUser)
+                .addValueEventListener(object :
+                    ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var currentUser = snapshot.getValue(User::class.java)
+                        db.database.getReference("MeetingPoint").child(puntoEncuentro.id!!).child("asistentes").child(idUser).setValue(idUser)
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(
+                            this@MisEncuentrosActivity,
+                            "Ocurrió un error con su confirmacion",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                })
+
+        } else if (Action == Constants.CANCELAR_ASISTENCIA) {
+            db.database.getReference(Constants.USER_REF).child(idUser)
+                .addValueEventListener(object :
+                    ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var currentUser = snapshot.getValue(User::class.java)
+                        db.child("MeetingPoint").child(puntoEncuentro.id.toString()).child("asistentes").child(
+                            currentUser?.id.toString())
+                            .removeValue()
+                            .addOnCompleteListener {
+                                Toast.makeText(
+                                    this@MisEncuentrosActivity,
+                                    "Su asistencia fue removida exitosamente",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(
+                            this@MisEncuentrosActivity,
+                            "Ocurrió un error con su cancelacion",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                })
+        }
+
+    }
+
+
+}
+/*       if(servicio.estado==3){
+     Toast.makeText(this, "no se puede ir a servicio finalizado loco", Toast.LENGTH_LONG).show()
+ }else{
+
+     val intent = Intent(this, RutaRecolectorMapActivity::class.java)
+     intent.putExtra("idService", servicio.id)
+     intent.putExtra("lat", servicio.latitud)
+     intent.putExtra("lon", servicio.longitud)
+     intent.putExtra("currentlat", mCurrentLatLng.latitude.toString())
+     intent.putExtra("currentlon", mCurrentLatLng.longitude.toString())
+     intent.putExtra("address", servicio.address)
+     intent.putExtra("Service",servicio)
+     startActivity(intent)
+ }*/
+/*    private fun toOnItemViewClick(puntoEncuentro: PuntoEncuentro,Action:String) {
+        //Toast.makeText(this,puntoEncuentro.id.toString(),Toast.LENGTH_LONG).show()
+        val db = FirebaseDatabase.getInstance().getReference()
+        val idUser = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
+        db.database.getReference(Constants.USER_REF).child(idUser).addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
                 var model = snapshot.getValue(User::class.java)
-
                 db.child("Meeting_User").child(puntoEncuentro.id.toString()).child(idUser)
-                    .setValue(model!!.email).addOnCompleteListener {}
-
+                    .setValue(model!!.email).addOnCompleteListener {
+                        Toast.makeText(this@MisEncuentrosActivity, "Su asistencia fue ah sido confimada exitosamente", Toast.LENGTH_LONG).show()
+                    }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@MisEncuentrosActivity, "Ocurrió un error con su confirmacion", Toast.LENGTH_LONG).show()
             }
 
         })
-    }
-        /*       if(servicio.estado==3){
-            Toast.makeText(this, "no se puede ir a servicio finalizado loco", Toast.LENGTH_LONG).show()
-        }else{
+    }*/
 
-            val intent = Intent(this, RutaRecolectorMapActivity::class.java)
-            intent.putExtra("idService", servicio.id)
-            intent.putExtra("lat", servicio.latitud)
-            intent.putExtra("lon", servicio.longitud)
-            intent.putExtra("currentlat", mCurrentLatLng.latitude.toString())
-            intent.putExtra("currentlon", mCurrentLatLng.longitude.toString())
-            intent.putExtra("address", servicio.address)
-            intent.putExtra("Service",servicio)
-            startActivity(intent)
-        }*/
+/* CANCELAR ASISTENCIA CON LISTA NN
+else if (Action == Constants.CANCELAR_ASISTENCIA) {
+    db.database.getReference(Constants.USER_REF).child(idUser)
+        .addValueEventListener(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var currentUser = snapshot.getValue(User::class.java)
+                db.child("Meeting_User").child(puntoEncuentro.id.toString()).child(idUser)
+                    .removeValue()
+                    .addOnCompleteListener {
+                        Toast.makeText(
+                            this@MisEncuentrosActivity,
+                            "Su asistencia fue removida exitosamente",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+            }
 
-    }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(
+                    this@MisEncuentrosActivity,
+                    "Ocurrió un error con su cancelacion",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
 
+        })
+}*/

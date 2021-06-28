@@ -123,7 +123,7 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
 
     private fun toOnItemViewClick(servicio: Service) {
         if(servicio.estado==3){
-            Toast.makeText(this, "no se puede ir a servicio finalizado loco",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "el servicio seleccionado está finalizado",Toast.LENGTH_LONG).show()
         }else{
 
             val intent = Intent(this, RutaRecolectorMapActivity::class.java)

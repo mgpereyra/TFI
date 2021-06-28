@@ -4,11 +4,14 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import ar.com.unlam.enlazar.model.Asistente
 import ar.com.unlam.enlazar.model.PuntoEncuentro
 import ar.com.unlam.enlazar.model.Service
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import kotlinx.coroutines.launch
+import org.koin.core.definition.indexKey
 
 class MisEncuentrosViewModel : ViewModel() {
     val misPuntosEncuentro = MutableLiveData<List<PuntoEncuentro>>()
@@ -31,18 +34,15 @@ class MisEncuentrosViewModel : ViewModel() {
 
         database = FirebaseDatabase.getInstance()
         referaceMeetingPoint= database.getReference("MeetingPoint")
-
-       // referaceMeetingPoint.orderByChild("recolectorId").equalTo(idVecinoCurrent)
-          referaceMeetingPoint.addValueEventListener(object : ValueEventListener {
+         referaceMeetingPoint.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     var list = ArrayList<PuntoEncuentro>()
                     for (data in snapshot.children) {
                         var model = data.getValue(PuntoEncuentro::class.java)
                         if (model != null) {
-                            if (model.estado==1){
-                                list.add(model)
-                            }
+                            list.add(model)
                         }
+
                     }
                     misPuntosEncuentro.value = list
                 }
@@ -51,6 +51,32 @@ class MisEncuentrosViewModel : ViewModel() {
                     Log.e("Cancel", error.toString())
                 }
             })
+    }
+
+    private fun getDataBaseBk() {
+        val idVecinoCurrent= FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
+
+        database = FirebaseDatabase.getInstance()
+        referaceMeetingPoint= database.getReference("MeetingPoint")
+
+        // referaceMeetingPoint.orderByChild("recolectorId").equalTo(idVecinoCurrent)
+        referaceMeetingPoint.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var list = ArrayList<PuntoEncuentro>()
+                for (data in snapshot.children) {
+                    var model = data.getValue(PuntoEncuentro::class.java)
+                    if (model != null) {
+                        list.add(model)
+                    }
+
+                }
+                misPuntosEncuentro.value = list
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("Cancel", error.toString())
+            }
+        })
     }
 
 }
