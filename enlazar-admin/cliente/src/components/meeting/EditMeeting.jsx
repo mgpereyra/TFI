@@ -81,7 +81,7 @@ const EditMeeting = () => {
     ) : null}
     <div className="d-flex justify-content-between">
       <h2>
-        <i className="fas fa-plus-circle"></i>Editar nuevo punto de
+      <i className="far fa-edit"></i>Editar nuevo punto de
         encuentro
       </h2>
     </div>
@@ -182,7 +182,7 @@ const EditMeeting = () => {
               variant="primary"
             >
               <i className="far fa-check"></i>
-              Crear punto de encuentro
+             Guardar cambios
             </button>
           </div>
         </form>
