@@ -11,7 +11,6 @@ exports.getListMeeting = async(req, res) => {
      
         //validando existencia
         if(snapshot.exists()){
-           console.log(snapshot.val())
            res.json(snapshot.val())
         }        
     } catch (error) {

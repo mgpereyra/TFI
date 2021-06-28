@@ -12,9 +12,7 @@ const ListAdvice = () => {
   const error = useSelector((state) => state.advices.error);
 
   useEffect(() => {
-    if (Object.keys(advices) !== 0) {
       listAdvice();
-    }
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 import {
     START_DOWNLOAD_MEETINGS,
     DOWNLOAD_MEETINGS_SUCCESS,
-    DOWNLOAD_MEETINGS_ERROR,
+    DOWNLOAD_MEETINGS_ERROR
   } from "../types";
 
 // cada reducer tiene su propio state
@@ -20,6 +20,19 @@ export default function (state = initialState, action){
                 ...state,
                 loading: true
             }
+        case DOWNLOAD_MEETINGS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                meetings: Object.values(action.payload)
+        }  
+        case DOWNLOAD_MEETINGS_ERROR:    
+            return {
+                ...state,
+                loading: false,
+                error: true
+        }  
         default:
             return state;
     }

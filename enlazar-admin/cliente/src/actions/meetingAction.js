@@ -15,8 +15,9 @@ export function getListMeetings() {
 
     try {
       const response = await clienteAxios.get("/api/meeting");
+      console.log(response.data)
       //actualizo el state
-     dispatch(downloadMeetingsSuccess());
+     dispatch(downloadMeetingsSuccess(response.data));
     } catch (error) {
       //dispatch(downloadMeetingsError());
 
@@ -32,7 +33,7 @@ export function getListMeetings() {
 
 const downloadMeetingsSuccess = (meetings) => ({
   type: DOWNLOAD_MEETINGS_SUCCESS,
-  payload: meetings,
+  payload: meetings
 });
 
 const downloadMeetingsError = () => ({
