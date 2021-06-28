@@ -6,13 +6,16 @@ const Meeting = ({ meeting }) => {
 
   return (
     <div className="col-lg-4">
-      <div className="card ">
+      <div className="card border-secondary">
+          <div class="card-header border-secondary">
+            {lugar} 
+          </div>
         <div className="card-body">
           <p className="card-text">
-            <small>{calle} - {localidad}</small>
+            <small className="text-muted">Estado {estado}</small>
           </p>
-          <h3 className="card-title">{lugar} - {estado}</h3>
-          <h4 className="card-title">{date} - {time}</h4>
+          <h3 className="card-title color-third"> {calle} - {localidad}</h3>
+          <h3 className="card-title">{date} - {time}</h3>
           <p className="card-text cortar-texto">{description}</p>
           <div className="acciones">
             <button className="btn btn-primary mr-2 w-100">
