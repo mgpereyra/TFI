@@ -16,9 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Enlazar"
         android:vmSafeMode="false">
-        <activity android:name=".ui.vecino.MisCanjesActivity"></activity>
+        <activity android:name=".ui.vecino.DetalleCanjeItem"></activity>
+        <activity android:name=".ui.vecino.MisCanjesActivity" />
         <activity android:name=".ui.vecino.MiCuentaActivity" />
-        <activity android:name=".ui.recolector.RutaRecolectorMapActivity"></activity>
+        <activity android:name=".ui.recolector.RutaRecolectorMapActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -45,7 +46,7 @@
         <activity android:name=".ui.vecino.CrearCuentaActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.vecino.MisServiciosConfirmadosActivity" />
-        <activity android:name=".ui.vecino.MisServiciosDetalleActivity"/>
+        <activity android:name=".ui.vecino.MisServiciosDetalleActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
