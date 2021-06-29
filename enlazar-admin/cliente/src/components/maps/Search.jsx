@@ -11,7 +11,7 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import { saveData } from "../../actions/mapsAction";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 
 const Search = ({ panTo }) => {
   const {
@@ -28,7 +28,9 @@ const Search = ({ panTo }) => {
   });
 
   const dispatch = useDispatch();
-  const addLat = (lat, lng, name) => dispatch(saveData(lat, lng, name));
+  const addLat = (lat, lng, ubication) => dispatch(saveData(lat, lng, ubication));
+  const datos = useSelector((state) => state.maps);
+
   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
   const handleInput = (e) => {
     setValue(e.target.value);
@@ -40,10 +42,10 @@ const Search = ({ panTo }) => {
 
     try {
       const results = await getGeocode({ address });
-      const { lat, lng, formatted_address } = await getLatLng(results[0]);
-      const name = results[0].formatted_address;
-      addLat({lat, lng, name})
-      panTo({ lat, lng, name });
+      const { lat, lng } = await getLatLng(results[0]);
+      const ubication = results[0].formatted_address;
+      addLat({lat, lng, ubication})
+      panTo({ lat, lng, ubication });
     } catch (error) {
       console.log("😱 Error: ", error);
     }
@@ -54,7 +56,7 @@ const Search = ({ panTo }) => {
       <Combobox onSelect={handleSelect}>
         <ComboboxInput
           className="form-control form-control-lg mb-3 py-4"
-          value={value}
+          value={datos.ubication}
           onChange={handleInput}
           disabled={!ready}
           placeholder="Ingresa una ubicación..."

@@ -603,15 +603,24 @@ main {
   border: 1px solid #673200;
 }
 
-.cortar-texto {
-  width: 230px;
+.cortar-texto  {
+  width: auto;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  
+  
 }
 
+.cortar-texto > h4,p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.small-text{
+  font-size: 12px!important;
+  font-family: var(--textFont);
+  line-height: 2rem;
+}
 
-.cortar-texto:hover {
+.cortar-texto  :hover {
     width: auto;
     white-space: initial;
     overflow: visible;
@@ -639,9 +648,21 @@ main {
 }
 
 .text-estado{
-  background: aquamarine;
   padding: .5rem .8rem;
   border-radius: 5rem;
-  color: var(--verde);
   letter-spacing: .5px;
+}
+
+.activo{
+  background: aquamarine;
+  color: var(--verde);
+}
+
+.contador{
+  background:#fdfdb3       ;
+  color: var( --gris2);
+}
+
+.contenedor-titulo{
+height: 60px;
 }

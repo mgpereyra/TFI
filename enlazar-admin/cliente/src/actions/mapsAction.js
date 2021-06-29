@@ -18,7 +18,7 @@ export function saveData(lat) {
       });
       dispatch({
         type: ADD_UBICATION,
-        payload: lat.name,
+        payload: lat.ubication,
       });
     };
   }

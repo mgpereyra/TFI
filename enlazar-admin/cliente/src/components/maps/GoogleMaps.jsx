@@ -5,8 +5,8 @@ import "@reach/combobox/styles.css";
 import {  useSelector } from "react-redux";
 
 
+const libraries = ["places"];
 const GoogleMaps = ({ meeting, setMeeting }) => {
-  const libraries = ["places"];
   const mapContainerStyle = {
     width: "100%",
     height: "400px",
@@ -28,13 +28,13 @@ const GoogleMaps = ({ meeting, setMeeting }) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-
+  
   const [markers, setMarkers] = useState({
-    lat: 0,
-    lng: 0,
+    lat: -34.751103,
+    lng:  -58.697586,
     time: Date,
   });
-
+ 
   const onClickMap = (e) => {
     console.log(e);
     setMarkers({
@@ -46,15 +46,15 @@ const GoogleMaps = ({ meeting, setMeeting }) => {
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
+    //setMarkers({ lat, lng });
     mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({ lat, lng, name }) => {
+
+  const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.setZoom(16);
     setMarkers({ lat, lng });
-    // setMeeting({ ...meeting, ubicacion: name})
     mapRef.current.panTo({ lat, lng });
-    // mapRef.current.setCenter({ lat, lng });
   }, []);
 
   if (loadError) return "Error Loading";
@@ -66,11 +66,12 @@ const GoogleMaps = ({ meeting, setMeeting }) => {
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={14}
         center={center}
         options={options}
         //onClick={onClickMap}
         onLoad={onMapLoad}
+        setMarkers={markers}
       >
         <Marker
           key={markers.time}

@@ -31,6 +31,7 @@ const CreateMeeting = ({ history }) => {
       lat: datos.lat,
       lng:datos.lng
     });
+    //eslint-disable-next-line
   }, [datos])
 
   const dispatch = useDispatch();
@@ -109,7 +110,6 @@ const CreateMeeting = ({ history }) => {
             <Row>
               <Col className="my-4">
               <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
-
               <GoogleMaps meeting={meeting} setMeeting={setMeeting}/>
               </Col>
             </Row>
