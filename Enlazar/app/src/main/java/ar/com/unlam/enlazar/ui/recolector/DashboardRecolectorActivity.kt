@@ -35,7 +35,7 @@ class DashboardRecolectorActivity : AppCompatActivity() {
         pref.putInt("typeUser", typeUser!!)
         pref.apply()*/
         setCardClickListeners()
-
+toolbar()
     }
 
     private fun setCardClickListeners() {
@@ -54,12 +54,29 @@ class DashboardRecolectorActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_recolector,menu)
-        //menu?.findItem(R.id.backRec)?.setVisible(false)
+        //menu?.findItem(R.id.mis_direcciones_user)?.setVisible(false)
+        toolbar_DashboardRecolector.setNavigationIcon(null)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.inicio_rec  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+            R.id.mis_canjes_rec  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+            R.id.invita_amigos_rec  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+            R.id.guardado_rec  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.mi_cuenta_rec  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
             R.id.logout_rec  -> {
                 logOut()
             }
@@ -75,8 +92,8 @@ class DashboardRecolectorActivity : AppCompatActivity() {
         val mainIntent = Intent(this, LoginActivity::class.java)
         startActivity(mainIntent)
     }
-    fun toolbar(){
-        setSupportActionBar(toolbar)
+   fun toolbar(){
+        setSupportActionBar(toolbar_DashboardRecolector)
         var ab: ActionBar?=supportActionBar
         if (ab!=null){
             ab.setHomeAsUpIndicator(R.drawable.menu)

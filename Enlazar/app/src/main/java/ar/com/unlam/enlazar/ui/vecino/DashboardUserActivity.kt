@@ -1,11 +1,13 @@
 package ar.com.unlam.enlazar.ui.vecino
 
+import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
@@ -44,13 +46,30 @@ class DashboardUserActivity : AppCompatActivity() {
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_bis,menu)
-        menu?.findItem(R.id.back)?.setVisible(false)
+        //menu?.findItem(R.id.mis_direcciones_user)?.setVisible(false)
+        toolbar_DashboardUsuario.setNavigationIcon(null)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.logOut  -> {
+            R.id.inicio_user  -> {
+            Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+            R.id.mis_canjes_user  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+            R.id.invita_amigos_user  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+            R.id.guardado_user  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.mi_cuenta_user  -> {
+                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            }
+            R.id.logout_user  -> {
                 logOut()
             }
         }
@@ -100,7 +119,7 @@ class DashboardUserActivity : AppCompatActivity() {
     }
 
     fun toolbar(){
-setSupportActionBar(toolbar)
+setSupportActionBar(toolbar_DashboardUsuario)
     var ab:ActionBar?=supportActionBar
     if (ab!=null){
         ab.setHomeAsUpIndicator(R.drawable.menu)

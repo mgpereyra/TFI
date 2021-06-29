@@ -33,10 +33,8 @@
         </activity>
         <activity android:name=".ui.LoginActivity" /> <!-- UI RECOLECTOR -->
         <activity android:name=".ui.recolector.RutaRecolectorMapActivity" />
-        <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
-        <activity android:name=".ui.recolector.DashboardRecolectorActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+        <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity"/>
+        <activity android:name=".ui.recolector.DashboardRecolectorActivity"/>
         <activity android:name=".ui.recolector.RecuperarPassActivity" /> <!-- UI VECINO -->
         <activity android:name=".ui.vecino.MisPuntosActivity" />
         <activity android:name=".ui.vecino.MisCanjesActivity" />

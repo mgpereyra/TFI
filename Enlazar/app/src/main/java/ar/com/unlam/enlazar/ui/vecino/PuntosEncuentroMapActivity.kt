@@ -1,25 +1,17 @@
 package ar.com.unlam.enlazar.ui.vecino
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import ar.com.unlam.enlazar.R
-import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.data.retrofit.GoogleMapsApiImpl
-import ar.com.unlam.enlazar.data.retrofit.ServiceFields
-import ar.com.unlam.enlazar.model.PuntoEncuentro
-import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.model.utils.DecodePointsJavaUtils
-import ar.com.unlam.enlazar.ui.recolector.ServiciosRecolectorRutaActivity
 import ar.com.unlam.mapexample.geoClases.RouteResult
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -28,7 +20,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_map_ruta_recolector.*
 import kotlinx.coroutines.CoroutineScope
