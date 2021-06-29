@@ -24,7 +24,8 @@ class MisEncuentrosUserAdapter(val clickListener: OnRecyclerItemClick) :
         val recyclerViewAdapter = MisEncuentrosUserAdapter(clickListener)
 
         fun binNote(puntoEncuentroItem: PuntoEncuentro) {
-            binding.cardInfoLocaclidad.text = puntoEncuentroItem.localidad
+            binding.cardInfoTitle.text = puntoEncuentroItem.title
+            binding.cardInfoLocalidad.text = puntoEncuentroItem.localidad
             binding.cardInfoFecha.text = puntoEncuentroItem.date +" - "+ puntoEncuentroItem.time
             binding.cardInfoCalles.text = puntoEncuentroItem.calle
             binding.cardInfoLugar.text = puntoEncuentroItem.lugar

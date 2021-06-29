@@ -74,14 +74,6 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
         })
     }
 
-
-    /*   private fun getServicesResponde() {
-           viewModelServices.responseLiveData.observe(this, {
-               it.listService?.let { it1 -> adapter.submitList(it1) }
-               adapter.notifyDataSetChanged()
-           })
-       }*/
-
     private fun setObservers() {
         viewModelServices.misServicios.observe(this, Observer {
             adapter.submitList(it)

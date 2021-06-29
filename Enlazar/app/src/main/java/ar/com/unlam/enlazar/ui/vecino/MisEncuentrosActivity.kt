@@ -11,7 +11,6 @@ import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.adapter.MisEncuentrosUserAdapter
 import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.databinding.ActivityMisEncuentrosBinding
-import ar.com.unlam.enlazar.model.Asistente
 import ar.com.unlam.enlazar.model.PuntoEncuentro
 import ar.com.unlam.enlazar.model.User
 import ar.com.unlam.enlazar.ui.recolector.RutaRecolectorMapActivity
@@ -23,11 +22,7 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_mis_encuentros.*
 
 class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRecyclerItemClick {
-
     private lateinit var binding: ActivityMisEncuentrosBinding
-
-    // private lateinit var adapter: MisEncuentrosUserAdapter
-    var contPrueba = 0
     private val viewModelMisPuntosEncuentros: MisEncuentrosViewModel by viewModels()
     private lateinit var recyclerAdapter: MisEncuentrosUserAdapter
 
@@ -41,13 +36,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
         rv_list_encuentros.layoutManager = LinearLayoutManager(this)
         recyclerAdapter = MisEncuentrosUserAdapter(this@MisEncuentrosActivity)
         rv_list_encuentros.adapter = recyclerAdapter
-
-        /* with(binding.rvListEncuentros) {
-             layoutManager = LinearLayoutManager(this@MisEncuentrosActivity,androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,false)
-             recyclerAdapter = MisEncuentrosUserAdapter(this@MisEncuentrosActivity)
-             adapter = recyclerAdapter
-         }*/
-
+         toolbar.title = "Puntos de encuentro"
         setListeners()
     }
 
@@ -55,64 +44,10 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
         btnVolver.setOnClickListener {
             irDashboardUserActivity()
         }
- /*      crear_punto.setOnClickListener {
-
-
-            val db = FirebaseDatabase.getInstance().getReference()
-            var idencuentro = db.push().key.toString()
-            val idUser = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
-
- *//*           db.database.getReference(Constants.USER_REF).child(idUser)
-                .addValueEventListener(object :
-                    ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        var currentUser = snapshot.getValue(User::class.java)
-                        val lista = ArrayList<String>()
-                        if (currentUser != null) {
-                            lista.add(currentUser.id.toString())
-                        }
-                        val encuentro = PuntoEncuentro(
-                            lista,
-                            idencuentro,
-                            "Esta es la desc del primer punto de encuentro",
-                            "Localidad Punto " + contPrueba,
-                            "Calle punto",
-                            "Plaza del punto",
-                            "-34.746438", "-58.701689",
-                            1,
-                            "11/10/2021",
-                            "09 a 12 hs"
-                        )
-                        db.child("MeetingPoint").child(idencuentro).setValue(encuentro).addOnCompleteListener {
-
-                        }
-                        contPrueba += 1
-
-                    *//**//*    db.child("Meeting_User").child(puntoEncuentro.id.toString()).child(idUser)
-                            .setValue(currentUser!!.email).addOnCompleteListener {
-                                Toast.makeText(
-                                    this@MisEncuentrosActivity,
-                                    "Su asistencia fue confimada exitosamente",
-                                    Toast.LENGTH_LONG
-                                ).show()
-
-                            }*//**//*
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        Toast.makeText(
-                            this@MisEncuentrosActivity,
-                            "Ocurrió un error con su confirmacion",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-
-                })*//*
-
-
-
-
-        }*/
+        irMisPuntosEncuentroMap.setOnClickListener {
+            val intent = Intent(this, PuntosEncuentroMapActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {
@@ -134,6 +69,9 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
     override fun onItemClickListener(puntoEncuentro: PuntoEncuentro, Action: Int) {
         val db = FirebaseDatabase.getInstance().getReference()
         val idUser = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
+        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE)
+        val emailUser = pref.getString("email",null)
+
 
         if (Action == Constants.ASISTIR) {
             db.database.getReference(Constants.USER_REF).child(idUser)
@@ -141,13 +79,13 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
                     ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         var currentUser = snapshot.getValue(User::class.java)
-                        db.database.getReference("MeetingPoint").child(puntoEncuentro.id!!).child("asistentes").child(idUser).setValue(idUser)
+                        db.database.getReference("MeetingPoint").child(puntoEncuentro.id!!).child("asistentes").child(idUser).setValue(emailUser)
                     }
 
                     override fun onCancelled(error: DatabaseError) {
                         Toast.makeText(
                             this@MisEncuentrosActivity,
-                            "Ocurrió un error con su confirmacion",
+                            "Ocurrió un error con su confirmación",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -166,7 +104,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
                             .addOnCompleteListener {
                                 Toast.makeText(
                                     this@MisEncuentrosActivity,
-                                    "Su asistencia fue removida exitosamente",
+                                    "Sú asistencia fue cancelada exitosamente",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -250,3 +188,61 @@ else if (Action == Constants.CANCELAR_ASISTENCIA) {
 
         })
 }*/
+/*      crear_punto.setOnClickListener {
+
+
+           val db = FirebaseDatabase.getInstance().getReference()
+           var idencuentro = db.push().key.toString()
+           val idUser = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
+
+*//*           db.database.getReference(Constants.USER_REF).child(idUser)
+                .addValueEventListener(object :
+                    ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var currentUser = snapshot.getValue(User::class.java)
+                        val lista = ArrayList<String>()
+                        if (currentUser != null) {
+                            lista.add(currentUser.id.toString())
+                        }
+                        val encuentro = PuntoEncuentro(
+                            lista,
+                            idencuentro,
+                            "Esta es la desc del primer punto de encuentro",
+                            "Localidad Punto " + contPrueba,
+                            "Calle punto",
+                            "Plaza del punto",
+                            "-34.746438", "-58.701689",
+                            1,
+                            "11/10/2021",
+                            "09 a 12 hs"
+                        )
+                        db.child("MeetingPoint").child(idencuentro).setValue(encuentro).addOnCompleteListener {
+
+                        }
+                        contPrueba += 1
+
+                    *//**//*    db.child("Meeting_User").child(puntoEncuentro.id.toString()).child(idUser)
+                            .setValue(currentUser!!.email).addOnCompleteListener {
+                                Toast.makeText(
+                                    this@MisEncuentrosActivity,
+                                    "Su asistencia fue confimada exitosamente",
+                                    Toast.LENGTH_LONG
+                                ).show()
+
+                            }*//**//*
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Toast.makeText(
+                            this@MisEncuentrosActivity,
+                            "Ocurrió un error con su confirmacion",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                })*//*
+
+
+
+
+        }*/
