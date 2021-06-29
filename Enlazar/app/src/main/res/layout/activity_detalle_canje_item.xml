@@ -5,5 +5,132 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.vecino.DetalleCanjeItem">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="3dp"
+            android:id="@+id/dataContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/black"
+            app:strokeWidth="1dp"
+            app:strokeColor="@android:color/black"
+            tools:visibility="visible">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/cardInfoId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent
+"               app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="invisible"
+                    tools:visibility="invisible" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/codigo"
+                    android:layout_width="400dp"
+                    android:layout_height="70dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_baseline_image_24"/>
+                <TextView
+                    android:id="@+id/cupon_titulo_detalle"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:maxLength="25"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.105"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/codigo"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="Item de canje"
+                    tools:visibility="visible" />
+                <TextView
+                    android:id="@+id/label_cantidad_disponible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:text="@string/cantidad_disponibles"
+                    app:layout_constraintTop_toTopOf="@id/cupon_titulo_detalle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toEndOf="@id/cupon_titulo_detalle"/>
+                <TextView
+                    android:id="@+id/cantidad_diponible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/label_cantidad_disponible"
+                    app:layout_constraintStart_toEndOf="@id/cupon_titulo_detalle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="8dp"
+                    tools:text="20"
+                    android:textSize="19sp"
+                    />
+                <TextView
+                    android:id="@+id/costo_cupon_detalle"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="15dp"
+                    android:maxLength="30"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/cupon_titulo_detalle"
+                    app:layout_constraintTop_toBottomOf="@+id/cupon_titulo_detalle"
+                    app:layout_constraintVertical_bias="0.043"
+                    tools:text="Puntos que cuesta "
+                    tools:visibility="visible" />
+                <TextView
+                    android:id="@+id/description_item"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:maxLength="30"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/costo_cupon_detalle"
+                    app:layout_constraintTop_toBottomOf="@+id/costo_cupon_detalle"
+                    app:layout_constraintVertical_bias="0.043"
+                    tools:text="Puntos que cuesta "
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/canjear_item"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/emerald"
+                    android:text="@string/canjear"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.873"
+                    app:layout_constraintStart_toEndOf="@id/description_item"
+                    app:layout_constraintTop_toBottomOf="@id/description_item"
+                    app:layout_constraintVertical_bias="1.0"
+                    android:layout_marginBottom="10dp"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

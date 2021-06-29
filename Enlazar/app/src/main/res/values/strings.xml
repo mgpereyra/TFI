@@ -87,5 +87,7 @@
     <string name="como_reciclar">Como Reciclar Bien</string>
     <string name="consejo_semana">Consejo de la semana</string>
     <string name="eco_info">Ecoinforme</string>
+    <string name="cantidad_disponibles">disponibles</string>
+    <string name="canjear">canjear</string>
 
 </resources>
