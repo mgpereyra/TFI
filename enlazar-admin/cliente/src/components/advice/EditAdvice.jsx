@@ -18,12 +18,12 @@ const EditAdvice = () => {
     });
     
     const adviceToModify = useSelector(state => state.advices.adviceToModify)
-    if(!adviceToModify) return null; 
+    //if(!adviceToModify) return null; 
     
     const {img, tipe, title, content, uri} = advice;
 
     //carga los datos del elemento a modificar la 1ra vez
-    useEffect(async () => {
+    useEffect(() => {
         setAdvice(adviceToModify)
             
      }, [adviceToModify])

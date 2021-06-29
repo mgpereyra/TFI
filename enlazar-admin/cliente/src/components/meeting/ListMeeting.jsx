@@ -12,9 +12,8 @@ const ListMeeting = () => {
   const dispatchListMeetings = () => dispatch(getListMeetings());
 
   useEffect(() => {
-    if (Object.keys(meetings) !== 0) {
       dispatchListMeetings();
-    }
+      //eslint-disable-next-line
   }, []);
 
   return (

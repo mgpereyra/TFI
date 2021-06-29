@@ -623,4 +623,12 @@ main {
 }
 
 
+.google-maps{
+  margin: 4rem
+}
 
+.SuperAwesomePin{
+  color:#006711;
+  padding: 2rem;
+  z-index: 1005;
+}

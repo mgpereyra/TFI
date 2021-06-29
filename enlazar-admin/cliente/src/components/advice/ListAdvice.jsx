@@ -13,6 +13,7 @@ const ListAdvice = () => {
 
   useEffect(() => {
       listAdvice();
+      //eslint-disable-next-line
   }, []);
 
   return (

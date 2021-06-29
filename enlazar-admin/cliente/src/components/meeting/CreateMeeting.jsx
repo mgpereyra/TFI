@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { createNewMeeting } from "../../actions/meetingAction";
 import { useDispatch } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
+import GoogleMaps from "../maps/GoogleMaps"
 
 const CreateMeeting = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
@@ -17,6 +18,7 @@ const CreateMeeting = ({ history }) => {
     time: "",
     estado: "",
     asistentes: {},
+    ubicacion:''
   });
 
   const { calle, date, description, localidad, lugar, time } = meeting;
@@ -56,7 +58,6 @@ const CreateMeeting = ({ history }) => {
       lugar: "",
       description: "",
       localidad: "",
-      lugar: "",
       time: "",
       estado: "",
       asistentes: [],
@@ -124,7 +125,11 @@ const CreateMeeting = ({ history }) => {
                   />
                 </div>
               </Col>
-              
+            </Row>
+            <Row>
+              <Col className="my-4">
+              <GoogleMaps meeting={meeting} setMeeting={setMeeting}/>
+              </Col>
             </Row>
             <Row>
             <Col>

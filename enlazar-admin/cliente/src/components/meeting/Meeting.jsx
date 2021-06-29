@@ -8,7 +8,7 @@ const Meeting = ({ meeting }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const {calle, date, description, localidad, lugar, time, estado, asistentes,id}= meeting;
+  const {calle, date, description, localidad, lugar, time, estado, id}= meeting;
   
   //eliminar
   const confirmDelete = (id) => {

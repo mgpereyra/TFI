@@ -24,12 +24,12 @@ const EditMeeting = () => {
   });
 
   const meetingToModify = useSelector(state => state.meetings.meetingToModify)
-  if(!meetingToModify) return null; 
+  //if(!meetingToModify) return null; 
 
   const { calle, date, description, localidad, lugar, time } = meeting;
 
    //carga los datos del elemento a modificar la 1ra vez
-   useEffect(async () => {
+   useEffect( () => {
         setMeeting(meetingToModify)
  }, [meetingToModify])
 
@@ -65,7 +65,6 @@ const EditMeeting = () => {
       lugar: "",
       description: "",
       localidad: "",
-      lugar: "",
       time: "",
       estado: "",
       asistentes: [],

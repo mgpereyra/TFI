@@ -24,7 +24,6 @@ export function getListMeetings() {
 
     try {
       const response = await clienteAxios.get("/api/meeting");
-      console.log(response.data)
       //actualizo el state
      dispatch(downloadMeetingsSuccess(response.data));
     } catch (error) {
