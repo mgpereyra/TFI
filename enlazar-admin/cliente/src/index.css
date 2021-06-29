@@ -637,3 +637,11 @@ main {
   padding: 2rem;
   z-index: 1005;
 }
+
+.text-estado{
+  background: aquamarine;
+  padding: .5rem .8rem;
+  border-radius: 5rem;
+  color: var(--verde);
+  letter-spacing: .5px;
+}
