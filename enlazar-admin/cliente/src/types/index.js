@@ -61,4 +61,10 @@ export const GET_MEETING_DELETE = 'GET_MEETING_DELETE';
 export const MEETING_DELETE_SUCCESS = 'MEETING_DELETE_SUCCESS';
 export const MEETING_DELETE_ERROR = 'MEETING_DELETE_ERROR';
 
+export const ADD_LAT = 'ADD_LAT';
+export const ADD_LNG = 'ADD_LNG';
+export const ADD_UBICATION = 'ADD_UBICATION';
+
+
+
 

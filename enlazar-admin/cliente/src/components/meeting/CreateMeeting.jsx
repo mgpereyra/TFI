@@ -1,27 +1,37 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewMeeting } from "../../actions/meetingAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
 
 const CreateMeeting = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
-
+  const datos = useSelector((state) => state.maps);
+  
   //state del componente
   const [meeting, setMeeting] = useState({
-    calle: "",
     date: "",
-    lugar: "",
+    title: "",
     description: "",
-    localidad: "",
     time: "",
     estado: "",
     asistentes: {},
-    ubicacion:''
+    ubication:'',
+    lat: 0,
+    lng: 0
   });
 
-  const { calle, date, description, localidad, lugar, time } = meeting;
+  const { date, description, title, time , ubication} = meeting;
+
+  useEffect(() => {
+    setMeeting({
+      ...meeting,
+      ubication: datos.ubication,
+      lat: datos.lat,
+      lng:datos.lng
+    });
+  }, [datos])
 
   const dispatch = useDispatch();
   const addMeeting = (meeting) => dispatch(createNewMeeting(meeting));
@@ -38,12 +48,11 @@ const CreateMeeting = ({ history }) => {
 
     //Validar
     if (
-      localidad.trim() === "" ||
-      lugar.trim() === "" ||
+      title.trim() === "" ||
       time.trim() === "" ||
-      calle.trim() === "" ||
       date.trim() === "" ||
-      description.trim() === ""
+      description.trim() === ""||
+      ubication.trim() === ""
     ) {
       mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
       return;
@@ -53,20 +62,19 @@ const CreateMeeting = ({ history }) => {
 
     //reiniciar el form
     setMeeting({
-      calle: "",
       date: "",
-      lugar: "",
+      title: "",
       description: "",
-      localidad: "",
       time: "",
       estado: "",
       asistentes: [],
+      ubication:'',
+      lat: 0,
+      lng: 0
     });
 
     //redireccion
-    setTimeout(function () {
       history.push("/list-meeting");
-    }, 2500);
   };
   return (
     <Fragment>
@@ -85,49 +93,23 @@ const CreateMeeting = ({ history }) => {
             <Row>
               <Col>
                 <div className="form-group">
-                  <label className="control-label">Lugar de encuentro</label>
+                  <label className="control-label">Título del evento</label>
                   <input
                     type="text"
                     className="input-text"
-                    placeholder="Por ejemplo, Plaza Hipolito Yrigoyen"
-                    name="lugar"
+                    placeholder="Por ejemplo, evento por el dia del reciclaje"
+                    name="title"
                     onChange={handleChange}
-                    value={lugar}
+                    value={title}
                   />
                 </div>
               </Col>
              
             </Row>
             <Row>
-            <Col>
-                <div className="form-group">
-                  <label className="control-label">Calle</label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    placeholder="Calle..."
-                    name="calle"
-                    onChange={handleChange}
-                    value={calle}
-                  />
-                </div>
-              </Col>
-              <Col>
-                <div className="form-group">
-                  <label className="control-label">Localidad</label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    placeholder="Ingresa una descripcion..."
-                    name="localidad"
-                    onChange={handleChange}
-                    value={localidad}
-                  />
-                </div>
-              </Col>
-            </Row>
-            <Row>
               <Col className="my-4">
+              <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
+
               <GoogleMaps meeting={meeting} setMeeting={setMeeting}/>
               </Col>
             </Row>
@@ -138,7 +120,7 @@ const CreateMeeting = ({ history }) => {
                   <input
                     type="text"
                     className="input-text"
-                    placeholder="Ingresa una descripcion..."
+                    placeholder="Por ejemplo, 24/05/21..."
                     name="date"
                     onChange={handleChange}
                     value={date}
@@ -151,7 +133,7 @@ const CreateMeeting = ({ history }) => {
                   <input
                     type="text"
                     className="input-text"
-                    placeholder="Ingresa una descripcion..."
+                    placeholder="De 14 a 18 hs"
                     name="time"
                     onChange={handleChange}
                     value={time}
@@ -165,7 +147,7 @@ const CreateMeeting = ({ history }) => {
                   <label className="control-label">Descripción</label>
                   <textarea
                     className="input-text"
-                    placeholder="Ingresa una descripcion..."
+                    placeholder="Ingresa una descripción del evento..."
                     name="description"
                     onChange={handleChange}
                     value={description}

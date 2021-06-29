@@ -20,7 +20,7 @@ exports.getListMeeting = async(req, res) => {
 }
 
 exports.createMeeting = async (req, res) =>{
-    const { calle, date, description, localidad, lugar, time, estado } = req.body;
+    const {  date, description, title, time, lat, lng, ubication } = req.body;
 
     const errors = validationResult(req);
 
@@ -33,11 +33,12 @@ exports.createMeeting = async (req, res) =>{
 
         const ref = firebase.database().ref('MeetingPoint').push();
 
-        ref.set({
-            calle, date, description, localidad, lugar, time, estado,  id : ref.key
+        const save = ref.set({
+            date, description, title, time, estado: 1,  id : ref.key,
+            lat, lng, ubication
         });
         
-        //res.send(save)
+        res.send(save)
 
     } catch (error) {
         console.log(error)
