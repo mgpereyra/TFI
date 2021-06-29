@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewMeeting } from "../../actions/meetingAction";
+import { clearMaps } from "../../actions/mapsAction";
 import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
@@ -36,6 +37,7 @@ const CreateMeeting = ({ history }) => {
 
   const dispatch = useDispatch();
   const addMeeting = (meeting) => dispatch(createNewMeeting(meeting));
+  const clear = () => dispatch(clearMaps());
 
   const handleChange = (e) => {
     setMeeting({
@@ -60,6 +62,7 @@ const CreateMeeting = ({ history }) => {
     }
 
     addMeeting(meeting);
+    clear();
 
     //reiniciar el form
     setMeeting({

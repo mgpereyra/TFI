@@ -5,7 +5,7 @@ import { modifyMeetingAction } from "../../actions/meetingAction";
 import { useHistory } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
-import { saveData } from "../../actions/mapsAction";
+import { mostrar, clearMaps } from "../../actions/mapsAction";
 
 const EditMeeting = () => {
   const dispatch = useDispatch();
@@ -28,19 +28,21 @@ const EditMeeting = () => {
   const meetingToModify = useSelector(
     (state) => state.meetings.meetingToModify
   );
+  const datos = useSelector((state) => state.maps);
   //if(!meetingToModify) return null;
 
   const { date, description, title, time, ubication } = meeting;
-
-  useEffect(() => {
-    dispatch(saveData(meeting));
-    //eslint-disable-next-line
-  }, [meeting])
+  const addUbication = (meet) => dispatch(mostrar(meet));
+  const clear = () => dispatch(clearMaps());
 
   //carga los datos del elemento a modificar la 1ra vez
   useEffect(() => {
     setMeeting(meetingToModify);
+    
+    addUbication(meetingToModify)
   }, [meetingToModify]);
+
+  
 
   const handleChange = (e) => {
     setMeeting({
@@ -65,7 +67,7 @@ const EditMeeting = () => {
     }
 
     dispatch(modifyMeetingAction(meeting));
-
+    clear();
     //reiniciar el form
     setMeeting({
       date: "",

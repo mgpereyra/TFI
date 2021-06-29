@@ -1,7 +1,8 @@
 import {
     ADD_LAT,
     ADD_LNG,
-    ADD_UBICATION
+    ADD_UBICATION,
+    CLEAR
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -29,6 +30,13 @@ export default function (state = initialState, action){
             return {
                 ...state,
                 ubication: action.payload
+        }
+        case CLEAR :{
+            return{
+                lat:-34.670372, 
+                lng: -58.564196,
+                ubication:''
+            }
         }
           
         default:

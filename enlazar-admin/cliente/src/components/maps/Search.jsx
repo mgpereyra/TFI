@@ -28,11 +28,14 @@ const Search = ({ panTo }) => {
   });
 
   const dispatch = useDispatch();
+  const addUbication = (ubication) => dispatch(saveData( ubication));
+ 
   const addLat = (lat, lng, ubication) => dispatch(saveData(lat, lng, ubication));
   const datos = useSelector((state) => state.maps);
 
   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
   const handleInput = (e) => {
+    // TO DO QUE SEA EDITABLE
     setValue(e.target.value);
   };
 
@@ -56,7 +59,7 @@ const Search = ({ panTo }) => {
       <Combobox onSelect={handleSelect}>
         <ComboboxInput
           className="form-control form-control-lg mb-3 py-4"
-          value={datos.ubication}
+          value={datos.ubication !== '' ? datos.ubication : value}
           onChange={handleInput}
           disabled={!ready}
           placeholder="Ingresa una ubicación..."

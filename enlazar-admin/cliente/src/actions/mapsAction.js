@@ -1,7 +1,8 @@
 import {
     ADD_LAT,
     ADD_LNG,
-    ADD_UBICATION
+    ADD_UBICATION,
+    CLEAR
 } from '../types'
 
 
@@ -20,5 +21,31 @@ export function saveData(lat) {
         type: ADD_UBICATION,
         payload: lat.ubication,
       });
+    };
+  }
+
+  export function mostrar(meet) {
+    return async (dispatch) => {
+      dispatch({
+        type: ADD_LAT,
+        payload: meet.lat,
+      });
+      dispatch({
+        type: ADD_LNG,
+        payload: meet.lng,
+      });
+      dispatch({
+        type: ADD_UBICATION,
+        payload: meet.ubication,
+      });
+    };
+  }
+
+  export function clearMaps(meet) {
+    return async (dispatch) => {
+      dispatch({
+        type: CLEAR
+      });
+    
     };
   }
