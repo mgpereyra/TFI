@@ -3,10 +3,6 @@ package ar.com.unlam.enlazar.model
 import java.io.Serializable
 
 data class PuntoEncuentro(
-    //val asistentes:ArrayList<String>? = null,
-   // val asistentes:ArrayList<HashMap<String,String>>? = null,
-    //val asistentes: Map<String,String>? = null,
-   // val asistentes:ArrayList<Asistente>? = null,
     val asistentes:HashMap<String,String>? = null,
     var id:String? = null,
     val description:String? = null,
@@ -20,5 +16,4 @@ data class PuntoEncuentro(
     val time:String? = null,
     ): Serializable
 
- data class Asistente( val asistentes: Map<String,String>? = null,) :Serializable
 
