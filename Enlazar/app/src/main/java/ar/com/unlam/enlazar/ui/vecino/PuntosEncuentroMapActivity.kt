@@ -95,8 +95,6 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         getLastLocation()
-        // createPolylines()
-        // map.setOnMyLocationButtonClickListener(this)
         map.setOnMyLocationClickListener(this)
         enableLocation()
 
@@ -108,11 +106,6 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
         driverLon = intent.getStringExtra(CURRENT_USER_LONG).toString()*/
         //  trazarRutasLista(listaPuntos)
 
-        //getLastLocation()
-    /*    trazarRuta(
-            LatLng(driverLat.toDouble(), driverLon.toDouble()),
-            LatLng(service.latitud!!.toDouble(), service.longitud!!.toDouble())
-        )*/
     }
 
 
@@ -141,18 +134,9 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
                     )
                 }
         }
-
     }
 
-    private fun trazarRutasLista(listaUbi: List<LatLng>) {
-        var i = 0
-        val ultimo = listaUbi.size - 1
-        while (i < ultimo) {
-            //trazarRuta(listaUbi[i], listaUbi[i + 1])
-            i++
-        }
 
-    }
 
     private fun trazarRuta(origen: LatLng, destino: LatLng) {
         val serviceAddress = intent.getStringExtra(PE_ADDRESS)
@@ -229,7 +213,7 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
             }else{
                     val marker: MarkerOptions = MarkerOptions()
                         .position(LatLng(it.latitud?.toDouble()!!,it.longitud?.toDouble()!!))
-                        .title(it.localidad)
+                        .title(it.title).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                         //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pe_marker_uno_round))
                       //  .anchor(0.0f,1.0f)
                 map.addMarker(marker)
@@ -291,6 +275,7 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             REQUEST_CODE_LOCATION -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.checkSelfPermission(

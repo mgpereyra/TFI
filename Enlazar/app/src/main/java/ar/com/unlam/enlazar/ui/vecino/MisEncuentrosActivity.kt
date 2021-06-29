@@ -36,7 +36,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
         rv_list_encuentros.layoutManager = LinearLayoutManager(this)
         recyclerAdapter = MisEncuentrosUserAdapter(this@MisEncuentrosActivity)
         rv_list_encuentros.adapter = recyclerAdapter
-
+         toolbar.title = "Puntos de encuentro"
         setListeners()
     }
 
@@ -69,6 +69,9 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
     override fun onItemClickListener(puntoEncuentro: PuntoEncuentro, Action: Int) {
         val db = FirebaseDatabase.getInstance().getReference()
         val idUser = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
+        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE)
+        val emailUser = pref.getString("email",null)
+
 
         if (Action == Constants.ASISTIR) {
             db.database.getReference(Constants.USER_REF).child(idUser)
@@ -76,7 +79,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
                     ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         var currentUser = snapshot.getValue(User::class.java)
-                        db.database.getReference("MeetingPoint").child(puntoEncuentro.id!!).child("asistentes").child(idUser).setValue(idUser)
+                        db.database.getReference("MeetingPoint").child(puntoEncuentro.id!!).child("asistentes").child(idUser).setValue(emailUser)
                     }
 
                     override fun onCancelled(error: DatabaseError) {

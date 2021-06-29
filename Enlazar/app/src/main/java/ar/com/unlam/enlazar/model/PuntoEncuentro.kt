@@ -1,8 +1,10 @@
 package ar.com.unlam.enlazar.model
 
+import android.icu.text.CaseMap
 import java.io.Serializable
 
 data class PuntoEncuentro(
+    val title:String? = null,
     val asistentes:HashMap<String,String>? = null,
     var id:String? = null,
     val description:String? = null,

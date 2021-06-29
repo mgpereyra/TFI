@@ -139,9 +139,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }else if(typeUser==2) {
-              //  val intent = Intent(this, DashboardRecolectorActivity::class.java)
-                val intent = Intent(this, DashboardUserActivity::class.java)
-
+                val intent = Intent(this, DashboardRecolectorActivity::class.java)
                 startActivity(intent)
                 finish()
             }else{

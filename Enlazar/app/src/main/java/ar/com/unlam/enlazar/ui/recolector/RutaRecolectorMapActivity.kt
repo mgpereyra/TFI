@@ -244,7 +244,9 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                             val polyLine = map.addPolyline(mPolylineOptions)
                             polyLine.jointType
                             var marker: MarkerOptions =
-                                MarkerOptions().position(destino).title(serviceAddress)
+                                MarkerOptions().position(destino).title(serviceAddress).icon(
+                                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
+                                )
                             // .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_service_v_uno
                             map.addMarker(marker)
                             map.animateCamera(
@@ -287,7 +289,8 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     private fun actualizarServicio(comentario: String?) {
         database = FirebaseDatabase.getInstance()
         referaceServicio = database.getReference(Constants.SERVICE_REF)
-        referaceServicio.child(idService).child(ServiceFields.ESTADO).setValue(Constants.ESTADO_SERV_FINALIZADO)
+        referaceServicio.child(idService).child(ServiceFields.ESTADO)
+            .setValue(Constants.ESTADO_SERV_FINALIZADO)
         referaceServicio.child(idService).child(ServiceFields.COMENTARIO).setValue(comentario)
         val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
         startActivity(intent)
