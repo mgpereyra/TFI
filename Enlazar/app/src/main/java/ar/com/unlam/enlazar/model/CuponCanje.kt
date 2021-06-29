@@ -6,5 +6,5 @@ data class CuponCanje(
     val title: String = "",
     val description: String = "",
     val imageCode: String = "",
-    val estadoCupon:Int
+    val estadoCupon:Boolean
 )

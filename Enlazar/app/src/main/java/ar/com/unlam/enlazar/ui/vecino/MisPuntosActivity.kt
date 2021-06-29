@@ -130,39 +130,12 @@ class MisPuntosActivity : AppCompatActivity() {
                         total = puntos_papel + puntos_vidrio + puntos_plastico
                         sumar(total)
 
-                        /* serviceList.add(
-                             Service(
-                                 postSnapshot.child("address").value.toString(),
-                                 postSnapshot.child("id").value.toString(),
-                                 "",
-                                 "",
-                                 postSnapshot.child("envasesPlasticos").value.toString().toInt().or(0),
-                                 postSnapshot.child("envasesVidrio").value.toString().toInt().or(0) ,
-                                 postSnapshot.child("envasesCarton").value.toString().toInt().or(0),
-                                 postSnapshot.child("date").value.toString(),
-                                 postSnapshot.child("time").value.toString(),
-                                 postSnapshot.child("userId").value.toString(),"",
-                                 postSnapshot.child("estado").value.toString().toInt()
-                             )
-                         )*/
                         break
                     }
 
 
                 }
 
-                /*if (serviceList.size > 0) {
-                    adapter.servicesList = serviceList.toMutableList()
-
-                    adapter.notifyDataSetChanged()
-                    listado_servicios.adapter = adapter
-                } else {
-                    Toast.makeText(
-                        this@MisServiciosConfirmadosActivity,
-                        "no se encontraron servicios del estado especificado",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }*/
             }
 
             override fun onCancelled(error: DatabaseError) {

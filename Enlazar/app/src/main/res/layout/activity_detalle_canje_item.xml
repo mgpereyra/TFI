@@ -33,6 +33,13 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:visibility="invisible"
                     tools:visibility="invisible" />
+                <TextView
+                    android:id="@+id/id_item_detalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:visibility="gone"/>
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/codigo"
                     android:layout_width="400dp"
@@ -114,7 +121,7 @@
                     tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/canjear_item"
+                    android:id="@+id/btn_canjear_item"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
