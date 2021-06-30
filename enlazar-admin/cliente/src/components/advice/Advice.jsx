@@ -28,8 +28,10 @@ const Advice = ({ advice }) => {
           <p className="card-text">
             <small>{tipe}</small>
           </p>
+          <div className="cortar-texto mb-2 ">
           <h3 className="card-title">{title}</h3>
-          <p className="card-text cortar-texto">{content}</p>
+            <p className="card-text small-text">{content}</p>
+          </div>
           <div className="acciones">
             <button
               onClick={() => confirm(id)}

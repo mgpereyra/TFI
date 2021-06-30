@@ -522,145 +522,143 @@ main {
 }
 
 .form-usuario {
-    background-color: var(--gris2);
-    height: 100vh;
-    /*min-height: 800px;*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: var(--gris2);
+  height: 100vh;
+  /*min-height: 800px;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contenedor-form {
-    padding: 5rem 3rem;
-    max-width: 500px;
-    width: 95%;
-    background-color: var(--blanco);
-    border-radius: 1rem;
+  padding: 5rem 3rem;
+  max-width: 500px;
+  width: 95%;
+  background-color: var(--blanco);
+  border-radius: 1rem;
 }
 
 .campo-form {
-    display: flex;
-    margin-bottom: 2rem;
-    align-items: center;
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
 }
 .campo-form:last-of-type {
-  margin: 0;
+margin: 0;
 }
 .campo-form label {
-  flex: 0 0 100px;
-  font-family: var(--textFont);
+flex: 0 0 100px;
+font-family: var(--textFont);
 }
 .campo-form input[type="password"],
 .campo-form input[type="email"], 
 .campo-form input[type="text"] {
-  border: 1px solid #e1e1e1;
-  padding: 1rem;
-  flex: 1;
+border: 1px solid #e1e1e1;
+padding: 1rem;
+flex: 1;
 }
 
 .enlace-cuenta {
-  margin-top: 2rem;
-  display: block;
-  opacity: .7;
+margin-top: 2rem;
+display: block;
+opacity: .7;
 }
 
 .alerta {
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 2rem 3rem;
-  border-radius: 5rem 0 0 5rem;
-  font-weight: 300;
-  font-size: 1.8rem;
-  text-align: center;
-  width: 100%;
-  box-shadow: 4px 4px 30px -3px rgba(0,0,0,0.6);
+position: fixed;
+top: 0;
+left: 0;
+padding: 2rem 3rem;
+border-radius: 5rem 0 0 5rem;
+font-weight: 300;
+font-size: 1.8rem;
+text-align: center;
+width: 100%;
+box-shadow: 4px 4px 30px -3px rgba(0,0,0,0.6);
 
 }
 @media (min-width:768px) {
-  .alerta {
-      width: auto;
-      top: 30px;
-      right: 10px;
-      left: auto;
-  }
+.alerta {
+    width: auto;
+    top: 30px;
+    right: 10px;
+    left: auto;
+}
 }
 
 .alerta-ok {
-  background-color: rgb(89, 231, 89);
-  color: rgb(2, 103, 2);
-  border: 1px solid #006711;
+background-color: rgb(89, 231, 89);
+color: rgb(2, 103, 2);
+border: 1px solid #006711;
 }
 .alerta-error {
-  background-color: hsl(0, 78%, 60%);
-  color: var(--blanco);
-  border: 1px solid #670000;
+background-color: hsl(0, 78%, 60%);
+color: var(--blanco);
+border: 1px solid #670000;
 }
 
 .alerta-info {
-  background-color: hsla(36, 78%, 60%, 0.9);
-  color: var(--blanco);
-  border: 1px solid #673200;
+background-color: hsla(36, 78%, 60%, 0.9);
+color: var(--blanco);
+border: 1px solid #673200;
 }
 
 .cortar-texto  {
-  width: auto;
+  width: 220px;
   white-space: nowrap;
-  
-  
-}
 
-.cortar-texto > h4,p {
+  }
+  
+  .cortar-texto > h4,p {
   overflow: hidden;
   text-overflow: ellipsis;
-}
+  transition: all 6s ;
+  transition-timing-function: ease-in-out;
+  }
+  
 .small-text{
-  font-size: 12px!important;
-  font-family: var(--textFont);
-  line-height: 2rem;
+font-size: 12px!important;
+font-family: var(--textFont);
+line-height: 2rem;
 }
 
 .cortar-texto  :hover {
-    width: auto;
-    white-space: initial;
-    overflow: visible;
-    cursor: pointer;
+  width: auto;
+  white-space: initial;
+  overflow: visible;
+  cursor: pointer;
 }
 
 .row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: 0px!important; 
-  margin-left: 0px!important; 
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+margin-right: 0px!important; 
+margin-left: 0px!important; 
 }
 
 
 .google-maps{
-  margin: 4rem
+margin: 4rem
 }
 
-.SuperAwesomePin{
-  color:#006711;
-  padding: 2rem;
-  z-index: 1005;
-}
+
 
 .text-estado{
-  padding: .5rem .8rem;
-  border-radius: 5rem;
-  letter-spacing: .5px;
+padding: .5rem .8rem;
+border-radius: 5rem;
+letter-spacing: .5px;
 }
 
 .activo{
-  background: aquamarine;
-  color: var(--verde);
+background: aquamarine;
+color: var(--verde);
 }
 
 .contador{
-  background:#fdfdb3       ;
-  color: var( --gris2);
+background:#fdfdb3       ;
+color: var( --gris2);
 }
 
 .contenedor-titulo{
