@@ -1,8 +1,10 @@
 package ar.com.unlam.enlazar.ui.vecino
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -11,6 +13,7 @@ import androidx.core.view.isEmpty
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.Estado
+import ar.com.unlam.enlazar.ui.LoginActivity
 import ar.com.unlam.enlazar.ui.pickers.DatePickerFragent
 import ar.com.unlam.enlazar.ui.pickers.TimePickerFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -19,6 +22,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*
+import kotlinx.android.synthetic.main.activity_dashboard_recolector.*
 import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver
@@ -66,7 +70,46 @@ class NuevoServicioActivity : AppCompatActivity() {
 
         horario_picker.setText(time)
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_recolector , menu)
+        //menu?.findItem(R.id.mis_direcciones_user)?.setVisible(false)
+        toolbar_nuevo_servicio.setNavigationIcon(null)
+        return super.onCreateOptionsMenu(menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.inicio_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
+            }
+            R.id.mis_canjes_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
+            }
+            R.id.invita_amigos_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
+            }
+            R.id.guardado_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.mi_cuenta_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
+            }
+            R.id.logout_rec -> {
+                logOut()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+
+    }
+    private fun logOut() {
+        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
+        pref.clear()
+        pref.apply()
+        FirebaseAuth.getInstance().signOut()
+        val mainIntent = Intent(this, LoginActivity::class.java)
+        startActivity(mainIntent)
+    }
     private fun setDirection(idForLocation: String) {
         db.child("User").child(idForLocation).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -84,7 +127,7 @@ class NuevoServicioActivity : AppCompatActivity() {
     }
 
     fun toolbar() {
-        setSupportActionBar(toolbar2)
+        setSupportActionBar(toolbar_nuevo_servicio)
         var ab: ActionBar? = supportActionBar
         if (ab != null) {
             ab.setHomeAsUpIndicator(R.drawable.menu)
@@ -167,14 +210,6 @@ private fun estado(status: NewServiceViewModel.EstadoNewService) {
     }
 }
 
-override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when (item.itemId) {
-        android.R.id.home -> {
-            drawerNewService.openDrawer(GravityCompat.START)
-        }
-    }
-    return super.onOptionsItemSelected(item)
-}
 
 private fun showDatePicker() {
     val datePicker = DatePickerFragent { day, month, year -> onDateSelected(day, month, year) }

@@ -286,15 +286,20 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         }
     }
 
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
+    }
     private fun actualizarServicio(comentario: String?) {
         database = FirebaseDatabase.getInstance()
         referaceServicio = database.getReference(Constants.SERVICE_REF)
         referaceServicio.child(idService).child(ServiceFields.ESTADO)
             .setValue(Constants.ESTADO_SERV_FINALIZADO)
         referaceServicio.child(idService).child(ServiceFields.COMENTARIO).setValue(comentario)
-        val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
-        startActivity(intent)
+        //val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
+
         finish()
+        //startActivity(intent)
     }
 
     private fun createPolylines() {

@@ -17,7 +17,7 @@ class   MisServiciosRecolectorAdapter(val onItemDetailViewClick: (servicioItem: 
 
         fun binNote(servicioItem: Service) {
             binding.etNombreNote.text = servicioItem.address
-            binding.etCommentNote.text = servicioItem.date
+            binding.etCommentNote.text = servicioItem.date+"-"+servicioItem.time
             /*Picasso.get()
                 .load(
                     note.imagen
