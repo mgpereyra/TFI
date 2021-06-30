@@ -34,7 +34,7 @@ class SeccionInformativaDetalleActivity : AppCompatActivity() {
     private fun verConsejo(id: String) {
         db.child("Advice").child(id).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                cargarImagen(snapshot.child("img").value.toString())
+                cargarImagen(snapshot.child("uri").value.toString())
                 title_detalle_Advice.text=snapshot.child("title").value.toString()
                 content_detalle_Advice.text=snapshot.child("content").value.toString()
                 setTextTipoConsejo(snapshot.child("tipoConsejo").value.toString())

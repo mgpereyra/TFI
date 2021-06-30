@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.recolector.ServiciosRecolectorRutaActivity">
-
+  <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/rojo2"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.001"
+      app:title="@string/app_name" />
   <!--  <Button
         android:id="@+id/buttonIrMapa"
         android:layout_width="wrap_content"
@@ -33,14 +43,28 @@
       app:layout_constraintHorizontal_bias="0.542"
       app:layout_constraintTop_toTopOf="parent" />-->
 
+<!--  <TextView
+      android:id="@+id/textView"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:background="@color/rojo2"
+      android:text="@string/seleccione_el_servicio_a_realizar"
+      android:textColor="@color/white"
+      android:textSize="25sp"
+      android:paddingTop="10dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />-->
+
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rv_ruta_servicios_list"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="612dp"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar"
+      app:layout_constraintVertical_bias="0.180"
       tools:itemCount="10"
       tools:listitem="@layout/servicios_recolector_ruta_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

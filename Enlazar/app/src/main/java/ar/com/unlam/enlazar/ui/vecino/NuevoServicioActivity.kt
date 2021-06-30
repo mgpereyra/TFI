@@ -19,7 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver
 import org.koin.android.viewmodel.ext.android.viewModel

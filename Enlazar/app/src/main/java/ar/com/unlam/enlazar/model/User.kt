@@ -19,4 +19,4 @@ data class User (
         var puntos:Int=0,
         var typeUser:Int? = 1,
 
-        ):Serializable
+        )

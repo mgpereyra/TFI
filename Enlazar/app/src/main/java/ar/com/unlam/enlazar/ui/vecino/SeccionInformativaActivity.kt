@@ -45,7 +45,7 @@ class SeccionInformativaActivity : AppCompatActivity() {
                     listAdvice.add(
                         CardInfo(
                             postSnapshot.child("id").value.toString(),
-                            postSnapshot.child("img").value.toString(),
+                            postSnapshot.child("uri").value.toString(),
                             postSnapshot.child("title").value.toString(),
                             postSnapshot.child("content").value.toString(),
                             postSnapshot.child("likes").value.toString().toLong(),

@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
@@ -73,14 +74,6 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
         })
     }
 
-
-    /*   private fun getServicesResponde() {
-           viewModelServices.responseLiveData.observe(this, {
-               it.listService?.let { it1 -> adapter.submitList(it1) }
-               adapter.notifyDataSetChanged()
-           })
-       }*/
-
     private fun setObservers() {
         viewModelServices.misServicios.observe(this, Observer {
             adapter.submitList(it)
@@ -121,15 +114,21 @@ class ServiciosRecolectorRutaActivity : AppCompatActivity() {
     }
 
     private fun toOnItemViewClick(servicio: Service) {
-        val intent = Intent(this, RutaRecolectorMapActivity::class.java)
-        intent.putExtra("idService", servicio.id)
-        intent.putExtra("lat", servicio.latitud)
-        intent.putExtra("lon", servicio.longitud)
-        intent.putExtra("currentlat", mCurrentLatLng.latitude.toString())
-        intent.putExtra("currentlon", mCurrentLatLng.longitude.toString())
-        intent.putExtra("address", servicio.address)
-        intent.putExtra("Service",servicio)
-        startActivity(intent)
+        if(servicio.estado==3){
+            Toast.makeText(this, "el servicio seleccionado está finalizado",Toast.LENGTH_LONG).show()
+        }else{
+
+            val intent = Intent(this, RutaRecolectorMapActivity::class.java)
+            intent.putExtra("idService", servicio.id)
+            intent.putExtra("lat", servicio.latitud)
+            intent.putExtra("lon", servicio.longitud)
+            intent.putExtra("currentlat", mCurrentLatLng.latitude.toString())
+            intent.putExtra("currentlon", mCurrentLatLng.longitude.toString())
+            intent.putExtra("address", servicio.address)
+            intent.putExtra("Service",servicio)
+            startActivity(intent)
+        }
+
     }
 
     fun generarRecolector() {
