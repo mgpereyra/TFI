@@ -25,7 +25,7 @@ class MisPuntosActivity : AppCompatActivity() {
     var total = 0
     var sumatoria = 0
     var id = FirebaseAuth.getInstance().currentUser!!.uid
-    var mis_canjes = ArrayList<CuponCanje>()
+
     private lateinit var adapter: CuponAdapter
     private val db = FirebaseDatabase.getInstance().getReference()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +61,7 @@ class MisPuntosActivity : AppCompatActivity() {
 
     private fun cargarData() {
         db.child("User").child(id).addValueEventListener(object : ValueEventListener {
+            var mis_canjes = ArrayList<CuponCanje>()
             override fun onDataChange(snapshot: DataSnapshot) {
                 cantidad_de_puntos.text = snapshot.child("puntos").value.toString()
                 for (canje in snapshot.child("Cupon").children) {
@@ -71,7 +72,7 @@ class MisPuntosActivity : AppCompatActivity() {
                             canje.child("title").value.toString(),
                             canje.child("description").value.toString(),
                             canje.child("imageCode").value.toString(),
-                            canje.child("estadoCupon").value.toString().toInt()
+                            canje.child("estadoCupon").value.toString()
                         )
                     )
                 }

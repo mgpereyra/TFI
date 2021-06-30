@@ -12,13 +12,15 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalle_canje_item.*
-import kotlinx.android.synthetic.main.activity_mis_servicios_detalle.*
 import kotlinx.android.synthetic.main.activity_mis_servicios_detalle.cardInfoId
+import kotlin.properties.Delegates
 
 class DetalleCanjeItem : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().reference
     private val id = FirebaseAuth.getInstance().currentUser!!.uid
     var im = ""
+    var p=0
+    var puntos = getPuntos(id)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_canje_item)
@@ -34,13 +36,14 @@ class DetalleCanjeItem : AppCompatActivity() {
         btn_canjear_item.setOnClickListener {
             canjearItem()
 
+
         }
     }
 
     private fun canjearItem() {
-        var puntos = getPuntos(id)
 
-        if ((puntos - costo_cupon_detalle.text.toString().toInt()) >= 0 && cantidad_diponible.text.toString().toInt()>0) {
+        var restantes=p-costo_cupon_detalle.text.toString().toInt()
+        if (restantes >= 0 && cantidad_diponible.text.toString().toInt()>0) {
             var cantidad=cantidad_diponible.text.toString().toInt()-1
             var cuponId = db.push().key.toString()
             var cupon = CuponCanje(
@@ -48,9 +51,11 @@ class DetalleCanjeItem : AppCompatActivity() {
                 id_item_detalle.text.toString(),
                 cupon_titulo_detalle.text.toString(),
                 description_item.text.toString(),
-                im, false
+                im, "false"
             )
-            db.child("User").child(id).child("Cupones").setValue(cupon).addOnCompleteListener {
+            db.child("User").child(id).child("puntos").setValue(restantes)
+            db.child("Item").child(id_item_detalle.text.toString()).child("amount").setValue(cantidad)
+            db.child("User").child(id).child("Cupon").child(cuponId).setValue(cupon).addOnCompleteListener {
                 Toast.makeText(
                     this,
                     "Tu Canjeo ha sido registrado correctamente",
@@ -58,7 +63,6 @@ class DetalleCanjeItem : AppCompatActivity() {
                 )
                     .show()
             }
-            db.child("Item").child(ID_CANJE).child("amount").setValue(cantidad)
 
 
         } else {
@@ -69,29 +73,33 @@ class DetalleCanjeItem : AppCompatActivity() {
             )
                 .show()
         }
+        finish()
     }
 
     private fun getPuntos(idUser: String): Int {
-        var p = 0
         db.child("User").child(idUser).child("puntos")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     p = snapshot.value.toString().toInt()
+
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
+
             })
         return p
+
     }
 
     private fun verItem(id_item: String) {
         db.child("Item").child(id_item).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                id_item_detalle.text = id_item
+                id_item_detalle.text = snapshot.child("id").value.toString()
                 cupon_titulo_detalle.text = snapshot.child("title").value.toString()
-                costo_cupon_detalle.text = snapshot.child("pointCost").value.toString()
+                costo_cupon_detalle.text = snapshot.child("pointsCost").value.toString()
                 description_item.text = snapshot.child("description").value.toString()
                 cargarImagen(
                     snapshot.child("image").value.toString(),

@@ -46,6 +46,7 @@ class ItemAdapter: RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
             holder.itemView.cardInfo_elemento_canje.text = it.title
             holder.itemView.cardInfo_costo.text = it.pointsCost.toString()
             holder.itemView.cantidad_diponible.text=it.amount.toString()
+            holder.item=it
 
 
         }

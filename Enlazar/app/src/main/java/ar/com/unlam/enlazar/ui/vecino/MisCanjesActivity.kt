@@ -1,5 +1,6 @@
 package ar.com.unlam.enlazar.ui.vecino
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -22,7 +23,7 @@ class MisCanjesActivity : AppCompatActivity() {
    lateinit var adapter: ItemAdapter
    var puntos=0
     var id = FirebaseAuth.getInstance().currentUser!!.uid
-    var canjes=ArrayList<Item>()
+
     private val db = FirebaseDatabase.getInstance().getReference()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +38,15 @@ class MisCanjesActivity : AppCompatActivity() {
                 getString(R.string.valor_perdido), Toast.LENGTH_LONG
             ).show()
         }
+        btnVolver_de_miscanjes.setOnClickListener {
+            var intent=Intent(this,MisPuntosActivity::class.java)
+            intent.putExtra(MisPuntosActivity.PUNTOS,puntos)
+            startActivity(intent)
+
+
+        }
+
+
         cargarCanjes()
         adapter = ItemAdapter()
         with(item_canjes) {
@@ -49,7 +59,14 @@ class MisCanjesActivity : AppCompatActivity() {
             this.adapter = this@MisCanjesActivity.adapter
         }
     }
+    @Override
+    public override fun onResume() {
+        super.onResume()
+        cargarCanjes()
+
+    }
 private fun cargarCanjes(){
+    var canjes=ArrayList<Item>()
     db.child("Item").addValueEventListener(object:ValueEventListener{
         override fun onDataChange(snapshot: DataSnapshot) {
             for (item in snapshot.children) {
@@ -89,7 +106,19 @@ private fun cargarCanjes(){
 
 
 }
+private fun cargarPuntos():Int{
+    db.child("User").child(id).child("puntos").addValueEventListener(object:ValueEventListener{
+        override fun onDataChange(snapshot: DataSnapshot) {
+            puntos=snapshot.value.toString().toInt()
 
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    })
+    return puntos
+}
 companion object{
    var PUNTOS_DISPONIBLES=""
 }
