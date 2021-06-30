@@ -11,7 +11,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalle_card_info.*
-import kotlinx.android.synthetic.main.card_info.view.*
 
 class SeccionInformativaDetalleActivity : AppCompatActivity() {
     var id: Long = 0
@@ -19,7 +18,7 @@ class SeccionInformativaDetalleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_card_info)
-        btnVolver.setOnClickListener { this@SeccionInformativaDetalleActivity.finish() }
+        btnVolver_a_canjes.setOnClickListener { this@SeccionInformativaDetalleActivity.finish() }
         if (intent.hasExtra(ID)) {
             verConsejo(intent.extras!!.getString(ID, ""))
         } else {

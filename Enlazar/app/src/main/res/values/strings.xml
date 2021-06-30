@@ -95,6 +95,7 @@
     <string name="cancelar_servicio">CANCELAR SERVICIO</string>
     <string name="confirmar_asistecia_P_E">CONFIRMAR</string>
     <string name="cancelar_asistencia_P_E">Cancelar</string>
+    <string name="no_hay_valor_a_capturar">no hay valor a capturar</string>
 
 
 </resources>

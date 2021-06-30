@@ -32,18 +32,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LoginActivity" /> <!-- UI RECOLECTOR -->
+        <activity android:name=".ui.LoginActivity" />
+        <!-- UI RECOLECTOR -->
         <activity android:name=".ui.recolector.RutaRecolectorMapActivity" />
 	    <activity android:name=".ui.vecino.PuntosEncuentroMapActivity" />
         <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity"/>
         <activity android:name=".ui.recolector.DashboardRecolectorActivity"/>
-        <activity android:name=".ui.recolector.RecuperarPassActivity" /> <!-- UI VECINO -->
+        <activity android:name=".ui.recolector.RecuperarPassActivity" />
+        <!-- UI VECINO -->
         <activity android:name=".ui.vecino.MisPuntosActivity" />
         <activity android:name=".ui.vecino.MisCanjesActivity" />
         <activity android:name=".ui.vecino.MiCuentaActivity" />
         <activity android:name=".ui.vecino.MisEncuentrosActivity" />
         <activity android:name=".ui.vecino.DetalleServicioActivity" />
-	    <activity android:name=".ui.vecino.DetalleCanjeItem"></activity>
+        <activity android:name=".ui.vecino.DetalleCanjeItem" />
         <activity android:name=".ui.vecino.DashboardUserActivity" />
         <activity android:name=".ui.vecino.NuevoServicioActivity" />
         <activity android:name=".ui.vecino.SeccionInformativaDetalleActivity" />

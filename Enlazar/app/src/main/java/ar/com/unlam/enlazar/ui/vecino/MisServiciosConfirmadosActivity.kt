@@ -28,6 +28,9 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
 
         }
         setServicios(id,Estado.PENDIENTE)
+        servicios_pendientes.setBackgroundColor(
+            resources.getColor(R.color.green)
+        )
         adapter = MisServiciosVecinoAdapter()
         with(listado_servicios) {
             layoutManager =

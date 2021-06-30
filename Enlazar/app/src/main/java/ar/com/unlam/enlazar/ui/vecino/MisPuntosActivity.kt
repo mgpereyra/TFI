@@ -37,7 +37,7 @@ class MisPuntosActivity : AppCompatActivity() {
         } else {
             Toast.makeText(
                 this@MisPuntosActivity,
-                getString(R.string.valor_perdido), Toast.LENGTH_LONG
+                getString(R.string.no_hay_valor_a_capturar), Toast.LENGTH_LONG
             ).show()
         }
         btn_ir_a_canjear.setOnClickListener {
