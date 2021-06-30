@@ -2,6 +2,8 @@ import React , {useState, useContext, useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import alertaContext from '../../context/alerta/alertaContext';
 import authContext from '../../context/auth/authContext';
+import logo from '../../images/enlazar-ocre.png';
+
 
 const NewAccount = (props) => {
 
@@ -22,10 +24,10 @@ const NewAccount = (props) => {
   
   //state para iniciar sesion
 const [user, setUser] = useState({
-  name:'Mar',
-  email:'margise@gmail.com',
-  password:'123456',
-  confirmar:'123456'
+  name:'',
+  email:'',
+  password:'',
+  confirmar:''
 })
 
 //extraer el usuario
@@ -72,12 +74,13 @@ const onSubmitLogin = e =>{
       <div className='form-usuario'>
         {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
       <div className='contenedor-form sombra-dark'>
-          <h1>Enlazar</h1>
-        <h2>Obtener una cuenta</h2>
+      <img className="logo-enlazar" src={logo}></img>
+        <h2 className="text-center mb-2 text-muted">Obtener una cuenta es muy fácil :</h2>
+        <h3 className="text-center mb-5 text-muted">completá los siguientes campos y enlazate</h3>
         <form onSubmit={onSubmitLogin}> 
 
         <div className='campo-form'>
-            <label htmlFor="name">Nombre</label>
+            <label htmlFor="name ">Nombre</label>
             <input
               type='text'
               id='name'
@@ -88,7 +91,7 @@ const onSubmitLogin = e =>{
             />
           </div>
           <div className='campo-form'>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email ">Email</label>
             <input
               type='email'
               id='email'
@@ -126,17 +129,17 @@ const onSubmitLogin = e =>{
           </div>
 
           <div className='campo-form'>
-            <input
+            <button
               type='submit'
               className='btn btn-primary btn-block'
               value='Registrar'
-            />
+              >Registrar</button>
 
           </div>
         </form>
 
         <Link to={'/'} className='enlace-cuenta'>
-          Iniciar sesión
+          Volver a iniciar sesión
         </Link>
       </div>
     </div>

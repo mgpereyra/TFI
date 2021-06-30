@@ -2,6 +2,7 @@ import React , {useState, useContext, useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import alertaContext from '../../context/alerta/alertaContext';
 import authContext from '../../context/auth/authContext';
+import logo from '../../images/enlazar-ocre.png';
 
 const Login = (props) => {
 
@@ -43,7 +44,7 @@ const onSubmitLogin = e =>{
 
   //Validar que no haya campo vacios
   if(email.trim() === '' || password.trim() === ''){
-    mostrarAlerta("Todos los campos son obligatorios", "alerta-error")
+    mostrarAlerta("Por favor, completa tu email y password", "alerta-error")
     return;
   }
 
@@ -55,8 +56,8 @@ const onSubmitLogin = e =>{
       <div className='form-usuario'>
         {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
       <div className='contenedor-form sombra-dark'>
-          <h1>Enlazar</h1>
-        <h2>Iniciar Sesión</h2>
+        <img className="logo-enlazar" src={logo}></img>
+        <h3 className="text-center mb-4">¡Hola! Inicia sesión para comenzar </h3>
         <form onSubmit={onSubmitLogin}> 
           <div className='campo-form'>
             <label htmlFor="email">Email</label>
@@ -83,12 +84,12 @@ const onSubmitLogin = e =>{
             />
           </div>
 
-          <div className='campo-form'>
-            <input
-              type='submit'
-              className='btn btn-primary btn-block'
-              value='Iniciar Sesión'
-            />
+          <div className='campo-form '>
+             <button
+                className="btn btn-primary btn-block"
+                type="submit"
+                variant="primary"
+              >Iniciar sesion</button>
 
           </div>
         </form>

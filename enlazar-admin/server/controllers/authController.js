@@ -24,7 +24,7 @@ exports.authentication =  async (req, res)=>{
         //validando existencia de usuario
 
         if(! snapshot.exists()){
-            return res.status(402).json({msg: 'El usuario no existe'})
+            return res.status(402).json({msg: 'El email ingresado no es válido'})
         }
         var key =  Object.keys( await snapshot.val())[0];
         const data = await snapshot.val()[key]
@@ -32,7 +32,7 @@ exports.authentication =  async (req, res)=>{
         //revisar el password
         const passCorrect = await bcryptj.compare(password,data.password)
         if(!passCorrect){
-            return res.status(400).json({msg: 'El password es incorrecto'})
+            return res.status(400).json({msg: 'El password ingresado es incorrecto'})
         }
 
         //si todo es correcto crear y firmar el token

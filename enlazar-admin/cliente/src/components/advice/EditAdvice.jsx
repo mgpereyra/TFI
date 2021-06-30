@@ -45,7 +45,7 @@ const EditAdvice = () => {
             <div className="d-flex justify-content-between">
                 <h2><i className="far fa-edit"></i>Editar consejo</h2>
             </div>
-        <div className="card bg-gris">
+        <div className="card bg-gris py-4">
             <div className="card-body">
                 <form
                     onSubmit={submitForm}>
@@ -92,7 +92,7 @@ const EditAdvice = () => {
                             </div>
                         </Col>
                         </Row>
-                        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <div className="d-grid gap-2 d-md-flex justify-content-md-end mr-3">
                             <button 
                                 className="btn btn-primary me-md-2"
                                 type="submit"

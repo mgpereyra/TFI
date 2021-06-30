@@ -320,7 +320,7 @@ a {
 
   aside {
       background-color: var(--blanco);
-      flex: 0 0 250px;
+      flex: 0 0 220px;
   }
   .seccion-principal {
       flex: 1;
@@ -331,7 +331,7 @@ a {
 
 /* BARRA LATERAL */
 aside  {
-  padding: 2.5rem;
+  padding: .2rem 1rem;
 }
 
 .formulario-nuevo-proyecto {
@@ -531,7 +531,7 @@ main {
 }
 
 .contenedor-form {
-  padding: 5rem 3rem;
+  padding: 3.5rem 3rem;
   max-width: 500px;
   width: 95%;
   background-color: var(--blanco);
@@ -663,4 +663,14 @@ color: var( --gris2);
 
 .contenedor-titulo{
 height: 60px;
+}
+
+.logo-enlazar{
+  vertical-align: middle;
+  border-style: none;
+  width: 30%;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  margin-bottom: 2rem;
 }

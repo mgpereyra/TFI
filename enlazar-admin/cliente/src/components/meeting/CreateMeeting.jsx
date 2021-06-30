@@ -91,7 +91,7 @@ const CreateMeeting = ({ history }) => {
           encuentro
         </h2>
       </div>
-      <div className="card bg-gris">
+      <div className="card bg-gris py-4">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <Row>
@@ -158,7 +158,7 @@ const CreateMeeting = ({ history }) => {
                 </div>
               </Col>
             </Row>
-            <div className="mr-4 d-grid gap-2 d-md-flex justify-content-md-end">
+            <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
               <button
                 className="btn btn-primary me-md-2"
                 type="submit"

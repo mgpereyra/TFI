@@ -71,7 +71,7 @@ const CreateAdvice = ({history}) => {
              <div className="d-flex justify-content-between">
                 <h2><i className="fas fa-plus-circle"></i>Crear un nuevo consejo</h2>
               </div>
-            <div className="card bg-gris">
+            <div className="card bg-gris py-4">
                 <div className="card-body">
                     <form
                         onSubmit={handleSubmit}
@@ -79,10 +79,10 @@ const CreateAdvice = ({history}) => {
                         <Row>
                             <Col lg={4}>
                                 <div className="form-group">
-                                    <label className="control-label">Selecciona una imagen</label>
+                                    <label className="control-label ">Selecciona una imagen</label>
                                         <input 
                                             type="file"
-                                            className="input-text"
+                                            className="input-text text-white"
                                             id="img" 
                                             name="img"
                                             onChange={handleImg}
@@ -123,7 +123,7 @@ const CreateAdvice = ({history}) => {
                                 </div>
                             </Col>
                             </Row>
-                            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
                                 <button 
                                     className="btn btn-primary me-md-2"
                                     type="submit"
