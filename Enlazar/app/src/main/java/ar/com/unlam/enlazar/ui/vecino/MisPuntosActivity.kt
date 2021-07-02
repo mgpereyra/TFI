@@ -104,6 +104,11 @@ class MisPuntosActivity : AppCompatActivity() {
         db.child("User").child(id).child("puntos").setValue(sumatoria)
     }
 
+    private fun setEstadocuponUi(e:String){
+        if (e == false.toString()){
+
+        }
+    }
     private fun calcularPuntos() {
         db.child("Service").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

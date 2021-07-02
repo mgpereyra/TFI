@@ -33,7 +33,12 @@ class CuponAdapter:RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
             Picasso.get()
                 .load(it.imageCode).error(R.drawable.error).into(holder.itemView.codigo)
             holder.itemView.cardInfo_elemento_canje.text=it.title
-            holder.itemView.cardInfo_costo.text=it.estadoCupon.toString()
+            holder.itemView.label_cantidad_disponible.visibility=View.INVISIBLE
+            if (it.estadoCupon==false.toString()){
+                holder.itemView.cardInfo_costo.text="Sin usar"
+            }else{
+                holder.itemView.cardInfo_costo.text="Canjeado"
+            }
 
 
 

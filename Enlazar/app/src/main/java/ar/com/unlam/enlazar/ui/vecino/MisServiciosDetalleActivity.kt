@@ -3,6 +3,7 @@ package ar.com.unlam.enlazar.ui.vecino
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.ui.Estado
@@ -20,8 +21,10 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
         if (intent.hasExtra(ID)) {
             verServicio(intent.extras!!.getString(ID, ""))
         } else {
-            Toast.makeText(this@MisServiciosDetalleActivity,
-                getString(R.string.valor_perdido), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this@MisServiciosDetalleActivity,
+                getString(R.string.valor_perdido), Toast.LENGTH_LONG
+            ).show()
         }
         btn_cancel_servicio.setOnClickListener {
             cancelarServicio(cardInfoId.text.toString())
@@ -30,50 +33,64 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
 
     }
 
-    private fun cancelarServicio(id:String) {
+    private fun cancelarServicio(id: String) {
         db.child("Service").child(id).child("estado").setValue(Estado.CANCELADO.ordinal)
             .addOnCompleteListener {
-            Toast.makeText(
-                this,
-                "Tu Servicio ha sido cancelado exitosamente",
-                Toast.LENGTH_LONG
-            )
-                .show()
+                Toast.makeText(
+                    this,
+                    "Tu Servicio ha sido cancelado exitosamente",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
 
-            irMisServiciosConfirmadosActivity()
-        }
+                irMisServiciosConfirmadosActivity()
+            }
     }
 
     private fun irMisServiciosConfirmadosActivity() {
-        val serviceActivity = Intent(this, MisServiciosConfirmadosActivity::class.java)
+        val serviceActivity = Intent(this, MisServiciosActivity::class.java)
 
         this.startActivity(serviceActivity)
         this@MisServiciosDetalleActivity.finish()
         startActivity(serviceActivity)
     }
 
-    private fun verServicio(id:String){
-        db.child("Service").child(id).addValueEventListener(object:ValueEventListener{
+    private fun verServicio(id: String) {
+        db.child("Service").child(id).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                detalle_activity_cantidad_de_bolsas_amarillo.text=snapshot.child("envasesPlasticos").value.toString()
-                detalle_activity_cantidad_bolsas_verdes.text=snapshot.child("envasesVidrio").value.toString()
-                detalle_activity_cantidad_de_bolsas_azul.text=snapshot.child("envasesCarton").value.toString()
-                detalle_activity_cardInfo_date.text=snapshot.child("date").value.toString()
-                detalle_activity_cardInfo_direccion.text=snapshot.child("address").value.toString()
-                detalle_activity_turno.text=snapshot.child("time").value.toString()
-                cardInfoId.text=snapshot.key
+                detalle_activity_cantidad_de_bolsas_amarillo.text =
+                    snapshot.child("envasesPlasticos").value.toString()
+                detalle_activity_cantidad_bolsas_verdes.text =
+                    snapshot.child("envasesVidrio").value.toString()
+                detalle_activity_cantidad_de_bolsas_azul.text =
+                    snapshot.child("envasesCarton").value.toString()
+                detalle_activity_cardInfo_date.text = snapshot.child("date").value.toString()
+                detalle_activity_cardInfo_direccion.text =
+                    snapshot.child("address").value.toString()
+                detalle_activity_turno.text = snapshot.child("time").value.toString()
+                verificarEstado(snapshot.child("estado").value.toString().toInt())
+                cardInfoId.text = snapshot.key
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MisServiciosDetalleActivity,
-                    "No se encontraron los datos especificados",Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this@MisServiciosDetalleActivity,
+                    "No se encontraron los datos especificados", Toast.LENGTH_LONG
+                ).show()
             }
 
 
         })
 
     }
-companion object{
- val ID:String="ID"
-}
+
+    private fun verificarEstado(e: Int) {
+        if (e==Estado.ASIGNADO.ordinal){
+            btn_cancel_servicio.visibility=View.INVISIBLE
+        }
+    }
+
+    companion object {
+        val ID: String = "ID"
+    }
 }

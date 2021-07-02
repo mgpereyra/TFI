@@ -51,8 +51,7 @@
         <activity android:name=".ui.vecino.SeccionInformativaDetalleActivity" />
         <activity android:name=".ui.vecino.SeccionInformativaActivity" />
         <activity android:name=".ui.vecino.CrearCuentaActivity" />
-
-        <activity android:name=".ui.vecino.MisServiciosConfirmadosActivity" />
+        <activity android:name=".ui.vecino.MisServiciosActivity" />
         <activity android:name=".ui.vecino.MisServiciosDetalleActivity" />
 
         <meta-data

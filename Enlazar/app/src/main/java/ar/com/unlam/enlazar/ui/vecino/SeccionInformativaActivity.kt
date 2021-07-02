@@ -34,7 +34,9 @@ class SeccionInformativaActivity : AppCompatActivity() {
                 )
             this.adapter = this@SeccionInformativaActivity.adapter
         }
-
+btnVolver.setOnClickListener {
+    this.finish()
+}
     }
 
     private fun getConsejo() {

@@ -3,6 +3,7 @@ package ar.com.unlam.enlazar.ui.vecino
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.adapter.MisServiciosVecinoAdapter
@@ -16,26 +17,25 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_mis_servicios.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 
-class MisServiciosConfirmadosActivity : AppCompatActivity() {
+class MisServiciosActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().reference
     var id = FirebaseAuth.getInstance().currentUser!!.uid
+    val viewModelMisServicios:MisServiciosViewModel by viewModels()
     var serviceList = ArrayList<Service>()
     private lateinit var adapter:MisServiciosVecinoAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_servicios)
-        servicios_confirmados.setOnClickListener {
 
-        }
-        setServicios(id,Estado.PENDIENTE)
+        viewModelMisServicios.getServicios(Estado.PENDIENTE)
         servicios_pendientes.setBackgroundColor(
             resources.getColor(R.color.green)
         )
         adapter = MisServiciosVecinoAdapter()
         with(listado_servicios) {
             layoutManager =
-                LinearLayoutManager(this@MisServiciosConfirmadosActivity, LinearLayoutManager.VERTICAL, false)
-            this.adapter = this@MisServiciosConfirmadosActivity.adapter
+                LinearLayoutManager(this@MisServiciosActivity, LinearLayoutManager.VERTICAL, false)
+            this.adapter = this@MisServiciosActivity.adapter
         }
         listado_servicios.adapter = adapter
         servicios_confirmados.setOnClickListener {
@@ -48,7 +48,7 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
             servicios_confirmados.isEnabled=false
             servicios_pendientes.isEnabled=true
             serviceList.clear()
-            setServicios(id,Estado.ASIGNADO)
+            viewModelMisServicios.getServicios(Estado.ASIGNADO)
 
         }
 
@@ -63,16 +63,21 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
             servicios_confirmados.isEnabled=true
             servicios_pendientes.isEnabled=false
             serviceList.clear()
-            setServicios(id,Estado.PENDIENTE)
+            viewModelMisServicios.getServicios(Estado.PENDIENTE)
 
         }
         btnVolver_mis_servicios.setOnClickListener { finish() }
+        setServicios()
 
     }
 
-    private fun setServicios(idUser: String, estado: Estado) {
+    private fun setServicios() {
+        viewModelMisServicios.misServicios.observe(this,{
+            adapter.submitList(it)
+            adapter.notifyDataSetChanged()
 
-        db.child("Service").addValueEventListener(object : ValueEventListener {
+        })
+        /*db.child("Service").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 // var mSnapshot=snapshot.getValue(Service::class.java)
                 for (postSnapshot in snapshot.children.iterator()) {
@@ -101,7 +106,7 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
                     listado_servicios.adapter = adapter}
                 else{
-                    Toast.makeText(this@MisServiciosConfirmadosActivity,
+                    Toast.makeText(this@MisServiciosActivity,
                         "no se encontraron servicios del estado especificado",
                         Toast.LENGTH_LONG).show()
                 }
@@ -111,7 +116,7 @@ class MisServiciosConfirmadosActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-        })
+        })*/
     }
 
 

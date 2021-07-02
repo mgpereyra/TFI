@@ -25,6 +25,10 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
 
         return ServicioVecinoHolder(view)
     }
+    fun submitList(it: List<Service>) {
+        servicesList.clear()
+        servicesList.addAll(it)
+    }
 
     override fun onBindViewHolder(holder: ServicioVecinoHolder, position: Int) {
         servicesList[position].let{service ->  
@@ -35,6 +39,7 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
             holder.itemView.cardInfo_direccion.text=service.address.toString()
             holder.itemView.turno.text=service.time
             holder.itemView.estado.text=service.estado.toString()
+
             holder?.service =service
         }
 
