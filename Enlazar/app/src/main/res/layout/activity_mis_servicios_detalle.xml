@@ -5,21 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.vecino.MisServiciosDetalleActivity">
+
+    <LinearLayout
+        android:id="@+id/barra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarMisServicios"
+            android:layout_width="200dp"
+            android:layout_height="67dp"
+            app:title="@string/app_name" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnVolver_mis_servicios"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_arrow_back" />
+    </LinearLayout>
+
     <com.google.android.material.card.MaterialCardView
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="3dp"
         android:id="@+id/dataContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/black"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/black"
-        app:strokeWidth="1dp"
+        app:layout_constraintTop_toBottomOf="@id/barra"
         app:strokeColor="@android:color/black"
+        app:strokeWidth="1dp"
         tools:visibility="visible">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -28,11 +54,12 @@
                 android:id="@+id/cardInfoId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent
-"               app:layout_constraintBottom_toBottomOf="parent"
+"
                 app:layout_constraintTop_toTopOf="parent"
-                android:visibility="invisible"
                 tools:visibility="invisible" />
 
             <ImageView
@@ -50,14 +77,14 @@
                 android:id="@+id/detalle_activity_cantidad_de_bolsas_amarillo"
                 android:layout_width="45dp"
                 android:layout_height="30dp"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textAlignment="center"
+                android:textSize="20sp"
                 app:flow_verticalAlign="center"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_amarillo"
                 app:layout_constraintEnd_toEndOf="@id/circle_bolsas_amarillo"
                 app:layout_constraintStart_toStartOf="@id/circle_bolsas_amarillo"
-                app:layout_constraintTop_toTopOf="@id/circle_bolsas_amarillo"
-                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_amarillo"
-                android:text="@string/Ejemplo_cant_puntos"
-                android:textSize="20sp"
-                android:textAlignment="center"/>
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_amarillo" />
 
             <ImageView
                 android:id="@+id/circle_bolsas_azul"
@@ -75,15 +102,14 @@
                 android:layout_width="45dp"
                 android:layout_height="30dp"
                 android:layout_margin="2dp"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textAlignment="center"
+                android:textSize="20sp"
                 app:flow_verticalAlign="center"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_azul"
                 app:layout_constraintEnd_toEndOf="@id/circle_bolsas_azul"
                 app:layout_constraintStart_toStartOf="@id/circle_bolsas_azul"
-                app:layout_constraintTop_toTopOf="@id/circle_bolsas_azul"
-                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_azul"
-                android:text="@string/Ejemplo_cant_puntos"
-                android:textSize="20sp"
-                android:textAlignment="center"/>
-
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_azul" />
 
 
             <ImageView
@@ -101,14 +127,14 @@
                 android:id="@+id/detalle_activity_cantidad_bolsas_verdes"
                 android:layout_width="45dp"
                 android:layout_height="30dp"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textAlignment="center"
+                android:textSize="20sp"
                 app:flow_verticalAlign="center"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_verdes"
                 app:layout_constraintEnd_toEndOf="@id/circle_bolsas_verdes"
                 app:layout_constraintStart_toStartOf="@id/circle_bolsas_verdes"
-                app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes"
-                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_verdes"
-                android:text="@string/Ejemplo_cant_puntos"
-                android:textSize="20sp"
-                android:textAlignment="center"/>
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes" />
 
             <TextView
                 android:id="@+id/detalle_activity_cardInfo_date"
@@ -158,17 +184,18 @@
                 app:layout_constraintStart_toEndOf="@id/circle_bolsas_verdes"
                 app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes"
                 app:layout_constraintVertical_bias="1.0" />
+
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cancel_servicio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_cancel_servicio"
-                app:layout_constraintTop_toBottomOf="@id/detalle_activity_cardInfo_direccion"
-                app:layout_constraintStart_toStartOf="@id/detalle_activity_turno"
-                app:layout_constraintEnd_toEndOf="@id/detalle_activity_turno"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:backgroundTint="@color/emerald"
                 android:text="@string/places_cancelar"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/emerald"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/detalle_activity_turno"
+                app:layout_constraintStart_toStartOf="@id/detalle_activity_turno"
+                app:layout_constraintTop_toBottomOf="@id/detalle_activity_cardInfo_direccion" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

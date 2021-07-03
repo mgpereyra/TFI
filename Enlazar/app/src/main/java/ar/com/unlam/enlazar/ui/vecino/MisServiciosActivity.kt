@@ -2,7 +2,6 @@ package ar.com.unlam.enlazar.ui.vecino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
@@ -10,10 +9,6 @@ import ar.com.unlam.enlazar.adapter.MisServiciosVecinoAdapter
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.Estado
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_mis_servicios.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 
