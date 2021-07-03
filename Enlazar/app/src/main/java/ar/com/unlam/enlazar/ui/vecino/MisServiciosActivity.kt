@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_mis_servicios.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 
 class MisServiciosActivity : AppCompatActivity() {
-    private val db = FirebaseDatabase.getInstance().reference
     var id = FirebaseAuth.getInstance().currentUser!!.uid
     val viewModelMisServicios:MisServiciosViewModel by viewModels()
     var serviceList = ArrayList<Service>()
