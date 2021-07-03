@@ -34,7 +34,9 @@ class SeccionInformativaActivity : AppCompatActivity() {
                 )
             this.adapter = this@SeccionInformativaActivity.adapter
         }
-
+btnVolver.setOnClickListener {
+    this.finish()
+}
     }
 
     private fun getConsejo() {
@@ -49,7 +51,8 @@ class SeccionInformativaActivity : AppCompatActivity() {
                             postSnapshot.child("title").value.toString(),
                             postSnapshot.child("content").value.toString(),
                             postSnapshot.child("likes").value.toString().toLong(),
-                            postSnapshot.child("tipoConsejo").value.toString()
+                            postSnapshot.child("tipoConsejo").value.toString(),
+                            postSnapshot.child("uri").value.toString()
                         )
                     )
 

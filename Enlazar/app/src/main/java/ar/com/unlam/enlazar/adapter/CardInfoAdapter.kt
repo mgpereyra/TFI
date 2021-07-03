@@ -40,7 +40,7 @@ var cardInfoList=mutableListOf<CardInfo>()
             }
 
             Picasso.get()
-                .load(it.img)
+                .load(it.uri)
                 //.resize(160,190)
                 .centerCrop()
                 .fit()

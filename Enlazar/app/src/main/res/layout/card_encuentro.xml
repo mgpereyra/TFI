@@ -28,7 +28,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_aceptar_encuentro2"
-                android:layout_width="130dp"
+                android:layout_width="155dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/emerald"
@@ -104,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:maxLength="40"
+                android:layout_marginStart="10dp"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="15sp"

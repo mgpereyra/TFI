@@ -91,7 +91,7 @@ class DashboardUserActivity : AppCompatActivity() {
             startActivity(intent)
         }
         cardView_mis_servicios.setOnClickListener {
-            val intent: Intent = Intent(this, MisServiciosConfirmadosActivity::class.java)
+            val intent: Intent = Intent(this, MisServiciosActivity::class.java)
             startActivity(intent)
         }
 

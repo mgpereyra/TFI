@@ -15,6 +15,7 @@ data class Service (
         val time:String? = null,
         val userId:String? = null,
         val recolectorId:String? = null,
-        val estado:Int?=0
+        val estado:Int?=0,
+        val calculado:Boolean=false
 
         ): Serializable
