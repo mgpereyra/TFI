@@ -1,7 +1,6 @@
 package ar.com.unlam.enlazar.ui.vecino
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,7 +11,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_mis_servicios_detalle.*
 import kotlinx.coroutines.launch
 
 class MisServiciosDetalleViewModel() : ViewModel() {
