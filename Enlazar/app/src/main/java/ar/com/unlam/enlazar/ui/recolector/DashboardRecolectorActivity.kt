@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 
 class DashboardRecolectorActivity : AppCompatActivity() {
 
-    var userId:String=""
+    var userId: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,17 +25,17 @@ class DashboardRecolectorActivity : AppCompatActivity() {
         if (intent.hasExtra(DashboardUserActivity.IDKEY)) {
             userId = intent.extras!!.getString(DashboardUserActivity.IDKEY, "").toString()
         }
-  /*      val bundle = intent.extras
-        val idUser = bundle?.getString("idUser")
-        val email = bundle?.getString("email")
-        val typeUser = bundle?.getInt("typeUser")
-        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
-        pref.putString("idUser", idUser)
-        pref.putString("email", email)
-        pref.putInt("typeUser", typeUser!!)
-        pref.apply()*/
+        /*      val bundle = intent.extras
+              val idUser = bundle?.getString("idUser")
+              val email = bundle?.getString("email")
+              val typeUser = bundle?.getInt("typeUser")
+              val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
+              pref.putString("idUser", idUser)
+              pref.putString("email", email)
+              pref.putInt("typeUser", typeUser!!)
+              pref.apply()*/
         setCardClickListeners()
-toolbar()
+        toolbar()
     }
 
     private fun setCardClickListeners() {
@@ -46,14 +46,14 @@ toolbar()
 
         cardView_ir_hist_mis_servicios.setOnClickListener {
 
-            Toast.makeText(this, "Proximamente", Toast.LENGTH_SHORT).show()
-
+            val intent: Intent = Intent(this, ServiciosFinalizadosRecolectorActivity::class.java)
+            startActivity(intent)
 
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_recolector,menu)
+        menuInflater.inflate(R.menu.menu_recolector, menu)
         //menu?.findItem(R.id.mis_direcciones_user)?.setVisible(false)
         toolbar_DashboardRecolector.setNavigationIcon(null)
         return super.onCreateOptionsMenu(menu)
@@ -61,29 +61,30 @@ toolbar()
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.inicio_rec  -> {
-                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            R.id.inicio_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
             }
-            R.id.mis_canjes_rec  -> {
-                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            R.id.mis_canjes_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
             }
-            R.id.invita_amigos_rec  -> {
-                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            R.id.invita_amigos_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
             }
-            R.id.guardado_rec  -> {
-                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            R.id.guardado_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
             }
 
-            R.id.mi_cuenta_rec  -> {
-                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+            R.id.mi_cuenta_rec -> {
+                Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
             }
-            R.id.logout_rec  -> {
+            R.id.logout_rec -> {
                 logOut()
             }
         }
         return super.onOptionsItemSelected(item)
 
     }
+
     private fun logOut() {
         val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
         pref.clear()
@@ -92,10 +93,11 @@ toolbar()
         val mainIntent = Intent(this, LoginActivity::class.java)
         startActivity(mainIntent)
     }
-   fun toolbar(){
+
+    fun toolbar() {
         setSupportActionBar(toolbar_DashboardRecolector)
-        var ab: ActionBar?=supportActionBar
-        if (ab!=null){
+        var ab: ActionBar? = supportActionBar
+        if (ab != null) {
             ab.setHomeAsUpIndicator(R.drawable.menu)
             ab.setDisplayHomeAsUpEnabled(true)
         }

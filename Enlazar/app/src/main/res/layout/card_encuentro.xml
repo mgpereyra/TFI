@@ -89,11 +89,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:maxLength="30"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.175"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +99,7 @@
                 tools:visibility="visible" />
 
             <TextView
-                android:id="@+id/cardInfo_fecha"
+                android:id="@+id/cardInfo_encuentro_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -110,7 +107,7 @@
                 android:layout_marginStart="10dp"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?android:attr/textColorSecondary"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/cardInfo_title"
@@ -122,44 +119,28 @@
                 android:id="@+id/cardInfo_localidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="30dp"
                 android:maxLength="40"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.009"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_fecha"
+                app:layout_constraintStart_toStartOf="@+id/cardInfo_encuentro_date"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_encuentro_date"
                 tools:text="Nombre Localidad"
                 tools:visibility="visible" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/cardInfo_lugar"
+                android:id="@+id/cardInfo_encuentro_ubicacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/emerald"
-                android:layout_marginStart="30dp"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.004"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_localidad"
-                tools:text="Plaza Hipolito Yrigoyen" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/cardInfo_calles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:backgroundTint="@color/emerald"
                 android:paddingBottom="10dp"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/cardInfo_lugar"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_lugar"
+                app:layout_constraintStart_toStartOf="@+id/cardInfo_localidad"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_localidad"
                 tools:text="Republica de Portugal y Lascano" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -170,10 +151,10 @@
                 android:backgroundTint="@color/emerald"
                 android:textColor="@color/white"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@+id/cardInfo_calles"
+                app:layout_constraintEnd_toEndOf="@+id/cardInfo_encuentro_ubicacion"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/cardInfo_calles"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_calles"
+                app:layout_constraintStart_toStartOf="@+id/cardInfo_encuentro_ubicacion"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_encuentro_ubicacion"
                 tools:text="Informacion sobre el punto de encuentro" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

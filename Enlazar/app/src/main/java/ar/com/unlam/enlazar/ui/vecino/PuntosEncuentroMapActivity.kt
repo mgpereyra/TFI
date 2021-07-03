@@ -2,6 +2,8 @@ package ar.com.unlam.enlazar.ui.vecino
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.ImageFormat
+import android.graphics.drawable.VectorDrawable
 import android.location.Location
 import android.os.Bundle
 import android.widget.Toast
@@ -199,16 +201,13 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
     private fun createMarkers() {
         val coordinates = LatLng(-34.744774, -58.695204)
         puntosEncuentroMapViewModel.misPuntosEncuentro.value?.forEach {
-            if (it.latitud.isNullOrEmpty()||it.longitud.isNullOrEmpty()){
-               Toast.makeText(this,it.calle.toString(),Toast.LENGTH_SHORT).show()
-            }else{
                     val marker: MarkerOptions = MarkerOptions()
-                        .position(LatLng(it.latitud?.toDouble()!!,it.longitud?.toDouble()!!))
+                        .position(LatLng(it.lat?.toDouble()!!,it.lng?.toDouble()!!))
                         .title(it.title).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-                        //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pe_marker_uno_round))
+                       // .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pe_marker_dos))  //BitmapDescriptorFactory.fromResource(R.drawable.ic_logo_mar))
                       //  .anchor(0.0f,1.0f)
                 map.addMarker(marker)
-            }
+
 
         }
         //map.addMarker(marker)

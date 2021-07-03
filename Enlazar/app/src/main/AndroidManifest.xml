@@ -17,8 +17,6 @@
         android:theme="@style/Theme.Enlazar"
         android:vmSafeMode="false">
 
-       
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_api_key2" />
@@ -35,11 +33,18 @@
         <activity android:name=".ui.LoginActivity" />
         <!-- UI RECOLECTOR -->
         <activity android:name=".ui.recolector.RutaRecolectorMapActivity" />
+
+       <activity android:name=".ui.recolector.ServiciosFinalizadosRecolectorActivity"></activity>
 	    <activity android:name=".ui.vecino.PuntosEncuentroMapActivity" />
         <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity"/>
         <activity android:name=".ui.recolector.DashboardRecolectorActivity"/>
         <activity android:name=".ui.recolector.RecuperarPassActivity" />
         <!-- UI VECINO -->
+
+        <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity" />
+        <activity android:name=".ui.recolector.DashboardRecolectorActivity" />
+        <activity android:name=".ui.recolector.RecuperarPassActivity" /> 
+  <!-- UI VECINO -->
         <activity android:name=".ui.vecino.MisPuntosActivity" />
         <activity android:name=".ui.vecino.MisCanjesActivity" />
         <activity android:name=".ui.vecino.MiCuentaActivity" />
@@ -51,6 +56,8 @@
         <activity android:name=".ui.vecino.SeccionInformativaDetalleActivity" />
         <activity android:name=".ui.vecino.SeccionInformativaActivity" />
         <activity android:name=".ui.vecino.CrearCuentaActivity" />
+      <activity android:name=".ui.vecino.PuntosEncuentroMapActivity" />
+
         <activity android:name=".ui.vecino.MisServiciosActivity" />
         <activity android:name=".ui.vecino.MisServiciosDetalleActivity" />
 

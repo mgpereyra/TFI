@@ -26,9 +26,8 @@ class MisEncuentrosUserAdapter(val clickListener: OnRecyclerItemClick) :
         fun binNote(puntoEncuentroItem: PuntoEncuentro) {
             binding.cardInfoTitle.text = puntoEncuentroItem.title
             binding.cardInfoLocalidad.text = puntoEncuentroItem.localidad
-            binding.cardInfoFecha.text = puntoEncuentroItem.date +" - "+ puntoEncuentroItem.time
-            binding.cardInfoCalles.text = puntoEncuentroItem.calle
-            binding.cardInfoLugar.text = puntoEncuentroItem.lugar
+            binding.cardInfoEncuentroDate .text = puntoEncuentroItem.date +" - "+ puntoEncuentroItem.time
+            binding.cardInfoEncuentroUbicacion.text = puntoEncuentroItem.ubication
             binding.cardInfoDescEncuentro.text = puntoEncuentroItem.description.toString()
             /*Picasso.get().load(note.imagen).into(binding.imgItemResult)}*/
         }
