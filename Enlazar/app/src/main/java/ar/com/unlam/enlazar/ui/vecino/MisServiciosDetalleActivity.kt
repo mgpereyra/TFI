@@ -61,7 +61,8 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
     private fun verServicio(id: String) {
 
         servicioDetalleViewModel.getServiceById(id)
-        servicioDetalleViewModel.serviceLiveData.observe(this, Observer {setObservers(it)
+        servicioDetalleViewModel.serviceLiveData.observe(this, {
+            setObservers(it)
 
         })
         /*     db.child("Service").child(id).addValueEventListener(object : ValueEventListener {
@@ -98,6 +99,7 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
             btn_cancel_servicio.visibility = View.INVISIBLE
         }
     }
+
     private fun setObservers(s: Service) {
         detalle_activity_cantidad_de_bolsas_amarillo.text = s.envasesPlasticos.toString()
         detalle_activity_cantidad_bolsas_verdes?.setText(s.envasesVidrio.toString())
@@ -109,12 +111,17 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
 
         servicioDetalleViewModel.estado.observe(this, { estado(it) })
     }
+
     private fun estado(status: Consulta) {
         when (status) {
-            Consulta.SUCCESS -> Toast.makeText(this@MisServiciosDetalleActivity,
-                getString(R.string.succes), Toast.LENGTH_LONG).show()
-            Consulta.ERROR -> Toast.makeText(this@MisServiciosDetalleActivity,
-                getString(R.string.error), Toast.LENGTH_LONG).show()
+            Consulta.SUCCESS -> Toast.makeText(
+                this@MisServiciosDetalleActivity,
+                getString(R.string.succes), Toast.LENGTH_LONG
+            ).show()
+            Consulta.ERROR -> Toast.makeText(
+                this@MisServiciosDetalleActivity,
+                getString(R.string.error), Toast.LENGTH_LONG
+            ).show()
         }
     }
 
