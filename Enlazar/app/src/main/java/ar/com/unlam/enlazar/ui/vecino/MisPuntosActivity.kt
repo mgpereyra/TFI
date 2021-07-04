@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.adapter.CuponAdapter
-import ar.com.unlam.enlazar.ui.vecino.MisCanjesActivity.Companion.PUNTOS_DISPONIBLES
+
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_mis_puntos.*
 import kotlinx.android.synthetic.main.activity_mis_servicios.*
@@ -33,7 +33,6 @@ class MisPuntosActivity : AppCompatActivity() {
         }
         btn_ir_a_canjear.setOnClickListener {
             val intent = Intent(this, MisCanjesActivity::class.java)
-            intent.putExtra(PUNTOS_DISPONIBLES, PUNTOS)
             startActivity(intent)
 
         }

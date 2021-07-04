@@ -27,8 +27,9 @@ class MisPuntosViewModel() : ViewModel() {
     fun cargarDatos(id: String) {
         viewModelScope.launch {
             db.child("User").child(id).addValueEventListener(object : ValueEventListener {
-                var mis_canjes = ArrayList<CuponCanje>()
+
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    var mis_canjes = ArrayList<CuponCanje>()
                     misPuntos.value = snapshot.child("puntos").value.toString().toInt()
                     for (canje in snapshot.child("Cupon").children) {
                         var model = canje.getValue(CuponCanje::class.java)

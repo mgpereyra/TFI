@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.R
+import ar.com.unlam.enlazar.model.CuponCanje
 import ar.com.unlam.enlazar.model.Item
 import ar.com.unlam.enlazar.ui.vecino.DetalleCanjeItemActivity
 import com.squareup.picasso.Picasso
@@ -25,6 +26,10 @@ class ItemAdapter: RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
 
         }
+    }
+    fun submitList(it: List<Item>) {
+        listItem.clear()
+        listItem.addAll(it)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
