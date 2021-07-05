@@ -15,6 +15,9 @@ import CreateMeeting from './components/meeting/CreateMeeting'
 import ListMeeting from './components/meeting/ListMeeting' 
 import EditMeeting from './components/meeting/EditMeeting' 
 
+import CreateCoupon from './components/coupon/CreateCoupon' 
+import ListCoupon from './components/coupon/ListCoupon';
+import EditCoupon from './components/coupon/EditCoupon';
 
 import {conectFirebase } from './config/firebase'
 
@@ -25,7 +28,6 @@ import AlertaState from './context/alerta/alertaState'
 import AuthState from './context/auth/authState'
 import authToken from './config/authToken'
 import PrivateRoute from './components/routes/PrivateRoute'
-
 
 //REDUX
 import { Provider } from 'react-redux'
@@ -58,6 +60,7 @@ function App() {
                     <main>
                     <Switch>
                       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+
                       <PrivateRoute exact path="/advice/:id"/>
                       <PrivateRoute exact path="/list-advice" component={ListAdvice}/>
                       <PrivateRoute exact path="/edit-advice/:id" component={EditAdvice}/>
@@ -66,8 +69,10 @@ function App() {
                       <PrivateRoute exact path="/create-meeting" component={CreateMeeting}/>
                       <PrivateRoute exact path="/list-meeting" component={ListMeeting}/>
                       <PrivateRoute exact path="/edit-meeting/:id" component={EditMeeting}/>
-
-
+                      
+                      <PrivateRoute exact path="/create-coupon" component={CreateCoupon}/>
+                      <PrivateRoute exact path="/list-coupon" component={ListCoupon}/>
+                      <PrivateRoute exact path="/edit-coupon/:id" component={EditCoupon}/>
                     </Switch>
                     </main>
                     <Footer/>

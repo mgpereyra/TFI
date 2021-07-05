@@ -12,7 +12,7 @@ const Sidebar = () => {
                 </Link>
                 </h1> 
 
-                <Link to={'/'} className='color-third nav-link mb-3'>
+                <Link to={'/'} className='color-third nav-link mb-3 disabled'>
                 <i className="fas fa-street-view"></i>
                     Servicios
                 </Link>
@@ -27,9 +27,14 @@ const Sidebar = () => {
                     Puntos de encuentro
                 </Link>
 
-                <Link to={'/'} className='color-third nav-link'>
+                <Link to={'/'} className='color-third nav-link disabled'>
                 <i className="fas fa-recycle"></i>
                     Recolectores
+                </Link>
+
+                <Link to={'/list-coupon'} className='color-third nav-link'>
+                <i className="fas fa-recycle"></i>
+                    Cupones
                 </Link>
             </div>
         </aside>
