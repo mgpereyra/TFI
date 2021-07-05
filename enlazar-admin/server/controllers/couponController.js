@@ -36,6 +36,7 @@ exports.getListCoupons = async(req, res) => {
         const snapshot = await db.child('Item').once("value",snapshot => {
             return snapshot
         });
+        console.log(snapshot.val())
         //validando existencia
         if(snapshot.exists()){
             //error

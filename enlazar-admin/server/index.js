@@ -17,6 +17,7 @@ app.use('/api/user', require('./routes/user'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/advice', require('./routes/advice'));
 app.use('/api/meeting', require('./routes/meeting'));
+app.use('/api/coupon', require('./routes/coupon'));
 
 app.listen(PORT, () =>{
     console.log(`El servidor esta funcionando en el ${PORT}`)
