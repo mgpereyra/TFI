@@ -29,7 +29,7 @@ const Meeting = ({ meeting }) => {
           <p className="card-text  text-right mb-3">
             <small className="text-estado mr-2 contador">Asistentes {asistentes !== undefined ? Object.values(asistentes).length : "0"}</small>
             <small className="text-estado activo">
-              {estado === 1 ? "Activo" : "Innactivo"}
+              {estado === 1 ? "Activo" : "Inactivo"}
             </small>
           </p>
           <div className="contenedor-titulo">
