@@ -60,7 +60,7 @@ const EditAdvice = () => {
                         </Col>
                         <Col lg={8}>
                             <div className="form-group">
-                                <label className="control-label">Tipo</label>
+                                <label className="control-label">Categoría</label>
                                 <input
                                     type="text" 
                                     className="input-text"
@@ -71,7 +71,7 @@ const EditAdvice = () => {
                             </div>
                             
                             <div className="form-group">
-                                <label className="control-label">Titulo</label>
+                                <label className="control-label">Título</label>
                                 <input
                                     type="text" 
                                     className="input-text"
@@ -82,10 +82,10 @@ const EditAdvice = () => {
                             </div>
 
                             <div className="form-group">
-                                <label className="control-label">Descripcion</label>
+                                <label className="control-label">Descripción</label>
                                 <textarea
                                     className="input-text"
-                                    placeholder="Ingresa una descripcion..."
+                                    placeholder="Ingresa una descripción..."
                                     name="content"
                                     value={content}
                                     onChange={handleChange}  />

@@ -89,7 +89,7 @@ const onSubmitLogin = e =>{
                 className="btn btn-primary btn-block"
                 type="submit"
                 variant="primary"
-              >Iniciar sesion</button>
+              >Iniciar sesión</button>
 
           </div>
         </form>

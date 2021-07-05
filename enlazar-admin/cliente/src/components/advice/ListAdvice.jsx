@@ -27,6 +27,7 @@ const ListAdvice = () => {
           Crear un nuevo consejo
         </Link>
       </div>
+      
 
       {advices.length === 0 && !error ? (
         <div className="alert alert-info text-center p-3">

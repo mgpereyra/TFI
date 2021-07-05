@@ -46,13 +46,13 @@ const onSubmitLogin = e =>{
 
   //Validar que no haya campo vacios
   if(email.trim() === '' || password.trim() === '' || confirmar.trim() === '' || name.trim() === ''){
-    mostrarAlerta("Todos los campos son obligatorios", "alerta-error")
+    mostrarAlerta("Debes completar todos los campos", "alerta-error")
     return;
   }
 
   //longitud de pass
   if(password.trim().length < 6){
-    mostrarAlerta("La password debe tener mínimo 6 caracteres", "alerta-error");
+    mostrarAlerta("La password debe tener un mínimo de 6 caracteres", "alerta-error");
     return;
   }
   //2 pass iguales

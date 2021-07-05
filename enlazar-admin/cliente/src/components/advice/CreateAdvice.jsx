@@ -91,7 +91,7 @@ const CreateAdvice = ({history}) => {
                             </Col>
                             <Col>
                                 <div className="form-group">
-                                    <label className="control-label">Tipo</label>
+                                    <label className="control-label">Categoría</label>
                                     <input
                                         type="text" 
                                         className="input-text"
@@ -102,7 +102,7 @@ const CreateAdvice = ({history}) => {
                                 </div>
                                 
                                 <div className="form-group">
-                                    <label className="control-label">Titulo</label>
+                                    <label className="control-label">Título</label>
                                     <input
                                         type="text" 
                                         className="input-text"
@@ -113,10 +113,10 @@ const CreateAdvice = ({history}) => {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="control-label">Descripcion</label>
+                                    <label className="control-label">Descripción</label>
                                     <textarea
                                         className="input-text"
-                                        placeholder="Ingresa una descripcion..."
+                                        placeholder="Ingresa una descripción..."
                                         name="content"
                                         onChange={handleChange}
                                         value={content}  />

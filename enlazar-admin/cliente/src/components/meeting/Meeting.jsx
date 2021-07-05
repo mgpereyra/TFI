@@ -38,7 +38,7 @@ const Meeting = ({ meeting }) => {
           <h3 className="card-title font-weight-bold">
             {date} - {time}
           </h3>
-          <div className="cortar-texto">
+          <div className="cortar-texto-meet">
             <h4 className="card-title ">
               {ubication}
 

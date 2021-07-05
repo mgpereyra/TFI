@@ -110,6 +110,13 @@ textarea {
   object-fit: cover;
 }
 
+.card-img {
+  flex-shrink: 0;
+  width: 100%;
+  object-fit: cover;
+  height: 220px;
+}
+
 body {
   background-color: #464646;
 }
@@ -156,7 +163,7 @@ hr, .border-primary {
 
 .acciones {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
 }
 
 a:hover {
@@ -604,30 +611,68 @@ border: 1px solid #673200;
 }
 
 .cortar-texto  {
-  width: 220px;
+  width: 450px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 6s ;
+  transition-timing-function: ease-in-out;
 
   }
   
-  .cortar-texto > h4,p {
+  .cortar-texto-meet > h4,p {
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 6s ;
   transition-timing-function: ease-in-out;
   }
   
+  .cortar-texto-meet  {
+    width: 230px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 6s ;
+    transition-timing-function: ease-in-out;
+  
+  }
 .small-text{
 font-size: 12px!important;
 font-family: var(--textFont);
 line-height: 2rem;
 }
 
-.cortar-texto  :hover {
+.cortar-texto > h4  :hover {
   width: auto;
   white-space: initial;
   overflow: visible;
   cursor: pointer;
 }
+
+.cortar-parrafo{
+  background: #fff;
+max-height: 6rem;
+overflow: hidden;
+text-align: justify;
+display: block;
+}
+
+.cortar-parrafo:before {
+  content:'...';
+  position: absolute;
+  bottom: 6.5rem;
+  right: 1rem;
+}
+.cortar-parrafo::after {
+  background: inherit;
+  position: absolute;
+  right: 0;
+  width: 1rem;
+  height: 1.5rem;
+  z-index: 1;
+  
+}
+
 
 .row {
 display: -ms-flexbox;
@@ -673,4 +718,10 @@ height: 60px;
   margin: auto;
   display: flex;
   margin-bottom: 2rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: .9rem 2rem 1rem 2rem;
 }
