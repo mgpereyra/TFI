@@ -15,7 +15,7 @@ import {
   import Swal from "sweetalert2";
   import clienteAxios from "../config/axios";
   
-  //Listar consejos
+  //Listar recicladores
   export function getListRecyclers() {
     return async (dispatch) => {
       dispatch({

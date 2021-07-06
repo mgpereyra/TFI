@@ -5,7 +5,7 @@ const {validationResult}= require('express-validator');
 exports.getListRecycler = async(req, res) => {
     try {
         const db = firebase.database().ref();
-        const snapshot = await db.child('User').orderByChild("date").once("value",snapshot => {
+        const snapshot = await db.child('User').orderByChild("typeUser").equalTo(2).once("value",snapshot => {
             return snapshot
         });
      
