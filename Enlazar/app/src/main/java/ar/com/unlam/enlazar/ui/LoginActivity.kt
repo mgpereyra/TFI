@@ -52,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
 
                         referenciaUser.child(id).addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
+                                 //snapshot.child("id").value
                                 val user = snapshot.getValue(User::class.java)
                                 if (user!!.typeUser == 1) {
                                     irDashboardUserActivity(

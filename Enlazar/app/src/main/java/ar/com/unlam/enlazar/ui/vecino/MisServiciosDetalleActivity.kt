@@ -105,6 +105,7 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
         detalle_activity_cardInfo_date?.setText(s.date)
         detalle_activity_cardInfo_direccion?.setText(s.address)
         detalle_activity_turno?.setText(s.time)
+        cardInfoId?.setText(s.id)
         verificarEstado(s.estado)
 
         servicioDetalleViewModel.estado.observe(this, { estado(it) })
