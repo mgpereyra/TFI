@@ -19,6 +19,8 @@ export const LOGIN_EXITOSO = 'LOGIN_EXITOSO';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CERRAR_SESION = 'CERRAR_SESION';
 
+////////////////////////////////////////////////////////////////////
+
 //advice
 export const ADD_ADVICE = 'ADD_ADVICE';
 export const ADD_ADVICE_SUCCESS = 'ADD_ADVICE_SUCCESS';
@@ -39,6 +41,8 @@ export const GET_ADVICE_MODIFY = 'GET_ADVICE_MODIFY';
 export const ADVICE_MODIFY_SUCCESS = 'ADVICE_MODIFY_SUCCESS';
 export const ADVICE_MODIFY_ERROR = 'ADVICE_MODIFY_ERROR';
 export const START_MODIFY_ADVICE = 'START_MODIFY_ADVICE';
+
+////////////////////////////////////////////////////////////////////
 
 //list meetings
 export const START_DOWNLOAD_MEETINGS = 'START_DOWNLOAD_MEETINGS';
@@ -61,17 +65,57 @@ export const GET_MEETING_DELETE = 'GET_MEETING_DELETE';
 export const MEETING_DELETE_SUCCESS = 'MEETING_DELETE_SUCCESS';
 export const MEETING_DELETE_ERROR = 'MEETING_DELETE_ERROR';
 
+////////////////////////////////////////////////////////////////////
+
 //MAPS
 export const ADD_LAT = 'ADD_LAT';
 export const ADD_LNG = 'ADD_LNG';
 export const ADD_UBICATION = 'ADD_UBICATION';
 export const CLEAR = 'CLEAR';
 
+////////////////////////////////////////////////////////////////////
+
 //LIST COUPON
 export const DOWNLOAD_COUPONS_SUCCESS = 'DOWNLOAD_COUPONS_SUCCESS';
 export const DOWNLOAD_COUPONS_ERROR = 'DOWNLOAD_COUPONS_ERROR';
 export const START_DOWNLOAD_COUPONS = 'START_DOWNLOAD_COUPONS';
 
+//COUPON
+export const ADD_COUPON = 'ADD_COUPON';
+export const ADD_COUPON_SUCCESS = 'ADD_COUPON_SUCCESS';
+export const ADD_COUPON_ERROR = 'ADD_COUPON_ERROR';
+
+//COUPON MODIFY
+export const GET_COUPON_MODIFY = 'GET_COUPON_MODIFY';
+export const COUPON_MODIFY_ERROR = 'COUPON_MODIFY_ERROR';
+export const COUPON_MODIFY_SUCCESS = 'COUPON_MODIFY_SUCCESS';
+
+//COUPON DELETE
+export const COUPON_DELETE_ERROR = 'COUPON_DELETE_ERROR';
+export const GET_COUPON_DELETE = 'GET_COUPON_DELETE';
+export const COUPON_DELETE_SUCCESS = 'COUPON_DELETE_SUCCESS';
+
+////////////////////////////////////////////////////////////////////
+
+//LIST RECYCLER
+export const DOWNLOAD_RECYCLERS_SUCCESS = 'DOWNLOAD_RECYCLERS_SUCCESS';
+export const DOWNLOAD_RECYCLERS_ERROR = 'DOWNLOAD_RECYCLERS_ERROR';
+export const START_DOWNLOAD_RECYCLERS = 'START_DOWNLOAD_RECYCLERS';
+
+//RECYCLER
+export const ADD_RECYCLER = 'ADD_RECYCLER';
+export const ADD_RECYCLER_SUCCESS = 'ADD_RECYCLER_SUCCESS';
+export const ADD_RECYCLER_ERROR = 'ADD_RECYCLER_ERROR';
+
+//RECYCLER MODIFY
+export const GET_RECYCLER_MODIFY = 'GET_RECYCLER_MODIFY';
+export const RECYCLER_MODIFY_ERROR = 'RECYCLER_MODIFY_ERROR';
+export const RECYCLER_MODIFY_SUCCESS = 'RECYCLER_MODIFY_SUCCESS';
+
+//RECYCLER DELETE
+export const RECYCLER_DELETE_ERROR = 'RECYCLER_DELETE_ERROR';
+export const GET_RECYCLER_DELETE = 'GET_RECYCLER_DELETE';
+export const RECYCLER_DELETE_SUCCESS = 'RECYCLER_DELETE_SUCCESS';
 
 
 

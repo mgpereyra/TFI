@@ -19,6 +19,10 @@ import CreateCoupon from './components/coupon/CreateCoupon'
 import ListCoupon from './components/coupon/ListCoupon';
 import EditCoupon from './components/coupon/EditCoupon';
 
+import CreateRecycler from './components/recycler/CreateRecycler' 
+import ListRecycler from './components/recycler/ListRecycler';
+import EditRecycler from './components/recycler/EditRecycler';
+
 import {conectFirebase } from './config/firebase'
 
 import './index.css'
@@ -73,6 +77,10 @@ function App() {
                       <PrivateRoute exact path="/create-coupon" component={CreateCoupon}/>
                       <PrivateRoute exact path="/list-coupon" component={ListCoupon}/>
                       <PrivateRoute exact path="/edit-coupon/:id" component={EditCoupon}/>
+
+                      <PrivateRoute exact path="/create-recycler" component={CreateRecycler}/>
+                      <PrivateRoute exact path="/list-recycler" component={ListRecycler}/>
+                      <PrivateRoute exact path="/edit-recycler/:id" component={EditRecycler}/>
                     </Switch>
                     </main>
                     <Footer/>
