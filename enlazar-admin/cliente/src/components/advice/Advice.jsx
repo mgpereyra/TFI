@@ -22,17 +22,23 @@ const Advice = ({ advice }) => {
 
   return (
     <div className="col-lg-10">
-      <div class="card mb-4 border-secondary">
-        <div class="row no-gutters">
-          <div class="col-md-4">
+      <div className="card mb-4 border-secondary">
+        <div className="row no-gutters">
+          <div className="col-md-4">
             <img className="card-img" src={uri} alt={img}></img>
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
+          <div className="col-md-8">
+            <div className="card-body">
+              <div className="d-flex justify-content-between ">
                 <small className="text-muted small-text">{advice.id}</small>
+                <small className="text-estado activo text-right">
+                  <i className="fas fa-heart"></i> {advice.likes}
+                </small>
+              </div>
+
               <div className="mb-2 ">
                 <h3 className="card-title mb-1 cortar-texto">{title}</h3>
-                  <small class="text-muted">{tipe}</small>
+                <small className="text-muted">{tipe}</small>
               </div>
               <p className="card-text cortar-parrafo small-text">{content}</p>
 
@@ -52,14 +58,10 @@ const Advice = ({ advice }) => {
                   Editar
                 </button>
               </div>
-
             </div>
-             
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 };

@@ -33,13 +33,17 @@ exports.createAdvice = async (req, res) =>{
 exports.getAdvices = async(req, res) => {
     try {
         const db= firebase.database().ref();
-        const snapshot = await db.child('Advice').orderByChild("idUser").equalTo(req.user.id).once("value",snapshot => {
+        const list=[]
+        const snapshot = await db.child('Advice').orderByChild('likes').once("value",snapshot => {
+            snapshot.forEach(function(child) {
+               list.push(child.val()) // NOW THE CHILDREN PRINT IN ORDER
+            });
             return snapshot
         });
         //validando existencia
         if(snapshot.exists()){
             //error
-           res.json(snapshot.val())
+           res.json(list.reverse())
         }        
     } catch (error) {
         console.log(error)
