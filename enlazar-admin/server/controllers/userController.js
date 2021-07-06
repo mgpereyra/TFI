@@ -22,38 +22,57 @@ exports.createUser =  async (req, res) => {
         //validando existencia
         if(exist.exists()){
             //error
-            return res.status(400).json({msg: 'El usuario ya existe'})
+            return res.status(400).json({msg: 'Ya existe un usuario registrado con el email ingresado'})
         }
 
         //hash de password
         const salt = await bcryptj.genSalt(10);
         let pass = await bcryptj.hash(password, salt);
-            
-        //guardar Usuario
-        const userSaveId = firebase.database().ref('User').push({
-            name: name,
-            email: email,
-            password: pass
-        }).getKey();
 
-        const user = {
-            id: userSaveId
-        }
-        //crear y firmar el token
-        const payload = {
-            user : {
-                id: user.id
+        //firebase authentication
+
+        firebase.auth().createUserWithEmailAndPassword(email, pass)
+        .then((userCredential) => {
+            // Signed in
+            var userAuth = userCredential.user;
+
+            firebase.database().ref('User').child(userAuth.uid).set({
+                name: name,
+                email: email,
+                password: pass,
+                typeUser: 0,
+                id:userAuth.uid
+            });
+
+            //crear y firmar el token
+            const payload = {
+                user : {
+                    id: userAuth.uid
+                }
             }
-        }
 
-        //firmar el jsonwebtoken
-        jwt.sign(payload, process.env.SECRETA, {
-         expiresIn: 3600 //1hora              
-        },(error, token)=>{
-            if(error) throw error;
-            res.json({token})
+            //firmar el jsonwebtoken
+            jwt.sign(payload, process.env.SECRETA, {
+            expiresIn: 3600 //1hora              
+            },(error, token)=>{
+                if(error) throw error;
+                res.json({token})
+            })
+                // ...
         })
-
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/weak-password') {
+                return res.status(500).json({msg: 'La contraseña ingresada no es válida'})
+            }
+            if (errorCode == 'auth/invalid-email') {
+                return res.status(400).json({msg: 'El email ingresado es incorrecto'})
+            }
+            console.log(errorMessage)
+            res.status(500).json({msg: 'Ha ocurrido un error'})
+        });
+        
         //mensaje de confirmacion
 
     } catch (error) {

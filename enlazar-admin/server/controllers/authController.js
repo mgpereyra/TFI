@@ -3,6 +3,7 @@ const bcryptj = require('bcryptjs')
 const {validationResult}= require('express-validator');
 const jwt = require ('jsonwebtoken')
 
+//iniciar sesion
 exports.authentication =  async (req, res)=>{
    
     const db = firebase.database().ref();
@@ -32,8 +33,20 @@ exports.authentication =  async (req, res)=>{
         //revisar el password
         const passCorrect = await bcryptj.compare(password,data.password)
         if(!passCorrect){
-            return res.status(400).json({msg: 'El password ingresado es incorrecto'})
+            return res.status(400).json({msg: 'La contraseña ingresada es incorrecta'})
         }
+
+        //firebase authentication
+        /*firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Signed in
+            var user = userCredential.user;
+            // ...
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+        });*/
 
         //si todo es correcto crear y firmar el token
         const payload = {

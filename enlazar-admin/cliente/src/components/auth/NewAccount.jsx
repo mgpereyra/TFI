@@ -52,7 +52,7 @@ const onSubmitLogin = e =>{
 
   //longitud de pass
   if(password.trim().length < 6){
-    mostrarAlerta("La password debe tener un mínimo de 6 caracteres", "alerta-error");
+    mostrarAlerta("La contraseña debe tener un mínimo de 6 caracteres", "alerta-error");
     return;
   }
   //2 pass iguales

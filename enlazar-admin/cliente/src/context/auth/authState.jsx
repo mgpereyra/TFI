@@ -36,9 +36,9 @@ const AuthState = props => {
             //Coloco en el state al usuario que inicia sesion
           obtenerUsuarioAutenticado();
         } catch (error) {
-           
+           console.log(error.response.data.errors[0].msg)
             const alerta = {
-                msg: error.response.data.msg,
+                msg: error.response.data.errors[0].msg,
                 categoria: 'alerta-error'
             }
             dispatch({
@@ -63,8 +63,8 @@ const AuthState = props => {
             }
             const respuesta = {
                 method: 'GET', 
-                url:  await clienteAxios.get('/api/auth', config),
-                headers: {autorizacion: localStorage.getItem('token'), accept: "Accept: application/json" }};
+                url:  await clienteAxios.get('/api/auth', config)};
+               // headers: {autorizacion: localStorage.getItem('token'), accept: "Accept: application/json" }};
                 dispatch({
                     type:OBTENER_USUARIO,
                     payload: respuesta.url.data.userSinPassword
@@ -72,7 +72,7 @@ const AuthState = props => {
                 
             } catch (error) {
             const alerta = {
-                msg: error.response.data.msg,
+                msg: 'Completa los campos para iniciar sesión',
                 categoria: 'alerta-info'
             }
             dispatch({
