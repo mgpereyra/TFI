@@ -17,6 +17,6 @@ data class User (
         var password:String? = null,
         var phone:String? = null,
         var puntos:Int=0,
-        var typeUser:Int? = 1,
+        var typeUser:Int= 1,
 
         )

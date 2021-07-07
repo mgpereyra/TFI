@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.CardInfo
 import ar.com.unlam.enlazar.model.CuponCanje
+import ar.com.unlam.enlazar.model.Service
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.mis_canjes_card.view.*
 
@@ -44,6 +45,10 @@ class CuponAdapter:RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
 
         }
 
+    }
+    fun submitList(it: List<CuponCanje>) {
+        listCupones.clear()
+        listCupones.addAll(it)
     }
 
     override fun getItemCount(): Int {

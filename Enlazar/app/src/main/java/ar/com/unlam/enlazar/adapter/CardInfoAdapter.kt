@@ -33,7 +33,7 @@ var cardInfoList=mutableListOf<CardInfo>()
             holder.itemView.cardInfo_title_advice.text=it.title
             holder.itemView.cardInfoId.text=it.id
 
-            when (it.tipoConsejo){
+            when (it.tipe){
                 TipoConsejo.COMO_RECICLAR_BIEN.toString()->holder.itemView.advice_type.setText(R.string.como_reciclar)
                 TipoConsejo.CONSEJO_DE_LA_SEMANA.toString()->holder.itemView.advice_type.setText(R.string.consejo_semana)
                 TipoConsejo.ECOINFORME.toString()->holder.itemView.advice_type.setText(R.string.eco_info)

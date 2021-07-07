@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.R
+import ar.com.unlam.enlazar.model.CuponCanje
 import ar.com.unlam.enlazar.model.Item
-import ar.com.unlam.enlazar.ui.vecino.DetalleCanjeItem
-import ar.com.unlam.enlazar.ui.vecino.MisServiciosDetalleActivity
+import ar.com.unlam.enlazar.ui.vecino.DetalleCanjeItemActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.mis_canjes_card.view.*
 
@@ -18,14 +18,18 @@ class ItemAdapter: RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     class ItemViewHolder(view: View, var item: Item? = null) : RecyclerView.ViewHolder(view) {
         init{
             view.ver_item.setOnClickListener{
-                val intent = Intent(view.context, DetalleCanjeItem::class.java)
-                intent.putExtra(DetalleCanjeItem.ID_CANJE, item!!.id)
+                val intent = Intent(view.context, DetalleCanjeItemActivity::class.java)
+                intent.putExtra(DetalleCanjeItemActivity.ID_CANJE, item!!.id)
                 view.context.startActivity(intent)
 
             }
 
 
         }
+    }
+    fun submitList(it: List<Item>) {
+        listItem.clear()
+        listItem.addAll(it)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {

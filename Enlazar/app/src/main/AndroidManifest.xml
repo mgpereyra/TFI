@@ -50,7 +50,7 @@
         <activity android:name=".ui.vecino.MiCuentaActivity" />
         <activity android:name=".ui.vecino.MisEncuentrosActivity" />
         <activity android:name=".ui.vecino.DetalleServicioActivity" />
-        <activity android:name=".ui.vecino.DetalleCanjeItem" />
+        <activity android:name=".ui.vecino.DetalleCanjeItemActivity" />
         <activity android:name=".ui.vecino.DashboardUserActivity" />
         <activity android:name=".ui.vecino.NuevoServicioActivity" />
         <activity android:name=".ui.vecino.SeccionInformativaDetalleActivity" />

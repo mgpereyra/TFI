@@ -2,6 +2,7 @@ package ar.com.unlam.enlazar.ui.vecino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
@@ -44,6 +45,8 @@ class MisServiciosActivity : AppCompatActivity() {
             servicios_confirmados.isEnabled=false
             servicios_pendientes.isEnabled=true
             serviceList.clear()
+            adapter.servicesList.clear()
+            adapter.notifyDataSetChanged()
             viewModelMisServicios.getServicios(Estado.ASIGNADO)
 
         }
@@ -59,11 +62,22 @@ class MisServiciosActivity : AppCompatActivity() {
             servicios_confirmados.isEnabled=true
             servicios_pendientes.isEnabled=false
             serviceList.clear()
+           // viewModelMisServicios.misServicios.
+            adapter.notifyDataSetChanged()
             viewModelMisServicios.getServicios(Estado.PENDIENTE)
 
         }
         btnVolver_mis_servicios.setOnClickListener { finish() }
         setServicios()
+
+
+    }
+    @Override
+    public override fun onResume() {
+        super.onResume()
+        serviceList.clear()
+        adapter.notifyDataSetChanged()
+        viewModelMisServicios.getServicios(Estado.ASIGNADO)
 
     }
    @Override
@@ -84,6 +98,11 @@ class MisServiciosActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
 
         })
+        if (adapter.servicesList.size>0){
+            listado_servicios.visibility= View.GONE
+        }else{
+            listado_servicios.visibility=View.VISIBLE
+        }
         /*db.child("Service").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 // var mSnapshot=snapshot.getValue(Service::class.java)
