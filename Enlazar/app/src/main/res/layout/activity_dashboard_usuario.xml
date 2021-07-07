@@ -61,6 +61,8 @@
             android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
+
                 android:id="@+id/cardView_proximo_servicio"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -122,7 +124,7 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="78dp"
+                    android:layout_width="70dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_mis_servicios"
                     android:translationX="5dp"
@@ -138,9 +140,11 @@
                     android:textColor="@color/textWhite"
                     android:textSize="24sp"
                     android:translationX="90dp"
-                    android:translationY="15dp" />
+                    android:translationY="35dp"/>
 
                 <TextView
+                    android:visibility="gone"
+
                     android:id="@+id/txtMisServiciosSub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -169,7 +173,7 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="78dp"
+                    android:layout_width="70dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_mis_puntos"
                     android:translationX="5dp"
@@ -188,9 +192,11 @@
                     android:textColor="@color/textWhite"
                     android:textSize="24sp"
                     android:translationX="90dp"
-                    android:translationY="15dp" />
+                    android:translationY="35dp" />
 
                 <TextView
+                    android:visibility="gone"
+
                     android:id="@+id/txtMisPuntosSub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -217,7 +223,7 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="78dp"
+                    android:layout_width="70dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_mis_encuentros"
                     android:translationX="5dp"
@@ -233,9 +239,11 @@
                     android:textColor="@color/textWhite"
                     android:textSize="24sp"
                     android:translationX="90dp"
-                    android:translationY="15dp" />
+                    android:translationY="35dp" />
 
                 <TextView
+                    android:visibility="gone"
+
                     android:id="@+id/txtMisEncuentrosSub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -262,7 +270,7 @@
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="78dp"
+                    android:layout_width="70dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_baseline_info_24"
                     android:translationX="5dp"
@@ -278,7 +286,7 @@
                     android:textColor="@color/textWhite"
                     android:textSize="24sp"
                     android:translationX="90dp"
-                    android:translationY="15dp" />
+                    android:translationY="30dp" />
 
                 <TextView
                     android:id="@+id/txtSeccionInformativaSub"
@@ -288,7 +296,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/subTextWhite"
                     android:translationX="90dp"
-                    android:translationY="50dp" />
+                    android:translationY="65dp" />
 
 
             </androidx.cardview.widget.CardView>

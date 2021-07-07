@@ -50,8 +50,13 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
     }
 
     private fun irMisServiciosConfirmadosActivity() {
-        this@MisServiciosDetalleActivity.finish()
 
+        finish()
+/*        val serviceActivity = Intent(this, MisServiciosActivity::class.java)
+
+        this.startActivity(serviceActivity)
+        this@MisServiciosDetalleActivity.finish()
+        startActivity(serviceActivity)*/
     }
 
     private fun verServicio(id: String) {

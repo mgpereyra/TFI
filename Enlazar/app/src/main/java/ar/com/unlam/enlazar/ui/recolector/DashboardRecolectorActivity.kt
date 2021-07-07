@@ -40,15 +40,13 @@ class DashboardRecolectorActivity : AppCompatActivity() {
 
     private fun setCardClickListeners() {
         cardView_ir_mis_servicios.setOnClickListener {
-            val intent: Intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
+            val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
             startActivity(intent)
         }
 
         cardView_ir_hist_mis_servicios.setOnClickListener {
-
-            val intent: Intent = Intent(this, ServiciosFinalizadosRecolectorActivity::class.java)
+            val intent = Intent(this, ServiciosFinalizadosRecolectorActivity::class.java)
             startActivity(intent)
-
         }
     }
 
@@ -92,6 +90,7 @@ class DashboardRecolectorActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().signOut()
         val mainIntent = Intent(this, LoginActivity::class.java)
         startActivity(mainIntent)
+        finish()
     }
 
     fun toolbar() {

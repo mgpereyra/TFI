@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.model.User
+import ar.com.unlam.enlazar.model.UserRecolector
 import ar.com.unlam.enlazar.ui.recolector.DashboardRecolectorActivity
 import ar.com.unlam.enlazar.ui.vecino.CrearCuentaActivity
 import ar.com.unlam.enlazar.ui.vecino.DashboardUserActivity
@@ -52,19 +53,23 @@ class LoginActivity : AppCompatActivity() {
 
                         referenciaUser.child(id).addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
-                                val user = snapshot.getValue(User::class.java)
-                                if (user!!.typeUser == 1) {
+                                 //snapshot.child("id").value
+                              //  val user = snapshot.getValue(User::class.java)
+                                val typeUser =  snapshot.child("typeUser").value
+                                if ( typeUser.toString() == "1") {
+                                    val userVecino = snapshot.getValue(User::class.java)
                                     irDashboardUserActivity(
-                                        user!!.id!!,
-                                        user!!.email!!,
-                                        user!!.typeUser!!
+                                        userVecino!!.id!!,
+                                        userVecino!!.email!!,
+                                        userVecino!!.typeUser!!
                                     )
 
                                 } else {
+                                    val userRecolector = snapshot.getValue(UserRecolector::class.java)
                                     irDashboardRecolectorActivity(
-                                        user!!.id!!,
-                                        user!!.email!!,
-                                        user!!.typeUser!!
+                                        userRecolector!!.id!!,
+                                        userRecolector!!.email!!,
+                                        userRecolector!!.typeUser!!
                                     )
                                 }
                             }
@@ -96,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
         val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
         pref.putString("idUser", idUser)
         pref.putString("email", email)
-        pref.putInt("typeUser", typeUser!!)
+        pref.putInt("typeUser", typeUser)
         pref.apply()
 
         this@LoginActivity.finish()
@@ -112,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
         val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
         pref.putString("idUser", idUser)
         pref.putString("email", email)
-        pref.putInt("typeUser", typeUser!!)
+        pref.putInt("typeUser", typeUser)
         pref.apply()
 
         startActivity(intent)
@@ -138,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
 
                 startActivity(intent)
                 finish()
-            }else if(typeUser==2) {
+            }else if(typeUser ==2) {
                 val intent = Intent(this, DashboardRecolectorActivity::class.java)
                 startActivity(intent)
                 finish()

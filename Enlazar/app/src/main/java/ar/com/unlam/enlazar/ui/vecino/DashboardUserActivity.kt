@@ -9,7 +9,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import androidx.core.view.GravityCompat
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.ui.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -83,6 +82,8 @@ class DashboardUserActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().signOut()
         val mainIntent = Intent(this, LoginActivity::class.java)
         startActivity(mainIntent)
+        finish()
+
     }
 
     private fun setCardOnClickListerners() {
@@ -102,7 +103,6 @@ class DashboardUserActivity : AppCompatActivity() {
         cardView_mis_encuentros.setOnClickListener {
             val intent: Intent = Intent(this, MisEncuentrosActivity::class.java)
             startActivity(intent)
-
         }
         cardView_seccion_informativa.setOnClickListener {
             val intent: Intent = Intent(this, SeccionInformativaActivity::class.java)
@@ -114,7 +114,6 @@ class DashboardUserActivity : AppCompatActivity() {
             intent.putExtra(NuevoServicioActivity.ID, userId)
             userId
             this.startActivity(intent)
-
         }
     }
 
