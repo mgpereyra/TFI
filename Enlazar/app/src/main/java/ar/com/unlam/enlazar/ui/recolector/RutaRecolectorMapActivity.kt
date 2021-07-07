@@ -97,6 +97,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                 btnFinalizarServicio.visibility = View.GONE
                 btnCancelarServicio.visibility = View.GONE
                 cardViewFinalizarServicio.visibility = View.VISIBLE
+                tvTitleTerminarServicio.text = service.address
 
             } else {
                 Toast.makeText(

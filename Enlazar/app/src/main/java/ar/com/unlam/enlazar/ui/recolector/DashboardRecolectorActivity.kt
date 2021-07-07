@@ -42,13 +42,11 @@ class DashboardRecolectorActivity : AppCompatActivity() {
         cardView_ir_mis_servicios.setOnClickListener {
             val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         cardView_ir_hist_mis_servicios.setOnClickListener {
             val intent = Intent(this, ServiciosFinalizadosRecolectorActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 
