@@ -51,7 +51,7 @@ btnVolver.setOnClickListener {
                             postSnapshot.child("title").value.toString(),
                             postSnapshot.child("content").value.toString(),
                             postSnapshot.child("likes").value.toString().toLong(),
-                            postSnapshot.child("tipoConsejo").value.toString(),
+                            postSnapshot.child("tipe").value.toString(),
                             postSnapshot.child("uri").value.toString()
                         )
                     )

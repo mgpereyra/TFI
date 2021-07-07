@@ -36,7 +36,7 @@ class SeccionInformativaDetalleActivity : AppCompatActivity() {
                 cargarImagen(snapshot.child("uri").value.toString())
                 title_detalle_Advice.text=snapshot.child("title").value.toString()
                 content_detalle_Advice.text=snapshot.child("content").value.toString()
-                setTextTipoConsejo(snapshot.child("tipoConsejo").value.toString())
+                setTextTipoConsejo(snapshot.child("tipe").value.toString())
             }
 
             override fun onCancelled(error: DatabaseError) {

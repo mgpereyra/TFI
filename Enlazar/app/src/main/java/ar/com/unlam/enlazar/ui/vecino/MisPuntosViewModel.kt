@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ar.com.unlam.enlazar.model.CuponCanje
 import ar.com.unlam.enlazar.ui.ValorMaterial
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 
 
 class MisPuntosViewModel() : ViewModel() {
-
+    var id = FirebaseAuth.getInstance().currentUser!!.uid
     private val db = FirebaseDatabase.getInstance().reference
     var misCanjes = MutableLiveData<List<CuponCanje>>()
     var misPuntos=MutableLiveData<Int>()
@@ -24,6 +25,13 @@ class MisPuntosViewModel() : ViewModel() {
     var puntos_plastico = 0
     var total = 0
     var sumatoria = 0
+
+    init {
+        viewModelScope.launch {
+            cargarDatos(id)
+            calcularPuntos(id)
+        }
+    }
     fun cargarDatos(id: String) {
         viewModelScope.launch {
             db.child("User").child(id).addValueEventListener(object : ValueEventListener {
@@ -90,6 +98,7 @@ class MisPuntosViewModel() : ViewModel() {
 
                             break
                         }
+
 
 
                     }

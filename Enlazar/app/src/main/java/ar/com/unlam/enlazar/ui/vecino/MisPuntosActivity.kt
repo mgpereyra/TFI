@@ -3,7 +3,6 @@ package ar.com.unlam.enlazar.ui.vecino
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
@@ -11,10 +10,8 @@ import ar.com.unlam.enlazar.adapter.CuponAdapter
 
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_mis_puntos.*
-import kotlinx.android.synthetic.main.activity_mis_servicios.*
 
 class MisPuntosActivity : AppCompatActivity() {
-    var sumatoria = 0
     var id = FirebaseAuth.getInstance().currentUser!!.uid
 
     private lateinit var adapter: CuponAdapter
@@ -22,15 +19,7 @@ class MisPuntosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_puntos)
-        if (intent.hasExtra(PUNTOS)) {
 
-            sumatoria = intent.extras!!.getInt(PUNTOS, 0)
-        } else {
-            Toast.makeText(
-                this@MisPuntosActivity,
-                getString(R.string.no_hay_valor_a_capturar), Toast.LENGTH_LONG
-            ).show()
-        }
         btn_ir_a_canjear.setOnClickListener {
             val intent = Intent(this, MisCanjesActivity::class.java)
             startActivity(intent)
@@ -38,6 +27,7 @@ class MisPuntosActivity : AppCompatActivity() {
         }
         misPuntosViewModel.calcularPuntos(id)
         misPuntosViewModel.cargarDatos(id)
+        setData()
         adapter = CuponAdapter()
         with(historial_canje) {
             layoutManager =
@@ -45,7 +35,10 @@ class MisPuntosActivity : AppCompatActivity() {
             this.adapter = this@MisPuntosActivity.adapter
         }
         historial_canje.adapter = adapter
-        setData()
+
+        btnVolver_deMisPuntos.setOnClickListener {
+            finish()
+        }
 
     }
 

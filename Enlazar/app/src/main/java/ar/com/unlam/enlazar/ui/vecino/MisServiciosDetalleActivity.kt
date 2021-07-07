@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.Consulta
@@ -51,11 +50,8 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
     }
 
     private fun irMisServiciosConfirmadosActivity() {
-        val serviceActivity = Intent(this, MisServiciosActivity::class.java)
-
-        this.startActivity(serviceActivity)
         this@MisServiciosDetalleActivity.finish()
-        startActivity(serviceActivity)
+
     }
 
     private fun verServicio(id: String) {
@@ -107,6 +103,7 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
         detalle_activity_cardInfo_date?.setText(s.date)
         detalle_activity_cardInfo_direccion?.setText(s.address)
         detalle_activity_turno?.setText(s.time)
+        cardInfoId?.setText(s.id)
         verificarEstado(s.estado)
 
         servicioDetalleViewModel.estado.observe(this, { estado(it) })
