@@ -1,7 +1,7 @@
 package ar.com.unlam.enlazar.model
 
 data class UserRecolector(
-    var active: String? = null,
+    var active: Boolean? = null,
     var dni: String? = null,
     var email: String? = null,
     var id: String? = null,

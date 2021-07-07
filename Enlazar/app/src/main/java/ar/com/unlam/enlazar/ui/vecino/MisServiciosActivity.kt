@@ -17,6 +17,8 @@ class MisServiciosActivity : AppCompatActivity() {
     val viewModelMisServicios:MisServiciosViewModel by viewModels()
     var serviceList = ArrayList<Service>()
     private lateinit var adapter:MisServiciosVecinoAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_servicios)
@@ -64,7 +66,18 @@ class MisServiciosActivity : AppCompatActivity() {
         setServicios()
 
     }
+   @Override
+    public override fun onResume() {
+        super.onResume()
+       setServicios()
+        viewModelMisServicios.getServicios(Estado.PENDIENTE)
+    }
 
+    override fun onStart() {
+        setServicios()
+        viewModelMisServicios.getServicios(Estado.PENDIENTE)
+        super.onStart()
+    }
     private fun setServicios() {
         viewModelMisServicios.misServicios.observe(this,{
             adapter.submitList(it)
