@@ -1,13 +1,17 @@
 package ar.com.unlam.enlazar.ui.vecino
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.ImageFormat
 import android.graphics.drawable.VectorDrawable
 import android.location.Location
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -197,25 +201,38 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
         }
     }
 
-
+    private fun bitmapDescriptorFromVector(
+        context: Context,
+        @DrawableRes vectorDrawableResourceId: Int
+    ): BitmapDescriptor? {
+        val background = ContextCompat.getDrawable(context, R.drawable.ic_location_service_v_uno)
+        background!!.setBounds(0, 0, background.intrinsicWidth, background.intrinsicHeight)
+        val vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId)
+        vectorDrawable!!.setBounds(
+            40,
+            30,
+            vectorDrawable.intrinsicWidth + 40,
+            vectorDrawable.intrinsicHeight + 30
+        )
+        val bitmap = Bitmap.createBitmap(
+            background.intrinsicWidth,
+            background.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        background.draw(canvas)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
     private fun createMarkers() {
-        val coordinates = LatLng(-34.744774, -58.695204)
         puntosEncuentroMapViewModel.misPuntosEncuentro.value?.forEach {
                     val marker: MarkerOptions = MarkerOptions()
-                        .position(LatLng(it.lat?.toDouble()!!,it.lng?.toDouble()!!))
-                        .title(it.title).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-                       // .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pe_marker_dos))  //BitmapDescriptorFactory.fromResource(R.drawable.ic_logo_mar))
-                      //  .anchor(0.0f,1.0f)
+                        .position(LatLng(it.lat!!, it.lng!!))
+                        .title(it.title).icon(bitmapDescriptorFromVector(this@PuntosEncuentroMapActivity,R.drawable.ic_logo_marker_pe_vector))
                 map.addMarker(marker)
 
 
         }
-        //map.addMarker(marker)
-        /*      map.animateCamera(
-                  CameraUpdateFactory.newLatLngZoom(LatLng(-34.744774, -58.695204), 18f),
-                  4000,
-                  null
-              )*/
     }
 
     private fun isLocarionPermissionGranted() = ContextCompat.checkSelfPermission(
@@ -325,64 +342,3 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
     }
 
 }
-
-/*    fun getLastLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
-        CoroutineScope(Dispatchers.IO).launch {
-            val servDestination =
-                LatLng(service.latitud!!.toDouble(), service.longitud!!.toDouble())
-            fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-
-                    mCurrentLatLng = LatLng(location!!.latitude, location.longitude)
-                    GoogleMapsApiImpl().getRoutesAp(
-                        mCurrentLatLng,
-                        servDestination,
-                        object : Callback<RouteResult> {
-                            override fun onResponse(
-                                call: Call<RouteResult>,
-                                response: Response<RouteResult>
-                            ) {
-                                when (response.code()) {
-                                    in 200..299 -> {
-                                        //rutasResult = response.body()!!
-                                     //   mCurrentDistance = rutasResult!!.routes[0].legs[0].distance.value
-                                        *//*          Toast.makeText(
-                                                      this@RutaRecolectorMapActivity,
-                                                      "Current Distance: " + mCurrentDistance,
-                                                      Toast.LENGTH_SHORT
-                                                  ).show()*//*
-
-                                    }
-                                    else -> {
-                                        Toast.makeText(
-                                            this@PuntosEncuentroMapActivity,
-                                            getString((response.code())),
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                    }
-
-                                }
-                            }
-
-                            override fun onFailure(call: Call<RouteResult>, t: Throwable) {
-                                Toast.makeText(
-                                    this@PuntosEncuentroMapActivity,
-                                    getString(R.string.search_call_error),
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            }
-
-                        })
-                }
-        }
-    }*/

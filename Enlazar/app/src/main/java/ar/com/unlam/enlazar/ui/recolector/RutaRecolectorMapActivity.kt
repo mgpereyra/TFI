@@ -1,19 +1,22 @@
 package ar.com.unlam.enlazar.ui.recolector
 
 import android.Manifest
-import android.content.Intent
+import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import ar.com.unlam.enlazar.R
+import androidx.lifecycle.Observer
 import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.data.retrofit.GoogleMapsApiImpl
 import ar.com.unlam.enlazar.data.retrofit.ServiceFields
@@ -35,6 +38,8 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import ar.com.unlam.enlazar.R
+
 
 class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener {
@@ -54,6 +59,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var database: FirebaseDatabase
     private lateinit var referaceServicio: DatabaseReference
     var handler = Handler(Looper.getMainLooper())
+    private val viewModelServices: ServiciosRecolectorMapViewModel by viewModels()
 
     companion object {
         const val REQUEST_CODE_LOCATION = 0
@@ -114,9 +120,19 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
             cardViewFinalizarServicio.visibility = View.GONE
             btnCancelarServicio.visibility = View.VISIBLE
         }
+        setObservers()
     }
 
+    private fun setObservers() {
+        viewModelServices.misServicios.observe(this, Observer {
+            it.let {
+                it.forEach {
+                   createMarker(it.latitud!!.toDouble(),it.longitud!!.toDouble(),it.address!!)
+                }
+            }
 
+        })
+    }
     fun obtenerCurretPositionLoop(cancelarServicio: Boolean) {
         val TIEMPO: Long = 10000
         handler.postDelayed(object : Runnable {
@@ -217,7 +233,29 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                 }
         }
     }
-
+    private fun bitmapDescriptorFromVector(
+        context: Context,
+        @DrawableRes vectorDrawableResourceId: Int
+    ): BitmapDescriptor? {
+        val background = ContextCompat.getDrawable(context, R.drawable.ic_location_service_v_uno)
+        background!!.setBounds(0, 0, background.intrinsicWidth, background.intrinsicHeight)
+        val vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId)
+        vectorDrawable!!.setBounds(
+            40,
+            20,
+            vectorDrawable.intrinsicWidth + 40,
+            vectorDrawable.intrinsicHeight + 20
+        )
+        val bitmap = Bitmap.createBitmap(
+            background.intrinsicWidth,
+            background.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        background.draw(canvas)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
     private fun trazarRuta(origen: LatLng, destino: LatLng) {
         val serviceAddress = intent.getStringExtra(SERVICE_ADDRESS)
         CoroutineScope(Dispatchers.IO).launch {
@@ -242,12 +280,9 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                             mPolylineOptions.jointType(JointType.ROUND)
                             mPolylineOptions.addAll(mPolylineList)
                             val polyLine = map.addPolyline(mPolylineOptions)
-                            polyLine.jointType
+                            polyLine.jointType // .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                             var marker: MarkerOptions =
-                                MarkerOptions().position(destino).title(serviceAddress).icon(
-                                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
-                                )
-                            // .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_service_v_uno
+                                MarkerOptions().position(destino).title(serviceAddress).icon(bitmapDescriptorFromVector(this@RutaRecolectorMapActivity,R.drawable.ic_logo_marker_pe_vector))
                             map.addMarker(marker)
                             map.animateCamera(
                                 CameraUpdateFactory.newLatLngZoom(
@@ -310,9 +345,9 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         polyLine.jointType
     }
 
-    private fun createMarker() {
-        val coordinates = LatLng(-34.744774, -58.695204)
-        val marker: MarkerOptions = MarkerOptions().position(coordinates).title("Mi calle")
+    private fun createMarker(lat:Double, long: Double,title:String) {
+        val coordinates = LatLng(lat, long)
+        val marker: MarkerOptions = MarkerOptions().position(coordinates).title(title).icon(bitmapDescriptorFromVector(this@RutaRecolectorMapActivity,R.drawable.ic_logo_marker_pe_vector))
         map.addMarker(marker)
         /*      map.animateCamera(
                   CameraUpdateFactory.newLatLngZoom(LatLng(-34.744774, -58.695204), 18f),

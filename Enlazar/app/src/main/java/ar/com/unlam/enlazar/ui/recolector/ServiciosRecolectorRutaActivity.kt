@@ -113,6 +113,7 @@ toolbar()
         FirebaseAuth.getInstance().signOut()
         val mainIntent = Intent(this, LoginActivity::class.java)
         startActivity(mainIntent)
+        finish()
     }
 
     fun toolbar() {
