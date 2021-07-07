@@ -101,7 +101,7 @@ const CreateRecycler = ({history}) => {
                     <input
                       type="text"
                       className="input-text"
-                      placeholder="Por ejemplo, evento por el dia del reciclaje"
+                      placeholder="Ingresa un nombre"
                       name="name"
                       onChange={handleChange}
                       value={name}
@@ -114,7 +114,7 @@ const CreateRecycler = ({history}) => {
                     <input
                       type="text"
                       className="input-text"
-                      placeholder="Por ejemplo, evento por el dia del reciclaje"
+                      placeholder="Ingresa un apellido"
                       name="surname"
                       onChange={handleChange}
                       value={surname}
@@ -127,7 +127,7 @@ const CreateRecycler = ({history}) => {
                     <input
                       type="text"
                       className="input-text"
-                      placeholder="Por ejemplo, evento por el dia del reciclaje"
+                      placeholder="Ingresa un dni"
                       name="dni"
                       onChange={handleChange}
                       value={dni}
@@ -145,11 +145,11 @@ const CreateRecycler = ({history}) => {
               <Row>
               <Col>
                   <div className="form-group">
-                    <label className="control-label">Telefono</label>
+                    <label className="control-label">Teléfono</label>
                     <input
                       type="text"
                       className="input-text"
-                      placeholder="Por ejemplo, 24/05/21..."
+                      placeholder="Ingresa un teléfono"
                       name="phone"
                       onChange={handleChange}
                       value={phone}
@@ -162,7 +162,7 @@ const CreateRecycler = ({history}) => {
                     <input
                       type="text"
                       className="input-text"
-                      placeholder="De 14 a 18 hs"
+                      placeholder="Ingresa un email válido"
                       name="email"
                       onChange={handleChange}
                       value={email}
