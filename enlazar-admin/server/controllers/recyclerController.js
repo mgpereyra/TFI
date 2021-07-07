@@ -1,5 +1,7 @@
 const firebase = require( "firebase");
 const {validationResult}= require('express-validator');
+var nodemailer = require('nodemailer');
+
 
 //obtener recicladors creados por el usuario actual
 exports.getListRecycler = async(req, res) => {
@@ -22,29 +24,34 @@ exports.getListRecycler = async(req, res) => {
 exports.createRecycler = async (req, res) =>{
     const {  ubication, dni, email, lat, lng, name, phone,surname  } = req.body;
     //active initDate password typeUser: 2
-
     const errors = validationResult(req);
 
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()})
     }
 
+    const password = '123456';
+
     try {
-        const ref = firebase.database().ref('User').push();
-        
         //firebase authentication
-        firebase.auth().createUserWithEmailAndPassword(email, pass)
+        firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Signed in
             var userAuth = userCredential.user;
+            const hoy = new Date(Date.now());
 
             firebase.database().ref('User').child(userAuth.uid).set({
                 ubication, dni, email, lat, lng, name, phone,surname,
-                active: true,  id : userAuth.uid, initDate: Date.now(), 
-                password: '123456', typeUser: 2
+                active: true,  id : userAuth.uid, initDate: hoy.toLocaleDateString(), 
+                password, typeUser: 2
             });
 
+            
+       
+
+            res.send("reciclador ok");
         })
+
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -64,6 +71,30 @@ exports.createRecycler = async (req, res) =>{
     }
 }
 
+function sendMail(){
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+        user: 'tutiilustraciones@gmail.com',
+        pass: 'TutiSakura456'
+        }
+    });
+    
+    var mailOptions = {
+        from: 'tutiilustraciones@gmail.com',
+        to: 'margisetoledo@gmail.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+        console.log(error);
+        } else {
+        console.log('Email sent: ' + info.response);
+        }
+    });
+}
 //Modificar meeting
 exports.putRecycler = async(req, res) => {
     try {

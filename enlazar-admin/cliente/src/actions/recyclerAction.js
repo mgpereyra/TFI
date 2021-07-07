@@ -26,9 +26,10 @@ import {
         const response = await clienteAxios.get("/api/recycler");
         //actualizo el state
        dispatch(downloadRecyclersSuccess(response.data));
+
       } catch (error) {
         dispatch(downloadRecyclersError());
-  
+        console.log(error)
         //alerta
         Swal.fire({
           icon: "error",
@@ -48,7 +49,7 @@ import {
     type: DOWNLOAD_RECYCLERS_ERROR,
   });
   
-  //Crear Puntos
+  //Crear Reciclador
   export function createNewRecycler(recycler) {
     return async (dispatch) => {
       dispatch({

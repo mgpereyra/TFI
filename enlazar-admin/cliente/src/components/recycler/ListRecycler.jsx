@@ -33,7 +33,7 @@ const ListRecycler = () => {
         </div>
       ) : (
         <div className="row">
-          <table class="table table-hover">
+          <table className="table table-hover">
             <thead>
               <tr>
                 <th scope="col">Dni</th>
