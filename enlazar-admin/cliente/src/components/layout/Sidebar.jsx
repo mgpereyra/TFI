@@ -27,7 +27,7 @@ const Sidebar = () => {
                     Puntos de encuentro
                 </Link>
 
-                <Link to={'/list-recycler'} className='color-third nav-link'>
+                <Link to={'/list-recycler'} className='color-third nav-link mb-3'>
                 <i className="fas fa-recycle"></i>
                     Recolectores
                 </Link>

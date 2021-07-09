@@ -57,7 +57,7 @@ export default function (state = initialState, action){
         case GET_COUPON_DELETE:
             return{
                 ...state,
-                COUPONToDelete: action.payload
+               couponToDelete: action.payload
             }  
         case COUPON_DELETE_SUCCESS:
             return{

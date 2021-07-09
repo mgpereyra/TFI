@@ -160,7 +160,7 @@ const CreateRecycler = ({history}) => {
                   <div className="form-group">
                     <label className="control-label">Email</label>
                     <input
-                      type="text"
+                      type="email"
                       className="input-text"
                       placeholder="Ingresa un email válido"
                       name="email"
