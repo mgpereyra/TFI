@@ -166,9 +166,7 @@ export function modifyAdvice(adviceToModify) {
 export function modifyAdviceAction(advice) {
   return async (dispatch) => {
     try {
-      if (advice.imagen !== undefined) {
-        guardarImageng(advice);
-      }
+      
 
       await clienteAxios.put(`/api/advice/${advice.id}`, advice);
 

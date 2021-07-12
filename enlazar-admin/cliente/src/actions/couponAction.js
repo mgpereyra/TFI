@@ -138,3 +138,35 @@ export function deleteCouponAction(id) {
     }
   };
 }
+
+//Coloca el cupon a editar en el state
+export function modifyCoupon(couponToModify) {
+  return async (dispatch) => {
+    dispatch({
+      type: GET_COUPON_MODIFY,
+      payload: couponToModify,
+    });
+  };
+}
+
+//Modificar un consejo
+export function modifyCouponAction(coupon) {
+  return async (dispatch) => {
+    try {
+      
+      await clienteAxios.put(`/api/coupon/${coupon.id}`, coupon);
+
+      dispatch({
+        type: COUPON_MODIFY_SUCCESS,
+      });
+      //alerta
+      Swal.fire("Genial", "El consejo se modificó correctamente", "success");
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: COUPON_MODIFY_ERROR,
+      });
+    }
+  };
+}
+

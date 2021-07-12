@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteCouponAction } from "../../actions/couponAction";
+import { deleteCouponAction, modifyCoupon } from "../../actions/couponAction";
 
 const Coupon = ({ coupon }) => {
   const { image, title, description, imageCode, amount, pointsCost, id } =
@@ -18,7 +18,7 @@ const Coupon = ({ coupon }) => {
 
   //modificar
   const confirmEdit = (coupon) => {
-    //dispatch(modifyAdvice(advice));
+    dispatch(modifyCoupon(coupon));
     history.push(`/edit-coupon/${coupon.id}`);
   };
 
