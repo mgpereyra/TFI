@@ -158,7 +158,7 @@ const EditCoupon = () => {
                 variant="primary"
               >
                 <i className="far fa-check"></i>
-                Crear consejo
+                Guardar cambios
               </button>
             </div>
           </form>
