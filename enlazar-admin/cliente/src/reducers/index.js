@@ -4,6 +4,8 @@ import meetingReducer from "./meetingReducer";
 import mapsReducer from "./mapsReducer";
 import couponReducer from "./couponReducer";
 import recyclerReducer from "./recyclerReducer";
+import serviceReducer from "./serviceReducer";
+
 
 
 export default combineReducers({
@@ -11,5 +13,6 @@ export default combineReducers({
     meetings : meetingReducer,
     maps: mapsReducer,
     coupons: couponReducer,
-    recyclers: recyclerReducer
+    recyclers: recyclerReducer,
+    services: serviceReducer
 });

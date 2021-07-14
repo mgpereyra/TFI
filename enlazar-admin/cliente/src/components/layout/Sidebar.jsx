@@ -12,7 +12,7 @@ const Sidebar = () => {
                 </Link>
                 </h1> 
 
-                <Link to={'/'} className='color-third nav-link mb-3 disabled'>
+                <Link to={'/list-service'} className='color-third nav-link mb-3'>
                 <i className="fas fa-street-view"></i>
                     Servicios
                 </Link>

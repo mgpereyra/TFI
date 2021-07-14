@@ -23,6 +23,10 @@ import CreateRecycler from './components/recycler/CreateRecycler'
 import ListRecycler from './components/recycler/ListRecycler';
 import EditRecycler from './components/recycler/EditRecycler';
 
+import ListService from './components/service/ListService';
+import ManageService from './components/service/ManageService';
+
+
 import {conectFirebase } from './config/firebase'
 
 import './index.css'
@@ -81,6 +85,11 @@ function App() {
                       <PrivateRoute exact path="/create-recycler" component={CreateRecycler}/>
                       <PrivateRoute exact path="/list-recycler" component={ListRecycler}/>
                       <PrivateRoute exact path="/edit-recycler/:id" component={EditRecycler}/>
+
+                      <PrivateRoute exact path="/list-service" component={ListService}/>
+                      <PrivateRoute exact path="/manage-service" component={ManageService}/>
+
+
                     </Switch>
                     </main>
                     <Footer/>
