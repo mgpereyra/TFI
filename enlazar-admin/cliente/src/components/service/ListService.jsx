@@ -18,7 +18,7 @@ const ListServices = () => {
     <Fragment>
       <div className="d-flex justify-content-between px-4 mb-5">
         <h1>
-          <i className="fas fa-hand-holding-heart"></i>Listado de servicios
+         <i className="fas fa-street-view"></i>Listado de servicios
         </h1>
         <Link to={"/manage-service"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle"></i>
@@ -35,10 +35,10 @@ const ListServices = () => {
           <table className="table table-hover">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-
-                <th scope="col">Direccion</th>
-                <th scope="col">Nombre</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Estado</th>
                 
               </tr>
             </thead>

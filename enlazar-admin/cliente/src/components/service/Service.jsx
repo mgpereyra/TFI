@@ -1,28 +1,25 @@
 import React from 'react'
+import { getState } from '../../helpers'
 
 const Service = ({service}) => {
 
-    const {address, id} = service;
+    const {address, id, date,time, estado} = service;
+
+
+    const get = getState(service)
 
     return (
-        <tr>
-        <th scope="row">{id}</th>
+        <tr className= {get.className}>
+        <th scope="row" >{date}</th>
         <td>
           {address}
         </td>
         <td>
-        <div className="acciones">
-              <button
-                className="btn btn-outline-primary w-100 btn-left"
-              >
-                <i className="far fa-trash-alt"></i>
-              </button>
-              <button
-                className="btn btn-primary mr-2 w-100 btn-right"
-              >
-                <i className="far fa-edit"></i>
-              </button>
-            </div>
+          {time}
+        </td>
+        <td>
+        {get.stateString}
+         
         </td>
       </tr>
       );
