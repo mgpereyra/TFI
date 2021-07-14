@@ -64,13 +64,21 @@ toolbar()
         setListeners()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
+       // getServicesResponde2()
+
     }
 
     override fun onStart() {
         getServicesResponde2()
-        //viewModelServices.getServices()
-        setObservers()
+       // viewModelServices.getServices()
+       // setObservers()
         super.onStart()
+    }
+
+    override fun onResume() {
+        getServicesResponde2()
+
+        super.onResume()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_recolector, menu)
@@ -127,18 +135,18 @@ toolbar()
     }
 
     private fun getServicesResponde2() {
-        viewModelServices.misServicios.observe(this, {
+        viewModelServices.misServicios.observe(this, Observer{
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
     }
 
-    private fun setObservers() {
+/*    private fun setObservers() {
         viewModelServices.misServicios.observe(this, Observer {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
-    }
+    }*/
 
     private fun setListeners() {
         /*     buttonIrMapa.setOnClickListener {

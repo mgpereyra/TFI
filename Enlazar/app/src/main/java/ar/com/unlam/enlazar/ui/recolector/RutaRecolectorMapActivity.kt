@@ -75,16 +75,18 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_ruta_recolector)
 
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         createFragment()
+        setOnClickListerners()
+        setObservers()
+    }
 
+    private fun setOnClickListerners() {
         btnIniciarServicio.setOnClickListener {
             btnIniciarServicio.visibility = View.GONE
             btnFinalizarServicio.visibility = View.VISIBLE
             btnCancelarServicio.visibility = View.VISIBLE
-
         }
         btnCancelarServicio.setOnClickListener {
             onBackPressed()
@@ -121,7 +123,6 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
             cardViewFinalizarServicio.visibility = View.GONE
             btnCancelarServicio.visibility = View.VISIBLE
         }
-        setObservers()
     }
 
     private fun setObservers() {

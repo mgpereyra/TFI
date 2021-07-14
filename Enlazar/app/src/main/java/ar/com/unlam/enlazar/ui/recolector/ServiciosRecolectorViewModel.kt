@@ -2,15 +2,15 @@ package ar.com.unlam.enlazar.ui.recolector
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ar.com.unlam.enlazar.data.retrofit.ServiceRecolectorRepository
+import ar.com.unlam.enlazar.data.retrofit.repository.ServiciosRecRepository
+import ar.com.unlam.enlazar.data.retrofit.ServiciosRecRepositoryImpl
 import ar.com.unlam.enlazar.model.Service
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ServiciosRecolectorViewModel(
@@ -22,8 +22,13 @@ class ServiciosRecolectorViewModel(
     //  private lateinit var referaceUsuario: DatabaseReference
     private lateinit var referaceServicio: DatabaseReference
 
+    private val serviciosRepository : ServiciosRecRepository = ServiciosRecRepositoryImpl()
+
     init {
         viewModelScope.launch {
+            serviciosRepository.getServiciosPendientes()
+            val servicios = serviciosRepository.retList()
+               misServicios.value= servicios
             try {
                 getDataBase()
             } catch (e: Exception) {

@@ -72,20 +72,18 @@ class MisServiciosActivity : AppCompatActivity() {
 
 
     }
-    @Override
-    public override fun onResume() {
+     override fun onResume() {
         super.onResume()
         serviceList.clear()
         adapter.notifyDataSetChanged()
         viewModelMisServicios.getServicios(Estado.ASIGNADO)
 
     }
-   @Override
-    public override fun onResume() {
+ /*    override fun onResume() {
         super.onResume()
        setServicios()
         viewModelMisServicios.getServicios(Estado.PENDIENTE)
-    }
+    }*/
 
     override fun onStart() {
         setServicios()

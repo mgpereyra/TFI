@@ -1,4 +1,4 @@
-package ar.com.unlam.enlazar.data.retrofit
+package ar.com.unlam.enlazar.data.retrofit.repository
 
 import ar.com.unlam.mapexample.geoClases.RouteResult
 import retrofit2.Call
