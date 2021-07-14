@@ -28,6 +28,9 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
             ).show()
         }
         getPuntos(id)
+        btnVolver_de_canjes.setOnClickListener {
+            finish()
+        }
 
         btn_canjear_item.setOnClickListener {
             canjearItem()

@@ -62,9 +62,11 @@ class MisServiciosActivity : AppCompatActivity() {
             servicios_confirmados.isEnabled=true
             servicios_pendientes.isEnabled=false
             serviceList.clear()
+            adapter.servicesList.clear()
            // viewModelMisServicios.misServicios.
-            adapter.notifyDataSetChanged()
+
             viewModelMisServicios.getServicios(Estado.PENDIENTE)
+
             setServicios()
         }
         btnVolver_mis_servicios.setOnClickListener { finish() }

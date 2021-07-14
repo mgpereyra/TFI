@@ -32,8 +32,7 @@ class MisCanjesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_canjes)
         btnVolver_de_miscanjes.setOnClickListener {
-            var intent = Intent(this, MisPuntosActivity::class.java)
-            startActivity(intent)
+            finish()
         }
 
 
