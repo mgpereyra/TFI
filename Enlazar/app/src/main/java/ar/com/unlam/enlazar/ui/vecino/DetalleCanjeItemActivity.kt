@@ -34,6 +34,9 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
 
 
         }
+        btnVolver_de_canjes.setOnClickListener {
+            finish()
+        }
     }
 
     private fun canjearItem() {
