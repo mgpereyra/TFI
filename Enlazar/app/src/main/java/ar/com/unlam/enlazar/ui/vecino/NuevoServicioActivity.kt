@@ -160,7 +160,7 @@ class NuevoServicioActivity : AppCompatActivity() {
                 cant_tipo2.editText?.text.toString().toInt(),
                 cant_tipo3.editText?.text.toString().toInt(),
                 dia_picker.text.toString(),
-                horario_picker.text.toString(),
+                horario_picker.text.toString(),"",
                 id,
                 "",
                 Estado.PENDIENTE.ordinal

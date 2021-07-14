@@ -50,7 +50,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="569dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,14 +60,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:visibility="gone"
-
+            <!--  <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_proximo_servicio"
+
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/emerald"
                 app:cardCornerRadius="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -105,13 +105,13 @@
                     android:translationX="90dp"
                     android:translationY="50dp" />
 
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>-->
 
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_mis_servicios"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
@@ -127,8 +127,9 @@
                     android:layout_width="70dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_mis_servicios"
+                    android:backgroundTint="@color/white"
                     android:translationX="5dp"
-                    android:translationY="20dp" />
+                    android:translationY="30dp" />
 
                 <TextView
                     android:id="@+id/txtMisServicios"
@@ -138,21 +139,21 @@
                     android:text="@string/title_card_mis_servicios"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
-                    android:textSize="24sp"
+                    android:textSize="30sp"
                     android:translationX="90dp"
-                    android:translationY="35dp"/>
+                    android:translationY="35dp" />
 
                 <TextView
-                    android:visibility="gone"
-
                     android:id="@+id/txtMisServiciosSub"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/subtitle_mis_servicios"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/subTextWhite"
                     android:translationX="90dp"
-                    android:translationY="50dp" />
+                    android:translationY="50dp"
+                    android:visibility="gone" />
 
 
             </androidx.cardview.widget.CardView>
@@ -160,7 +161,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_mis_puntos"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
@@ -176,8 +177,9 @@
                     android:layout_width="70dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_mis_puntos"
+                    android:backgroundTint="@color/white"
                     android:translationX="5dp"
-                    android:translationY="20dp"
+                    android:translationY="30dp"
                     android:visibility="visible"
                     tools:srcCompat="@drawable/ic_mis_puntos"
                     tools:visibility="visible" />
@@ -190,27 +192,27 @@
                     android:text="@string/title_card_mis_puntos"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
-                    android:textSize="24sp"
+                    android:textSize="30sp"
                     android:translationX="90dp"
                     android:translationY="35dp" />
 
                 <TextView
-                    android:visibility="gone"
-
                     android:id="@+id/txtMisPuntosSub"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/subtitle__mis_puntos"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/subTextWhite"
                     android:translationX="90dp"
-                    android:translationY="50dp" />
+                    android:translationY="50dp"
+                    android:visibility="gone" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_mis_encuentros"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
@@ -226,8 +228,9 @@
                     android:layout_width="70dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_mis_encuentros"
+                    android:backgroundTint="@color/white"
                     android:translationX="5dp"
-                    android:translationY="20dp" />
+                    android:translationY="30dp" />
 
                 <TextView
                     android:id="@+id/txtMisEncuentros"
@@ -237,27 +240,27 @@
                     android:text="@string/title_card_mis_encuentros"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
-                    android:textSize="24sp"
+                    android:textSize="30sp"
                     android:translationX="90dp"
                     android:translationY="35dp" />
 
                 <TextView
-                    android:visibility="gone"
-
                     android:id="@+id/txtMisEncuentrosSub"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/subtitle_proximo_encuentro"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/subTextWhite"
                     android:translationX="90dp"
-                    android:translationY="50dp" />
+                    android:translationY="50dp"
+                    android:visibility="gone" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_seccion_informativa"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
@@ -273,8 +276,9 @@
                     android:layout_width="70dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_baseline_info_24"
+                    android:backgroundTint="@color/white"
                     android:translationX="5dp"
-                    android:translationY="20dp" />
+                    android:translationY="30dp" />
 
                 <TextView
                     android:id="@+id/txtSeccionInformativa"
@@ -284,9 +288,9 @@
                     android:text="@string/title_card_seccic_n_informativa"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
-                    android:textSize="24sp"
+                    android:textSize="30sp"
                     android:translationX="90dp"
-                    android:translationY="30dp" />
+                    android:translationY="35dp" />
 
                 <TextView
                     android:id="@+id/txtSeccionInformativaSub"
@@ -296,7 +300,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/subTextWhite"
                     android:translationX="90dp"
-                    android:translationY="65dp" />
+                    android:translationY="75dp" />
 
 
             </androidx.cardview.widget.CardView>

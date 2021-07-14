@@ -87,10 +87,10 @@ class DashboardUserActivity : AppCompatActivity() {
     }
 
     private fun setCardOnClickListerners() {
-        cardView_proximo_servicio.setOnClickListener {
+    /*    cardView_proximo_servicio.setOnClickListener {
             val intent: Intent = Intent(this, DetalleServicioActivity::class.java)
             startActivity(intent)
-        }
+        }*/
         cardView_mis_servicios.setOnClickListener {
             val intent: Intent = Intent(this, MisServiciosActivity::class.java)
             startActivity(intent)

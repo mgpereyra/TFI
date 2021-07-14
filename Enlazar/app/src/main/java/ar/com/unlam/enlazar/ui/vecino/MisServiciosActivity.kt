@@ -48,7 +48,7 @@ class MisServiciosActivity : AppCompatActivity() {
             adapter.servicesList.clear()
             adapter.notifyDataSetChanged()
             viewModelMisServicios.getServicios(Estado.ASIGNADO)
-
+            setServicios()
         }
 
         servicios_pendientes.setOnClickListener {
@@ -65,7 +65,7 @@ class MisServiciosActivity : AppCompatActivity() {
            // viewModelMisServicios.misServicios.
             adapter.notifyDataSetChanged()
             viewModelMisServicios.getServicios(Estado.PENDIENTE)
-
+            setServicios()
         }
         btnVolver_mis_servicios.setOnClickListener { finish() }
         setServicios()
@@ -73,21 +73,20 @@ class MisServiciosActivity : AppCompatActivity() {
 
     }
      override fun onResume() {
-        super.onResume()
-        serviceList.clear()
-        adapter.notifyDataSetChanged()
-        viewModelMisServicios.getServicios(Estado.ASIGNADO)
+         super.onResume()
+         setServicios()
+         viewModelMisServicios.getServicios(Estado.PENDIENTE)
+         adapter.notifyDataSetChanged()
+
+         //  serviceList.clear()
+
 
     }
- /*    override fun onResume() {
-        super.onResume()
-       setServicios()
-        viewModelMisServicios.getServicios(Estado.PENDIENTE)
-    }*/
+
 
     override fun onStart() {
-        setServicios()
         viewModelMisServicios.getServicios(Estado.PENDIENTE)
+        setServicios()
         super.onStart()
     }
     private fun setServicios() {
@@ -96,11 +95,11 @@ class MisServiciosActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
 
         })
-        if (adapter.servicesList.size>0){
+  /*      if (adapter.servicesList.size>0){
             listado_servicios.visibility= View.GONE
         }else{
             listado_servicios.visibility=View.VISIBLE
-        }
+        }*/
         /*db.child("Service").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 // var mSnapshot=snapshot.getValue(Service::class.java)

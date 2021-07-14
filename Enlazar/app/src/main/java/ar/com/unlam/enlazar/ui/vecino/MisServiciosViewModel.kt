@@ -13,13 +13,13 @@ class MisServiciosViewModel(): ViewModel() {
     private var db=FirebaseDatabase.getInstance().reference
     var id = FirebaseAuth.getInstance().currentUser!!.uid
 
-   /* init {
+    init {
         try {
             getServicios(Estado.PENDIENTE)
         }catch (e:Exception){
             Log.e("Cancel", e.toString())
         }
-    }*/
+    }
     fun getServicios(estado: Estado){
         db.child("Service").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -51,6 +51,7 @@ class MisServiciosViewModel(): ViewModel() {
                 }
                 if (list.size>0) {
                     misServicios.value=list
+
                 }
             }
 

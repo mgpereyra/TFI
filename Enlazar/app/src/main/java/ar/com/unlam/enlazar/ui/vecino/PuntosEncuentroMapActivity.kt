@@ -205,7 +205,7 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
         context: Context,
         @DrawableRes vectorDrawableResourceId: Int
     ): BitmapDescriptor? {
-        val background = ContextCompat.getDrawable(context, R.drawable.ic_location_service_v_uno)
+        val background = ContextCompat.getDrawable(context, R.drawable.ic_puntos_encuentro_marker)
         background!!.setBounds(0, 0, background.intrinsicWidth, background.intrinsicHeight)
         val vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId)
         vectorDrawable!!.setBounds(
@@ -228,7 +228,7 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
         puntosEncuentroMapViewModel.misPuntosEncuentro.value?.forEach {
                     val marker: MarkerOptions = MarkerOptions()
                         .position(LatLng(it.lat!!, it.lng!!))
-                        .title(it.title).icon(bitmapDescriptorFromVector(this@PuntosEncuentroMapActivity,R.drawable.ic_logo_marker_pe_vector))
+                        .title(it.title).icon(bitmapDescriptorFromVector(this@PuntosEncuentroMapActivity,R.drawable.ic_puntos_encuentro_marker))
                 map.addMarker(marker)
 
 

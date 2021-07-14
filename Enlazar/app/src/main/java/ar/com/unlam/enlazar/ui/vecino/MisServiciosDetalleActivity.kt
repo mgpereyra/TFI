@@ -30,7 +30,9 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
         btn_cancel_servicio.setOnClickListener {
             cancelarServicio(cardInfoId.text.toString())
         }
-
+        btnVolver_mis_servicios.setOnClickListener {
+            finish()
+        }
 
     }
 
@@ -116,10 +118,10 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
 
     private fun estado(status: Consulta) {
         when (status) {
-            Consulta.SUCCESS -> Toast.makeText(
+           /* Consulta.SUCCESS -> Toast.makeText(
                 this@MisServiciosDetalleActivity,
                 getString(R.string.succes), Toast.LENGTH_LONG
-            ).show()
+            ).show()*/
             Consulta.ERROR -> Toast.makeText(
                 this@MisServiciosDetalleActivity,
                 getString(R.string.error), Toast.LENGTH_LONG
