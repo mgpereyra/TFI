@@ -6,12 +6,11 @@ import {
   deleteRecyclerAction,
 } from "../../actions/recyclerAction";
 
-
 const Recycler = ({ recycler }) => {
-    const history = useHistory();
-    const dispatch = useDispatch();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const {id, name, surname, district, dni, phone, email, password } = recycler;
+  const { id, name, surname, district, dni, phone, email, password } = recycler;
 
   //eliminar
   const confirmDelete = (id) => {
@@ -34,20 +33,20 @@ const Recycler = ({ recycler }) => {
       <td>{email}</td>
       <td>{password}</td>
       <td>
-      <div className="acciones">
-            <button
-              onClick={() => confirmDelete(id)}
-              className="btn btn-outline-primary w-100 btn-left"
-            >
-              <i className="far fa-trash-alt"></i>
-            </button>
-            <button
-              onClick={() => confirmEdit(recycler)}
-              className="btn btn-primary mr-2 w-100 btn-right"
-            >
-              <i className="far fa-edit"></i>
-            </button>
-          </div>
+        <button
+          onClick={() => confirmDelete(id)}
+          className="btn btn-outline-danger btn-circle"
+        >
+          <i className="far fa-trash-alt"></i>
+        </button>
+      </td>
+      <td>
+        <button
+          onClick={() => confirmEdit(recycler)}
+          className="btn btn-success btn-circle"
+        >
+          <i className="far fa-edit"></i>
+        </button>
       </td>
     </tr>
   );
