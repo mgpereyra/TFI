@@ -17,7 +17,7 @@ const ServicePendings = ({ service }) => {
         
         <div className="custom-control custom-checkbox checkbox-lg">
           <input type="checkbox" className="custom-control-input" id="checkbox-2" />
-          <label className="custom-control-label" for="checkbox-2">Agregar</label>
+          <label className="custom-control-label pl-2" for="checkbox-2">Agregar</label>
         </div>
         
       </td>
