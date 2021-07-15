@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Service from "./Service";
+import ServicePendings from "./ServicePendings";
 import { getListServicesPendings } from "../../actions/serviceAction";
 
 const ManageService = () => {
@@ -36,12 +36,12 @@ const ManageService = () => {
                   <th scope="col">Dirección</th>
                   <th scope="col">Hora</th>
                   <th scope="col">Estado</th>
-                  
+                  <th scope="col">Agregar</th>
                 </tr>
               </thead>
               <tbody>
                 {services.map((service) => (
-                  <Service key={service.id} service={service} />
+                  <ServicePendings key={service.id} service={service} />
                 ))}
               </tbody>
             </table>
