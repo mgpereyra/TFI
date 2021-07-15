@@ -53,3 +53,35 @@ longitud,
 recolectorId,
 time
 */
+
+
+//obtener servicios pendientes
+exports.getListServicesPendings = async(req, res) => {
+    try {
+        const db = firebase.database().ref();
+        const list = []
+        const snapshot = await db.child('Service').orderByChild('estado').equalTo(0).once("value",snapshot => {
+            snapshot.forEach((snap) => {
+                const value = snap.val()
+
+                var date1 = (value.date).split("/");
+                var d = new Date(date1[2], date1[1] - 1, date1[0]);
+                
+                value.dates = d;
+                value.date = d.toLocaleDateString('en-GB');
+              
+                list.push(value)
+                list.sort(function(a, b) {
+                    var dateA = new Date(a.dates)
+                    var dateB = new Date(b.dates)
+                    return b.dates - a.dates;
+                    });
+            })
+
+           res.json(list)
+        });
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Error')
+    }
+}
