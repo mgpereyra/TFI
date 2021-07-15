@@ -1,33 +1,45 @@
 import React, { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ServicePendings from "./ServicePendings";
 import { getListServicesPendings } from "../../actions/serviceAction";
+import { getListRecyclers } from "../../actions/recyclerAction";
 
 const ManageService = () => {
-    const services = useSelector((state) => state.services.servicesPendings);
-    const error = useSelector((state) => state.services.error);
-    const dispatch = useDispatch();
-    const dispatchListServicesPendings = () => dispatch(getListServicesPendings());
+  const recyclers = useSelector((state) => state.recyclers.recyclers);
+  const services = useSelector((state) => state.services.servicesPendings);
+  const error = useSelector((state) => state.recyclers.error);
+  const loading = useSelector((state) => state.services.loading);
 
-    useEffect(() => {
-        dispatchListServicesPendings();
-        //eslint-disable-next-line
-    }, []);
+  const dispatch = useDispatch();
+  const dispatchListRecyclers = () => dispatch(getListRecyclers());
+  const dispatchListServicesPendings = () =>
+    dispatch(getListServicesPendings());
 
-    return ( 
-        <Fragment>
-        <div className="d-flex justify-content-between px-4 mb-5">
-          <h1>
-           <i className="fas fa-street-view"></i>Listado de servicios pendientes
-          </h1>
-        </div>
-  
-        {services.length === 0 && !error ? (
-          <div className="alert alert-info text-center p-3">
-            <i className="fas fa-exclamation-circle"></i>No hay servicios
+  useEffect(() => {
+    dispatchListRecyclers();
+    dispatchListServicesPendings();
+    //eslint-disable-next-line
+  }, []);
+
+  return (
+    <Fragment>
+      <div className="d-flex justify-content-between px-4 mb-5">
+        <h1>
+          <i className="fas fa-street-view"></i>Administrar servicios pendientes
+        </h1>
+      </div>
+      {loading ? (
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border spin text-secondary" role="status">
+            <span className="sr-only">Loading...</span>
           </div>
-        ) : (
+        </div>
+      ) : services.length === 0 && !error ? (
+        <div className="alert alert-info text-center p-3">
+          <i className="fas fa-exclamation-circle"></i>No hay servicios
+        </div>
+      ) : (
+        <div>
           <div className="row">
             <table className="table table-hover">
               <thead>
@@ -46,9 +58,28 @@ const ManageService = () => {
               </tbody>
             </table>
           </div>
-        )}
-      </Fragment>
-     );
-}
- 
+
+          <div className="row mt-5">
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <label className="input-group-text" for="inputGroupSelect01">
+                  Recolector
+                </label>
+              </div>
+              <select className="custom-select" id="inputGroupSelect01">
+                <option selected>Selecciona un recolector...</option>
+                {recyclers.map((r) => (
+                  <option value={r.id}>
+                    {r.name} {r.surname} ~ {r.dni} ~ {r.email}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+      )}
+    </Fragment>
+  );
+};
+
 export default ManageService;
