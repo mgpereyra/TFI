@@ -1,19 +1,22 @@
 package ar.com.unlam.enlazar.ui.recolector
 
 import android.Manifest
-import android.content.Intent
+import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import ar.com.unlam.enlazar.R
+import androidx.lifecycle.Observer
 import ar.com.unlam.enlazar.data.retrofit.Constants
 import ar.com.unlam.enlazar.data.retrofit.GoogleMapsApiImpl
 import ar.com.unlam.enlazar.data.retrofit.ServiceFields
@@ -35,6 +38,8 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import ar.com.unlam.enlazar.R
+
 
 class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener {
@@ -50,19 +55,11 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
     private var serviceLon = ""
     private var driverLat = ""
     private var driverLon = ""
-    private  lateinit var service: Service
-
+    private lateinit var service: Service
     private lateinit var database: FirebaseDatabase
-
-    //  private lateinit var referaceUsuario: DatabaseReference
     private lateinit var referaceServicio: DatabaseReference
     var handler = Handler(Looper.getMainLooper())
-    private var listaPuntos: List<LatLng> = listOf(
-        LatLng(-34.744774, -58.695204),
-        LatLng(-34.746859, -58.717010),
-        LatLng(-34.757320, -58.711366),
-        LatLng(-34.762085, -58.706405)
-    )
+    private val viewModelServices: ServiciosRecolectorMapViewModel by viewModels()
 
     companion object {
         const val REQUEST_CODE_LOCATION = 0
@@ -78,20 +75,22 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_ruta_recolector)
 
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         createFragment()
+        setOnClickListerners()
+        setObservers()
+    }
 
+    private fun setOnClickListerners() {
         btnIniciarServicio.setOnClickListener {
             btnIniciarServicio.visibility = View.GONE
             btnFinalizarServicio.visibility = View.VISIBLE
             btnCancelarServicio.visibility = View.VISIBLE
-
         }
-btnCancelarServicio.setOnClickListener {
-    onBackPressed()
-}
+        btnCancelarServicio.setOnClickListener {
+            onBackPressed()
+        }
         btnFinalizarServicio.setOnClickListener {
             //obtenerCurretPositionLoop(true)
 
@@ -100,6 +99,7 @@ btnCancelarServicio.setOnClickListener {
                 btnFinalizarServicio.visibility = View.GONE
                 btnCancelarServicio.visibility = View.GONE
                 cardViewFinalizarServicio.visibility = View.VISIBLE
+                tvTitleTerminarServicio.text = service.address
 
             } else {
                 Toast.makeText(
@@ -118,8 +118,23 @@ btnCancelarServicio.setOnClickListener {
             cardViewFinalizarServicio.visibility = View.GONE
             btnCancelarServicio.visibility = View.GONE
         }
+        btnCancelConfirmacion.setOnClickListener {
+            btnFinalizarServicio.visibility = View.VISIBLE
+            cardViewFinalizarServicio.visibility = View.GONE
+            btnCancelarServicio.visibility = View.VISIBLE
+        }
     }
 
+    private fun setObservers() {
+        viewModelServices.misServicios.observe(this, Observer {
+            it.let {
+                it.forEach {
+                   createMarker(it.latitud!!.toDouble(),it.longitud!!.toDouble(),it.address!!)
+                }
+            }
+
+        })
+    }
     fun obtenerCurretPositionLoop(cancelarServicio: Boolean) {
         val TIEMPO: Long = 10000
         handler.postDelayed(object : Runnable {
@@ -144,29 +159,20 @@ btnCancelarServicio.setOnClickListener {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        // createMarker()
-        // createPolylines()
-        // map.setOnMyLocationButtonClickListener(this)
         map.setOnMyLocationClickListener(this)
-
-
         enableLocation()
-
         service = intent.getSerializableExtra("Service") as Service
         idService = intent.getStringExtra(SERVICE_ID).toString()
         serviceLat = intent.getStringExtra(SERVICE_LAT).toString()
         serviceLon = intent.getStringExtra(SERVICE_LONG).toString()
         driverLat = intent.getStringExtra(DRIVER_LAT).toString()
         driverLon = intent.getStringExtra(DRIVER_LONG).toString()
-        //  trazarRutasLista(listaPuntos)
-
         getLastLocation()
         trazarRuta(
             LatLng(driverLat.toDouble(), driverLon.toDouble()),
             LatLng(service.latitud!!.toDouble(), service.longitud!!.toDouble())
         )
     }
-
 
     fun getLastLocation() {
         if (ActivityCompat.checkSelfPermission(
@@ -229,17 +235,29 @@ btnCancelarServicio.setOnClickListener {
                 }
         }
     }
-
-    private fun trazarRutasLista(listaUbi: List<LatLng>) {
-        var i = 0
-        val ultimo = listaUbi.size - 1
-        while (i < ultimo) {
-            trazarRuta(listaUbi[i], listaUbi[i + 1])
-            i++
-        }
-
+    private fun bitmapDescriptorFromVector(
+        context: Context,
+        @DrawableRes vectorDrawableResourceId: Int
+    ): BitmapDescriptor? {
+        val background = ContextCompat.getDrawable(context, R.drawable.ic_location_service_v_uno)
+        background!!.setBounds(0, 0, background.intrinsicWidth, background.intrinsicHeight)
+        val vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId)
+        vectorDrawable!!.setBounds(
+            40,
+            20,
+            vectorDrawable.intrinsicWidth + 40,
+            vectorDrawable.intrinsicHeight + 20
+        )
+        val bitmap = Bitmap.createBitmap(
+            background.intrinsicWidth,
+            background.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        background.draw(canvas)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
-
     private fun trazarRuta(origen: LatLng, destino: LatLng) {
         val serviceAddress = intent.getStringExtra(SERVICE_ADDRESS)
         CoroutineScope(Dispatchers.IO).launch {
@@ -264,10 +282,9 @@ btnCancelarServicio.setOnClickListener {
                             mPolylineOptions.jointType(JointType.ROUND)
                             mPolylineOptions.addAll(mPolylineList)
                             val polyLine = map.addPolyline(mPolylineOptions)
-                            polyLine.jointType
+                            polyLine.jointType // .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                             var marker: MarkerOptions =
-                                MarkerOptions().position(destino).title(serviceAddress)
-                            // .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_service_v_uno
+                                MarkerOptions().position(destino).title(serviceAddress).icon(bitmapDescriptorFromVector(this@RutaRecolectorMapActivity,R.drawable.ic_logo_marker_pe_vector))
                             map.addMarker(marker)
                             map.animateCamera(
                                 CameraUpdateFactory.newLatLngZoom(
@@ -278,7 +295,7 @@ btnCancelarServicio.setOnClickListener {
                             )
                             Toast.makeText(
                                 this@RutaRecolectorMapActivity,
-                                "Trazado exitoso",
+                                "Trazado de ruta exitoso",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -306,17 +323,20 @@ btnCancelarServicio.setOnClickListener {
         }
     }
 
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
+    }
     private fun actualizarServicio(comentario: String?) {
         database = FirebaseDatabase.getInstance()
         referaceServicio = database.getReference(Constants.SERVICE_REF)
         referaceServicio.child(idService).child(ServiceFields.ESTADO)
             .setValue(Constants.ESTADO_SERV_FINALIZADO)
         referaceServicio.child(idService).child(ServiceFields.COMENTARIO).setValue(comentario)
+        //val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
 
-        val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
-        startActivity(intent)
         finish()
-
+        //startActivity(intent)
     }
 
     private fun createPolylines() {
@@ -327,9 +347,9 @@ btnCancelarServicio.setOnClickListener {
         polyLine.jointType
     }
 
-    private fun createMarker() {
-        val coordinates = LatLng(-34.744774, -58.695204)
-        val marker: MarkerOptions = MarkerOptions().position(coordinates).title("Mi calle")
+    private fun createMarker(lat:Double, long: Double,title:String) {
+        val coordinates = LatLng(lat, long)
+        val marker: MarkerOptions = MarkerOptions().position(coordinates).title(title).icon(bitmapDescriptorFromVector(this@RutaRecolectorMapActivity,R.drawable.ic_logo_marker_pe_vector))
         map.addMarker(marker)
         /*      map.animateCamera(
                   CameraUpdateFactory.newLatLngZoom(LatLng(-34.744774, -58.695204), 18f),

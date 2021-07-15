@@ -16,6 +16,7 @@ data class User (
         var name:String? = null,
         var password:String? = null,
         var phone:String? = null,
-        var typeUser:Int? = 1,
+        var puntos:Int=0,
+        var typeUser:Int= 1,
 
-        ):Serializable
+        )

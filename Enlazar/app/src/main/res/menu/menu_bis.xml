@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:showAsAction="always">
+
+    <item
+        android:id="@+id/inicio_user"
+        android:title="@string/inicio" />
+    <item
+        android:id="@+id/mis_direcciones_user"
+        android:title="@string/mis_direcciones" />
+    <item
+        android:id="@+id/mis_canjes_user"
+        android:title="@string/mis_canjes" />
+    <item
+        android:id="@+id/invita_amigos_user"
+        android:title="@string/invita_a_amigos" />
+    <item
+        android:id="@+id/guardado_user"
+        android:title="@string/guardado" />
+    <item
+        android:id="@+id/mi_cuenta_user"
+        android:title="@string/mi_cuenta" />
+    <item
+        android:id="@+id/logout_user"
+        android:title="@string/cerrar_sesion" />
+</menu>

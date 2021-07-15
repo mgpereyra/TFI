@@ -36,17 +36,4 @@ private val serviceReference:DatabaseReference=rootRef.child(Constants.SERVICE_R
         return response
     }
 
-
-
-/*    fun getServices() {
-        val idRecolector = "-Mbb-PGvlAiZykBDUIIj"
-        referaceServicio.orderByChild("recolectorId").equalTo(idRecolector).get()
-            .addOnSuccessListener {
-                Log.i("firebase", "Got value ${it.value}")
-                json = it.value.toString()
-                Log.d("jsonString: ",json)
-                val hola:Services=gson.fromJson(json,Services::class.java)
-            }.addOnFailureListener {
-                Log.e("firebase", "Error getting data", it)
-            }*/
 }

@@ -6,55 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".ui.recolector.ServiciosRecolectorRutaActivity">
 
-  <!--  <Button
-        android:id="@+id/buttonIrMapa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/circle"
-        android:backgroundTint="@color/orange"
-        android:text="Map"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.263"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-  <Button
-      android:id="@+id/buttonRutas"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:layout_marginEnd="144dp"
-      android:text="Rutas"
-      android:textColor="@color/white"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.542"
-      app:layout_constraintTop_toTopOf="parent" />-->
-
-  <TextView
-      android:id="@+id/textView"
+  <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/toolbar_serv_list_rec"
       android:layout_width="match_parent"
-      android:layout_height="50dp"
+      android:layout_height="wrap_content"
       android:background="@color/rojo2"
-      android:text="@string/seleccione_el_servicio_a_realizar"
-      android:textColor="@color/white"
-      android:textSize="25sp"
-      android:paddingTop="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.001"
+      app:title="@string/app_name" />
+
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rv_ruta_servicios_list"
       android:layout_width="match_parent"
-      android:layout_height="612dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textView"
-      app:layout_constraintVertical_bias="0.180"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_serv_list_rec"
+      app:layout_constraintVertical_bias="0.0"
       tools:itemCount="10"
       tools:listitem="@layout/servicios_recolector_ruta_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--  <Button
+          android:id="@+id/buttonIrMapa"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="40dp"
+          android:background="@drawable/circle"
+          android:backgroundTint="@color/orange"
+          android:text="Map"
+          android:textColor="@color/white"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.263"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/buttonRutas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="144dp"
+        android:text="Rutas"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--  <TextView
+          android:id="@+id/textView"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:background="@color/rojo2"
+          android:text="@string/seleccione_el_servicio_a_realizar"
+          android:textColor="@color/white"
+          android:textSize="25sp"
+          android:paddingTop="10dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />-->

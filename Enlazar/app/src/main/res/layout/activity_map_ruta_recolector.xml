@@ -79,13 +79,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:strokeColor="@color/rojo2" />
 
+            <Button
+                android:id="@+id/btnCancelConfirmacion"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/rojo2"
+                android:drawableEnd="@drawable/ic_close_24"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
             <TextView
                 android:id="@+id/tvTitleTerminarServicio"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:background="@color/rojo2"
                 android:text="Servicio nombre"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/btnTerminarServConfirm"

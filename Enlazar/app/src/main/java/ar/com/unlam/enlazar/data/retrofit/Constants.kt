@@ -4,7 +4,10 @@ object Constants {
     const val TAG = "RealtimeDatabaseTag"
     const val SERVICE_REF = "Service"
     const val USER_REF = "User"
+    const val MEETING_POINT_REF = "MeetingPoint"
 
+    const val ASISTIR = 1
+    const val CANCELAR_ASISTENCIA = 2
 
     const val ESTADO_SERV_PENDIENTE = 1
     const val ESTADO_SERV_EMCURSO = 2

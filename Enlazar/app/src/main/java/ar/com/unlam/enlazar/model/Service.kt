@@ -13,8 +13,9 @@ data class Service (
         val envasesCarton:Int? = null,
         val date: String? = null,
         val time:String? = null,
+        val comentario:String? = null,
         val userId:String? = null,
         val recolectorId:String? = null,
-        val estado:Int? = null,
-
+        val estado:Int?=0,
+        val calculado:Boolean=false
         ): Serializable
