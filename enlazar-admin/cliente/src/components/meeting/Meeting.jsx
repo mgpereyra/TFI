@@ -25,26 +25,26 @@ const Meeting = ({ meeting }) => {
   return (
     <div className="col-lg-4">
       <div className="card border-secondary">
-        <div className="card-body">
+        <div className="card-body px-3">
           <p className="card-text  text-right mb-3">
             <small className="text-estado mr-2 contador">Asistentes {asistentes !== undefined ? Object.values(asistentes).length : "0"}</small>
             <small className="text-estado activo">
               {estado === 1 ? "Activo" : "Inactivo"}
             </small>
           </p>
-          <div className="contenedor-titulo">
+          <div className="contenedor-titulo mb-2">
             <h2 className="card-title color-third "> {title}</h2>
           </div>
           <h3 className="card-title font-weight-bold">
             {date} - {time}
           </h3>
           <div className="cortar-texto-meet">
-            <h4 className="card-title ">
-              {ubication}
+            <h6>
+              {ubication} </h6>
 
               <hr className="mt-2" />
               <p className="text-muted small-text mt-3">{description}</p>
-            </h4>
+           
           </div>
           <div className="acciones">
             <button
