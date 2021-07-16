@@ -60,6 +60,33 @@ textarea {
   color: var(--blanco)
 }
 
+/*******  boton danger ********/
+.btn-danger {
+  background-color: var(--rosa) !important;
+  border-color: var(--rosa)!important;
+
+}
+
+  .btn-danger:focus, .btn-danger:hover, .btn-danger.focus {
+      background-color: var(--rosa2) !important;
+      border-color: var(--rosa2) !important;
+      font-weight: 600;
+  }
+
+.btn-outline-danger {
+  border-color: var(--rosa)!important;
+  color: var(--rosa) !important;
+  margin-top: 0!important;
+}
+
+  .btn-outline-danger:hover {
+      color: var(--blanco)!important;
+      background-color: var(--rosa);
+      font-weight: 600;
+  }
+
+  /*******  boton primary ********/
+
 .btn-primary {
   background-color: #bb6517 !important;
   border-color: #bb6517!important;
@@ -83,6 +110,34 @@ textarea {
       background-color: var(--ocre2);
       font-weight: 600;
   }
+
+  
+/*******  boton success ********/
+.btn-success {
+  background-color: var(--verde) !important;
+  border-color: var(--verde) !important;
+
+}
+
+  .btn-success:focus, .btn-success:hover, .btn-success.focus {
+      background-color: var(--verde2) !important;
+      border-color: var(--verde2) !important;
+      font-weight: 600;
+  }
+
+.btn-outline-success {
+  border-color: var(--verde)!important;
+  color: var(--verde) !important;
+  margin-top: 0!important;
+}
+
+  .btn-outline-success:hover {
+      color: var(--blanco)!important;
+      background-color: var(--verde);
+      font-weight: 600;
+  }
+
+  /***************/
   
   .card:hover{
     box-shadow: 6px 4px 32px -3px rgba(0,0,0,0.5);
@@ -114,7 +169,7 @@ textarea {
   flex-shrink: 0;
   width: 100%;
   object-fit: cover;
-  height: 225px;
+  height: 235px;
 }
 
 
@@ -122,7 +177,7 @@ textarea {
   flex-shrink: 0;
   width: 100%;
   object-fit: cover;
-  height: 240px;
+  height: 260px;
 }
 body {
   background-color: #464646;
@@ -132,10 +187,6 @@ a {
   color: #bb6517;
 }
 
-
-i{
-  padding-right: 5px;
-}
 
 .active{
   text-decoration:underline;
@@ -171,6 +222,7 @@ hr, .border-primary {
 .acciones {
   display: flex;
   justify-content: flex-end;
+  top: 0;
 }
 
 a:hover {
@@ -242,7 +294,9 @@ footer {
   --ocre: #be6419;
   --ocre2:#a0540f;
   --verde: #006e46 ;
+  --verde2: #055034 ;
   --rosa: #a21b50;
+  --rosa2: #7c123c;
   --headingFont:'Signika', sans-serif;
   --textFont:  'Roboto', sans-serif;
 }
@@ -253,13 +307,12 @@ footer {
 html {
   box-sizing: border-box;
   height: 100%;
-  font-size: 62.5%; 
+  /*font-size: 60%; */
 }
 body {
   min-height: 100%;
   background-color: var(--gris1);
-  font-size: 16px; 
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-family: var(--textFont);
 }
 
@@ -274,12 +327,18 @@ h1, h2 {
 h1 span {
   font-weight: 400;
 }
+
 h1 {
-  font-size: 2.8rem;
+  font-size: 1.8rem;
 }
 h2 {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
 }
+
+h3 {
+  font-size: 1.2rem;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -293,14 +352,23 @@ a {
 /** BOTONES **/
 .btn {
   font-family: var(--textFont);
-  padding: 1rem;
-  font-size: 1.5rem;
+  padding: .8rem;
+ /* font-size: 0.8rem;*/
   border-radius: 5rem;
   transition: background-color .3s ease;
 }
 
 .btn-left {
   border-radius: 5rem 0 0 5rem;
+}
+
+.btn-circle {
+  width: 3rem;
+  height: 3rem;
+  padding: 6px 0px;
+  border-radius: 5rem;
+  font-size: 1rem;
+  text-align: center;
 }
 
 .btn-right {
@@ -384,7 +452,7 @@ aside  {
 }
 .nombre-usuario {
   color: var(--blanco);
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 .nombre-usuario span {
@@ -402,7 +470,7 @@ aside  {
 input, textarea{
   font-family: var(--textFont);
   padding: 0.6rem!important;
-  font-size:1.25rem!important;
+  /*font-size: 1.25rem!important;*/
   color: var(--gris3)!important;
 }
 .formulario form {
@@ -423,6 +491,22 @@ input, textarea{
   flex: 1;
   width: 100%;
 }
+
+.checkbox-lg .custom-control-label::before, 
+.checkbox-lg .custom-control-label::after {
+  top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.checkbox-lg .custom-control-label {
+  padding-top: 12px;
+  padding-left: 6px;
+  display: initial;
+}
+
+
+
 
 /** TAREAS LISTADO **/
 .contenedor-tareas {
@@ -487,12 +571,9 @@ main {
   border-radius: .5rem;
   cursor: pointer;
   border: none;
-}
-.mensaje {
   text-align: center;
-  font-size: 1.4rem;
-  border-radius: 0;
 }
+
 .mensaje:hover {
   cursor: default;
 }
@@ -582,10 +663,10 @@ opacity: .7;
 position: fixed;
 top: 0;
 left: 0;
-padding: 2rem 3rem;
+padding: 1rem 2rem;
 border-radius: 5rem 0 0 5rem;
 font-weight: 300;
-font-size: 1.8rem;
+font-size: 1.2rem;
 text-align: center;
 width: 100%;
 box-shadow: 4px 4px 30px -3px rgba(0,0,0,0.6);
@@ -627,7 +708,7 @@ border: 1px solid #673200;
 
   }
   
-  .cortar-texto-meet > h4,p {
+  .cortar-texto-meet > h6,p {
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 6s ;
@@ -658,7 +739,7 @@ line-height: 2rem;
 
 .cortar-parrafo{
   background: #fff;
-max-height: 6rem;
+max-height: 4rem;
 overflow: hidden;
 text-align: justify;
 display: block;
@@ -667,7 +748,7 @@ display: block;
 .cortar-parrafo:before {
   content:'...';
   position: absolute;
-  bottom: 6.5rem;
+  bottom: 5.2rem;
   right: 1rem;
 }
 .cortar-parrafo::after {
@@ -731,4 +812,9 @@ height: 60px;
   flex: 1 1 auto;
   min-height: 1px;
   padding: .9rem 2rem 1rem 2rem;
+}
+
+.spin{
+  width: 5rem;
+   height: 5rem;
 }

@@ -16,6 +16,7 @@ module.exports =function(req, res, next){
         next(); 
         
     } catch (error) {
+        window.location('/')
         res.status(401).json({msg:"Recuerda iniciar sesión"})
     }
 }

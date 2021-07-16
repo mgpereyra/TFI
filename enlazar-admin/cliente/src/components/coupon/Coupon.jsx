@@ -1,9 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteCouponAction, modifyCoupon } from "../../actions/couponAction";
+import picture from '../../images/png-image.jpg'
 
 const Coupon = ({ coupon }) => {
+  const loading = useSelector((state) => state.services.loading);
+
   const { image, title, description, imageCode, amount, pointsCost, id } =
     coupon;
 
@@ -22,13 +25,17 @@ const Coupon = ({ coupon }) => {
     history.push(`/edit-coupon/${coupon.id}`);
   };
 
-
   return (
     <div className="col-lg-10">
       <div className="card mb-4 border-secondary">
         <div className="row no-gutters">
           <div className="col-md-4">
-            <img className="card-img-coupon" src={image} alt={title}></img>
+          {loading  ?
+            <img className="card-img-coupon" src={picture} alt='cargando'></img>
+             :
+             <img className="card-img-coupon" src={image} alt={title}></img>
+            }
+           
           </div>
           <div className="col-md-8">
             <div className="card-body">
@@ -40,12 +47,9 @@ const Coupon = ({ coupon }) => {
                   Costo ~ <b>{pointsCost}</b> puntos
                 </small>
               </p>
-              <small className="text-muted small-text">{id}</small>
-              <div className="contenedor-titulo">
-                <h2 className="card-title color-third"> {title}</h2>
-              </div>
+                <h3 className="card-title color-third"> {title}</h3>
               <hr className="mt-2" />
-              <p className="text-muted small-text mt-3 cortar-texto">{description}</p>
+              <p className="text-muted small-text mt-3 mb-1 cortar-texto">{description}</p>
 
               <div className="acciones">
                 <button
@@ -64,6 +68,9 @@ const Coupon = ({ coupon }) => {
                 </button>
               </div>
             </div>
+        <div className="card-footer py-2">
+          <small className="text-muted">{id}</small>
+        </div>
           </div>
         </div>
       </div>
