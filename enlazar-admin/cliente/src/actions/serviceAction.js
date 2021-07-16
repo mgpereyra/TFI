@@ -4,7 +4,10 @@ import {
     START_DOWNLOAD_SERVICES,
     START_DOWNLOAD_SERVICES_PENDINGS,
     DOWNLOAD_SERVICES_PENDINGS_SUCCESS,
-    DOWNLOAD_SERVICES_PENDINGS_ERROR
+    DOWNLOAD_SERVICES_PENDINGS_ERROR,
+    START_MODIFY_SERVICES_PENDINGS,
+    SERVICES_PENDINGS_MODIFY_SUCCESS,
+    SERVICES_PENDINGS_MODIFY_ERROR
   } from "../types";
   import Swal from "sweetalert2";
   import clienteAxios from "../config/axios";
@@ -43,8 +46,6 @@ import {
     type: DOWNLOAD_SERVICES_ERROR,
   });
 
-
-
   //Listar servicios pendientes
   export function getListServicesPendings() {
     return async (dispatch) => {
@@ -55,7 +56,6 @@ import {
       try {
         const response = await clienteAxios.get("/api/service/pendings");
 
-        console.log(response)
         //actualizo el state
        dispatch(downloadServicesPendingsSuccess(response.data));
 
@@ -80,3 +80,40 @@ import {
   const downloadServicesPendingsError = () => ({
     type: DOWNLOAD_SERVICES_PENDINGS_ERROR,
   });
+  
+  //Guardar asignacion
+  export function createAssignament(recycler, serviceState) {
+    return async (dispatch) => {
+      dispatch({
+        type: START_MODIFY_SERVICES_PENDINGS,
+        payload: serviceState
+      });
+  
+      try {
+        serviceState.forEach(async (id)=> {
+          const response = await clienteAxios.put(`/api/service/${id}`, {recycler});
+        })
+
+        //actualizo el state
+        dispatch({
+          type: SERVICES_PENDINGS_MODIFY_SUCCESS,
+        });
+
+         //alerta
+         Swal.fire("Correcto", "Se completó la asignación", "success");
+
+      } catch (error) {
+        dispatch({
+          type: SERVICES_PENDINGS_MODIFY_ERROR,
+        });
+
+        console.log(error)
+        //alerta
+        Swal.fire({
+          icon: "error",
+          title: "Oppss..",
+          text: "Ha ocurrido un error, intenta nuevamente",
+        });
+      }
+    };
+  }

@@ -14,4 +14,9 @@ router.get('/pendings',
     serviceController.getListServicesPendings
 )
 
+router.put('/:id',
+    auth,
+    serviceController.createAssignament
+)
+
 module.exports = router

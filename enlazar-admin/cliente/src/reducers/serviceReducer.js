@@ -4,7 +4,10 @@ import {
     START_DOWNLOAD_SERVICES,
     START_DOWNLOAD_SERVICES_PENDINGS,
     DOWNLOAD_SERVICES_PENDINGS_SUCCESS,
-    DOWNLOAD_SERVICES_PENDINGS_ERROR
+    DOWNLOAD_SERVICES_PENDINGS_ERROR,
+    START_MODIFY_SERVICES_PENDINGS,
+    SERVICES_PENDINGS_MODIFY_SUCCESS,
+    SERVICES_PENDINGS_MODIFY_ERROR
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -14,7 +17,7 @@ const initialState = {
     error: null,
     loading: false,
     serviceToDelete: null,
-    serviceToModify:null,
+    servicesPendingsToModify:[],
     servicesPendings:[]
 }
 
@@ -22,13 +25,15 @@ const initialState = {
 export default function (state = initialState, action){
     switch(action.type){
         case START_DOWNLOAD_SERVICES:
-        case START_DOWNLOAD_SERVICES_PENDINGS:        
+        case START_DOWNLOAD_SERVICES_PENDINGS:  
+         
             return {
                 ...state,
                 loading: true
             }
         case DOWNLOAD_SERVICES_PENDINGS_ERROR:    
         case DOWNLOAD_SERVICES_ERROR:    
+        case SERVICES_PENDINGS_MODIFY_ERROR:
             return {
                 ...state,
                 loading: false,
@@ -47,6 +52,16 @@ export default function (state = initialState, action){
                 loading: false,
                 error: false,
                 servicesPendings: Object.values(action.payload)
+        }
+        case START_MODIFY_SERVICES_PENDINGS:
+            return{
+                ...state,
+                servicesPendingsToModify: action.payload
+            }
+        case SERVICES_PENDINGS_MODIFY_SUCCESS:
+        return{
+            ...state,
+            servicesPendingsToModify: []
         }
         default:
             return state;
