@@ -32,7 +32,7 @@ const Recycler = ({ recycler }) => {
       <td>{phone}</td>
       <td>{email}</td>
       <td>{password}</td>
-      <td>
+      <td className='text-center'>
         <button
           onClick={() => confirmDelete(id)}
           className="btn btn-outline-danger btn-circle"
@@ -40,7 +40,7 @@ const Recycler = ({ recycler }) => {
           <i className="far fa-trash-alt"></i>
         </button>
       </td>
-      <td>
+      <td className='text-center'>
         <button
           onClick={() => confirmEdit(recycler)}
           className="btn btn-success btn-circle"
