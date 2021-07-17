@@ -177,7 +177,7 @@ textarea {
   flex-shrink: 0;
   width: 100%;
   object-fit: cover;
-  height: 260px;
+  height: 292px;
 }
 body {
   background-color: #464646;
@@ -817,4 +817,10 @@ height: 60px;
 .spin{
   width: 5rem;
    height: 5rem;
+}
+
+.qr-div{width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
 }

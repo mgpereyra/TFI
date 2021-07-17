@@ -85,3 +85,21 @@ exports.putCoupon = async (req, res) => {
     res.status(500).send("Error");
   }
 };
+
+exports.putQrCoupon = async (req, res) => {
+  try {
+    const key = req.params.id;
+    const postData = req.body;
+
+    console.log(key)
+    console.log(postData)
+
+    const db = firebase.database().ref();
+    await db.child("Item").child(key).update({ "imageCode" : postData.urlCode});
+
+    res.json({ msg: "se modifico correctamente" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error");
+  }
+};

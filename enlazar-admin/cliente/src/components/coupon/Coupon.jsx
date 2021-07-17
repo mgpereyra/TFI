@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCouponAction, modifyCoupon } from "../../actions/couponAction";
+import { deleteCouponAction, modifyCoupon, generateQrCode } from "../../actions/couponAction";
 import picture from '../../images/png-image.jpg'
 
 const Coupon = ({ coupon }) => {
@@ -9,7 +9,6 @@ const Coupon = ({ coupon }) => {
 
   const { image, title, description, imageCode, amount, pointsCost, id } =
     coupon;
-
     
   const dispatch = useDispatch();
   const history = useHistory();
@@ -25,7 +24,7 @@ const Coupon = ({ coupon }) => {
     history.push(`/edit-coupon/${coupon.id}`);
   };
 
-  return (
+    return (
     <div className="col-lg-10">
       <div className="card mb-4 border-secondary">
         <div className="row no-gutters">
@@ -51,7 +50,18 @@ const Coupon = ({ coupon }) => {
               <hr className="mt-2" />
               <p className="text-muted small-text mt-3 mb-1 cortar-texto">{description}</p>
 
-              <div className="acciones">
+            
+              <div className="d-flex">
+               
+                {imageCode !== "default"  && imageCode !== undefined && imageCode !== "" ?
+                 (  <div className='border' >
+                    <a href={imageCode} download={"Código QR-"+title}>
+                      <img  className = "qr-div" src={imageCode} alt="QR"/>
+                    </a>
+                  </div>)
+                : null}
+
+                <div className="ml-auto p-2 mt-3">
                 <button
                   onClick={() => confirmDelete(id)}
                   className="btn btn-outline-primary btn-left"
@@ -66,7 +76,11 @@ const Coupon = ({ coupon }) => {
                   <i className="far fa-edit"></i>
                   Editar
                 </button>
+
+                  </div>
               </div>
+
+           
             </div>
         <div className="card-footer py-2">
           <small className="text-muted">{id}</small>
