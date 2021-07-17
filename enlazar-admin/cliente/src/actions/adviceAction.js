@@ -43,11 +43,11 @@ export function createNewAdvice(advice) {
       async function save() {
         await guardarImagen(advice);
         await clienteAxios.post("/api/advice", advice);
+        dispatch(addAdviceSuccess(advice));
       }
       save();
 
       //actualizo el state
-      dispatch(addAdviceSuccess(advice));
 
       //alerta
       Swal.fire("Genial!", "El consejo se agregó correctamente", "success");

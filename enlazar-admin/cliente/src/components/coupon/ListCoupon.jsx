@@ -36,8 +36,8 @@ const ListCoupon = () => {
         <div className="row">
           {coupons.map((coupon) => (
             <Coupon
-            key={coupon.id} 
-            coupon={coupon} />
+              key={coupon.id} 
+              coupon={coupon} />
           ))}
         </div>
       )}

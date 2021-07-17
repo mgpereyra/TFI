@@ -16,7 +16,6 @@ import {
   import Swal from "sweetalert2";
 import firebase from "firebase";
 
-
 //Listar consejos
 export function listCoupons() {
     return async (dispatch) => {
@@ -63,30 +62,29 @@ export function createNewCoupon(coupon) {
         const imagen = coupon.imageData.get("file");
         try {
           var storageRef = firebase.storage();
-          
-          await storageRef.ref().child("item_image/" + imagen.name).put(imagen);
-            
-          const uri = await storageRef
+          var imageRef = storageRef.ref().child("advice_image/" + imagen.name);
+          await imageRef.put(imagen).then(async (snapshot) => {
+            const uri = await storageRef
               .ref("item_image/" + imagen.name)
               .getDownloadURL();
-
-          coupon.image = uri;
+            coupon.image = uri;
+          });
         } catch (error) {
           console.log(error);
         }
       };
 
-     // async function save() {
+
+      async function save() {
         await guardarImagen(coupon);
         await clienteAxios.post("/api/coupon", coupon);
-      //}
-      //save();
-
-      //actualizo el state
-      dispatch(addCouponSuccess(coupon));
+        dispatch(addCouponSuccess(coupon));
+      }
+      save();
 
       //alerta
       Swal.fire("Genial!", "El cupón se agregó correctamente", "success");
+
     } catch (error) {
       console.log(error);
       dispatch(addCouponError());
@@ -160,7 +158,7 @@ export function modifyCouponAction(coupon) {
         type: COUPON_MODIFY_SUCCESS,
       });
       //alerta
-      Swal.fire("Genial", "El consejo se modificó correctamente", "success");
+      Swal.fire("Genial", "El cupón se modificó correctamente", "success");
     } catch (error) {
       console.log(error);
       dispatch({
@@ -170,3 +168,23 @@ export function modifyCouponAction(coupon) {
   };
 }
 
+//Crear codigo qr
+export function generateQrCode(id) {
+  return async (dispatch) => {
+    try {
+      //const urlCode = await QRCode.toDataURL(`${id}hola`)
+      await clienteAxios.put(`/api/coupon/qr/${id}`, {urlCode});
+
+      dispatch({
+        type: COUPON_MODIFY_SUCCESS,
+      });
+      //alerta
+      Swal.fire("Genial", "El código QR se generó correctamente", "success");
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: COUPON_MODIFY_ERROR,
+      });
+    }
+  };
+}

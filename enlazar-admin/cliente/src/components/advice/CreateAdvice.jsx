@@ -63,7 +63,7 @@ const CreateAdvice = ({history}) => {
         //redireccion
         setTimeout( function(){
             history.push('/list-advice')
-        },2500)
+        },1500)
     }
     return (
         <Fragment>

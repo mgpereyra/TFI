@@ -79,9 +79,9 @@ const CreateCoupon = ({ history }) => {
     });
 
     //redireccion
-   // setTimeout(function () {
+    setTimeout(function () {
       history.push("/list-coupon");
-    //}, 1000);
+    }, 1500);
   };
   return (
     <Fragment>
