@@ -103,3 +103,60 @@ exports.putQrCoupon = async (req, res) => {
     res.status(500).send("Error");
   }
 };
+
+
+//obtener consejos creados por el usuario actual
+exports.verifyCoupon = async (req, res) => {
+  try {
+    const db = firebase.database().ref();
+
+    const keyCoupon = req.params.idCoupon;
+    const keyUser = req.params.idUser;
+
+    //trae el usuario
+    const snapshot = await db.child("User").child(keyUser).once("value", (snapshot) => {
+    //verificar si es correcto el usuario
+      if(! snapshot.exists()){
+        return res.status(400).json({msg: 'El usuario buscado es incorrecto'})
+      }
+    });
+
+    //verificar si tiene cupones
+    const user = snapshot.val();
+    let cuponBuscado = null;
+
+    //verificar si es correcto el cupon
+    await db.child("Item").child(keyCoupon).once("value", (snapshot) => {
+      if(! snapshot.exists()){
+        return res.status(400).json({msg: 'El codigo de cupón es incorrecto'})
+      }
+    });
+
+    if(user.Cupon !== null && user.Cupon !== undefined ){
+      const cupones = Object.values(user.Cupon);
+      
+      //recorrer el listado y ver si el codigo coincide
+      cupones.forEach( (cupon)=>{
+        if(cupon.id_item === keyCoupon){
+          cuponBuscado = cupon;
+        }
+      })
+
+      if(cuponBuscado !== null){
+        res.json(cuponBuscado);
+      }else{
+        // si el codigo es correcto pero no pertenece al usuario
+        return res.status(401).json({msg: 'Verifique el código de cupón ingresado'})
+
+      }
+
+
+    }else{
+      return res.status(401).json({msg: 'El usuario ingresado no tiene cupones canjeados'})
+    }
+    
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error");
+  }
+};

@@ -61,20 +61,18 @@ const Coupon = ({ coupon }) => {
                   </div>)
                 : null}
 
-                <div className="ml-auto p-2 mt-3">
+                <div className="ml-auto mt-4">
                 <button
                   onClick={() => confirmDelete(id)}
-                  className="btn btn-outline-primary btn-left"
+                  className="btn btn-outline-danger btn-circle mr-2"
                 >
                   <i className="far fa-trash-alt"></i>
-                  Eliminar
                 </button>
                 <button
                   onClick={() => confirmEdit(coupon)}
-                  className="btn btn-primary btn-right"
+                  className="btn btn-success  btn-circle"
                 >
                   <i className="far fa-edit"></i>
-                  Editar
                 </button>
 
                   </div>

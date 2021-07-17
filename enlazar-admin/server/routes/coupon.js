@@ -10,6 +10,13 @@ router.get('/',
     couponController.getListCoupons
 )
 
+
+//api/coupon
+router.get('/:idUser/:idCoupon',
+    auth,
+    couponController.verifyCoupon
+)
+
 //api/coupon
 router.post('/',
     auth,

@@ -11,6 +11,8 @@ import {
     GET_COUPON_MODIFY,
     COUPON_MODIFY_ERROR,
     COUPON_MODIFY_SUCCESS,
+    COUPON_VERIFY_ERROR,
+    COUPON_VERIFY_SUCCESS
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -20,7 +22,8 @@ const initialState = {
     error: null,
     loading: false,
     couponToDelete: null,
-    couponToModify:null
+    couponToModify:null,
+    couponToVerify: null
 }
 
 //eslint-disable-next-line
@@ -41,7 +44,8 @@ export default function (state = initialState, action){
         case ADD_COUPON_ERROR:
         case DOWNLOAD_COUPONS_ERROR:    
         case COUPON_MODIFY_ERROR:
-        case COUPON_DELETE_ERROR:    
+        case COUPON_DELETE_ERROR:
+        case COUPON_VERIFY_ERROR:    
             return {
                 ...state,
                 loading: false,
@@ -74,7 +78,12 @@ export default function (state = initialState, action){
             return{
                 ...state,
                 couponToModify: null
-            }           
+            } 
+        case COUPON_VERIFY_SUCCESS:
+            return{
+                ...state,
+                couponToVerify: action.payload
+            }              
         default:
             return state;
     }

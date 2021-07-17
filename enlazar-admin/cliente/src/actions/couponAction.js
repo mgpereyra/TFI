@@ -10,7 +10,9 @@ import {
     COUPON_DELETE_SUCCESS,
     GET_COUPON_MODIFY,
     COUPON_MODIFY_ERROR,
-    COUPON_MODIFY_SUCCESS
+    COUPON_MODIFY_SUCCESS,
+    COUPON_VERIFY_ERROR,
+    COUPON_VERIFY_SUCCESS
   } from "../types";
   import clienteAxios from "../config/axios";
   import Swal from "sweetalert2";
@@ -173,7 +175,7 @@ export function generateQrCode(id) {
   return async (dispatch) => {
     try {
       //const urlCode = await QRCode.toDataURL(`${id}hola`)
-      await clienteAxios.put(`/api/coupon/qr/${id}`, {urlCode});
+     // await clienteAxios.put(`/api/coupon/qr/${id}`, {urlCode});
 
       dispatch({
         type: COUPON_MODIFY_SUCCESS,
@@ -186,5 +188,45 @@ export function generateQrCode(id) {
         type: COUPON_MODIFY_ERROR,
       });
     }
+  };
+}
+
+
+//verificar cupon
+export function verifyCoupon(ids) {
+  return async (dispatch) => {
+    try {
+      //const urlCode = await QRCode.toDataURL(`${id}hola`)
+      const response = await clienteAxios.get(`/api/coupon/${ids.idUser}/${ids.idCoupon}`);
+      console.log(response.data)
+
+      dispatch({
+        type: COUPON_VERIFY_SUCCESS,
+        payload: response.data
+      });
+
+      //alerta
+      //Swal.fire("Genial", "El código QR se generó correctamente", "success");
+    } catch (error) {
+    
+      const msg = error.response.data.msg;
+      dispatch({
+        type: COUPON_VERIFY_ERROR
+      });
+
+      if(error.response.status === 400){
+        Swal.fire({
+          icon: "error",
+          title: "Oppss..",
+          text: msg,
+        });
+      }
+      if(error.response.status === 401){
+        Swal.fire({
+          icon: "info",
+          title: "Oppss..",
+          text: msg,
+        });
+    }}
   };
 }

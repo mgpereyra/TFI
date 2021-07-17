@@ -95,6 +95,14 @@ export const COUPON_DELETE_ERROR = 'COUPON_DELETE_ERROR';
 export const GET_COUPON_DELETE = 'GET_COUPON_DELETE';
 export const COUPON_DELETE_SUCCESS = 'COUPON_DELETE_SUCCESS';
 
+//COUPON VERIFY
+export const COUPON_VERIFY_ERROR = 'COUPON_VERIFY_ERROR';
+export const COUPON_VERIFY_SUCCESS = 'COUPON_VERIFY_SUCCESS';
+
+
+
+
+
 ////////////////////////////////////////////////////////////////////
 
 //LIST RECYCLER
