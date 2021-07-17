@@ -68,16 +68,6 @@
     <string name="iniciar_servicio">Iniciar Servicio</string>
     <string name="finalizar_servicio">Finalizar Servicio</string>
     <string name="comentarios_sobre_el_servicio">Comentarios sobre el servicio</string>
-    <string-array name="locations_array">
-        <item>Ramos Mejia</item>
-        <item>San Justo</item>
-        <item>Casanova</item>
-    </string-array>
-    <string-array name="partidos_array">
-        <item>La Matanza</item>
-        <item>3 de Febrero</item>
-        <item>Avellaneda</item>
-    </string-array>
 
     <string name="user_login">USERLOGIN</string>
 
@@ -96,6 +86,7 @@
     <string name="confirmar_asistecia_P_E">CONFIRMAR</string>
     <string name="cancelar_asistencia_P_E">Cancelar</string>
     <string name="no_hay_valor_a_capturar">no hay valor a capturar</string>
+    <string name="no_se_encotraron_los_tipo_de_servicios_solicitados">No se encotraron <br />los tipos de <br/>Servicios solicitados</string>
 
 
 </resources>

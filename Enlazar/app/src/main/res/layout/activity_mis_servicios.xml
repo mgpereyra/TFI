@@ -73,6 +73,22 @@
             app:layout_constraintVertical_bias="0.145"
             tools:listitem="@layout/mis_servicios_card" />
 
+        <TextView
+            android:id="@+id/no_hay_servicios"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:text="@string/no_se_encotraron_los_tipo_de_servicios_solicitados"
+            android:textColor="@color/white"
+            android:background="@color/black"
+            android:shadowColor="@color/green"
+            android:textAlignment="center"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/servicios_confirmados"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
