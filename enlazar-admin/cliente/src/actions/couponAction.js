@@ -12,7 +12,8 @@ import {
     COUPON_MODIFY_ERROR,
     COUPON_MODIFY_SUCCESS,
     COUPON_VERIFY_ERROR,
-    COUPON_VERIFY_SUCCESS
+    COUPON_VERIFY_SUCCESS,
+    GET_COUPON_VERIFY
   } from "../types";
   import clienteAxios from "../config/axios";
   import Swal from "sweetalert2";
@@ -201,12 +202,11 @@ export function verifyCoupon(ids) {
       console.log(response.data)
 
       dispatch({
-        type: COUPON_VERIFY_SUCCESS,
+        type: GET_COUPON_VERIFY,
         payload: response.data
       });
 
-      //alerta
-      //Swal.fire("Genial", "El código QR se generó correctamente", "success");
+    
     } catch (error) {
     
       const msg = error.response.data.msg;
@@ -230,3 +230,25 @@ export function verifyCoupon(ids) {
     }}
   };
 }
+
+//verificar cupon
+export function confirmCanjeAction(couponToVerify) {
+  return async (dispatch) => {
+    try {
+      const idUser = couponToVerify.user.id;
+
+      const response = await clienteAxios.put(`/api/coupon/confirm/${idUser}`, couponToVerify);
+      console.log(response)
+
+      dispatch({
+        type: COUPON_VERIFY_SUCCESS
+      });
+      
+      //alerta
+      Swal.fire("Genial", "Se completó el canje correctamente", "success");
+    } catch (error) {
+    
+      const msg = error.response.data.msg;
+     
+  };
+}}

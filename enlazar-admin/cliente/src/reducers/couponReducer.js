@@ -12,7 +12,8 @@ import {
     COUPON_MODIFY_ERROR,
     COUPON_MODIFY_SUCCESS,
     COUPON_VERIFY_ERROR,
-    COUPON_VERIFY_SUCCESS
+    COUPON_VERIFY_SUCCESS,
+    GET_COUPON_VERIFY
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -45,11 +46,17 @@ export default function (state = initialState, action){
         case DOWNLOAD_COUPONS_ERROR:    
         case COUPON_MODIFY_ERROR:
         case COUPON_DELETE_ERROR:
-        case COUPON_VERIFY_ERROR:    
             return {
                 ...state,
                 loading: false,
                 error: true
+        }
+        case COUPON_VERIFY_ERROR:    
+            return {
+                ...state,
+                loading: false,
+                error: true,
+                couponToVerify: null
         }
         case DOWNLOAD_COUPONS_SUCCESS:
             return {
@@ -79,11 +86,16 @@ export default function (state = initialState, action){
                 ...state,
                 couponToModify: null
             } 
-        case COUPON_VERIFY_SUCCESS:
+        case GET_COUPON_VERIFY:
             return{
                 ...state,
                 couponToVerify: action.payload
-            }              
+            }    
+        case COUPON_VERIFY_SUCCESS:
+            return{
+                ...state,
+                couponToVerify: null
+            }               
         default:
             return state;
     }

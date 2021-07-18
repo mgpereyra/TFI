@@ -29,6 +29,12 @@ router.put('/:id',
     couponController.putCoupon
 )
 
+//api/coupon
+router.put('/confirm/:id',
+    auth,
+    couponController.confirmCanjeCoupon
+)
+
 
 //api/coupon
 router.delete('/:id',

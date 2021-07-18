@@ -1,11 +1,14 @@
 import React, { Fragment, useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { verifyCoupon } from "../../actions/couponAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
+import CouponVerified from "./CouponVerified";
 
 const VerifyCoupon = () => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
+
+  const couponToVerify = useSelector((state) => state.coupons.couponToVerify);
 
   //state del componente
   const [ids, setIds] = useState({
@@ -36,9 +39,6 @@ const VerifyCoupon = () => {
     }
 
     verify(ids);
-
-    //reiniciar el form
-  
   };
   return (
     <Fragment>
@@ -96,6 +96,16 @@ const VerifyCoupon = () => {
               </button>
             </div>
           </form>
+
+          {couponToVerify !== null ? 
+          
+          <CouponVerified
+              key={couponToVerify.cupon.id_item} 
+              couponToVerify={couponToVerify} />
+          : null}
+
+
+
         </div>
       </div>
     </Fragment>
