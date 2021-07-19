@@ -22,13 +22,17 @@ const ListCoupon = () => {
         <h1>
           <i className="fas fa-recycle mr-2"></i>Listado de cupones
         </h1>
+        <Link to={"/verify-coupon-archive"} className="btn btn-primary mb-3">
+          <i className="fas fa-plus-circle mr-2"></i>
+          Verificar 
+        </Link>
         <Link to={"/verify-coupon"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle mr-2"></i>
-          Verificar cupón
+          Verificación manual
         </Link>
         <Link to={"/create-coupon"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle mr-2"></i>
-          Crear un nuevo cupón
+         Nuevo cupón
         </Link>
       </div>
 

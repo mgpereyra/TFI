@@ -13,7 +13,8 @@ import {
     COUPON_MODIFY_SUCCESS,
     COUPON_VERIFY_ERROR,
     COUPON_VERIFY_SUCCESS,
-    GET_COUPON_VERIFY
+    GET_COUPON_VERIFY,
+    PROCESS_COUPON_VERIFY
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -31,7 +32,8 @@ const initialState = {
 export default function (state = initialState, action){
     switch(action.type){
         case ADD_COUPON:
-        case START_DOWNLOAD_COUPONS:    
+        case START_DOWNLOAD_COUPONS: 
+        case PROCESS_COUPON_VERIFY:  
             return {
                 ...state,
                 loading: true
@@ -89,12 +91,14 @@ export default function (state = initialState, action){
         case GET_COUPON_VERIFY:
             return{
                 ...state,
-                couponToVerify: action.payload
+                couponToVerify: action.payload,
+                loading: false
             }    
         case COUPON_VERIFY_SUCCESS:
             return{
                 ...state,
-                couponToVerify: null
+                couponToVerify: null,
+                loading: false
             }               
         default:
             return state;

@@ -19,6 +19,7 @@ import CreateCoupon from './components/coupon/CreateCoupon'
 import ListCoupon from './components/coupon/ListCoupon';
 import EditCoupon from './components/coupon/EditCoupon';
 import VerifyCoupon from './components/coupon/VerifyCoupon';
+import VerifyCouponByCamera from './components/coupon/VerifyCouponByCamera';
 
 import CreateRecycler from './components/recycler/CreateRecycler' 
 import ListRecycler from './components/recycler/ListRecycler';
@@ -83,7 +84,9 @@ function App() {
                       <PrivateRoute exact path="/list-coupon" component={ListCoupon}/>
                       <PrivateRoute exact path="/edit-coupon/:id" component={EditCoupon}/>
                       <PrivateRoute exact path="/verify-coupon" component={VerifyCoupon}/>
-
+                      <PrivateRoute exact path="/verify-coupon-archive" component={VerifyCouponByCamera}/>
+                     
+                      
 
                       <PrivateRoute exact path="/create-recycler" component={CreateRecycler}/>
                       <PrivateRoute exact path="/list-recycler" component={ListRecycler}/>

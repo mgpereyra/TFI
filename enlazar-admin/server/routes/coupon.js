@@ -18,6 +18,12 @@ router.get('/:idUser/:idCoupon',
 )
 
 //api/coupon
+router.get('/:idUser/:idCoupon/:idItem',
+    auth,
+    couponController.verifyCouponCamera
+)
+
+//api/coupon
 router.post('/',
     auth,
     couponController.createCoupon

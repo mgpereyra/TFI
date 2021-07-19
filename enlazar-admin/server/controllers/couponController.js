@@ -105,7 +105,7 @@ exports.putQrCoupon = async (req, res) => {
 };
 
 
-//obtener consejos creados por el usuario actual
+//verificacion manual
 exports.verifyCoupon = async (req, res) => {
   try {
     const db = firebase.database().ref();
@@ -198,3 +198,72 @@ exports.confirmCanjeCoupon = async (req, res) => {
     res.status(500).send("Error");
   }
 };
+
+
+//verificacion manual
+exports.verifyCouponCamera = async (req, res) => {
+  try {
+    const db = firebase.database().ref();
+    const keyCoupon = req.params.idCoupon.trim();
+    const keyUser = req.params.idUser.trim();
+    const keyItem = req.params.idItem.trim();
+
+    console.log(keyCoupon, keyUser, keyItem)
+
+    let cuponBuscado = {
+      user: null,
+      cupon : null
+    };
+
+    //trae el usuario
+    const snapshot = await db.child("User").child(keyUser).once("value", (snapshot) => {
+    //verificar si es correcto el usuario
+      if(! snapshot.exists()){
+        return res.status(400).json({msg: 'El QR ingresado no es válido'})
+      }else{
+        cuponBuscado.user = snapshot.val()
+      }
+
+    });
+
+    if(snapshot.exists()){
+      //verificar si tiene cupones
+      const user = snapshot.val();
+      
+      //verificar si es correcto el cupon
+      await db.child("Item").child(keyItem).once("value", (snapshot) => {
+        if(! snapshot.exists()){
+          return res.status(400).json({msg: 'El codigo de cupón es incorrecto'})
+        }else{
+          if(user.Cupon !== null && user.Cupon !== undefined ){
+            const cupones = Object.values(user.Cupon);
+            
+            //recorrer el listado y ver si el codigo coincide
+            cupones.forEach( (cupon)=>{
+              if(cupon.id === keyCoupon){
+                cuponBuscado.cupon = cupon;
+              }
+            })
+  
+            if(cuponBuscado !== null){
+              return res.json(cuponBuscado);
+            }else{
+              // si el codigo es correcto pero no pertenece al usuario
+              return res.status(400).json({msg: 'Verifique el código de cupón ingresado'})
+
+            }
+          }else{
+            return res.status(400).json({msg: 'El usuario ingresado no tiene cupones canjeados'})
+          }
+        }
+      });
+    }
+    
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error");
+  }
+};
+
+
+

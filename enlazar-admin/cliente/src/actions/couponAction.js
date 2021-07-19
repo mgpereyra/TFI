@@ -13,7 +13,8 @@ import {
     COUPON_MODIFY_SUCCESS,
     COUPON_VERIFY_ERROR,
     COUPON_VERIFY_SUCCESS,
-    GET_COUPON_VERIFY
+    GET_COUPON_VERIFY,
+    PROCESS_COUPON_VERIFY
   } from "../types";
   import clienteAxios from "../config/axios";
   import Swal from "sweetalert2";
@@ -252,3 +253,42 @@ export function confirmCanjeAction(couponToVerify) {
      
   };
 }}
+
+
+//verificar cupon camera
+export function verifyCouponCamera(result) {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: PROCESS_COUPON_VERIFY
+      });
+      
+      const arrayResult = result.split("/")  
+      const idUser = arrayResult[0]
+      const idItem = arrayResult[1]
+      const idCoupon = arrayResult[2]
+
+      const response = await clienteAxios.get(`/api/coupon/${idUser}/${idCoupon}/${idItem}`);
+
+      dispatch({
+        type: GET_COUPON_VERIFY,
+        payload: response.data
+      });
+
+    
+    } catch (error) {
+      const msg = error.response.data.msg;
+      dispatch({
+        type: COUPON_VERIFY_ERROR
+      });
+
+      if(error.response.status === 400){
+        Swal.fire({
+          icon: "error",
+          title: "Oppss..",
+          text: msg,
+        });
+      }
+      }
+  };
+}

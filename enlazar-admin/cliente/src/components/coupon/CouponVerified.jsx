@@ -22,20 +22,25 @@ const CouponVerified = ({ couponToVerify }) => {
 
   return (
     <Fragment>
-      <div className="col-lg-10">
-        <label className="control-label">Resultados de la búsqueda</label>
-        <div className="card mb-4 border-secondary ">
-          <div className="card-body">
+      <div className="col-lg-12">
+        <h6 className="alert alert-info">
+          <i className="fas fa-info-circle mr-2"></i>
+
+          {estadoCupon ? (
+            <b> El cupón ingresado ya fue canjeado</b>
+          ) : (
+            <b> El cupón está pendiente de canje</b>
+          )}
+        </h6>
+        <label>Resultados de la búsqueda: </label>
+        <div className="card mb-4 border-secondary px-2 mt-2">
+          <div className="card-body px-1">
             <div className="row">
-              <div className="col-md-7 border-right">
+              <div className="col-md-7 border-right px-1">
                 <p className="card-text  text-right mb-3">
                   <small className="text-estado mr-2 contador">
-                    Estado ~{" "}
-                    <b>
-                      {estadoCupon 
-                        ? " YA SE ENCUENTRA CANJEADO"
-                        : "PENDIENTE DE CANJE"}
-                    </b>
+                    Estado ~
+                    <b>{estadoCupon ? " CANJEADO" : "PENDIENTE"}</b>
                   </small>
                 </p>
                 <small className="text-secondary">Producto</small>
@@ -56,10 +61,10 @@ const CouponVerified = ({ couponToVerify }) => {
                   ) : null}
                 </div>
               </div>
-              <div className="col-md-5">
+              <div className="col-md-5 px-2">
                 <p className="card-text  text-right mb-3">
                   <small className="text-estado mr-2 contador">
-                    Documento ~ <b>{dni}</b>
+                    DNI ~ <b>{dni}</b>
                   </small>
                 </p>
                 <small className="text-secondary">Nombre de usuario</small>
@@ -79,7 +84,7 @@ const CouponVerified = ({ couponToVerify }) => {
         </div>
       </div>
 
-      {estadoCupon ? null : 
+      {estadoCupon ? null : (
         <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
           <button
             className="btn btn-success me-md-2"
@@ -91,7 +96,7 @@ const CouponVerified = ({ couponToVerify }) => {
             Confirmar canje
           </button>
         </div>
-      }
+      )}
     </Fragment>
   );
 };

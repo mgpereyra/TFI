@@ -99,6 +99,10 @@ export const COUPON_DELETE_SUCCESS = 'COUPON_DELETE_SUCCESS';
 export const COUPON_VERIFY_ERROR = 'COUPON_VERIFY_ERROR';
 export const COUPON_VERIFY_SUCCESS = 'COUPON_VERIFY_SUCCESS';
 export const GET_COUPON_VERIFY = 'GET_COUPON_VERIFY';
+export const PROCESS_COUPON_VERIFY = 'PROCESS_COUPON_VERIFY';
+
+
+
 
 
 ////////////////////////////////////////////////////////////////////
