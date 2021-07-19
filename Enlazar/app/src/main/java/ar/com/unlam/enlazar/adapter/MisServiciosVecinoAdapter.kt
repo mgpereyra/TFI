@@ -53,6 +53,11 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
 
         init {
 
+            view.dataContainer.setOnClickListener {
+                val intent = Intent(view.context, MisServiciosDetalleActivity::class.java)
+                intent.putExtra(ID, service!!.id)
+                view.context.startActivity(intent)
+            }
                 view.btn_ver_servicio.visibility=View.VISIBLE
                 view.btn_ver_servicio.setOnClickListener {
                     val intent = Intent(view.context, MisServiciosDetalleActivity::class.java)

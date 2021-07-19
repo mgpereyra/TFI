@@ -109,7 +109,7 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
         detalle_activity_cantidad_de_bolsas_azul?.setText(s.envasesCarton.toString())
         detalle_activity_cardInfo_date?.setText(s.date)
         detalle_activity_cardInfo_direccion?.setText(s.address)
-        detalle_activity_turno?.setText(s.time)
+        detalle_activity_turno?.setText("Hora: "+s.time)
         cardInfoId?.setText(s.id)
         verificarEstado(s.estado)
 

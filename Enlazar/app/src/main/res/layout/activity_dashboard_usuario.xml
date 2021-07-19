@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">-->
 
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,25 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.vecino.DashboardUserActivity"
     android:background="@color/backGroundCustom">
-<!--    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/barra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent">-->
 
-    <!--! <com.google.android.material.textview.MaterialTextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/app_name"
-             android:layout_marginBottom="15dp"
-             android:layout_marginStart="15dp"
-             android:layout_marginEnd="15dp"
-             android:layout_marginTop="20dp"
-             android:textSize="25sp"
-             android:textAppearance="?attr/textAppearanceHeadline6" />
- -->
-  <!--  </androidx.constraintlayout.widget.ConstraintLayout>-->
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_DashboardUsuario"
@@ -48,139 +22,105 @@
         app:layout_constraintVertical_bias="0.001"
         app:title="@string/app_name" />
 
-    <ScrollView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="569dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_DashboardUsuario">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_mis_servicios"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#006d46"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <!--  <androidx.cardview.widget.CardView
-                android:id="@+id/cardView_proximo_servicio"
-
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:visibility="gone"
-                app:cardBackgroundColor="@color/emerald"
-                app:cardCornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imageView0"
-                    android:layout_width="78dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/ic_proximo_servicio"
-                    android:translationX="5dp"
-                    android:translationY="20dp" />
-
-                <TextView
-                    android:id="@+id/txtProximoServ"
-                    style="@android:style/Widget.Holo.TextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_card_proximo_servicio"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:textColor="@color/textWhite"
-                    android:textSize="24sp"
-                    android:translationX="90dp"
-                    android:translationY="15dp" />
-
-                <TextView
-                    android:id="@+id/txtProximoServSub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/subtitle_proximos_servicio"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/subTextWhite"
-                    android:translationX="90dp"
-                    android:translationY="50dp" />
-
-            </androidx.cardview.widget.CardView>-->
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView_mis_servicios"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="#006d46"
-                app:cardCornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView_proximo_servicio">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="70dp"
+                    android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:layout_margin="15dp"
                     android:background="@drawable/ic_mis_servicios"
                     android:backgroundTint="@color/white"
-                    android:translationX="5dp"
-                    android:translationY="30dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.049"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txtMisServicios"
                     style="@android:style/Widget.Holo.TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textSize="25sp"
                     android:text="@string/title_card_mis_servicios"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
-                    android:textSize="30sp"
-                    android:translationX="90dp"
-                    android:translationY="35dp" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView" />
 
                 <TextView
                     android:id="@+id/txtMisServiciosSub"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
                     android:text="@string/subtitle_mis_servicios"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/subTextWhite"
-                    android:translationX="90dp"
-                    android:translationY="50dp"
-                    android:visibility="gone" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView"
+                    app:layout_constraintVertical_bias="1.0"
+                    android:visibility="gone"/>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView_mis_puntos"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_mis_puntos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#006d46"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_mis_servicios">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="#006d46"
-                app:cardCornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView_mis_servicios">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="70dp"
+                    android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:layout_margin="15dp"
                     android:background="@drawable/ic_mis_puntos"
                     android:backgroundTint="@color/white"
-                    android:translationX="5dp"
-                    android:translationY="30dp"
                     android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.049"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@drawable/ic_mis_puntos"
                     tools:visibility="visible" />
 
@@ -189,12 +129,15 @@
                     style="@android:style/Widget.Holo.TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textSize="25sp"
                     android:text="@string/title_card_mis_puntos"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
-                    android:textSize="30sp"
-                    android:translationX="90dp"
-                    android:translationY="35dp" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="@+id/imageView2"
+                    app:layout_constraintVertical_bias="0.375" />
 
                 <TextView
                     android:id="@+id/txtMisPuntosSub"
@@ -206,43 +149,61 @@
                     android:textColor="@color/subTextWhite"
                     android:translationX="90dp"
                     android:translationY="50dp"
-                    android:visibility="gone" />
-            </androidx.cardview.widget.CardView>
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView_mis_encuentros"
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_mis_encuentros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#006d46"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_mis_puntos">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="#006d46"
-                app:cardCornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView_mis_puntos">
+                android:layout_height="match_parent">
+
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="70dp"
+                    android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:layout_margin="15dp"
                     android:background="@drawable/ic_mis_encuentros"
                     android:backgroundTint="@color/white"
-                    android:translationX="5dp"
-                    android:translationY="30dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.048"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/txtMisEncuentros"
                     style="@android:style/Widget.Holo.TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textSize="25sp"
                     android:text="@string/title_card_mis_encuentros"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
-                    android:textSize="30sp"
-                    android:translationX="90dp"
-                    android:translationY="35dp" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.042"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3"
+                    app:layout_goneMarginTop="60dp" />
 
                 <TextView
                     android:id="@+id/txtMisEncuentrosSub"
@@ -252,45 +213,58 @@
                     android:text="@string/subtitle_proximo_encuentro"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/subTextWhite"
-                    android:translationX="90dp"
-                    android:translationY="50dp"
-                    android:visibility="gone" />
-            </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView_seccion_informativa"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_seccion_informativa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardBackgroundColor="#006d46"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_mis_encuentros">
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="#006d46"
-                app:cardCornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView_mis_encuentros">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="70dp"
+                    android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:layout_margin="15dp"
                     android:background="@drawable/ic_baseline_info_24"
-                    android:backgroundTint="@color/white"
-                    android:translationX="5dp"
-                    android:translationY="30dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.049"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txtSeccionInformativa"
                     style="@android:style/Widget.Holo.TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textSize="25sp"
                     android:text="@string/title_card_seccic_n_informativa"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
-                    android:textSize="30sp"
-                    android:translationX="90dp"
-                    android:translationY="35dp" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView4"
+                    app:layout_constraintVertical_bias="0.4" />
 
                 <TextView
                     android:id="@+id/txtSeccionInformativaSub"
@@ -299,36 +273,18 @@
                     android:text="@string/subTitle_seccion_informativa"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/subTextWhite"
-                    android:translationX="90dp"
-                    android:translationY="75dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    app:layout_constraintStart_toStartOf="@+id/txtSeccionInformativa"
+                    app:layout_constraintTop_toBottomOf="@+id/txtSeccionInformativa"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            </androidx.cardview.widget.CardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_new_service"
-        style="@style/Buscar"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:backgroundTint="@color/ocre"
-        android:src="@drawable/add"
-        android:translationZ="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <com.google.android.material.navigation.NavigationView
-        android:visibility="visible"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/menu"
-        android:fitsSystemWindows="true"/>-->
 
-<!--
-</androidx.drawerlayout.widget.DrawerLayout>-->

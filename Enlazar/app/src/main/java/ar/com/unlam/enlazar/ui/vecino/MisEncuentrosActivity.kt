@@ -104,7 +104,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
                             .addOnCompleteListener {
                                 Toast.makeText(
                                     this@MisEncuentrosActivity,
-                                    "Sú asistencia fue cancelada exitosamente",
+                                    "Su asistencia fue cancelada exitosamente",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }

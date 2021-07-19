@@ -87,10 +87,7 @@ class DashboardUserActivity : AppCompatActivity() {
     }
 
     private fun setCardOnClickListerners() {
-    /*    cardView_proximo_servicio.setOnClickListener {
-            val intent: Intent = Intent(this, DetalleServicioActivity::class.java)
-            startActivity(intent)
-        }*/
+
         cardView_mis_servicios.setOnClickListener {
             val intent: Intent = Intent(this, MisServiciosActivity::class.java)
             startActivity(intent)
@@ -107,13 +104,6 @@ class DashboardUserActivity : AppCompatActivity() {
         cardView_seccion_informativa.setOnClickListener {
             val intent: Intent = Intent(this, SeccionInformativaActivity::class.java)
             startActivity(intent)
-        }
-        btn_new_service.setOnClickListener {
-
-            val intent = Intent(this, NuevoServicioActivity::class.java)
-            intent.putExtra(NuevoServicioActivity.ID, userId)
-            userId
-            this.startActivity(intent)
         }
     }
 
