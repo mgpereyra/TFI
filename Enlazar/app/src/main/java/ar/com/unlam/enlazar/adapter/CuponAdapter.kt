@@ -8,6 +8,8 @@ import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.CardInfo
 import ar.com.unlam.enlazar.model.CuponCanje
 import ar.com.unlam.enlazar.model.Service
+import ar.com.unlam.enlazar.model.utils.QrUtils
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.mis_canjes_card.view.*
 
@@ -29,10 +31,12 @@ class CuponAdapter:RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CuponViewHolder, position: Int) {
+        val idRecolector = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
         listCupones[position].let {
+            QrUtils.generateQr(idRecolector+"/"+it.id+"/"+it.id_item)
             holder.itemView.cardInfoId.text=it.id
-            Picasso.get()
-                .load(it.imageCode).error(R.drawable.error).into(holder.itemView.codigo)
+            holder.itemView.codigo.setImageBitmap(QrUtils.generateQr(idRecolector+"/"+it.id+"/"+it.id_item))
+            //Picasso.get().load(it.imageCode).error(R.drawable.error).into(holder.itemView.codigo)
             holder.itemView.cardInfo_elemento_canje.text=it.title
             holder.itemView.label_cantidad_disponible.visibility=View.INVISIBLE
             if (it.estadoCupon==false.toString()){
@@ -40,9 +44,6 @@ class CuponAdapter:RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
             }else{
                 holder.itemView.cardInfo_costo.text="Canjeado"
             }
-
-
-
         }
 
     }

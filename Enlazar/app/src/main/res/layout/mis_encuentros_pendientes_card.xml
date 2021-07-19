@@ -19,7 +19,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="20dp"
         app:strokeWidth="5dp"
-        app:strokeColor="@color/green"
+        android:backgroundTint="@color/grey"
+        app:strokeColor="@color/grey"
         tools:visibility="visible">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

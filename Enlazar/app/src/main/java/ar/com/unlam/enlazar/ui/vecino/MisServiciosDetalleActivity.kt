@@ -1,6 +1,5 @@
 package ar.com.unlam.enlazar.ui.vecino
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -107,9 +106,8 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
         detalle_activity_cantidad_de_bolsas_amarillo.text = s.envasesPlasticos.toString()
         detalle_activity_cantidad_bolsas_verdes?.setText(s.envasesVidrio.toString())
         detalle_activity_cantidad_de_bolsas_azul?.setText(s.envasesCarton.toString())
-        detalle_activity_cardInfo_date?.setText(s.date)
-        detalle_activity_cardInfo_direccion?.setText(s.address)
-        detalle_activity_turno?.setText(s.time)
+        detalle_activity_cardInfo_detalle_direccion?.setText(s.address)
+        detalle_activity_turno?.setText("Fecha: "+s.date +" - "+ "Hora: "+s.time)
         cardInfoId?.setText(s.id)
         verificarEstado(s.estado)
 

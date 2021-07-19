@@ -1,5 +1,6 @@
 package ar.com.unlam.enlazar.ui.vecino
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -50,7 +51,13 @@ class MisServiciosActivity : AppCompatActivity() {
             viewModelMisServicios.getServicios(Estado.ASIGNADO)
             setServicios()
         }
+        btn_new_service.setOnClickListener {
 
+            val intent = Intent(this, NuevoServicioActivity::class.java)
+            intent.putExtra(NuevoServicioActivity.ID, id)
+            id
+            this.startActivity(intent)
+        }
         servicios_pendientes.setOnClickListener {
 
             servicios_pendientes.setBackgroundColor(

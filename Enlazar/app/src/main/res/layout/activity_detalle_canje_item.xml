@@ -39,9 +39,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barra"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/grey"
+            app:strokeColor="@color/grey"
             app:strokeWidth="1dp"
-            app:strokeColor="@android:color/black"
             tools:visibility="visible">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -66,7 +66,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/codigo"
                     android:layout_width="400dp"
-                    android:layout_height="70dp"
+                    android:layout_height="200dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -145,19 +145,19 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_canjear_item"
-                    android:layout_width="wrap_content"
+                    android:layout_width="155dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:backgroundTint="@color/emerald"
                     android:text="@string/canjear"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.873"
-                    app:layout_constraintStart_toEndOf="@id/description_item"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/description_item"
-                    app:layout_constraintVertical_bias="1.0"
-                    android:layout_marginBottom="10dp"/>
+                    app:layout_constraintVertical_bias="0.0" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

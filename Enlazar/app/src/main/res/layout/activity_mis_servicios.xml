@@ -71,7 +71,6 @@
             app:layout_constraintTop_toBottomOf="@id/servicios_confirmados"
             app:layout_constraintVertical_bias="0.145"
             tools:listitem="@layout/mis_servicios_card" />
-
         <TextView
             android:id="@+id/no_hay_servicios"
             android:layout_width="match_parent"
@@ -88,4 +87,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="gone"
             />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_new_service"
+            style="@style/Buscar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/ocre"
+            android:src="@drawable/add"
+            android:translationZ="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
