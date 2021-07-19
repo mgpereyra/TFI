@@ -37,11 +37,11 @@ class NuevoServicioActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().getReference()
     var id = FirebaseAuth.getInstance().currentUser!!.uid
 
-    val newServiceViewModel: NewServiceViewModel by viewModel()
+    val newServiceViewModel: NuevoServicioViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_servicio)
-        setDirection(id)
+        getDirection(id)
 
         dia_picker.setOnClickListener { showDatePicker() }
         horario_picker.setOnClickListener { showTimePicker() }
@@ -110,8 +110,9 @@ class NuevoServicioActivity : AppCompatActivity() {
         val mainIntent = Intent(this, LoginActivity::class.java)
         startActivity(mainIntent)
     }
-    private fun setDirection(idForLocation: String) {
-        db.child("User").child(idForLocation).addValueEventListener(object : ValueEventListener {
+    private fun getDirection(idForLocation: String) {
+        newServiceViewModel.obtenerDireccion(idForLocation)
+     /*   db.child("User").child(idForLocation).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 u = snapshot.child("address").value.toString()
                 lat = snapshot.child("latitud").value.toString().toDouble()
@@ -123,7 +124,7 @@ class NuevoServicioActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-        })
+        })*/
     }
 
     fun toolbar() {
@@ -138,8 +139,6 @@ class NuevoServicioActivity : AppCompatActivity() {
     }
 
     private fun createService() {
-        /*val date = getCurrentDateTime()
-        val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")*/
         if (cant_tipo1.editText?.text.toString().isEmpty()) {
             cant_tipo1.editText?.setText("0")
         }
@@ -165,7 +164,10 @@ class NuevoServicioActivity : AppCompatActivity() {
                 "",
                 Estado.PENDIENTE.ordinal
             )
-            if (serviceId != null) {
+        newServiceViewModel.crearNuevoServicio(service)
+        irDashboardUserActivity()
+
+       /* if (serviceId != null) {
                 db.child("Service").child(serviceId).setValue(service)
                     .addOnCompleteListener {
                         Toast.makeText(
@@ -177,8 +179,8 @@ class NuevoServicioActivity : AppCompatActivity() {
 
                         irDashboardUserActivity()
                     }
-            }
-        }
+            }*/
+    }
 
 
 
@@ -197,13 +199,13 @@ private fun setObservers() {
 
 }
 
-private fun estado(status: NewServiceViewModel.EstadoNewService) {
+private fun estado(status: NuevoServicioViewModel.EstadoNewService) {
     when (status) {
-        NewServiceViewModel.EstadoNewService.SUCCESS -> Toast.makeText(
+        NuevoServicioViewModel.EstadoNewService.SUCCESS -> Toast.makeText(
             this@NuevoServicioActivity,
             getString(R.string.succes), Toast.LENGTH_LONG
         ).show()
-        NewServiceViewModel.EstadoNewService.ERROR -> Toast.makeText(
+        NuevoServicioViewModel.EstadoNewService.ERROR -> Toast.makeText(
             this@NuevoServicioActivity,
             getString(R.string.error), Toast.LENGTH_LONG
         ).show()
