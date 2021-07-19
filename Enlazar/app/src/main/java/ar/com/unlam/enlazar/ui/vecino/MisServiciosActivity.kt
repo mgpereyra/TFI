@@ -102,15 +102,16 @@ class MisServiciosActivity : AppCompatActivity() {
         viewModelMisServicios.misServicios.observe(this,{
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
+            if(viewModelMisServicios.misServicios.value!!.size>0){
+                no_hay_servicios.visibility=View.GONE
+                listado_servicios.visibility=View.VISIBLE
+            }else{
+                listado_servicios.visibility=View.GONE
+                no_hay_servicios.visibility=View.VISIBLE
+            }
 
         })
-        if(viewModelMisServicios.misServicios.value!!.size>0){
-            no_hay_servicios.visibility=View.GONE
-            listado_servicios.visibility=View.VISIBLE
-        }else{
-            listado_servicios.visibility=View.GONE
-            no_hay_servicios.visibility=View.VISIBLE
-        }
+
     }
 
 

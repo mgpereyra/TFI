@@ -45,9 +45,9 @@ class MisPuntosViewModel() : ViewModel() {
                             mis_canjes.add(model)
                         }
                     }
-                    if (mis_canjes.size > 0) {
+
                         misCanjes.value = mis_canjes
-                    }
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
