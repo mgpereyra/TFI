@@ -1,6 +1,10 @@
 package ar.com.unlam.enlazar.ui.vecino
 
+import android.app.Application
+import android.content.ContentProvider
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +15,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class DetalleCanjeItemViewModel() : ViewModel() {
@@ -20,9 +26,9 @@ class DetalleCanjeItemViewModel() : ViewModel() {
     var puntos = MutableLiveData<Int>()
     var itemLiveData = MutableLiveData<Item>()
 
-  /*  init {
-        getPuntosUsuario(id)
-    }*/
+    /*  init {
+          getPuntosUsuario(id)
+      }*/
 
     fun getPuntosUsuario(id: String) {
         viewModelScope.launch {
@@ -49,12 +55,13 @@ class DetalleCanjeItemViewModel() : ViewModel() {
         id_item_detalle: String,
         cuponTitulo: String,
         descripcion: String,
-        im: String, id: String
+        im: String,
+        id: String
     ) {
-        viewModelScope.launch {
-            var restantes = puntos.value?.minus(costo)
-            if (restantes != null) {
-                if (restantes >= 0 && cantidad > 0) {
+        if (cantidad > 0) {
+            if (costo <= puntos.value!!.toInt()) {
+                viewModelScope.launch {
+                    val restantes = puntos.value?.minus(costo)
                     var cant = cantidad - 1
                     var cuponId = db.push().key.toString()
                     var cupon = CuponCanje(
@@ -62,17 +69,25 @@ class DetalleCanjeItemViewModel() : ViewModel() {
                         id_item_detalle,
                         cuponTitulo,
                         descripcion,
-                        im, "false"
+                        im, false
                     )
                     db.child("User").child(id).child("puntos").setValue(restantes)
                     db.child("Item").child(id_item_detalle).child("amount").setValue(cant)
                     db.child("User").child(id).child("Cupon").child(cuponId).setValue(cupon)
 
                 }
+            } else {
+      /*          Toast.makeText(
+                    this,
+                    "No tienes puntos suficientes para el producto deseado",
+                    Toast.LENGTH_SHORT
+                ).show()*/
             }
-
-
+        } else {
+            //  Toast.makeText(this, "No hay stock disponible", Toast.LENGTH_SHORT).show()
         }
+
+
     }
 
     fun verItem(id_item: String) {

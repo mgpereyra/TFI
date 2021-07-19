@@ -7,21 +7,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/dataContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="20dp"
-        app:strokeWidth="5dp"
         android:backgroundTint="@color/grey"
         app:strokeColor="@color/grey"
-        tools:visibility="visible">
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,7 +27,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_aceptar_encuentro2"
-                android:layout_width="155dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/emerald"
@@ -44,7 +42,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btncancelar_encuentro"
-                android:layout_width="130dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/rojo2"
@@ -80,8 +78,7 @@
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent
-"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="invisible" />
 
@@ -89,13 +86,15 @@
                 android:id="@+id/cardInfo_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:textAlignment="textStart"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.175"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.037"
                 tools:text="Titulo Punto de encuentro"
                 tools:visibility="visible" />
 
@@ -105,11 +104,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:maxLength="40"
-                android:layout_marginStart="10dp"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/cardInfo_title"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/cardInfo_title"
                 app:layout_constraintTop_toBottomOf="@+id/cardInfo_title"
@@ -136,12 +134,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/emerald"
-                android:paddingBottom="10dp"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:paddingEnd="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/cardInfo_localidad"
                 app:layout_constraintTop_toBottomOf="@+id/cardInfo_localidad"
+                app:layout_constraintVertical_bias="0.063"
                 tools:text="Republica de Portugal y Lascano" />
 
             <androidx.appcompat.widget.AppCompatTextView

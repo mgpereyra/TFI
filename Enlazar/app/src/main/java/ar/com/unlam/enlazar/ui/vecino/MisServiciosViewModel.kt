@@ -49,10 +49,11 @@ class MisServiciosViewModel(): ViewModel() {
                         )*/
                     }
                 }
-                if (list.size>0) {
-                    misServicios.value=list
+                misServicios.value=list
+           /*     if (list.size>0) {
 
-                }
+
+                }*/
             }
 
 

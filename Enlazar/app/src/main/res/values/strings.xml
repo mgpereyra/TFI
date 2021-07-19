@@ -29,7 +29,7 @@
     <string name="guardado">Guardado</string>
     <string name="mi_cuenta">Mi cuenta</string>
     <string name="card_resumen">breve resumen de la composicion de la card</string>
-    <string name="ver">ver</string>
+    <string name="ver">ver detalle</string>
     <string name="tipo_de_info">tipo De Info</string>
     <string name="donde_estas">Donde Estas</string>
     <string name="direccion">Direccion</string>
@@ -83,24 +83,27 @@
 
     <string name="pendientes">Pendientes</string>
     <string name="confirmados">Confirmados</string>
-    <string name="places_cancelar">cancelar</string>
+    <string name="places_cancelar">Cancelar servicio</string>
     <string name="valor_perdido">Se ha perdido la respuesta</string>
     <string name="como_reciclar">Como Reciclar Bien</string>
     <string name="consejo_semana">Consejo de la semana</string>
     <string name="eco_info">Ecoinforme</string>
-    <string name="cantidad_disponibles">disponibles</string>
+    <string name="cantidad_disponibles">Unidades Disponibles </string>
+    <string name="costo_puntos_cupon">Puntos de costo: </string>
+
     <string name="canjear">canjear</string>
 
     <string name="seleccione_el_servicio_a_realizar">Seleccione el servicio a realizar</string>
     <string name="cancelar_servicio">CANCELAR SERVICIO</string>
-    <string name="confirmar_asistecia_P_E">CONFIRMAR</string>
-    <string name="cancelar_asistencia_P_E">Cancelar</string>
+    <string name="confirmar_asistecia_P_E">CONFIRMAR ASISTENCIA</string>
+    <string name="cancelar_asistencia_P_E">CANCELAR ASISTENCIA</string>
     <string name="no_hay_valor_a_capturar">no hay valor a capturar</string>
     <string name="fecha">Fecha</string>
     <string name="hora">Hora</string>
     <string name="direcci_n">Dirección</string>
     <string name="papel_cart_n_diarios_envases_carton">Papel, cartón, diarios</string>
     <string name="envases_pl_sticos_latas_bricks">Envases plásticos, latas, bricks</string>
+    <string name="estado_cupon">Estado:</string>
 
 
 </resources>

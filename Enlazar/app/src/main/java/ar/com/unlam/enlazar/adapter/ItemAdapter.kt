@@ -12,21 +12,19 @@ import ar.com.unlam.enlazar.ui.vecino.DetalleCanjeItemActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.mis_canjes_card.view.*
 
-class ItemAdapter: RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     var listItem = mutableListOf<Item>()
 
     class ItemViewHolder(view: View, var item: Item? = null) : RecyclerView.ViewHolder(view) {
-        init{
-            view.ver_item.setOnClickListener{
+        init {
+            view.ver_item.setOnClickListener {
                 val intent = Intent(view.context, DetalleCanjeItemActivity::class.java)
                 intent.putExtra(DetalleCanjeItemActivity.ID_CANJE, item!!.id)
                 view.context.startActivity(intent)
-
             }
-
-
         }
     }
+
     fun submitList(it: List<Item>) {
         listItem.clear()
         listItem.addAll(it)
@@ -36,9 +34,6 @@ class ItemAdapter: RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.mis_canjes_card, parent, false)
-
-
-
         return ItemViewHolder(view)
     }
 
@@ -48,11 +43,10 @@ class ItemAdapter: RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
             Picasso.get()
                 .load(it.image).error(R.drawable.error).into(holder.itemView.codigo)
             holder.itemView.cardInfo_elemento_canje.text = it.title
+            holder.itemView.label_puntos_de_costo.text = "Puntos de costo: " // getText(R.string.estado_cupon)
             holder.itemView.cardInfo_costo.text = it.pointsCost.toString()
-            holder.itemView.cantidad_diponible.text=it.amount.toString()
-            holder.item=it
-
-
+            holder.itemView.cantidad_diponible.text = it.amount.toString()
+            holder.item = it
         }
 
     }

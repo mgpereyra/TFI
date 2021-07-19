@@ -212,7 +212,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_cancel_servicio"
-                android:layout_width="155dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/emerald"

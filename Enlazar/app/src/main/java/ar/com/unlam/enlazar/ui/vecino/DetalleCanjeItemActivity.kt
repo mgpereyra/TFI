@@ -1,14 +1,18 @@
 package ar.com.unlam.enlazar.ui.vecino
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.viewModelScope
 import ar.com.unlam.enlazar.R
+import ar.com.unlam.enlazar.model.CuponCanje
 import ar.com.unlam.enlazar.model.Item
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalle_canje_item.*
+import kotlinx.coroutines.launch
 
 class DetalleCanjeItemActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().reference
@@ -33,10 +37,57 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
         }
 
         btn_canjear_item.setOnClickListener {
-            canjearItem()
+            //canjearItem()
 
-
+            canjearItem2(
+                costo_cupon_detalle.text.toString().toInt(),
+                cantidad_diponible.text.toString().toInt(),
+                cardInfoIdDetalleItem.text.toString(),
+                cupon_titulo_detalle.text.toString(),
+                description_item.text.toString(),
+                im, id
+            )
         }
+    }
+
+    private fun canjearItem2(
+        costo: Int,
+        cantidad: Int,
+        id_item_detalle: String,
+        cuponTitulo: String,
+        descripcion: String,
+        im: String,
+        id: String
+    ) {
+        if (cantidad > 0) {
+            if (costo <= detalleCanjeViewmodel.puntos.value!!.toInt()) {
+                val restantes = detalleCanjeViewmodel.puntos.value?.minus(costo)
+                var cant = cantidad - 1
+                var cuponId = db.push().key.toString()
+                var cupon = CuponCanje(
+                    cuponId,
+                    id_item_detalle,
+                    cuponTitulo,
+                    descripcion,
+                    im, false
+                )
+                db.child("User").child(id).child("puntos").setValue(restantes)
+                db.child("Item").child(id_item_detalle).child("amount").setValue(cant)
+                db.child("User").child(id).child("Cupon").child(cuponId).setValue(cupon)
+                Toast.makeText(this,"Se ha realizado el caje correctamente",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
+            } else {
+
+                Toast.makeText(this,"No tienes puntos suficientes para el producto deseado",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        } else {
+            Toast.makeText(this, "No hay stock disponible", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun canjearItem() {
@@ -46,7 +97,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
             cardInfoIdDetalleItem.text.toString(),
             cupon_titulo_detalle.text.toString(),
             description_item.text.toString(),
-            im,id
+            im, id
         )
         /*  var restantes=p-costo_cupon_detalle.text.toString().toInt()
           if (restantes >= 0 && cantidad_diponible.text.toString().toInt()>0) {
@@ -84,7 +135,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
 
     private fun getPuntos(idUser: String) {
         detalleCanjeViewmodel.getPuntosUsuario(idUser)
-        detalleCanjeViewmodel.puntos.observe(this,{ observePoints(it)})
+        detalleCanjeViewmodel.puntos.observe(this, { observePoints(it) })
         //p = detalleCanjeViewmodel.puntos.value!!
         /*db.child("User").child(idUser).child("puntos")
             .addValueEventListener(object : ValueEventListener {
@@ -103,7 +154,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
     }
 
     private fun observePoints(it: Int) {
-        p=it
+        p = it
 
     }
 
@@ -134,7 +185,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
     }
 
     private fun setObservers(s: Item) {
-        cargarImagen(s.image,s.imageCode)
+        cargarImagen(s.image, s.imageCode)
         cupon_titulo_detalle.setText(s.title)
         cantidad_diponible.setText(s.amount.toString())
         costo_cupon_detalle.setText(s.pointsCost.toString())

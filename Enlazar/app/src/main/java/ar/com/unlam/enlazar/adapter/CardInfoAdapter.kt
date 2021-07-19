@@ -29,7 +29,7 @@ var cardInfoList=mutableListOf<CardInfo>()
 
     override fun onBindViewHolder(holder: CardInfoViewHolder, position: Int) {
         cardInfoList[position].let{
-            holder.itemView.cardInfo_content_advice.text=it.content
+           // holder.itemView.cardInfo_content_advice.text=it.content
             holder.itemView.cardInfo_title_advice.text=it.title
             holder.itemView.cardInfoId.text=it.id
 

@@ -176,9 +176,9 @@
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_margin="15dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
                     android:background="@drawable/ic_mis_encuentros"
                     android:backgroundTint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
