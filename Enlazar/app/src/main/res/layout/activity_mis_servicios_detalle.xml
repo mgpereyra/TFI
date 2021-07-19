@@ -37,18 +37,33 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/black"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barra"
-        app:strokeColor="@android:color/black"
+        android:backgroundTint="@color/grey"
+        app:strokeColor="@color/grey"
         app:strokeWidth="1dp"
         tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/detalle_tipo_plasticos"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/papel_cart_n_diarios_envases_carton"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/circle_bolsas_azul"
+                app:layout_constraintStart_toEndOf="@+id/circle_bolsas_azul"
+                app:layout_constraintTop_toTopOf="@+id/circle_bolsas_azul"
+                app:layout_constraintVertical_bias="0.37"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/cardInfoId"
@@ -66,11 +81,11 @@
                 android:id="@+id/circle_bolsas_amarillo"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="104dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/circle_border_yellow"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/detalle_activity_turno" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/detalle_activity_cantidad_de_bolsas_amarillo"
@@ -89,11 +104,12 @@
                 android:id="@+id/circle_bolsas_azul"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="172dp"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/circle_border_blue"
                 app:layout_constraintEnd_toEndOf="@+id/circle_bolsas_amarillo"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/circle_bolsas_amarillo"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/circle_bolsas_amarillo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/detalle_activity_cantidad_de_bolsas_azul"
@@ -114,12 +130,12 @@
                 android:id="@+id/circle_bolsas_verdes"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="244dp"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/circle_border_green"
                 app:layout_constraintEnd_toEndOf="@+id/circle_bolsas_azul"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/circle_bolsas_azul"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/circle_bolsas_azul" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/detalle_activity_cantidad_bolsas_verdes"
@@ -128,17 +144,16 @@
                 android:text="@string/Ejemplo_cant_puntos"
                 android:textAlignment="center"
                 android:textSize="20sp"
-                app:flow_verticalAlign="center"
                 app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_verdes"
                 app:layout_constraintEnd_toEndOf="@id/circle_bolsas_verdes"
                 app:layout_constraintStart_toStartOf="@id/circle_bolsas_verdes"
                 app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes" />
 
             <TextView
-                android:id="@+id/detalle_activity_cardInfo_date"
-                android:layout_width="200dp"
+                android:id="@+id/detalle_activity_cardInfo_detalle_direccion"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_margin="10dp"
                 android:maxLength="25"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textSize="25sp"
@@ -150,48 +165,64 @@
                 tools:visibility="visible" />
 
             <TextView
-                android:id="@+id/detalle_activity_cardInfo_direccion"
-                android:layout_width="170dp"
+                android:id="@+id/detalle_tipo_vidrios"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:layout_marginStart="15dp"
-                android:maxLength="30"
+                android:text="@string/envases_de_vidrios"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.005"
-                app:layout_constraintStart_toStartOf="@id/detalle_activity_cardInfo_date"
-                app:layout_constraintTop_toBottomOf="@+id/circle_bolsas_verdes"
-                tools:text="this is a example of a content "
+                app:layout_constraintBottom_toBottomOf="@+id/circle_bolsas_verdes"
+                app:layout_constraintStart_toEndOf="@+id/circle_bolsas_verdes"
+                app:layout_constraintTop_toTopOf="@+id/circle_bolsas_verdes"
+                app:layout_constraintVertical_bias="0.37"
                 tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/detalle_tipo_plasticos2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginStart="20dp"
+                android:text="@string/envases_pl_sticos_latas_bricks"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/circle_bolsas_amarillo"
+                app:layout_constraintStart_toEndOf="@+id/circle_bolsas_amarillo"
+                app:layout_constraintTop_toTopOf="@+id/circle_bolsas_amarillo"
+                app:layout_constraintVertical_bias="0.37"
+                tools:visibility="visible" />
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/detalle_activity_turno"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="28dp"
                 android:backgroundTint="@color/emerald"
                 android:text="Turno Mañana"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/detalle_activity_cardInfo_date"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detalle_activity_cardInfo_detalle_direccion" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_cancel_servicio"
                 android:layout_width="155dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:backgroundTint="@color/emerald"
                 android:text="@string/places_cancelar"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detalle_activity_cardInfo_direccion"
-                app:layout_constraintVertical_bias="0.323" />
+                app:layout_constraintTop_toBottomOf="@+id/circle_bolsas_verdes"
+                app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

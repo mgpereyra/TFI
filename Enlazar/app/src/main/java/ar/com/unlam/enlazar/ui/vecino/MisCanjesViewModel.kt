@@ -23,17 +23,6 @@ class MisCanjesViewModel() : ViewModel() {
                         if (canjes != null) {
                             list.add(canjes)
                         }
-                        /*canjes.add(
-                            Item(
-                                item.child("title").value.toString(),
-                                item.child("id").value.toString(),
-                                item.child("description").value.toString(),
-                                item.child("amount").value.toString().toInt(),
-                                item.child("imageCode").value.toString(),
-                                item.child("pointsCost").value.toString().toInt(),
-                                item.child("image").value.toString()
-                            )
-                        )*/
                     }
                 }
                 if (list.size>0) {
