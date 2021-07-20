@@ -3,6 +3,7 @@ import Advice from "./Advice";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { listAdvices } from "../../actions/adviceAction";
+import Spinner from "../Spinner";
 
 const ListAdvice = () => {
 
@@ -10,6 +11,7 @@ const ListAdvice = () => {
   const listAdvice = () => dispatch(listAdvices());
   const advices = useSelector((state) => state.advices.advices);
   const error = useSelector((state) => state.advices.error);
+  const loading = useSelector((state) => state.advices.loading);
 
   useEffect(() => {
       listAdvice();
@@ -27,8 +29,7 @@ const ListAdvice = () => {
           Crear un nuevo consejo
         </Link>
       </div>
-      
-
+      { loading ? <Spinner /> : null }
       {advices.length === 0 && !error ? (
         <div className="alert alert-info text-center p-3">
           <i className="fas fa-exclamation-circle"></i>No hay consejos creados

@@ -162,8 +162,6 @@ export function modifyCouponAction(coupon) {
         type: COUPON_MODIFY_PROCESS
       });
 
-      console.log(coupon) 
-
         try {
           if(coupon.imageData !==   undefined){
             const imagen = coupon.imageData.get("file");
@@ -172,7 +170,6 @@ export function modifyCouponAction(coupon) {
             await storageRef.ref().child("item_image/" + imagen.name).put(imagen);
             coupon.image = await storageRef.ref("item_image/" + imagen.name).getDownloadURL();
           }
-            console.log(coupon)
           await clienteAxios.put(`/api/coupon/${coupon.id}`, coupon);
 
             dispatch({

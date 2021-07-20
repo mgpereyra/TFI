@@ -11,6 +11,7 @@ import {
   GET_ADVICE_MODIFY,
   ADVICE_MODIFY_ERROR,
   ADVICE_MODIFY_SUCCESS,
+  ADVICE_MODIFY_PROCESS
 } from "../types";
 import clienteAxios from "../config/axios";
 import Swal from "sweetalert2";
@@ -166,12 +167,23 @@ export function modifyAdvice(adviceToModify) {
 export function modifyAdviceAction(advice) {
   return async (dispatch) => {
     try {
-      
 
+      dispatch({
+        type: ADVICE_MODIFY_PROCESS
+      });
+
+
+      if(advice.imageData !==   undefined){
+        const imagen = advice.imageData.get("file");
+        var storageRef = firebase.storage();
+        await storageRef.ref().child("item_image/" + imagen.name).put(imagen);
+        advice.uri = await storageRef.ref("item_image/" + imagen.name).getDownloadURL();
+      }
       await clienteAxios.put(`/api/advice/${advice.id}`, advice);
 
       dispatch({
         type: ADVICE_MODIFY_SUCCESS,
+        payload:advice
       });
       //alerta
       Swal.fire("Genial", "El consejo se modificó correctamente", "success");

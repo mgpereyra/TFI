@@ -170,7 +170,7 @@ textarea {
   flex-shrink: 0;
   width: 100%;
   object-fit: cover;
-  height: 235px;
+  height: 275px;
 }
 
 
@@ -749,7 +749,7 @@ display: block;
 .cortar-parrafo:before {
   content:'...';
   position: absolute;
-  bottom: 5.2rem;
+  bottom: 7.8rem;
   right: 1rem;
 }
 .cortar-parrafo::after {

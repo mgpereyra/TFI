@@ -40,7 +40,7 @@ export const ADVICE_DELETE_ERROR = 'ADVICE_DELETE_ERROR';
 export const GET_ADVICE_MODIFY = 'GET_ADVICE_MODIFY';
 export const ADVICE_MODIFY_SUCCESS = 'ADVICE_MODIFY_SUCCESS';
 export const ADVICE_MODIFY_ERROR = 'ADVICE_MODIFY_ERROR';
-export const START_MODIFY_ADVICE = 'START_MODIFY_ADVICE';
+export const ADVICE_MODIFY_PROCESS = 'ADVICE_MODIFY_PROCESS';
 
 ////////////////////////////////////////////////////////////////////
 

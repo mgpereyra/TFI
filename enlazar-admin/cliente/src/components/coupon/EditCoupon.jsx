@@ -27,14 +27,8 @@ const EditCoupon = () => {
 
   const [fileUrl, setFileUrl] = useState(null);
 
-  const { title, description, amount, pointsCost, imageName, imageData } =
-    coupon;
-  /*
-  const confirmEdit = (coupon) => {
-    dispatch(modifyCoupon(coupon));
-    history.push(`/edit-coupon/${coupon.id}`);
-  };*/
-
+  const { title, description, amount, pointsCost } = coupon;
+ 
   const couponToModify = useSelector((state) => state.coupons.couponToModify);
 
   //carga los datos del elemento a modificar la 1ra vez
@@ -90,10 +84,7 @@ const EditCoupon = () => {
 
     dispatch(modifyCouponAction(coupon));
 
-    //setloading(true)
-
     setTimeout(() => {
-      // setloading(false)
       history.push("/list-coupon");
     }, 2500);
   };
@@ -193,7 +184,7 @@ const EditCoupon = () => {
                 </div>
               </Col>
             </Row>
-            {loading ? <Spinner /> : null}
+            { loading ? <Spinner /> : null }
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
               <button
                 className="btn btn-primary me-md-2"

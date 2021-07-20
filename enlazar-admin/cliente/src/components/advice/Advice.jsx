@@ -2,12 +2,12 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAdviceAction, modifyAdvice } from "../../actions/adviceAction";
-import picture from "../../images/png-image.jpg";
+import picture from "../../images/picture-grey.jpg";
 
 const Advice = ({ advice }) => {
   const { tipe, title, content, id, img, uri, likes } = advice;
 
-  const loading = useSelector((state) => state.services.loading);
+  const loading = useSelector((state) => state.advices.loading);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -49,21 +49,24 @@ const Advice = ({ advice }) => {
               <p className="card-text cortar-parrafo small-text">{content}</p>
 
               <div className="acciones">
-                <button
+                  <button
                   onClick={() => confirm(id)}
-                  className="btn btn-outline-primary btn-left"
+                  className="btn btn-outline-danger btn-circle mr-2"
                 >
                   <i className="far fa-trash-alt"></i>
-                  Eliminar
+                 
                 </button>
                 <button
                   onClick={() => confirmEdit(advice)}
-                  className="btn btn-primary btn-right"
+                  className="btn btn-success  btn-circle"
                 >
                   <i className="far fa-edit"></i>
-                  Editar
+                  
                 </button>
               </div>
+            </div>
+            <div className="card-footer py-2">
+              <small className="text-muted">{id}</small>
             </div>
           </div>
         </div>
