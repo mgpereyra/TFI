@@ -38,6 +38,7 @@ class MisServiciosViewModel(): ViewModel() {
 
 
                     misServicios.value=list
+            }
 
 
 
