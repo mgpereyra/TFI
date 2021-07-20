@@ -1,8 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCouponAction, modifyCoupon, generateQrCode } from "../../actions/couponAction";
-import picture from '../../images/png-image.jpg'
+import { deleteCouponAction, modifyCoupon } from "../../actions/couponAction";
+import picture from '../../images/picture-grey.jpg'
 
 const Coupon = ({ coupon }) => {
   const loading = useSelector((state) => state.services.loading);
@@ -30,7 +30,7 @@ const Coupon = ({ coupon }) => {
         <div className="row no-gutters">
           <div className="col-md-4">
           {loading  ?
-            <img className="card-img-coupon" src={picture} alt='cargando'></img>
+            <img className="card-img-coupon" src={picture} alt='Cargando...'></img>
              :
              <img className="card-img-coupon" src={image} alt={title}></img>
             }

@@ -50,14 +50,7 @@ const EditAdvice = () => {
                 <form
                     onSubmit={submitForm}>
                     <Row>
-                        <Col lg={4}>
-                            <div className="form-group">
-                                    <label className="control-label">Imagen seleccionada</label>
-                                <div className="bg-white fondo-imagen  m-1 row align-items-center">
-                                    <img className="img-edit " src={uri} alt={img}></img>
-                                </div>
-                            </div>
-                        </Col>
+                      
                         <Col lg={8}>
                             <div className="form-group">
                                 <label className="control-label">Categoría</label>
@@ -89,6 +82,14 @@ const EditAdvice = () => {
                                     name="content"
                                     value={content}
                                     onChange={handleChange}  />
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="form-group">
+                                    <label className="control-label">Imagen seleccionada</label>
+                                <div className="bg-white fondo-imagen  m-1 row align-items-center">
+                                    <img className="img-edit " src={uri} alt={img}></img>
+                                </div>
                             </div>
                         </Col>
                         </Row>

@@ -23,7 +23,6 @@ const EditCoupon = () => {
   });
 
   const {
- 
     image,
     imageCode,
     title,
@@ -96,14 +95,7 @@ const EditCoupon = () => {
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <Row>
-              <Col lg={4}>
-                <div className="form-group">
-                  <label className="control-label">Imagen seleccionada</label>
-                  <div className="bg-white fondo-imagen  m-1 row align-items-center">
-                    <img className="img-edit " src={image} alt={title}></img>
-                  </div>
-                </div>
-              </Col>
+              
               <Col>
                 <div className="form-group">
                   <label className="control-label">Título</label>
@@ -148,6 +140,14 @@ const EditCoupon = () => {
                     onChange={handleChange}
                     value={description}
                   />
+                </div>
+              </Col>
+              <Col lg={4}>
+                <div className="form-group">
+                  <label className="control-label pl-2">Imagen seleccionada</label>
+                  <div className="bg-white fondo-imagen  m-2 align-items-center">
+                    <img className="img-edit " src={image} alt={title}></img>
+                  </div>
                 </div>
               </Col>
             </Row>

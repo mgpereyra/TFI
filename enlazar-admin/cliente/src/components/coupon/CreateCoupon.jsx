@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { createNewCoupon } from "../../actions/couponAction";
 import { useDispatch } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
+import picture from '../../images/picture-grey.jpg'
 
 const CreateCoupon = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
@@ -10,7 +11,6 @@ const CreateCoupon = ({ history }) => {
   //state del componente
   const [coupon, setCoupon] = useState({
     image: "",
-    imageCode: "",
     description: "",
     amount: "",
     pointsCost: "",
@@ -18,15 +18,15 @@ const CreateCoupon = ({ history }) => {
     imageData: null,
   });
 
+  const [fileUrl, setFileUrl] = useState(null);
+
   const {
     imageData,
     image,
-    imageCode,
     title,
     description,
     amount,
-    pointsCost,
-    imageName
+    pointsCost
   } = coupon;
 
   //Llamando al action
@@ -46,9 +46,11 @@ const CreateCoupon = ({ history }) => {
 
     setCoupon({
       ...coupon,
-      imageData: formdata,
-      image: e.target.files[0].name,
+      imageData: formdata
     });
+
+    const imageUrl = URL.createObjectURL(e.target.files[0]);
+    setFileUrl(imageUrl);
   };
 
   const handleSubmit = (e) => {
@@ -62,7 +64,7 @@ const CreateCoupon = ({ history }) => {
       image.trim() === "" ||
       amount.trim() === ""
     ) {
-      mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
+      mostrarAlerta("Por favor complete todos los campos", "alerta-error");
       return;
     }
 
@@ -97,20 +99,7 @@ const CreateCoupon = ({ history }) => {
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <Row>
-              <Col lg={4}>
-                <div className="form-group">
-                  <label className="control-label ">
-                    Selecciona una imagen
-                  </label>
-                  <input
-                    type="file"
-                    className="input-text text-white"
-                    id="imagen"
-                    name="imagen"
-                    onChange={handleImg}
-                  />
-                </div>
-              </Col>
+            
               <Col>
                 <div className="form-group">
                   <label className="control-label">Título</label>
@@ -155,6 +144,29 @@ const CreateCoupon = ({ history }) => {
                     onChange={handleChange}
                     value={description}
                   />
+                </div>
+              </Col>
+              <Col lg={5}>
+                <div className="form-group">
+                  <label className="control-label ml-2">
+                    Selecciona una imagen
+                  </label>
+                  <input
+                    type="file"
+                    className="input-text text-white"
+                    id="imagen"
+                    name="imagen"
+                    accept="image/jpeg, image/png"
+                    onChange={handleImg}
+                  />
+
+                  <div className="bg-white fondo-imagen  my-3 mx-2  align-items-center">
+                      {fileUrl !== null?
+                          <img className="img-edit " src={fileUrl} alt={title}></img>
+                      :
+                          <img className="img-edit " src={picture} alt={title}></img>
+                      }
+                  </div>
                 </div>
               </Col>
             </Row>
