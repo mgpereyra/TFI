@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".ui.vecino.SeccionInformativaDetalleActivity">
 
@@ -36,7 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/barra">
+        app:layout_constraintTop_toBottomOf="@id/barra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/dataContainer"
@@ -44,7 +47,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginBottom="50dp"
-            android:elevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:backgroundTint="@color/grey"
@@ -53,7 +55,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
 
                 <ImageView
                     android:id="@+id/picture_detalle_Advice"
@@ -64,7 +67,6 @@
                     android:minWidth="160dp"
                     android:minHeight="150dp"
                     android:layout_margin="5dp"
-
                     android:src="@drawable/ic_baseline_image_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -77,6 +79,7 @@
                     android:layout_margin="15dp"
                     android:background="@color/subTextWhite"
                     android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@id/picture_detalle_Advice"
                     app:layout_constraintBottom_toTopOf="@+id/title_detalle_Advice"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -122,12 +125,16 @@
                     android:id="@+id/content_detalle_Advice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="80dp"
                     app:layout_constraintTop_toBottomOf="@+id/labelTipoDeInfo"
                     tools:text="Una guía para ayudarte en esos momentos de dudas." />
 
