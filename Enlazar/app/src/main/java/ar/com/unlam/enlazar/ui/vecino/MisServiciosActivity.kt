@@ -3,6 +3,7 @@ package ar.com.unlam.enlazar.ui.vecino
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
@@ -10,6 +11,7 @@ import ar.com.unlam.enlazar.adapter.MisServiciosVecinoAdapter
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.Estado
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseError
 import kotlinx.android.synthetic.main.activity_mis_servicios.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 
@@ -87,15 +89,14 @@ class MisServiciosActivity : AppCompatActivity() {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
 
-            if(viewModelMisServicios.misServicios.value!!.size>0){
-                no_hay_servicios.visibility=View.GONE
-                listado_servicios.visibility=View.VISIBLE
-            }else{
-                listado_servicios.visibility=View.GONE
-                no_hay_servicios.visibility=View.VISIBLE
+            if (viewModelMisServicios.misServicios.value!!.size > 0) {
+                no_hay_servicios.visibility = View.GONE
+                listado_servicios.visibility = View.VISIBLE
+            } else {
+                listado_servicios.visibility = View.GONE
+                no_hay_servicios.visibility = View.VISIBLE
+            }
 
-
-        override fun onCancelled(error: DatabaseError) {
-            TODO("Not yet implemented")
+            })
         }
-    })
+    }

@@ -14,11 +14,7 @@ import ar.com.unlam.enlazar.ui.pickers.DatePickerFragent
 import ar.com.unlam.enlazar.ui.pickers.TimePickerFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_crear_cuenta.*
-import kotlinx.android.synthetic.main.activity_dashboard_recolector.*
-import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
-import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver
 
 import java.util.*
 
@@ -31,9 +27,7 @@ class NuevoServicioActivity : AppCompatActivity() {
     val newServiceViewModel: NuevoServicioViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
+            setContentView(R.layout.activity_nuevo_servicio)
         getDirection(id)
 
         dia_picker.setOnClickListener { showDatePicker() }
@@ -44,11 +38,8 @@ class NuevoServicioActivity : AppCompatActivity() {
         //   setObservers()
 
 
-        btnVolver.setOnClickListener {
-            btnVolver.setOnClickListener {
-                this@NuevoServicioActivity.finish()
-            }
-
+        btnVolver_NuevoServicio.setOnClickListener {
+              finish()
         }
 
     }
@@ -62,7 +53,6 @@ class NuevoServicioActivity : AppCompatActivity() {
 
         horario_picker.setText(time)
     }
-
 
 
     private fun getDirection(idForLocation: String) {
@@ -161,23 +151,18 @@ class NuevoServicioActivity : AppCompatActivity() {
         startActivity(darsheboardActivity)
     }
 
-    private fun setObservers() {
-        newServiceViewModel.estados.observe(this, { estado(it) })
-
-    }
-
 
     private fun setObservers() {
         newServiceViewModel.estados.observe(this, { estado(it) })
     }
 
-    private fun estado(status: NewServiceViewModel.EstadoNewService) {
+    private fun estado(status: NuevoServicioViewModel.EstadoNewService) {
         when (status) {
-            NewServiceViewModel.EstadoNewService.SUCCESS -> Toast.makeText(
+            NuevoServicioViewModel.EstadoNewService.SUCCESS -> Toast.makeText(
                 this@NuevoServicioActivity,
                 getString(R.string.succes), Toast.LENGTH_LONG
             ).show()
-            NewServiceViewModel.EstadoNewService.ERROR -> Toast.makeText(
+            NuevoServicioViewModel.EstadoNewService.ERROR -> Toast.makeText(
                 this@NuevoServicioActivity,
                 getString(R.string.error), Toast.LENGTH_LONG
             ).show()
@@ -199,7 +184,7 @@ class NuevoServicioActivity : AppCompatActivity() {
         val ID: String = "id"
 
     }
-
+}
 /*    fun toolbar() {
         setSupportActionBar(toolbar_nuevo_servicio)
         var ab: ActionBar? = supportActionBar
@@ -207,4 +192,4 @@ class NuevoServicioActivity : AppCompatActivity() {
             ab.setHomeAsUpIndicator(R.drawable.menu)
             ab.setDisplayHomeAsUpEnabled(true)
 
-
+*/
