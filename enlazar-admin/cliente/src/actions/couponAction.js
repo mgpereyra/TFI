@@ -10,12 +10,16 @@ import {
     COUPON_DELETE_SUCCESS,
     GET_COUPON_MODIFY,
     COUPON_MODIFY_ERROR,
-    COUPON_MODIFY_SUCCESS
+    COUPON_MODIFY_SUCCESS,
+    COUPON_VERIFY_ERROR,
+    COUPON_VERIFY_SUCCESS,
+    GET_COUPON_VERIFY,
+    PROCESS_COUPON_VERIFY,
+    CLEAN_COUPON_VERIFY
   } from "../types";
   import clienteAxios from "../config/axios";
   import Swal from "sweetalert2";
 import firebase from "firebase";
-
 
 //Listar consejos
 export function listCoupons() {
@@ -63,30 +67,29 @@ export function createNewCoupon(coupon) {
         const imagen = coupon.imageData.get("file");
         try {
           var storageRef = firebase.storage();
-          
-          await storageRef.ref().child("item_image/" + imagen.name).put(imagen);
-            
-          const uri = await storageRef
+          var imageRef = storageRef.ref().child("advice_image/" + imagen.name);
+          await imageRef.put(imagen).then(async (snapshot) => {
+            const uri = await storageRef
               .ref("item_image/" + imagen.name)
               .getDownloadURL();
-
-          coupon.image = uri;
+            coupon.image = uri;
+          });
         } catch (error) {
           console.log(error);
         }
       };
 
-     // async function save() {
+
+      async function save() {
         await guardarImagen(coupon);
         await clienteAxios.post("/api/coupon", coupon);
-      //}
-      //save();
-
-      //actualizo el state
-      dispatch(addCouponSuccess(coupon));
+        dispatch(addCouponSuccess(coupon));
+      }
+      save();
 
       //alerta
       Swal.fire("Genial!", "El cupón se agregó correctamente", "success");
+
     } catch (error) {
       console.log(error);
       dispatch(addCouponError());
@@ -160,7 +163,7 @@ export function modifyCouponAction(coupon) {
         type: COUPON_MODIFY_SUCCESS,
       });
       //alerta
-      Swal.fire("Genial", "El consejo se modificó correctamente", "success");
+      Swal.fire("Genial", "El cupón se modificó correctamente", "success");
     } catch (error) {
       console.log(error);
       dispatch({
@@ -170,3 +173,144 @@ export function modifyCouponAction(coupon) {
   };
 }
 
+//Crear codigo qr
+export function generateQrCode(id) {
+  return async (dispatch) => {
+    try {
+      //const urlCode = await QRCode.toDataURL(`${id}hola`)
+     // await clienteAxios.put(`/api/coupon/qr/${id}`, {urlCode});
+
+      dispatch({
+        type: COUPON_MODIFY_SUCCESS,
+      });
+      //alerta
+      Swal.fire("Genial", "El código QR se generó correctamente", "success");
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: COUPON_MODIFY_ERROR,
+      });
+    }
+  };
+}
+
+
+//verificar cupon con imagen
+export function verifyCoupon(ids) {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: PROCESS_COUPON_VERIFY
+      });
+      //const urlCode = await QRCode.toDataURL(`${id}hola`)
+      const response = await clienteAxios.get(`/api/coupon/${ids.idUser}/${ids.idCoupon}/${ids.idItem}`);
+
+      //const response = await clienteAxios.get(`/api/coupon/${ids.idUser}/${ids.idCoupon}`);
+      console.log(response.data)
+
+      dispatch({
+        type: GET_COUPON_VERIFY,
+        payload: response.data
+      });
+
+    
+    } catch (error) {
+    
+      const msg = error.response.data.msg;
+      dispatch({
+        type: COUPON_VERIFY_ERROR
+      });
+
+      if(error.response.status === 400){
+        Swal.fire({
+          icon: "error",
+          title: "Oppss..",
+          text: msg,
+        });
+      }
+      if(error.response.status === 401){
+        Swal.fire({
+          icon: "info",
+          title: "Oppss..",
+          text: msg,
+        });
+    }}
+  };
+}
+
+
+//verificar cupon camera
+export function verifyCouponCamera(result) {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: PROCESS_COUPON_VERIFY
+      });
+      
+      const arrayResult = result.split("/")  
+      const idUser = arrayResult[0]
+      const idItem = arrayResult[2]
+      const idCoupon = arrayResult[1]
+
+      const response = await clienteAxios.get(`/api/coupon/${idUser}/${idCoupon}/${idItem}`);
+
+      dispatch({
+        type: GET_COUPON_VERIFY,
+        payload: response.data
+      });
+
+    
+    } catch (error) {
+      const msg = error.response.data.msg;
+      dispatch({
+        type: COUPON_VERIFY_ERROR
+      });
+
+      if(error.response.status === 400){
+        Swal.fire({
+          icon: "error",
+          title: "Oppss..",
+          text: msg,
+        });
+      }
+      }
+  };
+}
+
+
+//confirmar verificacion cupon
+export function confirmCanjeAction(couponToVerify) {
+  return async (dispatch) => {
+    try {
+      const idUser = couponToVerify.user.id;
+
+      const response = await clienteAxios.put(`/api/coupon/confirm/${idUser}`, couponToVerify);
+
+      dispatch({
+        type: COUPON_VERIFY_SUCCESS
+      });
+      
+      //alerta
+      Swal.fire("Genial", "Se completó el canje correctamente", "success");
+    } catch (error) {
+      dispatch({
+        type: COUPON_VERIFY_ERROR
+      });
+      const msg = error.response.data.msg;
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: msg,
+      });
+  };
+}}
+
+
+//Limpia el cupon a verificar
+export function cleanCouponToScan(couponToModify) {
+  return async (dispatch) => {
+    dispatch({
+      type: CLEAN_COUPON_VERIFY
+    });
+  };
+}

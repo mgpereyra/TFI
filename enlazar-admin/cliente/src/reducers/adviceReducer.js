@@ -10,7 +10,8 @@ import {
     ADVICE_DELETE_SUCCESS,
     GET_ADVICE_MODIFY,
     ADVICE_MODIFY_ERROR,
-    ADVICE_MODIFY_SUCCESS
+    ADVICE_MODIFY_SUCCESS,
+    PROCESS_COUPON_VERIFY
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -27,7 +28,7 @@ const initialState = {
 export default function (state = initialState, action){
     switch(action.type){
         case ADD_ADVICE:
-        case START_DOWNLOAD_ADVICES:    
+        case START_DOWNLOAD_ADVICES:  
             return {
                 ...state,
                 loading: true
