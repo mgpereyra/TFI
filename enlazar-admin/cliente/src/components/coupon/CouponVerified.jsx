@@ -26,21 +26,21 @@ const CouponVerified = ({ couponToVerify }) => {
         <h6 className="alert alert-info">
           <i className="fas fa-info-circle mr-2"></i>
 
-          {estadoCupon ? (
+          {estadoCupon  ? (
             <b> El cupón ingresado ya fue canjeado</b>
           ) : (
             <b> El cupón está pendiente de canje</b>
           )}
         </h6>
         <label>Resultados de la búsqueda: </label>
-        <div className="card mb-4 border-secondary px-2 mt-2">
-          <div className="card-body px-1">
+        <div className="card mb-4 border-secondary  mt-2">
+          <div className="card-body px-2">
             <div className="row">
               <div className="col-md-7 border-right px-1">
                 <p className="card-text  text-right mb-3">
                   <small className="text-estado mr-2 contador">
                     Estado ~
-                    <b>{estadoCupon ? " CANJEADO" : "PENDIENTE"}</b>
+                    <b>{estadoCupon   ? " CANJEADO" : "PENDIENTE"}</b>
                   </small>
                 </p>
                 <small className="text-secondary">Producto</small>
@@ -81,6 +81,9 @@ const CouponVerified = ({ couponToVerify }) => {
               </div>
             </div>
           </div>
+          <div className="card-footer py-2">
+          <small className="text-muted">{couponToVerify.user.id}</small>
+        </div>
         </div>
       </div>
 

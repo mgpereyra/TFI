@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import CouponVerified from "./CouponVerified";
 
-const VerifyCoupon = () => {
+const VerifyCouponManual = () => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
 
   const couponToVerify = useSelector((state) => state.coupons.couponToVerify);
@@ -14,9 +14,10 @@ const VerifyCoupon = () => {
   const [ids, setIds] = useState({
     idUser: "",
     idCoupon: "",
+    idItem:""
   });
 
-  const { idUser, idCoupon } = ids;
+  const { idUser, idCoupon, idItem } = ids;
 
   //Llamando al action
   const dispatch = useDispatch();
@@ -78,6 +79,21 @@ const VerifyCoupon = () => {
                     type="text"
                     className="input-text"
                     placeholder="Código de cupón..."
+                    name="idItem"
+                    onChange={handleChange}
+                    value={idItem}
+                  />
+                </div>
+              </Col>
+              <Col>
+                <div className="form-group">
+                  <label className="control-label">
+                    Ingresa el código de cupón
+                  </label>
+                  <input
+                    type="text"
+                    className="input-text"
+                    placeholder="Código de cupón..."
                     name="idCoupon"
                     onChange={handleChange}
                     value={idCoupon}
@@ -103,13 +119,10 @@ const VerifyCoupon = () => {
               key={couponToVerify.cupon.id_item} 
               couponToVerify={couponToVerify} />
           : null}
-
-
-
         </div>
       </div>
     </Fragment>
   );
 };
 
-export default VerifyCoupon;
+export default VerifyCouponManual;

@@ -14,7 +14,8 @@ import {
     COUPON_VERIFY_ERROR,
     COUPON_VERIFY_SUCCESS,
     GET_COUPON_VERIFY,
-    PROCESS_COUPON_VERIFY
+    PROCESS_COUPON_VERIFY,
+    CLEAN_COUPON_VERIFY
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -95,6 +96,7 @@ export default function (state = initialState, action){
                 loading: false
             }    
         case COUPON_VERIFY_SUCCESS:
+        case CLEAN_COUPON_VERIFY:    
             return{
                 ...state,
                 couponToVerify: null,

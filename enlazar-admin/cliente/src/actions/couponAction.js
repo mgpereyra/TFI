@@ -14,7 +14,8 @@ import {
     COUPON_VERIFY_ERROR,
     COUPON_VERIFY_SUCCESS,
     GET_COUPON_VERIFY,
-    PROCESS_COUPON_VERIFY
+    PROCESS_COUPON_VERIFY,
+    CLEAN_COUPON_VERIFY
   } from "../types";
   import clienteAxios from "../config/axios";
   import Swal from "sweetalert2";
@@ -265,8 +266,8 @@ export function verifyCouponCamera(result) {
       
       const arrayResult = result.split("/")  
       const idUser = arrayResult[0]
-      const idItem = arrayResult[1]
-      const idCoupon = arrayResult[2]
+      const idItem = arrayResult[2]
+      const idCoupon = arrayResult[1]
 
       const response = await clienteAxios.get(`/api/coupon/${idUser}/${idCoupon}/${idItem}`);
 
@@ -290,5 +291,15 @@ export function verifyCouponCamera(result) {
         });
       }
       }
+  };
+}
+
+
+//Limpia el cupon a verificar
+export function cleanCouponToScan(couponToModify) {
+  return async (dispatch) => {
+    dispatch({
+      type: CLEAN_COUPON_VERIFY
+    });
   };
 }

@@ -1,53 +1,69 @@
-import React, { useState, useEffect,  Fragment } from "react";
+import React, { useState, useContext, useEffect, Fragment , useRef  } from "react";
 import QrReader from "react-qr-reader";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyCouponCamera, cleanCouponToScan } from "../../actions/couponAction";
+import alertaContext from "../../context/alerta/alertaContext";
 import CouponVerified from "./CouponVerified";
 import Spinner from "../Spinner"
 
-const VerifyCouponByCamera = () => {
-  const [scanResultWebCam, setScanResultWebCam] = useState("");
+const VerifyCouponByImage = () => {
+  const { alerta, mostrarAlerta } = useContext(alertaContext);
   const couponToVerify = useSelector((state) => state.coupons.couponToVerify);
   const loading = useSelector((state) => state.coupons.loading);
- 
+
+  const [scanResultFile, setScanResultFile] = useState("");
+  const qrRef = useRef(null);
+  
   const dispatch = useDispatch();
   const verify = (scanResultWebCam) => dispatch(verifyCouponCamera(scanResultWebCam));
   const cleanCoupon = () => dispatch(cleanCouponToScan());
-
+  
   useEffect(() => {
     cleanCoupon()
   }, [])
 
-  const handleErrorWebCam = (error) => {
+  const handleErrorFile = (error) => {
     console.log(error);
   };
-  const handleScanWebCam = (result) => {
-      console.log(result)
-    if (result) {
-      setScanResultWebCam(result);
-       //Llamando al action
-       verify(result)
+  const handleScanFile = (result) => {
+    if (result !== null) {
+      setScanResultFile(result);
+      verify(result);
+    } else {
+      mostrarAlerta("La imagen ingresada no es válida", "alerta-error");
+      setScanResultFile("");
     }
+  };
+  const onScanFile = () => {
+    qrRef.current.openImageDialog();
   };
   return (
     <Fragment>
+      {alerta ? (
+        <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
+      ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-plus-circle"></i>Verificar cupón con cámara web
+          <i className="fas fa-plus-circle"></i>Verificar cupón por archivo
         </h2>
       </div>
       <div className="card bg-gris py-4">
         <div className="card-body">
           <Row>
             <Col lg={4}>
-                <h6><i className="fas fa-info-circle mr-2"></i>Posiciona el código dentro del siguiente recuadro</h6>
+           
               <QrReader
-                delay={200}
+                ref={qrRef}
+                delay={300}
                 style={{ width: "100%" }}
-                onError={handleErrorWebCam}
-                onScan={handleScanWebCam}
+                onError={handleErrorFile}
+                onScan={handleScanFile}
+                legacyMode
               />
+              <button className="btn btn-primary m-2" onClick={onScanFile}>
+                Subir imagen con código Qr
+              </button>
             </Col>
             <Col lg={8}>
                 {loading ?
@@ -66,4 +82,4 @@ const VerifyCouponByCamera = () => {
   );
 };
 
-export default VerifyCouponByCamera;
+export default VerifyCouponByImage;

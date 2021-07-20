@@ -180,7 +180,7 @@ exports.confirmCanjeCoupon = async (req, res) => {
 
      //recorrer el listado y ver si el codigo coincide
      Object.values(user.Cupon).forEach( (cupon)=>{
-       if(cupon.id_item === cuponCanje.id_item){
+       if(cupon.id === cuponCanje.id){
          //cambiando el estado
          cupon.estadoCupon = true;
       }
