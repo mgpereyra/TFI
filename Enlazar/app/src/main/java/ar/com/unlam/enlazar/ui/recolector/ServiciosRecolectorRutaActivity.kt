@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
@@ -138,6 +139,11 @@ toolbar()
         viewModelServices.misServicios.observe(this, Observer{
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
+            if(it.isEmpty()){
+                no_serv_asignados_rec.visibility = View.VISIBLE
+            }else{
+                no_serv_asignados_rec.visibility = View.GONE
+            }
         })
     }
 

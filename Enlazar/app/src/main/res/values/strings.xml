@@ -96,7 +96,7 @@
     <string name="envases_pl_sticos_latas_bricks">Envases plásticos, latas, bricks</string>
     <string name="estado_cupon">Estado:</string>
     <string name="mis_canjes_realizados">Mis canjes realizados</string>
-
+    <string name="no_tienes_servicios_asignados">No tienes servicios asignados</string>
 
 
 </resources>
