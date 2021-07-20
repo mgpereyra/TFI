@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -41,9 +42,8 @@
         <activity android:name=".ui.recolector.RecuperarPassActivity" />
         <!-- UI VECINO -->
 
-        <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity" />
-        <activity android:name=".ui.recolector.DashboardRecolectorActivity" />
-        <activity android:name=".ui.recolector.RecuperarPassActivity" /> 
+     
+
   <!-- UI VECINO -->
         <activity android:name=".ui.vecino.MisPuntosActivity" />
         <activity android:name=".ui.vecino.MisCanjesActivity" />
@@ -56,7 +56,7 @@
         <activity android:name=".ui.vecino.SeccionInformativaDetalleActivity" />
         <activity android:name=".ui.vecino.SeccionInformativaActivity" />
         <activity android:name=".ui.vecino.CrearCuentaActivity" />
-      <activity android:name=".ui.vecino.PuntosEncuentroMapActivity" />
+
 
         <activity android:name=".ui.vecino.MisServiciosActivity" />
         <activity android:name=".ui.vecino.MisServiciosDetalleActivity" />

@@ -62,7 +62,8 @@ class DashboardUserActivity : AppCompatActivity() {
                 Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
             }
             R.id.mi_cuenta_user  -> {
-                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+               val intent=Intent(this,MiCuentaActivity::class.java)
+                startActivity(intent)
             }
             R.id.logout_user  -> {
                 logOut()
