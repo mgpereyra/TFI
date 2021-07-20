@@ -81,6 +81,11 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
                     override fun onDataChange(snapshot: DataSnapshot) {
                         var currentUser = snapshot.getValue(User::class.java)
                         db.database.getReference("MeetingPoint").child(puntoEncuentro.id!!).child("asistentes").child(idUser).setValue(emailUser)
+                        Toast.makeText(
+                            this@MisEncuentrosActivity,
+                            "Su asistencia fue confirmada correctamente",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onCancelled(error: DatabaseError) {

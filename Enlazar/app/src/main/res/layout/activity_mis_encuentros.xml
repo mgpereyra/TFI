@@ -90,11 +90,11 @@
             app:layout_constraintTop_toBottomOf="@+id/irMisPuntosEncuentroMap"
             tools:listitem="@layout/card_encuentro" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.navigation.NavigationView
+<!--    <com.google.android.material.navigation.NavigationView
         android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/menu"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true"/>-->
 </androidx.drawerlayout.widget.DrawerLayout>

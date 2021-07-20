@@ -104,6 +104,7 @@
     <string name="papel_cart_n_diarios_envases_carton">Papel, cartón, diarios</string>
     <string name="envases_pl_sticos_latas_bricks">Envases plásticos, latas, bricks</string>
     <string name="estado_cupon">Estado:</string>
+    <string name="mis_canjes_realizados">Mis canjes realizados</string>
 
 
 </resources>

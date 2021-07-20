@@ -54,9 +54,10 @@ class MisPuntosViewModel() : ViewModel() {
                         )
                     )*/
                     }
-                    if (mis_canjes.size > 0) {
-                        misCanjes.value = mis_canjes
-                    }
+                    misCanjes.value = mis_canjes.sortedBy { it.estadoCupon }
+            /*        if (mis_canjes.size > 0) {
+
+                    }*/
                 }
 
                 override fun onCancelled(error: DatabaseError) {

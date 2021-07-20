@@ -1,10 +1,14 @@
 package ar.com.unlam.enlazar.adapter
 
+import android.content.res.Resources
+import android.graphics.Color
 import android.provider.Settings.Secure.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.TypedArrayUtils.getResourceId
 import androidx.core.content.res.TypedArrayUtils.getText
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.CardInfo
@@ -40,13 +44,16 @@ class CuponAdapter:RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
             holder.itemView.codigo.setImageBitmap(QrUtils.generateQr(idRecolector+"/"+it.id+"/"+it.id_item))
             //Picasso.get().load(it.imageCode).error(R.drawable.error).into(holder.itemView.codigo)
             holder.itemView.cardInfo_elemento_canje.text=it.title
-            holder.itemView.label_puntos_de_costo.text = "Estado: " // getText(R.string.estado_cupon)
+            holder.itemView.label_puntos_de_costo.text = "Estado " // getText(R.string.estado_cupon)
             holder.itemView.label_cantidad_disponible.visibility=View.GONE
             holder.itemView.ver_item.visibility=View.GONE
             if (!it.estadoCupon){
-                holder.itemView.cardInfo_costo.text="Disponible"
+                holder.itemView.cardInfo_costo.text="Disponible" //resources.getColor(R.color.green)
+                holder.itemView.cardInfo_costo.setTextColor(Color.parseColor("#006D46"))
+
             }else{
                 holder.itemView.cardInfo_costo.text="Canjeado"
+                holder.itemView.cardInfo_costo.setTextColor(Color.parseColor("#bb6517"))
             }
         }
 
