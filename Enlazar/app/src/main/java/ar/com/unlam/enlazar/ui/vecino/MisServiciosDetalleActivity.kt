@@ -29,7 +29,7 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
         btn_cancel_servicio.setOnClickListener {
             cancelarServicio(cardInfoId.text.toString())
         }
-        btnVolver_mis_servicios.setOnClickListener {
+        btnVolver_mis_servicios_detalle.setOnClickListener {
             finish()
         }
 

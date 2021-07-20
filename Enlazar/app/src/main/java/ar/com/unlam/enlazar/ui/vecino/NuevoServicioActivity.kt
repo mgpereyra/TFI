@@ -4,12 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.core.view.GravityCompat
-import androidx.core.view.isEmpty
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.Estado
@@ -25,10 +20,9 @@ import kotlinx.android.synthetic.main.activity_crear_cuenta.*
 import kotlinx.android.synthetic.main.activity_dashboard_recolector.*
 import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
-import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver
+import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver_NuevoServicio
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
-
 
 class NuevoServicioActivity : AppCompatActivity() {
     var u: String = ""
@@ -42,19 +36,16 @@ class NuevoServicioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_servicio)
         setDirection(id)
-
         dia_picker.setOnClickListener { showDatePicker() }
         horario_picker.setOnClickListener { showTimePicker() }
         btn_finalizar.setOnClickListener {
             createService()
-
         }
         //   setObservers()
-        toolbar()
-        btnVolver.setOnClickListener {
-            btnVolver.setOnClickListener {
-                this@NuevoServicioActivity.finish()
-            }
+        // toolbar()
+        btnVolver_NuevoServicio.setOnClickListener {
+            finish()
+
         }
 
     }
@@ -62,15 +53,131 @@ class NuevoServicioActivity : AppCompatActivity() {
     private fun showTimePicker() {
         val timePicker = TimePickerFragment { onTimeSelected(it) }
         timePicker.show(supportFragmentManager, "time")
-
-
     }
 
     private fun onTimeSelected(time: String) {
 
         horario_picker.setText(time)
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+    private fun logOut() {
+        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
+        pref.clear()
+        pref.apply()
+        FirebaseAuth.getInstance().signOut()
+        val mainIntent = Intent(this, LoginActivity::class.java)
+        startActivity(mainIntent)
+    }
+
+    private fun setDirection(idForLocation: String) {
+        db.child("User").child(idForLocation).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                u = snapshot.child("address").value.toString()
+                lat = snapshot.child("latitud").value.toString().toDouble()
+                long = snapshot.child("longitud").value.toString().toDouble()
+                ubicacion.editText?.setText(u)
+                localidad.editText?.setText(snapshot.child("locality").value.toString())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun createService() {
+        /*val date = getCurrentDateTime()
+        val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")*/
+        if (cant_tipo1.editText?.text.toString().isEmpty()) {
+            cant_tipo1.editText?.setText("0")
+        }
+        if (cant_tipo2.editText?.text.toString().isEmpty()) {
+            cant_tipo2.editText?.setText("0")
+        }
+        if (cant_tipo3.editText?.text.toString().isEmpty()) {
+            cant_tipo3.editText?.setText("0")
+        }
+
+        var serviceId = db.push().key.toString()
+        var service = Service(
+            u,
+            serviceId,
+            lat.toString(),
+            long.toString(),
+            cant_tipo1.editText?.text.toString().toInt(),
+            cant_tipo2.editText?.text.toString().toInt(),
+            cant_tipo3.editText?.text.toString().toInt(),
+            dia_picker.text.toString(),
+            horario_picker.text.toString(), "",
+            id,
+            "",
+            Estado.PENDIENTE.ordinal
+        )
+        if (serviceId != null) {
+            db.child("Service").child(serviceId).setValue(service)
+                .addOnCompleteListener {
+                    Toast.makeText(
+                        this,
+                        "Tu Servicio ha sido registrado correctamente",
+                        Toast.LENGTH_LONG
+                    )
+                        .show()
+                    irMisServiciosActivity()
+                }
+        }
+    }
+
+    private fun irMisServiciosActivity() {
+        val misServiciosActivity = Intent(this, MisServiciosActivity::class.java)
+        this.startActivity(misServiciosActivity)
+        this@NuevoServicioActivity.finish()
+        startActivity(misServiciosActivity)
+    }
+
+    private fun setObservers() {
+        newServiceViewModel.estados.observe(this, { estado(it) })
+    }
+
+    private fun estado(status: NewServiceViewModel.EstadoNewService) {
+        when (status) {
+            NewServiceViewModel.EstadoNewService.SUCCESS -> Toast.makeText(
+                this@NuevoServicioActivity,
+                getString(R.string.succes), Toast.LENGTH_LONG
+            ).show()
+            NewServiceViewModel.EstadoNewService.ERROR -> Toast.makeText(
+                this@NuevoServicioActivity,
+                getString(R.string.error), Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private fun showDatePicker() {
+        val datePicker = DatePickerFragent { day, month, year -> onDateSelected(day, month, year) }
+        datePicker.show(supportFragmentManager, "datePicker")
+
+    }
+
+    private fun onDateSelected(day: Int, month: Int, year: Int) {
+        dia_picker.setText("$day/$month/$year")
+
+    }
+
+    companion object {
+        val ID: String = "id"
+    }
+}
+
+/*    fun toolbar() {
+        setSupportActionBar(toolbar_nuevo_servicio)
+        var ab: ActionBar? = supportActionBar
+        if (ab != null) {
+            ab.setHomeAsUpIndicator(R.drawable.menu)
+            ab.setDisplayHomeAsUpEnabled(true)
+
+        }
+
+    }*/
+/*  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_recolector , menu)
         //menu?.findItem(R.id.mis_direcciones_user)?.setVisible(false)
         toolbar_nuevo_servicio.setNavigationIcon(null)
@@ -101,128 +208,4 @@ class NuevoServicioActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
 
-    }
-    private fun logOut() {
-        val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
-        pref.clear()
-        pref.apply()
-        FirebaseAuth.getInstance().signOut()
-        val mainIntent = Intent(this, LoginActivity::class.java)
-        startActivity(mainIntent)
-    }
-    private fun setDirection(idForLocation: String) {
-        db.child("User").child(idForLocation).addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                u = snapshot.child("address").value.toString()
-                lat = snapshot.child("latitud").value.toString().toDouble()
-                long = snapshot.child("longitud").value.toString().toDouble()
-                ubicacion.editText?.setText(u)
-                localidad.editText?.setText(snapshot.child("locality").value.toString())
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
-
-    fun toolbar() {
-        setSupportActionBar(toolbar_nuevo_servicio)
-        var ab: ActionBar? = supportActionBar
-        if (ab != null) {
-            ab.setHomeAsUpIndicator(R.drawable.menu)
-            ab.setDisplayHomeAsUpEnabled(true)
-
-        }
-
-    }
-
-    private fun createService() {
-        /*val date = getCurrentDateTime()
-        val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")*/
-        if (cant_tipo1.editText?.text.toString().isEmpty()) {
-            cant_tipo1.editText?.setText("0")
-        }
-        if (cant_tipo2.editText?.text.toString().isEmpty()) {
-            cant_tipo2.editText?.setText("0")
-        }
-        if (cant_tipo3.editText?.text.toString().isEmpty()){
-            cant_tipo3.editText?.setText("0")
-        }
-
-            var serviceId = db.push().key.toString()
-            var service = Service(
-                u,
-                serviceId,
-                lat.toString(),
-                long.toString(),
-                cant_tipo1.editText?.text.toString().toInt(),
-                cant_tipo2.editText?.text.toString().toInt(),
-                cant_tipo3.editText?.text.toString().toInt(),
-                dia_picker.text.toString(),
-                horario_picker.text.toString(),"",
-                id,
-                "",
-                Estado.PENDIENTE.ordinal
-            )
-            if (serviceId != null) {
-                db.child("Service").child(serviceId).setValue(service)
-                    .addOnCompleteListener {
-                        Toast.makeText(
-                            this,
-                            "Tu Servicio ha sido registrado correctamente",
-                            Toast.LENGTH_LONG
-                        )
-                            .show()
-
-                        irDashboardUserActivity()
-                    }
-            }
-        }
-
-
-
-
-
-private fun irDashboardUserActivity() {
-    val darsheboardActivity = Intent(this, DashboardUserActivity::class.java)
-
-    this.startActivity(darsheboardActivity)
-    this@NuevoServicioActivity.finish()
-    startActivity(darsheboardActivity)
-}
-
-private fun setObservers() {
-    newServiceViewModel.estados.observe(this, { estado(it) })
-
-}
-
-private fun estado(status: NewServiceViewModel.EstadoNewService) {
-    when (status) {
-        NewServiceViewModel.EstadoNewService.SUCCESS -> Toast.makeText(
-            this@NuevoServicioActivity,
-            getString(R.string.succes), Toast.LENGTH_LONG
-        ).show()
-        NewServiceViewModel.EstadoNewService.ERROR -> Toast.makeText(
-            this@NuevoServicioActivity,
-            getString(R.string.error), Toast.LENGTH_LONG
-        ).show()
-    }
-}
-
-
-private fun showDatePicker() {
-    val datePicker = DatePickerFragent { day, month, year -> onDateSelected(day, month, year) }
-    datePicker.show(supportFragmentManager, "datePicker")
-
-}
-
-private fun onDateSelected(day: Int, month: Int, year: Int) {
-    dia_picker.setText("$day/$month/$year")
-
-}
-
-companion object {
-    val ID: String = "id"
-}
-}
+    }*/

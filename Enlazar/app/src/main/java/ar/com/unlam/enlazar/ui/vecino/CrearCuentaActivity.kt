@@ -32,20 +32,20 @@ class CrearCuentaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_cuenta)
+        setOnClickListeners()
+        setup()
+        setUpPlaces()
+    }
+
+    private fun setOnClickListeners() {
         btnVolver.setOnClickListener {
             this@CrearCuentaActivity.finish()
         }
         btn_login.setOnClickListener {
-
             setup()
-
             val intent = Intent(this, DashboardUserActivity::class.java)
             this@CrearCuentaActivity.finish()
-
-
         }
-        setup()
-        setUpPlaces()
     }
 
     private fun setup() {
@@ -99,11 +99,7 @@ class CrearCuentaActivity : AppCompatActivity() {
                     getString(R.string.place_not_found), Toast.LENGTH_LONG
                 ).show()
             }
-
-
         })
-
-
     }
 
     private fun showAlert() {
@@ -113,13 +109,11 @@ class CrearCuentaActivity : AppCompatActivity() {
         builder.setPositiveButton("Aceptar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
-
     }
 
     private fun irDashboardUserActivity() {
         val darsheboardActivity = Intent(this, DashboardUserActivity::class.java)
         darsheboardActivity.putExtra(DashboardUserActivity.IDKEY, id!!)
-
         this.startActivity(darsheboardActivity)
         /*.apply {
      putExtra("email",email)
@@ -135,19 +129,22 @@ class CrearCuentaActivity : AppCompatActivity() {
         //var userId = db.push().key.toString()
         id = FirebaseAuth.getInstance().getCurrentUser()!!.getUid()
         var user = User(
-            mAdress.toString(), partido.editText?.text.toString(),
-            dni.editText?.text.toString(), email.editText?.text.toString(),
-            id, dateInString, mOriginLat.toString(), mOriginLng.toString(), location.editText?.text.toString(),
-            name.editText?.text.toString(), password.editText?.text.toString(),
+            mAdress.toString(),
+            partido.editText?.text.toString(),
+            dni.editText?.text.toString(),
+            email.editText?.text.toString(),
+            id,
+            dateInString,
+            mOriginLat.toString(),
+            mOriginLng.toString(),
+            location.editText?.text.toString(),
+            name.editText?.text.toString(),
+            password.editText?.text.toString(),
             telephone.editText?.text.toString()
         )
-
         db.child(id).setValue(user).addOnCompleteListener {
             Toast.makeText(this, "Te has registrado correctamente", Toast.LENGTH_LONG).show()
-
         }
-
-
     }
 
     fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {

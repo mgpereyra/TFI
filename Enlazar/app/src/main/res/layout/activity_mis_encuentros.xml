@@ -70,6 +70,7 @@
             android:textColor="@color/white"
             android:textSize="13sp"
             app:icon="@drawable/ic_location"
+            app:iconTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
