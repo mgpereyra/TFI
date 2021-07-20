@@ -19,8 +19,8 @@ import kotlinx.android.synthetic.main.activity_dashboard_recolector.*
 import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver
-import java.util.*
 
+import java.util.*
 
 class NuevoServicioActivity : AppCompatActivity() {
     var lat: Double? = 0.0
@@ -32,21 +32,23 @@ class NuevoServicioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_nuevo_servicio)
+
 
         getDirection(id)
+
         dia_picker.setOnClickListener { showDatePicker() }
         horario_picker.setOnClickListener { showTimePicker() }
         btn_finalizar.setOnClickListener {
             createService()
-
         }
         //   setObservers()
+
 
         btnVolver.setOnClickListener {
             btnVolver.setOnClickListener {
                 this@NuevoServicioActivity.finish()
             }
+
         }
 
     }
@@ -54,14 +56,13 @@ class NuevoServicioActivity : AppCompatActivity() {
     private fun showTimePicker() {
         val timePicker = TimePickerFragment { onTimeSelected(it) }
         timePicker.show(supportFragmentManager, "time")
-
-
     }
 
     private fun onTimeSelected(time: String) {
 
         horario_picker.setText(time)
     }
+
 
 
     private fun getDirection(idForLocation: String) {
@@ -77,9 +78,11 @@ class NuevoServicioActivity : AppCompatActivity() {
         long = it
     }
 
+
     private fun setObserverLat(it: Double?) {
         lat = it
     }
+
 
     private fun setObserveLocalidad(it: String?) {
         localidad.editText?.setText(it)
@@ -138,7 +141,15 @@ class NuevoServicioActivity : AppCompatActivity() {
                 "Debes tener al menos una bolsa con material para reciclar",
                 Toast.LENGTH_LONG
             ).show()
+
         }
+    }
+
+    private fun irMisServiciosActivity() {
+        val misServiciosActivity = Intent(this, MisServiciosActivity::class.java)
+        this.startActivity(misServiciosActivity)
+        this@NuevoServicioActivity.finish()
+        startActivity(misServiciosActivity)
     }
 
 
@@ -155,19 +166,23 @@ class NuevoServicioActivity : AppCompatActivity() {
 
     }
 
-    private fun estado(status: NuevoServicioViewModel.EstadoNewService) {
+
+    private fun setObservers() {
+        newServiceViewModel.estados.observe(this, { estado(it) })
+    }
+
+    private fun estado(status: NewServiceViewModel.EstadoNewService) {
         when (status) {
-            NuevoServicioViewModel.EstadoNewService.SUCCESS -> Toast.makeText(
+            NewServiceViewModel.EstadoNewService.SUCCESS -> Toast.makeText(
                 this@NuevoServicioActivity,
                 getString(R.string.succes), Toast.LENGTH_LONG
             ).show()
-            NuevoServicioViewModel.EstadoNewService.ERROR -> Toast.makeText(
+            NewServiceViewModel.EstadoNewService.ERROR -> Toast.makeText(
                 this@NuevoServicioActivity,
                 getString(R.string.error), Toast.LENGTH_LONG
             ).show()
         }
     }
-
 
     private fun showDatePicker() {
         val datePicker = DatePickerFragent { day, month, year -> onDateSelected(day, month, year) }
@@ -182,5 +197,14 @@ class NuevoServicioActivity : AppCompatActivity() {
 
     companion object {
         val ID: String = "id"
+
     }
-}
+
+/*    fun toolbar() {
+        setSupportActionBar(toolbar_nuevo_servicio)
+        var ab: ActionBar? = supportActionBar
+        if (ab != null) {
+            ab.setHomeAsUpIndicator(R.drawable.menu)
+            ab.setDisplayHomeAsUpEnabled(true)
+
+

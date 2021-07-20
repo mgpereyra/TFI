@@ -36,10 +36,11 @@ class MisServiciosViewModel(): ViewModel() {
                     }
                 }
 
+
                     misServicios.value=list
 
 
-            }
+
 
 
             override fun onCancelled(error: DatabaseError) {

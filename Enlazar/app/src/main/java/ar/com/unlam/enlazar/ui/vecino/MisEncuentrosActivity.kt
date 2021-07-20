@@ -44,6 +44,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
     private fun setListeners() {
         btnVolver.setOnClickListener {
             finish()
+
         }
         irMisPuntosEncuentroMap.setOnClickListener {
             val intent = Intent(this, PuntosEncuentroMapActivity::class.java)

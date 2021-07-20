@@ -7,20 +7,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <com.google.android.material.card.MaterialCardView
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="3dp"
         android:id="@+id/dataContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="4dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="@color/grey"
-        app:strokeColor="@android:color/darker_gray"
-        app:strokeWidth="1dp"
-        tools:visibility="visible">
+        app:strokeColor="@color/grey"
+        app:strokeWidth="1dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -33,52 +30,45 @@
                 app:layout_constraintStart_toStartOf="parent
 "               app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:visibility="invisible"
-                tools:visibility="invisible" />
+                android:visibility="gone" />
+
             <ImageView
                 android:id="@+id/cardInfo_image_advice"
-                android:layout_width="170dp"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:maxHeight="200dp"
-                android:minHeight="150dp"
-                android:minWidth="160dp"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/card_resumen"
                 android:maxWidth="165dp"
-                app:layout_constraintEnd_toStartOf="@id/cardInfo_title_advice"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:maxHeight="200dp"
+                android:minWidth="160dp"
+                android:minHeight="150dp"
                 android:src="@drawable/ic_baseline_image_24"
-                android:contentDescription="@string/card_resumen" />
-<TextView
-    android:id="@+id/advice_type"
-    android:layout_width="170dp"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="parent"
-    android:textSize="15sp"
-    android:layout_margin="10dp"
-    app:layout_constraintBottom_toTopOf="@id/cardInfo_title_advice"
-    app:layout_constraintStart_toEndOf="@id/cardInfo_image_advice"
-    app:layout_constraintEnd_toEndOf="parent"
-    tools:text="Consejo de la Semana"
-    android:gravity="start"
-    />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/advice_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="start"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_title_advice"
+                tools:text="Consejo de la Semana" />
+
             <TextView
                 android:id="@+id/cardInfo_title_advice"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/advice_type"
-                app:layout_constraintStart_toEndOf="@id/cardInfo_image_advice"
                 android:textSize="22sp"
-                android:maxLength="25"
-                app:layout_constraintBottom_toTopOf="@id/cardInfo_content_advice"
-                tools:text="titulo card"
-                tools:visibility="visible"/>
+                android:layout_margin="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_image_advice"
+                tools:text="titulo card" />
 
             <TextView
                 android:id="@+id/cardInfo_content_advice"
@@ -94,8 +84,7 @@
                 app:layout_constraintBottom_toTopOf="@id/btn_ver_card_info"
                 app:layout_constraintStart_toEndOf="@id/cardInfo_image_advice"
                 app:layout_constraintTop_toBottomOf="@+id/cardInfo_title_advice"
-                tools:visibility="visible"
-                tools:text="Descripcion de card " />
+                android:visibility="gone"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_ver_card_info"

@@ -3,7 +3,6 @@ package ar.com.unlam.enlazar.ui.vecino
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ar.com.unlam.enlazar.R
@@ -16,9 +15,9 @@ import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 
 class MisServiciosActivity : AppCompatActivity() {
     var id = FirebaseAuth.getInstance().currentUser!!.uid
-    val viewModelMisServicios:MisServiciosViewModel by viewModels()
+    val viewModelMisServicios: MisServiciosViewModel by viewModels()
     var serviceList = ArrayList<Service>()
-    private lateinit var adapter:MisServiciosVecinoAdapter
+    private lateinit var adapter: MisServiciosVecinoAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,11 +42,8 @@ class MisServiciosActivity : AppCompatActivity() {
             servicios_pendientes.setBackgroundColor(
                 resources.getColor(R.color.emerald)
             )
-            servicios_confirmados.isEnabled=false
-            servicios_pendientes.isEnabled=true
-            serviceList.clear()
-            adapter.servicesList.clear()
-            adapter.notifyDataSetChanged()
+            servicios_confirmados.isEnabled = false
+            servicios_pendientes.isEnabled = true
             viewModelMisServicios.getServicios(Estado.ASIGNADO)
             setServicios()
         }
@@ -59,60 +55,47 @@ class MisServiciosActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
         servicios_pendientes.setOnClickListener {
-
             servicios_pendientes.setBackgroundColor(
                 resources.getColor(R.color.green)
             )
             servicios_confirmados.setBackgroundColor(
                 resources.getColor(R.color.emerald)
             )
-            servicios_confirmados.isEnabled=true
-            servicios_pendientes.isEnabled=false
-            serviceList.clear()
-            adapter.servicesList.clear()
-           // viewModelMisServicios.misServicios.
-
+            servicios_confirmados.isEnabled = true
+            servicios_pendientes.isEnabled = false
             viewModelMisServicios.getServicios(Estado.PENDIENTE)
-
             setServicios()
         }
         btnVolver_mis_servicios.setOnClickListener { finish() }
         setServicios()
-
-
-    }
-     override fun onResume() {
-         super.onResume()
-         setServicios()
-         viewModelMisServicios.getServicios(Estado.PENDIENTE)
-         adapter.notifyDataSetChanged()
-
-         //  serviceList.clear()
-
-
     }
 
+    override fun onResume() {
+        super.onResume()
+        setServicios()
+        adapter.notifyDataSetChanged()
+
+    }
 
     override fun onStart() {
-        viewModelMisServicios.getServicios(Estado.PENDIENTE)
         setServicios()
         super.onStart()
     }
+
     private fun setServicios() {
-        viewModelMisServicios.misServicios.observe(this,{
+        viewModelMisServicios.misServicios.observe(this, {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
+
             if(viewModelMisServicios.misServicios.value!!.size>0){
                 no_hay_servicios.visibility=View.GONE
                 listado_servicios.visibility=View.VISIBLE
             }else{
                 listado_servicios.visibility=View.GONE
                 no_hay_servicios.visibility=View.VISIBLE
-            }
-
-        })
-
-    }
 
 
-}
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    })
