@@ -11,7 +11,6 @@ import ar.com.unlam.enlazar.adapter.MisServiciosVecinoAdapter
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.Estado
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseError
 import kotlinx.android.synthetic.main.activity_mis_servicios.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 
@@ -95,8 +94,9 @@ class MisServiciosActivity : AppCompatActivity() {
             } else {
                 listado_servicios.visibility = View.GONE
                 no_hay_servicios.visibility = View.VISIBLE
-            }
 
-            })
-        }
+
+            }
+        })
     }
+}

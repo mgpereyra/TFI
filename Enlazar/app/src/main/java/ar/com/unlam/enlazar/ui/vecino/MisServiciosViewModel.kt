@@ -23,27 +23,33 @@ class MisServiciosViewModel(): ViewModel() {
     fun getServicios(estado: Estado){
         db.child("Service").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                var list = ArrayList<Service>()
+                var list=ArrayList<Service>()
                 // var mSnapshot=snapshot.getValue(Service::class.java)
                 for (postSnapshot in snapshot.children.iterator()) {
-                    var model = postSnapshot.getValue(Service::class.java)
+                    var model=postSnapshot.getValue(Service::class.java)
                     if (postSnapshot.child("userId").value.toString() == id &&
-                        postSnapshot.child("estado").value.toString().toInt() == estado.ordinal
-                    ) {
+                        postSnapshot.child("estado").value.toString().toInt()==estado.ordinal) {
                         if (model != null) {
                             list.add(model)
                         }
 
                     }
                 }
-                misServicios.value = list
+
+
+                    misServicios.value=list
             }
+
+
+
+
+
             override fun onCancelled(error: DatabaseError) {
                 Log.e("Cancel", error.toString())
 
             }
         })
-
+    }
 
     }
-}
+

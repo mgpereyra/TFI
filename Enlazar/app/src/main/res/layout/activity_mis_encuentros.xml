@@ -46,18 +46,6 @@
                 app:layout_constraintVertical_bias="0.47" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/crear_punto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Crear punto"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.794"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barra" />-->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/irMisPuntosEncuentroMap"

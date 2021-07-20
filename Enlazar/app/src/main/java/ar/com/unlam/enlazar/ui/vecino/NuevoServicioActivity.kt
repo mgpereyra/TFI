@@ -27,7 +27,10 @@ class NuevoServicioActivity : AppCompatActivity() {
     val newServiceViewModel: NuevoServicioViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_nuevo_servicio)
+        setContentView(R.layout.activity_nuevo_servicio)
+
+
+
         getDirection(id)
 
         dia_picker.setOnClickListener { showDatePicker() }
@@ -39,7 +42,8 @@ class NuevoServicioActivity : AppCompatActivity() {
 
 
         btnVolver_NuevoServicio.setOnClickListener {
-              finish()
+            finish()
+
         }
 
     }
@@ -53,6 +57,7 @@ class NuevoServicioActivity : AppCompatActivity() {
 
         horario_picker.setText(time)
     }
+
 
 
     private fun getDirection(idForLocation: String) {
@@ -116,7 +121,7 @@ class NuevoServicioActivity : AppCompatActivity() {
                     Estado.PENDIENTE.ordinal
                 )
                 newServiceViewModel.crearNuevoServicio(service)
-                irDashboardUserActivity()
+                irMisServiciosActivity()
             } else {
 
                 Toast.makeText(
@@ -151,10 +156,13 @@ class NuevoServicioActivity : AppCompatActivity() {
         startActivity(darsheboardActivity)
     }
 
-
     private fun setObservers() {
         newServiceViewModel.estados.observe(this, { estado(it) })
+
     }
+
+
+
 
     private fun estado(status: NuevoServicioViewModel.EstadoNewService) {
         when (status) {
@@ -185,11 +193,13 @@ class NuevoServicioActivity : AppCompatActivity() {
 
     }
 }
+
 /*    fun toolbar() {
         setSupportActionBar(toolbar_nuevo_servicio)
         var ab: ActionBar? = supportActionBar
         if (ab != null) {
             ab.setHomeAsUpIndicator(R.drawable.menu)
             ab.setDisplayHomeAsUpEnabled(true)
+
 
 */
