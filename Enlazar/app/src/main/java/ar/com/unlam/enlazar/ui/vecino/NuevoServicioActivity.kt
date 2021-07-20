@@ -96,7 +96,7 @@ class NuevoServicioActivity : AppCompatActivity() {
                 .isNotEmpty() || cant_tipo2.editText?.text.toString()
                 .isNotEmpty() || cant_tipo3.editText?.text.toString().isNotEmpty()
         ) {
-            if (dia_picker.text.isNotEmpty() || horario_picker.text.isNotEmpty()) {
+            if (dia_picker.text.isNotEmpty() && horario_picker.text.isNotEmpty()) {
                 if (cant_tipo1.editText?.text.toString().isEmpty()) {
                     cant_tipo1.editText?.setText("0")
                 }
