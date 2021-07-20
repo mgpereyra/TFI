@@ -5,7 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import ar.com.unlam.enlazar.R
+import androidx.lifecycle.Observer
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.ui.Estado
 import ar.com.unlam.enlazar.ui.pickers.DatePickerFragent
@@ -17,7 +19,6 @@ import kotlinx.android.synthetic.main.activity_dashboard_recolector.*
 import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.*
 import kotlinx.android.synthetic.main.activity_nuevo_servicio.btnVolver
-import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
 
@@ -27,12 +28,13 @@ class NuevoServicioActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().getReference()
     var id = FirebaseAuth.getInstance().currentUser!!.uid
 
-    val newServiceViewModel: NuevoServicioViewModel by viewModel()
+    val newServiceViewModel: NuevoServicioViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nuevo_servicio)
-        getDirection(id)
 
+        setContentView(R.layout.activity_nuevo_servicio)
+
+        getDirection(id)
         dia_picker.setOnClickListener { showDatePicker() }
         horario_picker.setOnClickListener { showTimePicker() }
         btn_finalizar.setOnClickListener {
@@ -64,10 +66,27 @@ class NuevoServicioActivity : AppCompatActivity() {
 
     private fun getDirection(idForLocation: String) {
         newServiceViewModel.obtenerDireccion(idForLocation)
-        ubicacion.editText?.setText(newServiceViewModel.direccion)
-        localidad.editText?.setText(newServiceViewModel.localidad)
-        lat = newServiceViewModel.lat
-        long = newServiceViewModel.long
+        newServiceViewModel.direccion.observe(this,Observer{setObserveDireccion(it)})
+        newServiceViewModel.localidad.observe(this,Observer{setObserveLocalidad(it)})
+        newServiceViewModel.lat.observe(this,Observer{setObserverLat(it)})
+        newServiceViewModel.long.observe(this,Observer{setObserverLong(it)})
+
+    }
+
+    private fun setObserverLong(it: Double?) {
+        long=it
+    }
+
+    private fun setObserverLat(it: Double?) {
+        lat=it
+    }
+
+    private fun setObserveLocalidad(it: String?) {
+        localidad.editText?.setText(it)
+    }
+
+    private fun setObserveDireccion(it: String?) {
+        ubicacion.editText?.setText(it)
 
     }
 
