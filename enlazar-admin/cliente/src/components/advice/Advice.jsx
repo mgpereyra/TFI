@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAdviceAction, modifyAdvice } from "../../actions/adviceAction";
-import picture from '../../images/png-image.jpg'
+import picture from "../../images/png-image.jpg";
 
 const Advice = ({ advice }) => {
   const { tipe, title, content, id, img, uri, likes } = advice;
@@ -28,11 +28,11 @@ const Advice = ({ advice }) => {
       <div className="card mb-4 border-secondary">
         <div className="row no-gutters">
           <div className="col-md-4">
-            { loading ?
-           <img className="card-img" src={picture} alt='cargando'></img>
-             :
-            <img className="card-img" src={uri} alt={img}></img>
-            }
+            {loading ? (
+              <img className="card-img" src={picture} alt="cargando"></img>
+            ) : (
+              <img className="card-img" src={uri} alt={img}></img>
+            )}
           </div>
           <div className="col-md-8">
             <div className="card-body">

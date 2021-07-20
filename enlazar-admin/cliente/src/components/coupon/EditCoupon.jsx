@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { modifyCouponAction } from "../../actions/couponAction";
 import { useHistory } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
-import Spinner from "../Spinner"
+import Spinner from "../Spinner";
 
 const EditCoupon = () => {
   const dispatch = useDispatch();
@@ -27,15 +27,9 @@ const EditCoupon = () => {
 
   const [fileUrl, setFileUrl] = useState(null);
 
-  const {
-    title,
-    description,
-    amount,
-    pointsCost,
-    imageName,
-    imageData
-  } = coupon;
-/*
+  const { title, description, amount, pointsCost, imageName, imageData } =
+    coupon;
+  /*
   const confirmEdit = (coupon) => {
     dispatch(modifyCoupon(coupon));
     history.push(`/edit-coupon/${coupon.id}`);
@@ -62,39 +56,44 @@ const EditCoupon = () => {
     setCoupon({
       ...coupon,
       imageData: formdata,
-      image: null 
+      image: null,
     });
 
     const imageUrl = URL.createObjectURL(e.target.files[0]);
     setFileUrl(imageUrl);
   };
 
-  const handleSubmit =   (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     //Validar
-    if ( title.trim() === "" || description.trim() === ""
-    ) {
+    if (title.trim() === "" || description.trim() === "") {
       mostrarAlerta("Por favor complete todos los campos", "alerta-error");
       return;
     }
 
-    if ( pointsCost < 0) {
-      mostrarAlerta("Los Puntos de Costo deben ser igual o mayor que 0", "alerta-error");
+    if (pointsCost < 0) {
+      mostrarAlerta(
+        "Los Puntos de Costo deben ser igual o mayor que 0",
+        "alerta-error"
+      );
       return;
     }
 
-    if ( amount < 0) {
-      mostrarAlerta("La Cantidad Disponible debe ser igual o mayor que 0", "alerta-error");
+    if (amount < 0) {
+      mostrarAlerta(
+        "La Cantidad Disponible debe ser igual o mayor que 0",
+        "alerta-error"
+      );
       return;
     }
 
-     dispatch(modifyCouponAction(coupon));
+    dispatch(modifyCouponAction(coupon));
 
-   //setloading(true)
+    //setloading(true)
 
-    setTimeout(() => {    
-     // setloading(false)
+    setTimeout(() => {
+      // setloading(false)
       history.push("/list-coupon");
     }, 2500);
   };
@@ -103,7 +102,7 @@ const EditCoupon = () => {
       {alerta ? (
         <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
       ) : null}
-      
+
       <div className="d-flex justify-content-between">
         <h2>
           <i className="fas fa-plus-circle"></i>Editar cupón
@@ -113,7 +112,6 @@ const EditCoupon = () => {
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <Row>
-              
               <Col>
                 <div className="form-group">
                   <label className="control-label">Título</label>
@@ -161,7 +159,6 @@ const EditCoupon = () => {
                 </div>
               </Col>
               <Col lg={5}>
-                
                 <div className="form-group">
                   <label className="control-label ml-2">
                     Selecciona una imagen
@@ -175,18 +172,28 @@ const EditCoupon = () => {
                     onChange={handleImg}
                   />
 
-                  <label className="control-label pl-2">Imagen seleccionada</label>
+                  <label className="control-label pl-2">
+                    Imagen seleccionada
+                  </label>
                   <div className="bg-white fondo-imagen  m-2 align-items-center">
-                      {coupon.image !== null  ?
-                          <img className="img-edit " src={coupon.image} alt={title}></img>
-                          :
-                          <img className="img-edit " src={fileUrl} alt={title}></img>
-                      }
+                    {coupon.image !== null ? (
+                      <img
+                        className="img-edit "
+                        src={coupon.image}
+                        alt={title}
+                      ></img>
+                    ) : (
+                      <img
+                        className="img-edit "
+                        src={fileUrl}
+                        alt={title}
+                      ></img>
+                    )}
                   </div>
                 </div>
               </Col>
             </Row>
-            {loading ? <Spinner/>: null}    
+            {loading ? <Spinner /> : null}
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
               <button
                 className="btn btn-primary me-md-2"
