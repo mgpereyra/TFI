@@ -138,13 +138,9 @@ class NuevoServicioActivity : AppCompatActivity() {
     }
 
     private fun irMisServiciosActivity() {
-        val misServiciosActivity = Intent(this, MisServiciosActivity::class.java)
-        this.startActivity(misServiciosActivity)
-        this@NuevoServicioActivity.finish()
-        startActivity(misServiciosActivity)
+        finish()
     }
-
-
+    
     private fun irDashboardUserActivity() {
         val darsheboardActivity = Intent(this, DashboardUserActivity::class.java)
 

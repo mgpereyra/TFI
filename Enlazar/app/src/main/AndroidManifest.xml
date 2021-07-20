@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -17,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Enlazar"
         android:vmSafeMode="false">
+        <activity android:name=".ui.vecino.QrViewActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -31,20 +31,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LoginActivity" />
-        <!-- UI RECOLECTOR -->
+        <activity android:name=".ui.LoginActivity" /> <!-- UI RECOLECTOR -->
         <activity android:name=".ui.recolector.RutaRecolectorMapActivity" />
-
-       <activity android:name=".ui.recolector.ServiciosFinalizadosRecolectorActivity"></activity>
-	    <activity android:name=".ui.vecino.PuntosEncuentroMapActivity" />
-        <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity"/>
-        <activity android:name=".ui.recolector.DashboardRecolectorActivity"/>
-        <activity android:name=".ui.recolector.RecuperarPassActivity" />
-        <!-- UI VECINO -->
-
-     
-
-  <!-- UI VECINO -->
+        <activity android:name=".ui.recolector.ServiciosFinalizadosRecolectorActivity" />
+        <activity android:name=".ui.vecino.PuntosEncuentroMapActivity" />
+        <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity" />
+        <activity android:name=".ui.recolector.DashboardRecolectorActivity" />
+        <activity android:name=".ui.recolector.RecuperarPassActivity" /> <!-- UI VECINO -->
+        <activity android:name=".ui.recolector.ServiciosRecolectorRutaActivity" />
+        <activity android:name=".ui.recolector.DashboardRecolectorActivity" />
+        <activity android:name=".ui.recolector.RecuperarPassActivity" /> <!-- UI VECINO -->
         <activity android:name=".ui.vecino.MisPuntosActivity" />
         <activity android:name=".ui.vecino.MisCanjesActivity" />
         <activity android:name=".ui.vecino.MiCuentaActivity" />
@@ -56,8 +52,7 @@
         <activity android:name=".ui.vecino.SeccionInformativaDetalleActivity" />
         <activity android:name=".ui.vecino.SeccionInformativaActivity" />
         <activity android:name=".ui.vecino.CrearCuentaActivity" />
-
-
+        <activity android:name=".ui.vecino.PuntosEncuentroMapActivity" />
         <activity android:name=".ui.vecino.MisServiciosActivity" />
         <activity android:name=".ui.vecino.MisServiciosDetalleActivity" />
 

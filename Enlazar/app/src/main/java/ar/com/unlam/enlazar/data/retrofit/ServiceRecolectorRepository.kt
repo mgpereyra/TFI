@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
 
+//Alternatina a implementar en futuras versiones
 class ServiceRecolectorRepository(private val rootRef:DatabaseReference=FirebaseDatabase.getInstance().reference,
 private val serviceReference:DatabaseReference=rootRef.child(Constants.SERVICE_REF)) {
 
