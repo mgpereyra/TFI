@@ -66,19 +66,19 @@ class NuevoServicioActivity : AppCompatActivity() {
 
     private fun getDirection(idForLocation: String) {
         newServiceViewModel.obtenerDireccion(idForLocation)
-        newServiceViewModel.direccion.observe(this,Observer{setObserveDireccion(it)})
-        newServiceViewModel.localidad.observe(this,Observer{setObserveLocalidad(it)})
-        newServiceViewModel.lat.observe(this,Observer{setObserverLat(it)})
-        newServiceViewModel.long.observe(this,Observer{setObserverLong(it)})
+        newServiceViewModel.direccion.observe(this, Observer { setObserveDireccion(it) })
+        newServiceViewModel.localidad.observe(this, Observer { setObserveLocalidad(it) })
+        newServiceViewModel.lat.observe(this, Observer { setObserverLat(it) })
+        newServiceViewModel.long.observe(this, Observer { setObserverLong(it) })
 
     }
 
     private fun setObserverLong(it: Double?) {
-        long=it
+        long = it
     }
 
     private fun setObserverLat(it: Double?) {
-        lat=it
+        lat = it
     }
 
     private fun setObserveLocalidad(it: String?) {
@@ -92,33 +92,53 @@ class NuevoServicioActivity : AppCompatActivity() {
 
 
     private fun createService() {
-        if (cant_tipo1.editText?.text.toString().isEmpty()) {
-            cant_tipo1.editText?.setText("0")
-        }
-        if (cant_tipo2.editText?.text.toString().isEmpty()) {
-            cant_tipo2.editText?.setText("0")
-        }
-        if (cant_tipo3.editText?.text.toString().isEmpty()) {
-            cant_tipo3.editText?.setText("0")
-        }
+        if (cant_tipo1.editText?.text.toString()
+                .isNotEmpty() || cant_tipo2.editText?.text.toString()
+                .isNotEmpty() || cant_tipo3.editText?.text.toString().isNotEmpty()
+        ) {
+            if (dia_picker.text.isNotEmpty() || horario_picker.text.isNotEmpty()) {
+                if (cant_tipo1.editText?.text.toString().isEmpty()) {
+                    cant_tipo1.editText?.setText("0")
+                }
+                if (cant_tipo2.editText?.text.toString().isEmpty()) {
+                    cant_tipo2.editText?.setText("0")
+                }
+                if (cant_tipo3.editText?.text.toString().isEmpty()) {
+                    cant_tipo3.editText?.setText("0")
+                }
 
-        var serviceId = db.push().key.toString()
-        var service = Service(
-            ubicacion.editText?.text.toString(),
-            serviceId,
-            lat.toString(),
-            long.toString(),
-            cant_tipo1.editText?.text.toString().toInt(),
-            cant_tipo2.editText?.text.toString().toInt(),
-            cant_tipo3.editText?.text.toString().toInt(),
-            dia_picker.text.toString(),
-            horario_picker.text.toString(), "",
-            id,
-            "",
-            Estado.PENDIENTE.ordinal
-        )
-        newServiceViewModel.crearNuevoServicio(service)
-        irDashboardUserActivity()
+                var serviceId = db.push().key.toString()
+                var service = Service(
+                    ubicacion.editText?.text.toString(),
+                    serviceId,
+                    lat.toString(),
+                    long.toString(),
+                    cant_tipo1.editText?.text.toString().toInt(),
+                    cant_tipo2.editText?.text.toString().toInt(),
+                    cant_tipo3.editText?.text.toString().toInt(),
+                    dia_picker.text.toString(),
+                    horario_picker.text.toString(), "",
+                    id,
+                    "",
+                    Estado.PENDIENTE.ordinal
+                )
+                newServiceViewModel.crearNuevoServicio(service)
+                irDashboardUserActivity()
+            } else {
+
+                Toast.makeText(
+                    this,
+                    "Debes completar los datos de Fecha y Horario",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        } else {
+            Toast.makeText(
+                this,
+                "Debes tener al menos una bolsa con material para reciclar",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
 
