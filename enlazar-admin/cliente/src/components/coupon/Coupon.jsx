@@ -5,7 +5,7 @@ import { deleteCouponAction, modifyCoupon } from "../../actions/couponAction";
 import picture from '../../images/picture-grey.jpg'
 
 const Coupon = ({ coupon }) => {
-  const loading = useSelector((state) => state.services.loading);
+  const loading = useSelector((state) => state.coupons.loading);
 
   const { image, title, description, imageCode, amount, pointsCost, id } =
     coupon;
@@ -53,15 +53,7 @@ const Coupon = ({ coupon }) => {
             
               <div className="d-flex">
                
-                {imageCode !== "default"  && imageCode !== undefined && imageCode !== "" ?
-                 (  <div className='border' >
-                    <a href={imageCode} download={"Código QR-"+title}>
-                      <img  className = "qr-div" src={imageCode} alt="QR"/>
-                    </a>
-                  </div>)
-                : null}
-
-                <div className="ml-auto mt-4">
+               <div className="ml-auto mt-4">
                 <button
                   onClick={() => confirmDelete(id)}
                   className="btn btn-outline-danger btn-circle mr-2"

@@ -11,6 +11,7 @@ import {
     GET_COUPON_MODIFY,
     COUPON_MODIFY_ERROR,
     COUPON_MODIFY_SUCCESS,
+    COUPON_MODIFY_PROCESS,
     COUPON_VERIFY_ERROR,
     COUPON_VERIFY_SUCCESS,
     GET_COUPON_VERIFY,
@@ -67,7 +68,7 @@ export function createNewCoupon(coupon) {
         const imagen = coupon.imageData.get("file");
         try {
           var storageRef = firebase.storage();
-          var imageRef = storageRef.ref().child("advice_image/" + imagen.name);
+          var imageRef = storageRef.ref().child("item_image/" + imagen.name);
           await imageRef.put(imagen).then(async (snapshot) => {
             const uri = await storageRef
               .ref("item_image/" + imagen.name)
@@ -157,13 +158,35 @@ export function modifyCouponAction(coupon) {
   return async (dispatch) => {
     try {
       
-      await clienteAxios.put(`/api/coupon/${coupon.id}`, coupon);
-
       dispatch({
-        type: COUPON_MODIFY_SUCCESS,
+        type: COUPON_MODIFY_PROCESS
       });
-      //alerta
-      Swal.fire("Genial", "El cupón se modificó correctamente", "success");
+
+      console.log(coupon) 
+
+        try {
+          if(coupon.imageData !==   undefined){
+            const imagen = coupon.imageData.get("file");
+  
+            var storageRef = firebase.storage();
+            await storageRef.ref().child("item_image/" + imagen.name).put(imagen);
+            coupon.image = await storageRef.ref("item_image/" + imagen.name).getDownloadURL();
+          }
+            console.log(coupon)
+          await clienteAxios.put(`/api/coupon/${coupon.id}`, coupon);
+
+            dispatch({
+              type: COUPON_MODIFY_SUCCESS,
+              payload: coupon
+            });
+       
+            //alerta
+           Swal.fire("Genial", "El cupón se modificó correctamente", "success");
+        } catch (error) {
+          console.log(error);
+
+        }
+     
     } catch (error) {
       console.log(error);
       dispatch({

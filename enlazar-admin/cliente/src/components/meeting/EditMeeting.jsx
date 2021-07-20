@@ -11,6 +11,7 @@ const EditMeeting = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { alerta, mostrarAlerta } = useContext(alertaContext);
+  const [loading, setloading] = useState(false)
 
   //state del componente
   const [meeting, setMeeting] = useState({
@@ -66,7 +67,7 @@ const EditMeeting = () => {
       return;
     }
 
-    dispatch(modifyMeetingAction(meeting));
+     dispatch(modifyMeetingAction(meeting));
     clear();
     //reiniciar el form
     setMeeting({
@@ -81,8 +82,12 @@ const EditMeeting = () => {
       lng: 0,
     });
 
+    setloading(true)
     //redireccion
-    history.push("/list-meeting");
+    setTimeout(() => {
+      setloading(false)
+      history.push("/list-meeting");
+    }, 3500);
   };
   return (
     <Fragment>
