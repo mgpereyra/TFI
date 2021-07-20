@@ -18,7 +18,7 @@
         android:id="@+id/barra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/emerald"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal">
 
@@ -42,7 +42,7 @@
             android:layout_marginStart="150dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/emerald"
+            android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_arrow_back" />
     </LinearLayout>
 <ScrollView
