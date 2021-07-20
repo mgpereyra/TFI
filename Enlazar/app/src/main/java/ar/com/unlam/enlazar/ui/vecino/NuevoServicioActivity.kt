@@ -86,44 +86,63 @@ class NuevoServicioActivity : AppCompatActivity() {
     }
 
     private fun createService() {
-        /*val date = getCurrentDateTime()
-        val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")*/
-        if (cant_tipo1.editText?.text.toString().isEmpty()) {
-            cant_tipo1.editText?.setText("0")
-        }
-        if (cant_tipo2.editText?.text.toString().isEmpty()) {
-            cant_tipo2.editText?.setText("0")
-        }
-        if (cant_tipo3.editText?.text.toString().isEmpty()) {
-            cant_tipo3.editText?.setText("0")
-        }
-
-        var serviceId = db.push().key.toString()
-        var service = Service(
-            u,
-            serviceId,
-            lat.toString(),
-            long.toString(),
-            cant_tipo1.editText?.text.toString().toInt(),
-            cant_tipo2.editText?.text.toString().toInt(),
-            cant_tipo3.editText?.text.toString().toInt(),
-            dia_picker.text.toString(),
-            horario_picker.text.toString(), "",
-            id,
-            "",
-            Estado.PENDIENTE.ordinal
-        )
-        if (serviceId != null) {
-            db.child("Service").child(serviceId).setValue(service)
-                .addOnCompleteListener {
-                    Toast.makeText(
-                        this,
-                        "Tu Servicio ha sido registrado correctamente",
-                        Toast.LENGTH_LONG
-                    )
-                        .show()
-                    irMisServiciosActivity()
+        if (cant_tipo1.editText?.text.toString()
+                .isNotEmpty() || cant_tipo2.editText?.text.toString()
+                .isNotEmpty() || cant_tipo3.editText?.text.toString().isNotEmpty()
+        ) {
+            if (dia_picker.text.isNotEmpty() && horario_picker.text.isNotEmpty()) {
+                if (cant_tipo1.editText?.text.toString().isEmpty()) {
+                    cant_tipo1.editText?.setText("0")
                 }
+                if (cant_tipo2.editText?.text.toString().isEmpty()) {
+                    cant_tipo2.editText?.setText("0")
+                }
+                if (cant_tipo3.editText?.text.toString().isEmpty()) {
+                    cant_tipo3.editText?.setText("0")
+                }
+
+                var serviceId = db.push().key.toString()
+                var service = Service(
+                    u,
+                    serviceId,
+                    lat.toString(),
+                    long.toString(),
+                    cant_tipo1.editText?.text.toString().toInt(),
+                    cant_tipo2.editText?.text.toString().toInt(),
+                    cant_tipo3.editText?.text.toString().toInt(),
+                    dia_picker.text.toString(),
+                    horario_picker.text.toString(), "",
+                    id,
+                    "",
+                    Estado.PENDIENTE.ordinal
+                )
+                if (serviceId != null) {
+                    db.child("Service").child(serviceId).setValue(service)
+                        .addOnCompleteListener {
+                            Toast.makeText(
+                                this,
+                                "Tu Servicio ha sido registrado correctamente",
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                            irMisServiciosActivity()
+                        }
+                }
+            } else {
+
+                Toast.makeText(
+                    this,
+                    "Debes completar los datos de Fecha y Horario",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        } else {
+            Toast.makeText(
+                this,
+                "Debes tener al menos una bolsa con material para reciclar",
+                Toast.LENGTH_LONG
+            ).show()
+
         }
     }
 
