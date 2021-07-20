@@ -46,7 +46,7 @@ class MisPuntosViewModel() : ViewModel() {
                         }
                     }
 
-                        misCanjes.value = mis_canjes
+                        misCanjes.value = mis_canjes.sortedBy { it.estadoCupon }
 
                 }
 
