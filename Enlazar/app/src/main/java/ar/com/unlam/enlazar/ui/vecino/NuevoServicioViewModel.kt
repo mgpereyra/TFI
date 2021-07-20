@@ -54,6 +54,8 @@ class NuevoServicioViewModel(private val estado: SavedStateHandle) : ViewModel()
                     .addOnCompleteListener {
                         estadosServicio.value=EstadoNewService.SUCCESS
 
+                    }.addOnCanceledListener {
+                        estadosServicio.value=EstadoNewService.ERROR
                     }
             }
         }
