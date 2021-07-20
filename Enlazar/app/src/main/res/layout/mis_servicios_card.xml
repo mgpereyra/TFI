@@ -14,13 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="4dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/grey"
+        app:strokeColor="@color/grey"
         app:strokeWidth="1dp"
-        app:strokeColor="@android:color/black"
         tools:visibility="visible">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -29,21 +31,20 @@
                 android:id="@+id/cardInfoId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent
-"               app:layout_constraintBottom_toBottomOf="parent"
+"
                 app:layout_constraintTop_toTopOf="parent"
-                android:visibility="invisible"
                 tools:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/circle_bolsas_amarillo"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
+                android:layout_margin="15dp"
                 android:src="@drawable/circle_border_yellow"
-                app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,22 +52,23 @@
                 android:id="@+id/cantidad_de_bolsas_amarillo"
                 android:layout_width="45dp"
                 android:layout_height="30dp"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textAlignment="center"
+                android:textSize="20sp"
                 app:flow_verticalAlign="center"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_amarillo"
                 app:layout_constraintEnd_toEndOf="@id/circle_bolsas_amarillo"
                 app:layout_constraintStart_toStartOf="@id/circle_bolsas_amarillo"
-                app:layout_constraintTop_toTopOf="@id/circle_bolsas_amarillo"
-                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_amarillo"
-                android:text="@string/Ejemplo_cant_puntos"
-                android:textSize="20sp"
-                android:textAlignment="center"/>
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_amarillo" />
 
             <ImageView
                 android:id="@+id/circle_bolsas_azul"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
+                android:layout_margin="15dp"
+
                 android:src="@drawable/circle_border_blue"
+                android:backgroundTint="@color/black"
                 app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toEndOf="@id/cantidad_de_bolsas_amarillo"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -76,25 +78,22 @@
                 android:layout_width="45dp"
                 android:layout_height="30dp"
                 android:layout_margin="2dp"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textAlignment="center"
+                android:textSize="20sp"
                 app:flow_verticalAlign="center"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_azul"
                 app:layout_constraintEnd_toEndOf="@id/circle_bolsas_azul"
                 app:layout_constraintStart_toStartOf="@id/circle_bolsas_azul"
-                app:layout_constraintTop_toTopOf="@id/circle_bolsas_azul"
-                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_azul"
-                android:text="@string/Ejemplo_cant_puntos"
-                android:textSize="20sp"
-                android:textAlignment="center"/>
-
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_azul" />
 
 
             <ImageView
                 android:id="@+id/circle_bolsas_verdes"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="4dp"
+                android:layout_margin="15dp"
                 android:src="@drawable/circle_border_green"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toEndOf="@id/circle_bolsas_azul"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,83 +101,127 @@
                 android:id="@+id/cantidad_bolsas_verdes"
                 android:layout_width="45dp"
                 android:layout_height="30dp"
+                android:text="@string/Ejemplo_cant_puntos"
+                android:textAlignment="center"
+                android:textSize="20sp"
                 app:flow_verticalAlign="center"
+                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_verdes"
                 app:layout_constraintEnd_toEndOf="@id/circle_bolsas_verdes"
                 app:layout_constraintStart_toStartOf="@id/circle_bolsas_verdes"
-                app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes"
-                app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_verdes"
-                android:text="@string/Ejemplo_cant_puntos"
-                android:textSize="20sp"
-                android:textAlignment="center"/>
+                app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes" />
 
-                <TextView
-                    android:id="@+id/cardInfo_date"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:maxLength="25"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="25sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.105"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/circle_bolsas_amarillo"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:text="Sábado 15/05/21"
-                    tools:visibility="visible" />
+            <TextView
+                android:id="@+id/cardInfo_dateText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:maxLength="25"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardInfo_dateText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardInfo_dateText"
+                app:layout_constraintVertical_bias="1.0"
+                tools:text="15/05/21"
+                tools:visibility="visible" />
 
-                <TextView
-                    android:id="@+id/cardInfo_direccion"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_marginStart="15dp"
-                    android:maxLength="30"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="17sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@id/cardInfo_date"
-                    app:layout_constraintTop_toBottomOf="@+id/cardInfo_date"
-                    app:layout_constraintVertical_bias="0.043"
-                    tools:text="this is a example of a content "
-                    tools:visibility="visible" />
-<TextView
-    android:id="@+id/estado"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    android:text="0"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/turno"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:backgroundTint="@color/emerald"
-                    android:text="Turno Mañana"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@id/circle_bolsas_verdes"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.873"
-                    app:layout_constraintStart_toEndOf="@id/circle_bolsas_verdes"
-                    app:layout_constraintTop_toTopOf="@id/circle_bolsas_verdes"
-                    app:layout_constraintVertical_bias="1.0" />
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/btn_ver_servicio"
-    app:layout_constraintTop_toBottomOf="@id/cardInfo_direccion"
-    app:layout_constraintStart_toStartOf="@id/turno"
-    app:layout_constraintEnd_toEndOf="@id/turno"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:text="@string/ver"
-    android:textColor="@color/white"
-    android:backgroundTint="@color/emerald"/>
+            <TextView
+                android:id="@+id/cardInfo_dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:maxLength="25"
+                android:text="@string/fecha"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.028"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/circle_bolsas_amarillo" />
+
+            <TextView
+                android:id="@+id/cardInfo_direccionText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLength="30"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardInfo_direccionText"
+                app:layout_constraintStart_toStartOf="@+id/horaText2"
+                app:layout_constraintTop_toTopOf="@+id/cardInfo_direccionText"
+                tools:text="Calle 1234"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/cardInfo_direccionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:maxLength="30"
+                android:text="@string/direcci_n"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.028"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_horaText" />
+
+            <TextView
+                android:id="@+id/cardInfo_horaText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:maxLength="30"
+                android:text="@string/hora"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.028"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_dateText" />
+
+            <TextView
+                android:id="@+id/estado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/horaText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/emerald"
+                android:text="Turno Mañana"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardInfo_horaText"
+                app:layout_constraintStart_toStartOf="@+id/cardInfo_dateText2"
+                app:layout_constraintTop_toTopOf="@+id/cardInfo_horaText"
+                app:layout_constraintVertical_bias="0.461" />
+
+            <Button
+                android:id="@+id/btn_ver_servicio"
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/emerald"
+                android:text="@string/ver"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_direccionText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

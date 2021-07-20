@@ -1,112 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.vecino.SeccionInformativaDetalleActivity"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.vecino.SeccionInformativaDetalleActivity">
+
     <LinearLayout
         android:id="@+id/barra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="200dp"
             android:layout_height="67dp"
             app:title="@string/app_name" />
+
         <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btnVolver_a_canjes"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:tint="@color/white"
-        android:src="@drawable/ic_arrow_back"/>
+            android:id="@+id/btnVolver_a_canjes"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/white" />
     </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/barra"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/dataContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="4dp"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="50dp"
-            app:strokeColor="@android:color/black"
-            app:strokeWidth="1dp"
-            tools:visibility="visible">
+            android:backgroundTint="@color/grey"
+            app:strokeColor="@color/grey">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
 
                 <ImageView
                     android:id="@+id/picture_detalle_Advice"
-                    android:layout_width="350dp"
-                    android:layout_height="350dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/title_detalle_Advice"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:maxWidth="165dp"
+                    android:maxHeight="200dp"
+                    android:minWidth="160dp"
+                    android:minHeight="150dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_baseline_image_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:src="@drawable/ic_baseline_image_24"
-
+                    app:layout_constraintTop_toTopOf="parent"
                     />
-
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/subTextWhite"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@id/picture_detalle_Advice"
+                    app:layout_constraintBottom_toTopOf="@+id/title_detalle_Advice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
                 <TextView
                     android:id="@+id/title_detalle_Advice"
-                    android:layout_width="240dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_margin="20dp"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    app:layout_constraintEnd_toStartOf="@id/guardar_consejo"
-                    app:layout_constraintHorizontal_bias="0.081"
-                    android:layout_marginEnd="8dp"
+                    android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/picture_detalle_Advice"
                     tools:text="Titulo de Informacion" />
-                <com.google.android.material.button.MaterialButton
+    <!--            <com.google.android.material.button.MaterialButton
                     android:id="@+id/guardar_consejo"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:textColorHint="@color/emerald"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/backGroundCustom"
-                    app:iconTint="@color/emerald"
-                    android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@id/title_detalle_Advice"
-                    app:icon="@drawable/ic_bookmark_border"
-                    app:layout_constraintTop_toTopOf="@id/title_detalle_Advice"
                     android:layout_marginEnd="30dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:backgroundTint="@color/backGroundCustom"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/emerald"
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_bookmark_border"
+                    app:iconTint="@color/emerald"
                     app:layout_constraintBottom_toBottomOf="@id/title_detalle_Advice"
-                />
-
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/title_detalle_Advice"
+                    app:layout_constraintTop_toTopOf="@id/title_detalle_Advice" />-->
 
 
                 <TextView
                     android:id="@+id/labelTipoDeInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_margin="20dp"
                     android:text="@string/tipo_de_info"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.056"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/title_detalle_Advice" />
 
@@ -114,17 +125,16 @@
                     android:id="@+id/content_detalle_Advice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="80dp"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.029"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/labelTipoDeInfo"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="100dp"
                     tools:text="Una guía para ayudarte en esos momentos de dudas." />
 
 

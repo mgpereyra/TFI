@@ -32,28 +32,16 @@ class MisServiciosViewModel(): ViewModel() {
                         if (model != null) {
                             list.add(model)
                         }
-                        /*serviceList.add(
-                            Service(
-                                postSnapshot.child("address").value.toString(),
-                                postSnapshot.child("id").value.toString(),
-                                "",
-                                "",
-                                postSnapshot.child("envasesPlasticos").value.toString().toInt().or(0),
-                                postSnapshot.child("envasesVidrio").value.toString().toInt().or(0) ,
-                                postSnapshot.child("envasesCarton").value.toString().toInt().or(0),
-                                postSnapshot.child("date").value.toString(),
-                                postSnapshot.child("time").value.toString(),
-                                postSnapshot.child("userId").value.toString(),"",
-                                postSnapshot.child("estado").value.toString().toInt()
-                            )
-                        )*/
+
                     }
                 }
-                if (list.size>0) {
-                    misServicios.value=list
 
-                }
+
+                    misServicios.value=list
             }
+
+
+
 
 
             override fun onCancelled(error: DatabaseError) {

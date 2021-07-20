@@ -38,11 +38,13 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
         rv_list_encuentros.adapter = recyclerAdapter
          toolbar.title = "Puntos de encuentro"
         setListeners()
+
     }
 
     private fun setListeners() {
         btnVolver.setOnClickListener {
-            irDashboardUserActivity()
+            finish()
+
         }
         irMisPuntosEncuentroMap.setOnClickListener {
             val intent = Intent(this, PuntosEncuentroMapActivity::class.java)
@@ -55,9 +57,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
         super.onStart()
     }
     private fun irDashboardUserActivity() {
-        val intent = Intent(this, DashboardUserActivity::class.java)
-        this.finish()
-        startActivity(intent)
+      finish()
     }
     private fun getMeetingPoints() {
         viewModelMisPuntosEncuentros.misPuntosEncuentro.observe(this, {
@@ -80,6 +80,11 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
                     override fun onDataChange(snapshot: DataSnapshot) {
                         var currentUser = snapshot.getValue(User::class.java)
                         db.database.getReference("MeetingPoint").child(puntoEncuentro.id!!).child("asistentes").child(idUser).setValue(emailUser)
+                        Toast.makeText(
+                            this@MisEncuentrosActivity,
+                            "Su asistencia fue confirmada correctamente",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -104,7 +109,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
                             .addOnCompleteListener {
                                 Toast.makeText(
                                     this@MisEncuentrosActivity,
-                                    "Sú asistencia fue cancelada exitosamente",
+                                    "Su asistencia fue cancelada exitosamente",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }

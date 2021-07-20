@@ -29,7 +29,7 @@ var cardInfoList=mutableListOf<CardInfo>()
 
     override fun onBindViewHolder(holder: CardInfoViewHolder, position: Int) {
         cardInfoList[position].let{
-            holder.itemView.cardInfo_content_advice.text=it.content
+           // holder.itemView.cardInfo_content_advice.text=it.content
             holder.itemView.cardInfo_title_advice.text=it.title
             holder.itemView.cardInfoId.text=it.id
 
@@ -55,7 +55,7 @@ var cardInfoList=mutableListOf<CardInfo>()
     }
     class CardInfoViewHolder(view: View, var card:CardInfo?=null):RecyclerView.ViewHolder(view){
         init {
-                view.btn_ver_card_info.setOnClickListener {
+                view.dataContainer.setOnClickListener {
                     val intent= Intent(view.context, SeccionInformativaDetalleActivity::class.java)
                     intent.putExtra(SeccionInformativaDetalleActivity.ID,card!!.id)
                     view.context.startActivity(intent)

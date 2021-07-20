@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_margin="3dp">
+
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/dataContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="3dp"
-        android:id="@+id/dataContainer"
+        android:backgroundTint="@color/grey"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="20dp"
-        app:strokeWidth="5dp"
-        app:strokeColor="@color/green"
-        tools:visibility="visible">
+        app:strokeColor="@color/grey"
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,9 +27,10 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_aceptar_encuentro2"
-                android:layout_width="155dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="28dp"
                 android:backgroundTint="@color/emerald"
                 android:text="@string/confirmar_asistecia_P_E"
                 android:textColor="@color/white"
@@ -38,14 +38,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_desc_encuentro"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_desc_encuentro" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btncancelar_encuentro"
-                android:layout_width="130dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="28dp"
                 android:backgroundTint="@color/rojo2"
                 android:text="@string/cancelar_asistencia_P_E"
                 android:textColor="@color/white"
@@ -60,7 +60,7 @@
                 android:id="@+id/expandBtn"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/ic_arrow_down"
                 android:backgroundTint="@color/white"
                 android:outlineAmbientShadowColor="@color/white"
@@ -69,7 +69,7 @@
                 android:tint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.954"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardInfo_title"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -79,8 +79,7 @@
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent
-"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="invisible" />
 
@@ -88,13 +87,15 @@
                 android:id="@+id/cardInfo_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:textAlignment="textStart"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.175"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.037"
                 tools:text="Titulo Punto de encuentro"
                 tools:visibility="visible" />
 
@@ -103,59 +104,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:maxLength="40"
-                android:layout_marginStart="10dp"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="?android:attr/textColorSecondary"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/cardInfo_title"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/cardInfo_title"
                 app:layout_constraintTop_toBottomOf="@+id/cardInfo_title"
                 tools:text="Domingo 30/05/21 -10 a 14hs  "
                 tools:visibility="visible" />
 
-            <TextView
-                android:id="@+id/cardInfo_localidad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLength="40"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textColor="?android:attr/textColorSecondary"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.009"
-                app:layout_constraintStart_toStartOf="@+id/cardInfo_encuentro_date"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_encuentro_date"
-                tools:text="Nombre Localidad"
-                tools:visibility="visible" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/cardInfo_encuentro_ubicacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:backgroundTint="@color/emerald"
-                android:paddingBottom="10dp"
+                android:paddingEnd="30dp"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/cardInfo_localidad"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo_localidad"
+                android:textSize="17sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo_encuentro_date"
                 tools:text="Republica de Portugal y Lascano" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/cardInfo_desc_encuentro"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_margin="10dp"
                 android:backgroundTint="@color/emerald"
                 android:textColor="@color/white"
+                android:textSize="18sp"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@+id/cardInfo_encuentro_ubicacion"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/cardInfo_encuentro_ubicacion"
                 app:layout_constraintTop_toBottomOf="@+id/cardInfo_encuentro_ubicacion"
-                tools:text="Informacion sobre el punto de encuentro" />
+                tools:text="Vamos recibir todo tipo de materiales reciclables. Tambien estaremos ofreciendo productos realizado por nuestros recopiladores." />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

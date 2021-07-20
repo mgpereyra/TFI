@@ -35,11 +35,10 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
             holder.itemView.cantidad_de_bolsas_amarillo.text=service.envasesPlasticos.toString()
             holder.itemView.cantidad_de_bolsas_azul.text=service.envasesCarton.toString()
             holder.itemView.cantidad_bolsas_verdes.text=service.envasesVidrio.toString()
-            holder.itemView.cardInfo_date.text=service.date.toString()
-            holder.itemView.cardInfo_direccion.text=service.address.toString()
-            holder.itemView.turno.text=service.time
+            holder.itemView.cardInfo_dateText2.text=if (service.date.toString().isNullOrEmpty()) "1" else service.date.toString()
+            holder.itemView.cardInfo_direccionText2.text=service.address.toString()
+            holder.itemView.horaText2.text=service.time
             holder.itemView.estado.text=service.estado.toString()
-
             holder?.service =service
         }
 
@@ -53,6 +52,11 @@ class MisServiciosVecinoAdapter:RecyclerView.Adapter<MisServiciosVecinoAdapter.S
 
         init {
 
+            view.dataContainer.setOnClickListener {
+                val intent = Intent(view.context, MisServiciosDetalleActivity::class.java)
+                intent.putExtra(ID, service!!.id)
+                view.context.startActivity(intent)
+            }
                 view.btn_ver_servicio.visibility=View.VISIBLE
                 view.btn_ver_servicio.setOnClickListener {
                     val intent = Intent(view.context, MisServiciosDetalleActivity::class.java)

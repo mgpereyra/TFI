@@ -7,8 +7,3 @@ enum class TipoConsejo {
     ECOINFORME
 }
 
-enum class EstadoCupon{
-    SIN_USAR,
-    CANJEADO
-
-}

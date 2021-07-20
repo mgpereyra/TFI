@@ -46,29 +46,18 @@
                 app:layout_constraintVertical_bias="0.47" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/crear_punto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Crear punto"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.794"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barra" />-->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/irMisPuntosEncuentroMap"
-            android:layout_width="190dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:backgroundTint="@color/emerald"
             android:gravity="center"
-            android:text="Ir al Mapa"
+            android:layout_margin="10dp"
+            android:text="Ver puntos de encuentro en el mapa"
             android:textColor="@color/white"
             android:textSize="14sp"
+            app:iconTint="@color/white"
             app:icon="@drawable/ic_location"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -79,18 +68,21 @@
             android:id="@+id/rv_list_encuentros"
             android:layout_width="match_parent"
             android:layout_height="594dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/irMisPuntosEncuentroMap"
             tools:listitem="@layout/card_encuentro" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.navigation.NavigationView
+<!--    <com.google.android.material.navigation.NavigationView
         android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/menu"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true"/>-->
 </androidx.drawerlayout.widget.DrawerLayout>

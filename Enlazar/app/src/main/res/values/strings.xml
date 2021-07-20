@@ -29,17 +29,17 @@
     <string name="guardado">Guardado</string>
     <string name="mi_cuenta">Mi cuenta</string>
     <string name="card_resumen">breve resumen de la composicion de la card</string>
-    <string name="ver">ver</string>
+    <string name="ver">ver detalle</string>
     <string name="tipo_de_info">tipo De Info</string>
-    <string name="donde_estas">Donde Estas</string>
-    <string name="direccion">Direccion</string>
+    <string name="donde_estas">Donde Estás</string>
+    <string name="direccion">Dirección</string>
     <string name="material">Material</string>
-    <string name="envases_plastico">Envases Plastico</string>
+    <string name="envases_plastico">Envases Plástico</string>
     <string name="ejemplo_tipo1">Envases Plastico<br />Latas<br />Bricks</string>
     <string name="ejemplo_tipo2">Papel y Cartón<br />Diarios o revistas<br />Envases de cartón</string>
     <string name="latas">Latas</string>
     <string name="bricks">Bricks</string>
-    <string name="cant_bolsas">cant.Bolsas</string>
+    <string name="cant_bolsas">Cantidad de Bolsas</string>
     <string name="envases_de_vidrios">Envases de Vidrios</string>
     <string name="papel_y_cart_n">Papel y Cartón</string>
     <string name="diarios_o_revistas">Diarios o revistas</string>
@@ -68,34 +68,35 @@
     <string name="iniciar_servicio">Iniciar Servicio</string>
     <string name="finalizar_servicio">Finalizar Servicio</string>
     <string name="comentarios_sobre_el_servicio">Comentarios sobre el servicio</string>
-    <string-array name="locations_array">
-        <item>Ramos Mejia</item>
-        <item>San Justo</item>
-        <item>Casanova</item>
-    </string-array>
-    <string-array name="partidos_array">
-        <item>La Matanza</item>
-        <item>3 de Febrero</item>
-        <item>Avellaneda</item>
-    </string-array>
 
     <string name="user_login">USERLOGIN</string>
 
     <string name="pendientes">Pendientes</string>
     <string name="confirmados">Confirmados</string>
-    <string name="places_cancelar">cancelar</string>
+    <string name="places_cancelar">Cancelar servicio</string>
     <string name="valor_perdido">Se ha perdido la respuesta</string>
     <string name="como_reciclar">Como Reciclar Bien</string>
     <string name="consejo_semana">Consejo de la semana</string>
     <string name="eco_info">Ecoinforme</string>
-    <string name="cantidad_disponibles">disponibles</string>
+    <string name="cantidad_disponibles">Unidades Disponibles </string>
+    <string name="costo_puntos_cupon">Puntos de costo: </string>
+
     <string name="canjear">canjear</string>
 
     <string name="seleccione_el_servicio_a_realizar">Seleccione el servicio a realizar</string>
     <string name="cancelar_servicio">CANCELAR SERVICIO</string>
-    <string name="confirmar_asistecia_P_E">CONFIRMAR</string>
-    <string name="cancelar_asistencia_P_E">Cancelar</string>
+    <string name="confirmar_asistecia_P_E">CONFIRMAR ASISTENCIA</string>
+    <string name="cancelar_asistencia_P_E">CANCELAR ASISTENCIA</string>
     <string name="no_hay_valor_a_capturar">no hay valor a capturar</string>
+    <string name="no_se_encotraron_los_tipo_de_servicios_solicitados">No se encotraron <br />los tipos de <br/>Servicios solicitados</string>
+    <string name="fecha">Fecha</string>
+    <string name="hora">Hora</string>
+    <string name="direcci_n">Dirección</string>
+    <string name="papel_cart_n_diarios_envases_carton">Papel, cartón, diarios</string>
+    <string name="envases_pl_sticos_latas_bricks">Envases plásticos, latas, bricks</string>
+    <string name="estado_cupon">Estado:</string>
+    <string name="mis_canjes_realizados">Mis canjes realizados</string>
+
 
 
 </resources>

@@ -25,7 +25,7 @@ class MisEncuentrosUserAdapter(val clickListener: OnRecyclerItemClick) :
 
         fun binNote(puntoEncuentroItem: PuntoEncuentro) {
             binding.cardInfoTitle.text = puntoEncuentroItem.title
-            binding.cardInfoLocalidad.text = puntoEncuentroItem.localidad
+           // binding.cardInfoLocalidad.text = puntoEncuentroItem.localidad
             binding.cardInfoEncuentroDate .text = puntoEncuentroItem.date +" - "+ puntoEncuentroItem.time
             binding.cardInfoEncuentroUbicacion.text = puntoEncuentroItem.ubication
             binding.cardInfoDescEncuentro.text = puntoEncuentroItem.description.toString()
@@ -64,11 +64,13 @@ class MisEncuentrosUserAdapter(val clickListener: OnRecyclerItemClick) :
         }
         holder.itemView.expandBtn.setOnClickListener {
             if (holder.itemView.cardInfo_desc_encuentro.visibility == View.GONE) {
-
+                holder.itemView.cardInfo_encuentro_ubicacion.visibility = View.VISIBLE
                 holder.itemView.cardInfo_desc_encuentro.visibility = View.VISIBLE
                 it.rotation = 180.0F
             } else{
                 holder.itemView.cardInfo_desc_encuentro.visibility = View.GONE
+                holder.itemView.cardInfo_encuentro_ubicacion.visibility = View.GONE
+
                 it.rotation = 0.0F
             }
         }
