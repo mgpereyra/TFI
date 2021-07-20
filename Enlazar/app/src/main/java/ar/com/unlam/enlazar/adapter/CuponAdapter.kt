@@ -40,11 +40,13 @@ class CuponAdapter:RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
             holder.itemView.codigo.setImageBitmap(QrUtils.generateQr(idRecolector+"/"+it.id+"/"+it.id_item))
             //Picasso.get().load(it.imageCode).error(R.drawable.error).into(holder.itemView.codigo)
             holder.itemView.cardInfo_elemento_canje.text=it.title
+
             holder.itemView.label_puntos_de_costo.text = "Estado: " // getText(R.string.estado_cupon)
             holder.itemView.label_cantidad_disponible.visibility=View.GONE
             holder.itemView.ver_item.visibility=View.GONE
             if (!it.estadoCupon){
                 holder.itemView.cardInfo_costo.text="Disponible"
+
             }else{
                 holder.itemView.cardInfo_costo.text="Canjeado"
             }

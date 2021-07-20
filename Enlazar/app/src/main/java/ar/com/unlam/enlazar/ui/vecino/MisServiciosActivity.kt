@@ -87,46 +87,15 @@ class MisServiciosActivity : AppCompatActivity() {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
 
-        })
-    }
-}
-/*db.child("Service").addValueEventListener(object : ValueEventListener {
-        override fun onDataChange(snapshot: DataSnapshot) {
-            // var mSnapshot=snapshot.getValue(Service::class.java)
-            for (postSnapshot in snapshot.children.iterator()) {
-                if (postSnapshot.child("userId").value.toString() == idUser &&
-                    postSnapshot.child("estado").value.toString().toInt()==estado.ordinal) {
-                    serviceList.add(
-                        Service(
-                            postSnapshot.child("address").value.toString(),
-                            postSnapshot.child("id").value.toString(),
-                            "",
-                            "",
-                            postSnapshot.child("envasesPlasticos").value.toString().toInt().or(0),
-                            postSnapshot.child("envasesVidrio").value.toString().toInt().or(0) ,
-                            postSnapshot.child("envasesCarton").value.toString().toInt().or(0),
-                            postSnapshot.child("date").value.toString(),
-                            postSnapshot.child("time").value.toString(),
-                            postSnapshot.child("userId").value.toString(),"",
-                            postSnapshot.child("estado").value.toString().toInt()
-                        )
-                    )
-                }
-            }
-            if (serviceList.size>0){
-            adapter.servicesList=serviceList.toMutableList()
-
-            adapter.notifyDataSetChanged()
-                listado_servicios.adapter = adapter}
-            else{
-                Toast.makeText(this@MisServiciosActivity,
-                    "no se encontraron servicios del estado especificado",
-                    Toast.LENGTH_LONG).show()
-            }
-        }
+            if(viewModelMisServicios.misServicios.value!!.size>0){
+                no_hay_servicios.visibility=View.GONE
+                listado_servicios.visibility=View.VISIBLE
+            }else{
+                listado_servicios.visibility=View.GONE
+                no_hay_servicios.visibility=View.VISIBLE
 
 
         override fun onCancelled(error: DatabaseError) {
             TODO("Not yet implemented")
         }
-    })*/
+    })

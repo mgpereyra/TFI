@@ -44,19 +44,10 @@ class MisPuntosViewModel() : ViewModel() {
                         if (model != null) {
                             mis_canjes.add(model)
                         }
-                        /*CuponCanje(
-                            canje.child("id").value.toString(),
-                            canje.child("id_item").value.toString(),
-                            canje.child("title").value.toString(),
-                            canje.child("description").value.toString(),
-                            canje.child("imageCode").value.toString(),
-                            canje.child("estadoCupon").value.toString()
-                        )
-                    )*/
                     }
-                    if (mis_canjes.size > 0) {
+
                         misCanjes.value = mis_canjes
-                    }
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {

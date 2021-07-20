@@ -70,6 +70,7 @@ class DetalleCanjeItemViewModel() : ViewModel() {
                         cuponTitulo,
                         descripcion,
                         im, false
+
                     )
                     db.child("User").child(id).child("puntos").setValue(restantes)
                     db.child("Item").child(id_item_detalle).child("amount").setValue(cant)

@@ -68,6 +68,7 @@
                 android:layout_margin="15dp"
 
                 android:src="@drawable/circle_border_blue"
+                android:backgroundTint="@color/black"
                 app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toEndOf="@id/cantidad_de_bolsas_amarillo"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -38,12 +38,13 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
         rv_list_encuentros.adapter = recyclerAdapter
          toolbar.title = "Puntos de encuentro"
         setListeners()
+
     }
 
     private fun setListeners() {
         btnVolver.setOnClickListener {
             finish()
-           // irDashboardUserActivity()
+
         }
         irMisPuntosEncuentroMap.setOnClickListener {
             val intent = Intent(this, PuntosEncuentroMapActivity::class.java)
@@ -56,9 +57,7 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
         super.onStart()
     }
     private fun irDashboardUserActivity() {
-        val intent = Intent(this, DashboardUserActivity::class.java)
-        this.finish()
-        startActivity(intent)
+      finish()
     }
     private fun getMeetingPoints() {
         viewModelMisPuntosEncuentros.misPuntosEncuentro.observe(this, {
