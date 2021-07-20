@@ -195,12 +195,17 @@ export function generateQrCode(id) {
 }
 
 
-//verificar cupon
+//verificar cupon con imagen
 export function verifyCoupon(ids) {
   return async (dispatch) => {
     try {
+      dispatch({
+        type: PROCESS_COUPON_VERIFY
+      });
       //const urlCode = await QRCode.toDataURL(`${id}hola`)
-      const response = await clienteAxios.get(`/api/coupon/${ids.idUser}/${ids.idCoupon}`);
+      const response = await clienteAxios.get(`/api/coupon/${ids.idUser}/${ids.idCoupon}/${ids.idItem}`);
+
+      //const response = await clienteAxios.get(`/api/coupon/${ids.idUser}/${ids.idCoupon}`);
       console.log(response.data)
 
       dispatch({
@@ -232,28 +237,6 @@ export function verifyCoupon(ids) {
     }}
   };
 }
-
-//verificar cupon
-export function confirmCanjeAction(couponToVerify) {
-  return async (dispatch) => {
-    try {
-      const idUser = couponToVerify.user.id;
-
-      const response = await clienteAxios.put(`/api/coupon/confirm/${idUser}`, couponToVerify);
-      console.log(response)
-
-      dispatch({
-        type: COUPON_VERIFY_SUCCESS
-      });
-      
-      //alerta
-      Swal.fire("Genial", "Se completó el canje correctamente", "success");
-    } catch (error) {
-    
-      const msg = error.response.data.msg;
-     
-  };
-}}
 
 
 //verificar cupon camera
@@ -293,6 +276,34 @@ export function verifyCouponCamera(result) {
       }
   };
 }
+
+
+//confirmar verificacion cupon
+export function confirmCanjeAction(couponToVerify) {
+  return async (dispatch) => {
+    try {
+      const idUser = couponToVerify.user.id;
+
+      const response = await clienteAxios.put(`/api/coupon/confirm/${idUser}`, couponToVerify);
+
+      dispatch({
+        type: COUPON_VERIFY_SUCCESS
+      });
+      
+      //alerta
+      Swal.fire("Genial", "Se completó el canje correctamente", "success");
+    } catch (error) {
+      dispatch({
+        type: COUPON_VERIFY_ERROR
+      });
+      const msg = error.response.data.msg;
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: msg,
+      });
+  };
+}}
 
 
 //Limpia el cupon a verificar

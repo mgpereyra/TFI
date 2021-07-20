@@ -4,11 +4,13 @@ import { verifyCoupon } from "../../actions/couponAction";
 import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import CouponVerified from "./CouponVerified";
+import Spinner from "../Spinner"
 
 const VerifyCouponManual = () => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
 
   const couponToVerify = useSelector((state) => state.coupons.couponToVerify);
+  const loading = useSelector((state) => state.coupons.loading);
 
   //state del componente
   const [ids, setIds] = useState({
@@ -58,7 +60,7 @@ const VerifyCouponManual = () => {
               <Col>
                 <div className="form-group">
                   <label className="control-label">
-                    Ingresa el código de usuario
+                    Ingresa el código de usuario (1)
                   </label>
                   <input
                     type="text"
@@ -73,22 +75,7 @@ const VerifyCouponManual = () => {
               <Col>
                 <div className="form-group">
                   <label className="control-label">
-                    Ingresa el código de cupón
-                  </label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    placeholder="Código de cupón..."
-                    name="idItem"
-                    onChange={handleChange}
-                    value={idItem}
-                  />
-                </div>
-              </Col>
-              <Col>
-                <div className="form-group">
-                  <label className="control-label">
-                    Ingresa el código de cupón
+                    Ingresa el código de cupón (2)
                   </label>
                   <input
                     type="text"
@@ -100,10 +87,26 @@ const VerifyCouponManual = () => {
                   />
                 </div>
               </Col>
+              <Col>
+                <div className="form-group">
+                  <label className="control-label">
+                    Ingresa el código de item (3)
+                  </label>
+                  <input
+                    type="text"
+                    className="input-text"
+                    placeholder="Código de item..."
+                    name="idItem"
+                    onChange={handleChange}
+                    value={idItem}
+                  />
+                </div>
+              </Col>
+              
             </Row>
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
               <button
-                className="btn btn-primary me-md-2"
+                className="btn btn-primary me-md-2 mb-3"
                 type="submit"
                 variant="primary"
               >
@@ -112,13 +115,13 @@ const VerifyCouponManual = () => {
               </button>
             </div>
           </form>
-
-          {couponToVerify !== null ? 
-          
-          <CouponVerified
-              key={couponToVerify.cupon.id_item} 
-              couponToVerify={couponToVerify} />
-          : null}
+          {loading ?
+                    <Spinner/>
+                :  (couponToVerify !== null ? 
+                    <CouponVerified
+                        key={couponToVerify.cupon.id_item} 
+                        couponToVerify={couponToVerify} />
+                : null)}
         </div>
       </div>
     </Fragment>

@@ -17,7 +17,7 @@ const CouponVerified = ({ couponToVerify }) => {
     dispatch(confirmCanjeAction(couponToVerify));
 
     //reiniciar el form
-    history.push("/list-coupon");
+    history.push("/dashboard");
   };
 
   return (

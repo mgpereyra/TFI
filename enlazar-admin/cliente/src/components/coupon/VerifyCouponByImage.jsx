@@ -24,6 +24,8 @@ const VerifyCouponByImage = () => {
   }, [])
 
   const handleErrorFile = (error) => {
+    mostrarAlerta("Ha ocurrido un error", "alerta-error");
+
     console.log(error);
   };
   const handleScanFile = (result) => {

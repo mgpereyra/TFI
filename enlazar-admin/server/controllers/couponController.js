@@ -219,7 +219,7 @@ exports.verifyCouponCamera = async (req, res) => {
     const snapshot = await db.child("User").child(keyUser).once("value", (snapshot) => {
     //verificar si es correcto el usuario
       if(! snapshot.exists()){
-        return res.status(400).json({msg: 'El QR ingresado no es válido'})
+        return res.status(400).json({msg: 'El usuario no existe'})
       }else{
         cuponBuscado.user = snapshot.val()
       }
@@ -233,7 +233,7 @@ exports.verifyCouponCamera = async (req, res) => {
       //verificar si es correcto el cupon
       await db.child("Item").child(keyItem).once("value", (snapshot) => {
         if(! snapshot.exists()){
-          return res.status(400).json({msg: 'El codigo de cupón es incorrecto'})
+          return res.status(400).json({msg: 'El codigo de ítem es incorrecto'})
         }else{
           if(user.Cupon !== null && user.Cupon !== undefined ){
             const cupones = Object.values(user.Cupon);
@@ -245,7 +245,7 @@ exports.verifyCouponCamera = async (req, res) => {
               }
             })
   
-            if(cuponBuscado !== null){
+            if(cuponBuscado.cupon !== null){
               return res.json(cuponBuscado);
             }else{
               // si el codigo es correcto pero no pertenece al usuario
@@ -261,7 +261,7 @@ exports.verifyCouponCamera = async (req, res) => {
     
   } catch (error) {
     console.log(error);
-    res.status(500).send("Error");
+    res.status(500).json({msg:error});
   }
 };
 

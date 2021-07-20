@@ -1,8 +1,9 @@
-import React, { useState, useEffect,  Fragment } from "react";
+import React, { useState, useEffect,  Fragment, useContext } from "react";
 import QrReader from "react-qr-reader";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyCouponCamera, cleanCouponToScan } from "../../actions/couponAction";
+import alertaContext from "../../context/alerta/alertaContext";
 import CouponVerified from "./CouponVerified";
 import Spinner from "../Spinner"
 
@@ -10,6 +11,7 @@ const VerifyCouponByCamera = () => {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
   const couponToVerify = useSelector((state) => state.coupons.couponToVerify);
   const loading = useSelector((state) => state.coupons.loading);
+  const { alerta, mostrarAlerta } = useContext(alertaContext);
  
   const dispatch = useDispatch();
   const verify = (scanResultWebCam) => dispatch(verifyCouponCamera(scanResultWebCam));
@@ -20,7 +22,8 @@ const VerifyCouponByCamera = () => {
   }, [])
 
   const handleErrorWebCam = (error) => {
-    console.log(error);
+    console.log(error)
+    mostrarAlerta("Ha ocurrido un error", "alerta-error");
   };
   const handleScanWebCam = (result) => {
       console.log(result)
@@ -32,6 +35,9 @@ const VerifyCouponByCamera = () => {
   };
   return (
     <Fragment>
+        {alerta ? (
+        <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
+      ) : null}
       <div className="d-flex justify-content-between">
         <h2>
           <i className="fas fa-plus-circle"></i>Verificar cupón con cámara web

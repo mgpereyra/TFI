@@ -36,7 +36,7 @@ const Dashboard = () => {
       <div className="card border-dark mb-0" >
         <div className="card-body text-dark">
         <h1>
-          <i className="fas fa-qrcode mr-2"></i>Acceso a verificación de código
+          <i className="fas fa-qrcode mr-2"></i>Verificación de código
           Qr
           <hr />
         </h1>
