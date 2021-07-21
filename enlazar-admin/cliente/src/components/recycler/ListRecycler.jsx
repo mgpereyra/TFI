@@ -25,7 +25,7 @@ const ListRecycler = () => {
     <Fragment>
       <div className="d-flex justify-content-between px-4 mb-5">
         <h1>
-          <i className="fas fa-hand-holding-heart pr-2"></i>Listado de recolectores
+          <i className="fas fa-recycle pr-2"></i>Listado de recolectores
         </h1>
         <Link to={"/create-recycler"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle pr-2"></i>

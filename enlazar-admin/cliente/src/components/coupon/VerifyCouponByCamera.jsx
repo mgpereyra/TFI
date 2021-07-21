@@ -40,7 +40,7 @@ const VerifyCouponByCamera = () => {
       ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-plus-circle"></i>Verificar cupón con cámara web
+          <i className="fas fa-plus-circle pr-2"></i>Verificar cupón con cámara web
         </h2>
       </div>
       <div className="card bg-gris py-4">

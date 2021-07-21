@@ -33,7 +33,7 @@ const Sidebar = () => {
                 </Link>
 
                 <Link to={'/list-coupon'} className='color-third nav-link'>
-                <i className="fas fa-recycle pr-2"></i>
+                <i className="fas fa-ticket-alt pr-2"></i>
                     Cupones
                 </Link>
             </div>
