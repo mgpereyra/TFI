@@ -29,7 +29,7 @@ const ListMeeting = () => {
         </h1>
         <Link to={"/create-meeting"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle pr-2"></i>
-          Crear un nuevo encuentro
+          Nuevo encuentro
         </Link>
       </div>
 

@@ -26,7 +26,7 @@ const ListAdvice = () => {
         </h1>
         <Link to={"/create-advice"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle pr-2"></i>
-          Crear un nuevo consejo
+          Nuevo consejo
         </Link>
       </div>
       { loading ?
@@ -43,9 +43,9 @@ const ListAdvice = () => {
                     advice={advice} />
               ))}
             </div>
-          )}
+      )}
       
-      }
+      
     </Fragment>
   );
 };

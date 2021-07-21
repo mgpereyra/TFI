@@ -29,7 +29,7 @@ const ListRecycler = () => {
         </h1>
         <Link to={"/create-recycler"} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle pr-2"></i>
-          Crear un nuevo recolector
+          Nuevo recolector
         </Link>
       </div>
 
@@ -43,16 +43,14 @@ const ListRecycler = () => {
           </div>
         ) : (
           <div className="row">
-            <table className="table table-hover">
+            <table className="table table-hover mx-2">
               <thead>
                 <tr>
                   <th scope="col">Dni</th>
                   <th scope="col">Nombre</th>
-                  <th scope="col">Dirección</th>
                   <th scope="col">Teléfono</th>
                   <th scope="col">Email</th>
                   <th scope="col">Password</th>
-
                   <th scope="col">Eliminar</th>
                   <th scope="col">Editar</th>
                 </tr>
