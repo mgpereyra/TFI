@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageView"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
@@ -274,13 +274,15 @@
                 <TextView
                     android:id="@+id/txtSeccionInformativa"
                     style="@android:style/Widget.Holo.TextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:text="@string/title_card_seccic_n_informativa"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/textWhite"
                     android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="20dp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                     app:layout_constraintStart_toEndOf="@+id/imageView4"
                     app:layout_constraintTop_toTopOf="@+id/imageView4"

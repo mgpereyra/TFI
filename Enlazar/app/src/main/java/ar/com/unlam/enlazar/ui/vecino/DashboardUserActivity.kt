@@ -17,9 +17,7 @@ import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 class DashboardUserActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().getReference()
 
-    enum class ProviderType{
-        BASIC
-    }
+
     var userId:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +60,8 @@ class DashboardUserActivity : AppCompatActivity() {
                 Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
             }
             R.id.mi_cuenta_user  -> {
-                Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
+               val intent=Intent(this,MiCuentaActivity::class.java)
+                startActivity(intent)
             }
             R.id.logout_user  -> {
                 logOut()

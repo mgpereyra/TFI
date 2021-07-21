@@ -99,57 +99,13 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
             description_item.text.toString(),
             im, id
         )
-        /*  var restantes=p-costo_cupon_detalle.text.toString().toInt()
-          if (restantes >= 0 && cantidad_diponible.text.toString().toInt()>0) {
-              var cantidad=cantidad_diponible.text.toString().toInt()-1
-              var cuponId = db.push().key.toString()
-              var cupon = CuponCanje(
-                  cuponId,
-                  id_item_detalle.text.toString(),
-                  cupon_titulo_detalle.text.toString(),
-                  description_item.text.toString(),
-                  im, "false"
-              )
-              db.child("User").child(id).child("puntos").setValue(restantes)
-              db.child("Item").child(id_item_detalle.text.toString()).child("amount").setValue(cantidad)
-              db.child("User").child(id).child("Cupon").child(cuponId).setValue(cupon).addOnCompleteListener {
-                  Toast.makeText(
-                      this,
-                      "Tu Canjeo ha sido registrado correctamente",
-                      Toast.LENGTH_LONG
-                  )
-                      .show()
-              }
-
-
-          } else {
-              Toast.makeText(
-                  this,
-                  "Puntos insuficientes o cupones agotados",
-                  Toast.LENGTH_LONG
-              )
-                  .show()
-          }*/
         finish()
     }
 
     private fun getPuntos(idUser: String) {
         detalleCanjeViewmodel.getPuntosUsuario(idUser)
         detalleCanjeViewmodel.puntos.observe(this, { observePoints(it) })
-        //p = detalleCanjeViewmodel.puntos.value!!
-        /*db.child("User").child(idUser).child("puntos")
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    p = snapshot.value.toString().toInt()
 
-
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })*/
 
     }
 
@@ -164,28 +120,10 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
             setObservers(it)
 
         })
-        /*  db.child("Item").child(id_item).addValueEventListener(object : ValueEventListener {
-              override fun onDataChange(snapshot: DataSnapshot) {
-                  id_item_detalle.text = snapshot.child("id").value.toString()
-                  cupon_titulo_detalle.text = snapshot.child("title").value.toString()
-                  costo_cupon_detalle.text = snapshot.child("pointsCost").value.toString()
-                  description_item.text = snapshot.child("description").value.toString()
-                  cargarImagen(
-                      snapshot.child("image").value.toString(),
-                      snapshot.child("imageCode").value.toString()
-                  )
-                  cantidad_diponible.text = snapshot.child("amount").value.toString()
-                  cardInfoId.text = snapshot.key
-              }
-
-              override fun onCancelled(error: DatabaseError) {
-                  TODO("Not yet implemented")
-              }
-          })*/
     }
 
     private fun setObservers(s: Item) {
-        cargarImagen(s.image, s.imageCode)
+        cargarImagen(s.image)
         cupon_titulo_detalle.setText(s.title)
         cantidad_diponible.setText(s.amount.toString())
         costo_cupon_detalle.setText(s.pointsCost.toString())
@@ -195,7 +133,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
 
     }
 
-    private fun cargarImagen(img: String, qr: String) {
+    private fun cargarImagen(img: String) {
         im = img
         Picasso.get()
             .load(img)
