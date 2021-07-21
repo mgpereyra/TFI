@@ -11,6 +11,12 @@ router.get('/',
 )
 
 //api/meeting
+router.get('/:id',
+    auth,
+    meetingController.getMeeting
+)
+
+//api/meeting
 router.post('/',
     auth,
     meetingController.createMeeting

@@ -2,11 +2,12 @@ import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyMeetingAction } from "../../actions/meetingAction";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
 import { mostrar, clearMaps } from "../../actions/mapsAction";
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import { getMeeting} from "../../actions/meetingAction";
 
 const EditMeeting = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const EditMeeting = () => {
     (state) => state.meetings.meetingToModify
   );
   const datos = useSelector((state) => state.maps);
-  //if(!meetingToModify) return null;
+  const error = useSelector((state) => state.meetings.error);
 
   const { date, description, title, time, ubication } = meeting;
   const addUbication = (meet) => dispatch(mostrar(meet));
@@ -54,13 +55,12 @@ const EditMeeting = () => {
       ubication: datos.ubication,
       lat: datos.lat,
       lng:datos.lng
-
-    }
-    );
+    });
     //eslint-disable-next-line
   }, [datos])
 
-  
+  const {id}  = useParams()
+
   //carga los datos del elemento a modificar la 1ra vez
   useEffect(() => {
     if(meetingToModify !== null){
@@ -74,15 +74,21 @@ const EditMeeting = () => {
       }else{
         meetingToModify.date = `${year}-${month}-${day}`
       }
-      
-    }
 
-    setMeeting(meetingToModify);
-    addUbication(meetingToModify)
+      setMeeting(meetingToModify);
+      addUbication(meetingToModify)
+      
+    }else{
+      dispatch(getMeeting(id));
+    }  
 
   }, [meetingToModify]);
 
- 
+  if(error){
+    return <Redirect to="/list-meeting" />
+    //history.push("/list-advice");
+  }
+
   const handleChange = (e) => {
     setMeeting({
       ...meeting,
@@ -105,7 +111,7 @@ const EditMeeting = () => {
       return;
     }
 
-     dispatch(modifyMeetingAction(meeting));
+    dispatch(modifyMeetingAction(meeting));
     clear();
     //reiniciar el form
     setMeeting({

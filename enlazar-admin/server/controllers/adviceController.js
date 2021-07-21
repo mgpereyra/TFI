@@ -85,3 +85,25 @@ exports.putAdvice = async(req, res) => {
     }
 }
 
+
+//obtener consejos via parametros
+exports.getAdvice = async (req, res) => {
+    try {
+      const db = firebase.database().ref();
+      const key = req.params.id;
+  
+      const snapshot = await db.child("Advice").child(key).once("value", (snapshot) => {
+        return snapshot;
+      });
+      //validando existencia
+      if (snapshot.exists()) {
+        //error
+        res.json(snapshot.val());
+      }else{
+        res.status(500).json({msg:"El consejo buscado no es válido"});
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Error");
+    }
+  };

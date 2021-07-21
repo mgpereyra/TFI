@@ -156,3 +156,29 @@ import {
       }
     };
   }
+
+  
+  //getRecycler
+export function getRecycler(id) {
+  return async (dispatch) => {
+  
+    try {
+      const response = await clienteAxios.get(`/api/recycler/${id}`);
+      //actualizo el state
+
+      dispatch({
+        type: GET_RECYCLER_MODIFY,
+        payload: response.data
+      });
+
+    } catch (error) {
+      dispatch(downloadRecyclersError());
+      //alerta
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: error.response.data.msg,
+      });
+    }
+  };
+}

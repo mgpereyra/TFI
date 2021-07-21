@@ -17,6 +17,13 @@ router.get('/:idUser/:idCoupon',
     couponController.verifyCoupon
 )
 
+
+//api/coupon
+router.get('/:id',
+    auth,
+    couponController.getCoupon
+)
+
 //api/coupon
 router.get('/:idUser/:idCoupon/:idItem',
     auth,

@@ -185,3 +185,28 @@ export function deleteMeetingAction(id) {
     }
   };
 }
+
+//get coupon
+export function getMeeting(id) {
+  return async (dispatch) => {
+  
+    try {
+      const response = await clienteAxios.get(`/api/meeting/${id}`);
+      //actualizo el state
+
+      dispatch({
+        type: GET_MEETING_MODIFY,
+        payload: response.data
+      });
+
+    } catch (error) {
+      dispatch(downloadMeetingsError());
+      //alerta
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: error.response.data.msg,
+      });
+    }
+  };
+}

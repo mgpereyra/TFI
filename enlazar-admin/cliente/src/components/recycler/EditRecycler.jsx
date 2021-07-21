@@ -2,12 +2,12 @@ import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  modifyRecyclerAction } from "../../actions/recyclerAction";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams, Redirect } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
 import { mostrar, clearMaps } from "../../actions/mapsAction";
 import {Link} from 'react-router-dom'
-
+import { getRecycler} from "../../actions/recyclerAction";
 
 const EditRecycler = () => {
     const dispatch = useDispatch();
@@ -31,7 +31,8 @@ const EditRecycler = () => {
     const addUbication = (recycler) => dispatch(mostrar(recycler));
     const clear = () => dispatch(clearMaps());
 
-  const datos = useSelector((state) => state.maps);
+    const datos = useSelector((state) => state.maps);
+    const error = useSelector((state) => state.recyclers.error);
    
     useEffect(() => {
       setRecycler({
@@ -47,12 +48,22 @@ const EditRecycler = () => {
   
     const recyclerToModify = useSelector((state) => state.recyclers.recyclerToModify);
   
+    const {id}  = useParams()
+
     //carga los datos del elemento a modificar la 1ra vez
     useEffect(() => {
-      setRecycler(recyclerToModify);
-      addUbication(recyclerToModify)
+      if(recyclerToModify){
+
+        setRecycler(recyclerToModify);
+        addUbication(recyclerToModify)
+      }else{
+        dispatch(getRecycler(id));
+      }
     }, [recyclerToModify]);
-  
+    
+    if(error){
+      return <Redirect to="/list-meeting" />
+    }
     const handleChange = (e) => {
       setRecycler({
         ...recycler,

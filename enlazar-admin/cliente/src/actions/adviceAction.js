@@ -181,3 +181,29 @@ export function modifyAdviceAction(advice) {
     }
   };
 }
+
+
+//get coupon
+export function getAdvice(id) {
+  return async (dispatch) => {
+  
+    try {
+      const response = await clienteAxios.get(`/api/advice/${id}`);
+      //actualizo el state
+
+      dispatch({
+        type: GET_ADVICE_MODIFY,
+        payload: response.data
+      });
+
+    } catch (error) {
+      dispatch(downloadAdvicesError());
+      //alerta
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: error.response.data.msg,
+      });
+    }
+  };
+}

@@ -52,6 +52,28 @@ exports.getListCoupons = async (req, res) => {
   }
 };
 
+//obtener consejos via parametros
+exports.getCoupon = async (req, res) => {
+  try {
+    const db = firebase.database().ref();
+    const key = req.params.id;
+
+    const snapshot = await db.child("Item").child(key).once("value", (snapshot) => {
+      return snapshot;
+    });
+    //validando existencia
+    if (snapshot.exists()) {
+      //error
+      res.json(snapshot.val());
+    }else{
+      res.status(500).json({msg:"El cupón buscado no es válido"});
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error");
+  }
+};
+
 //Eliminar un consejo
 exports.deleteCoupon = async (req, res) => {
   try {
