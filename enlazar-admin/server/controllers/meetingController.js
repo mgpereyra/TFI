@@ -92,3 +92,26 @@ exports.deleteMeeting = async(req, res) => {
         res.status(500).send('Error')
     }
 }
+
+
+//obtener consejos via parametros
+exports.getMeeting = async (req, res) => {
+    try {
+      const db = firebase.database().ref();
+      const key = req.params.id;
+  
+      const snapshot = await db.child("MeetingPoint").child(key).once("value", (snapshot) => {
+        return snapshot;
+      });
+      //validando existencia
+      if (snapshot.exists()) {
+        //error
+        res.json(snapshot.val());
+      }else{
+        res.status(500).json({msg:"El punto de encuentro buscado no es válido"});
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Error");
+    }
+  };

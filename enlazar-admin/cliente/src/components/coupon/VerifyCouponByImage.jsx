@@ -47,7 +47,7 @@ const VerifyCouponByImage = () => {
       ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-plus-circle"></i>Verificar cupón por archivo
+          <i className="fas fa-plus-circle pr-2"></i>Verificar cupón con imagen
         </h2>
       </div>
       <div className="card bg-gris py-4">
@@ -63,8 +63,8 @@ const VerifyCouponByImage = () => {
                 onScan={handleScanFile}
                 legacyMode
               />
-              <button className="btn btn-primary m-2" onClick={onScanFile}>
-                Subir imagen con código Qr
+              <button className="btn btn-primary mt-2 btn-block" onClick={onScanFile}>
+              <i class="fas fa-image pr-2"></i> Subir imagen de Qr
               </button>
             </Col>
             <Col lg={8}>

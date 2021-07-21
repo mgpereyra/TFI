@@ -16,6 +16,12 @@ router.get('/',
     adviceController.getAdvices
 )
 
+//api/coupon
+router.get('/:id',
+    auth,
+    adviceController.getAdvice
+)
+
 //api/advice
 router.delete('/:id',
     auth,

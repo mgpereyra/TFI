@@ -2,10 +2,11 @@ import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyCouponAction } from "../../actions/couponAction";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import Spinner from "../Spinner";
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import { getCoupon} from "../../actions/couponAction";
 
 const EditCoupon = () => {
   const dispatch = useDispatch();
@@ -31,12 +32,25 @@ const EditCoupon = () => {
   const { title, description, amount, pointsCost } = coupon;
  
   const couponToModify = useSelector((state) => state.coupons.couponToModify);
+  const error = useSelector((state) => state.coupons.error);
 
   //carga los datos del elemento a modificar la 1ra vez
+  
+  const {id}  = useParams()
+ 
   useEffect(() => {
-    setCoupon(couponToModify);
+    if(couponToModify!== null){
+      setCoupon(couponToModify);
+    }else{
+      //dispatch(modifyMeeting(meeting));
+       dispatch(getCoupon(id));;
+    }
   }, [couponToModify]);
 
+  
+  if(error){
+    return <Redirect to="/list-advice" />
+  }
   const handleChange = (e) => {
     setCoupon({
       ...coupon,

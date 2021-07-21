@@ -9,6 +9,11 @@ router.get('/',
     auth,
     recyclerController.getListRecycler
 )
+//api/recycler
+router.get('/:id',
+    auth,
+    recyclerController.getRecycler
+)
 
 //api/recycler
 router.post('/',

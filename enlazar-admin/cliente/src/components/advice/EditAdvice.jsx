@@ -3,11 +3,11 @@ import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyAdviceAction } from "../../actions/adviceAction";
 import alertaContext from "../../context/alerta/alertaContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Spinner from "../Spinner";
 import {categories} from "../../helpers"
-import {Link} from 'react-router-dom'
-
+import {Link, Redirect} from 'react-router-dom'
+import { getAdvice} from "../../actions/adviceAction";
 
 const EditAdvice = () => {
   const dispatch = useDispatch();
@@ -27,14 +27,25 @@ const EditAdvice = () => {
 
   const adviceToModify = useSelector((state) => state.advices.adviceToModify);
   const loading = useSelector((state) => state.advices.loading);
-
+  const error = useSelector((state) => state.advices.error);
+ 
   const {  tipe, title, content, uri } = advice;
+
+  const {id}  = useParams()
 
   //carga los datos del elemento a modificar la 1ra vez
   useEffect(() => {
-    setAdvice(adviceToModify);
+      if(adviceToModify !== null){
+        setAdvice(adviceToModify);
+      }else{
+        dispatch(getAdvice(id));
+      }
+      
   }, [adviceToModify]);
 
+  if(error){
+    return <Redirect to="/list-advice" />
+  }
   const handleChange = (e) => {
     setAdvice({
       ...advice,
@@ -76,7 +87,7 @@ const EditAdvice = () => {
     <Fragment>
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="far fa-edit"></i>Editar consejo
+          <i className="far fa-edit pr-2"></i>Editar consejo
         </h2>
       </div>
       <div className="card bg-gris py-4">
@@ -121,6 +132,7 @@ const EditAdvice = () => {
                     className="input-text"
                     placeholder="Ingresa una descripción..."
                     name="content"
+                    rows="6" 
                     value={content}
                     onChange={handleChange}
                   />

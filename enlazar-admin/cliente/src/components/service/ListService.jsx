@@ -38,7 +38,7 @@ const ListServices = () => {
           </div>
         ) : (
           <div className="row">
-            <table className="table table-hover">
+            <table className="table table-hover  mx-2">
               <thead>
                 <tr>
                   <th scope="col">Fecha</th>

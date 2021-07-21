@@ -50,7 +50,7 @@ const VerifyCouponManual = () => {
       ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-plus-circle"></i>Verificar cupón
+          <i className="fas fa-plus-circle pr-2"></i>Verificar cupón
         </h2>
       </div>
       <div className="card bg-gris py-4">

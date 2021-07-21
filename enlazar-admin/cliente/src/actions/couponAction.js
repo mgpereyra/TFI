@@ -303,7 +303,6 @@ export function confirmCanjeAction(couponToVerify) {
   return async (dispatch) => {
     try {
       const idUser = couponToVerify.user.id;
-
       const response = await clienteAxios.put(`/api/coupon/confirm/${idUser}`, couponToVerify);
 
       dispatch({
@@ -332,5 +331,31 @@ export function cleanCouponToScan(couponToModify) {
     dispatch({
       type: CLEAN_COUPON_VERIFY
     });
+  };
+}
+
+
+//get coupon
+export function getCoupon(id) {
+  return async (dispatch) => {
+  
+    try {
+      const response = await clienteAxios.get(`/api/coupon/${id}`);
+      //actualizo el state
+
+      dispatch({
+        type: GET_COUPON_MODIFY,
+        payload: response.data
+      });
+
+    } catch (error) {
+      dispatch(downloadCouponsError());
+      //alerta
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: error.response.data.msg,
+      });
+    }
   };
 }
