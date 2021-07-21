@@ -72,7 +72,7 @@ import {
         Swal.fire({
           icon: "error",
           title: "Oppss..",
-          text: "Ha ocurrido un error, intenta nuevamente",
+          text: error.response.data.msg,
         });
       }
     };

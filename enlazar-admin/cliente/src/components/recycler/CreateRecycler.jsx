@@ -55,15 +55,12 @@ const CreateRecycler = ({history}) => {
         name.trim() === "" ||
         surname.trim() === "" ||
         ubication.trim() === "" ||
-        phone.trim() === ""||
-        email.trim() === ""||
-        dni.trim() === ""
-
-      ) {
+        email.trim() === ""
+        ) {
         mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
         return;
       }
-  
+
       addRecycler(recycler);
       clear();
   
