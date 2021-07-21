@@ -68,9 +68,7 @@ const EditRecycler = () => {
         name.trim() === "" ||
         surname.trim() === "" ||
         ubication.trim() === "" ||
-        phone.trim() === ""||
-        email.trim() === ""||
-        dni.trim() === ""
+        email.trim() === ""
 
       ) {
         mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
@@ -169,8 +167,8 @@ const EditRecycler = () => {
                       type="email"
                       className="input-text"
                       placeholder="Ingresa un email válido"
+                      disabled
                       name="email"
-                      onChange={handleChange}
                       value={email}
                     />
                   </div>

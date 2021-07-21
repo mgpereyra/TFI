@@ -30,7 +30,13 @@ exports.createRecycler = async (req, res) =>{
         return res.status(400).json({errors: errors.array()})
     }
 
-    const password = '123456';
+    function randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+        return result;
+    }
+
+    const password = randomString(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
     try {
         //firebase authentication
