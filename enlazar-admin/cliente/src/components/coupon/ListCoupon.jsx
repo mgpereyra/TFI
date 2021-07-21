@@ -31,20 +31,23 @@ const ListCoupon = () => {
          Nuevo cupón
         </Link>
       </div>
-      { loading ? <Spinner /> : null }
-      {coupons.length === 0 && !error ? (
-        <div className="alert alert-info text-center p-3">
-          <i className="fas fa-exclamation-circle"></i>No hay cupones creados
-        </div>
-      ) : (
-        <div className="row">
-          {coupons.map((coupon) => (
-            <Coupon
-              key={coupon.id} 
-              coupon={coupon} />
-          ))}
-        </div>
-      )}
+      { loading ? 
+      <Spinner /> :
+      
+        coupons.length === 0 && !error ? (
+          <div className="alert alert-info text-center p-3">
+            <i className="fas fa-exclamation-circle"></i>No hay cupones creados
+          </div>
+        ) : (
+          <div className="row">
+            {coupons.map((coupon) => (
+              <Coupon
+                key={coupon.id} 
+                coupon={coupon} />
+            ))}
+          </div>
+      ) }
+    
     </Fragment>
   );
 };

@@ -4,10 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import Recycler from "./Recycler";
 import { getListRecyclers } from "../../actions/recyclerAction";
 import { clearMaps } from "../../actions/mapsAction";
+import Spinner from "../Spinner";
 
 const ListRecycler = () => {
   const recyclers = useSelector((state) => state.recyclers.recyclers);
   const error = useSelector((state) => state.recyclers.error);
+  const loading = useSelector((state) => state.recyclers.loading);
+
+
   const dispatch = useDispatch();
   const dispatchListRecyclers = () => dispatch(getListRecyclers());
   const clearUbication = () => dispatch(clearMaps());
@@ -29,35 +33,38 @@ const ListRecycler = () => {
         </Link>
       </div>
 
-      {recyclers.length === 0 && !error ? (
-        <div className="alert alert-info text-center p-3">
-          <i className="fas fa-exclamation-circle"></i>No hay recolectores
-          creados
-        </div>
-      ) : (
-        <div className="row">
-          <table className="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Dni</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Dirección</th>
-                <th scope="col">Teléfono</th>
-                <th scope="col">Email</th>
-                <th scope="col">Password</th>
+      { loading ? 
+      <Spinner /> :
 
-                <th scope="col">Eliminar</th>
-                 <th scope="col">Editar</th>
-              </tr>
-            </thead>
-            <tbody>
-              {recyclers.map((recycler) => (
-                <Recycler key={recycler.id} recycler={recycler} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+        recyclers.length === 0 && !error ? (
+          <div className="alert alert-info text-center p-3">
+            <i className="fas fa-exclamation-circle"></i>No hay recolectores
+            creados
+          </div>
+        ) : (
+          <div className="row">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Dni</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Dirección</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Password</th>
+
+                  <th scope="col">Eliminar</th>
+                  <th scope="col">Editar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recyclers.map((recycler) => (
+                  <Recycler key={recycler.id} recycler={recycler} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
     </Fragment>
   );
 };

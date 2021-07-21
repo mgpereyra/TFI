@@ -94,7 +94,7 @@ const Meeting = ({ meeting }) => {
             </button>
           </div>
         </div>
-        <div className="card-footer">
+        <div className="card-footer py-1">
           <small className="text-muted">{id}</small>
         </div>
       </div>

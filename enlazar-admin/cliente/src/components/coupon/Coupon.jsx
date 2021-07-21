@@ -42,10 +42,10 @@ const Coupon = ({ coupon }) => {
           <div className="col-md-8">
             <div className="card-body">
               <p className="card-text  text-right mb-3">
-                <small className="text-estado mr-2 contador">
+                <small className="text-estado mr-2 contador p-2">
                   Cantidad disponible ~ <b>{amount}</b>
                 </small>
-                <small className="text-estado activo">
+                <small className="text-estado activo p-2">
                   Costo ~ <b>{pointsCost}</b> puntos
                 </small>
               </p>
