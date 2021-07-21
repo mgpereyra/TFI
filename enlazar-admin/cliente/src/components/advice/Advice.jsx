@@ -39,8 +39,8 @@ const Advice = ({ advice }) => {
             <div className="card-body">
               <div className="d-flex justify-content-between ">
                 <small className="text-muted small-text"> CATEGORÍA | {getCategory(tipe)}</small>
-                <small className="text-estado activo text-right">
-                  <i className="fas fa-heart"></i> {likes}
+                <small className="text-estado activo text-right p-2">
+                  <i className="fas fa-heart pr-1"></i> {likes}
                 </small>
               </div>
 
@@ -67,7 +67,7 @@ const Advice = ({ advice }) => {
               </div>
             </div>
             <div className="align-self-end mt-auto h-100">
-              <div className="card-footer pt-2 ">
+              <div className="card-footer py-1">
                 <small className="text-muted">{id}</small>
               </div>
 

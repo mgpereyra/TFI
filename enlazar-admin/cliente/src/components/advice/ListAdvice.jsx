@@ -29,20 +29,23 @@ const ListAdvice = () => {
           Crear un nuevo consejo
         </Link>
       </div>
-      { loading ? <Spinner /> : null }
-      {advices.length === 0 && !error ? (
-        <div className="alert alert-info text-center p-3">
-          <i className="fas fa-exclamation-circle"></i>No hay consejos creados
-        </div>
-      ) : (
-        <div className="row">
-          {advices.map((advice) => (
-            <Advice 
-                key={advice.id} 
-                advice={advice} />
-          ))}
-        </div>
-      )}
+      { loading ?
+         <Spinner /> :
+          advices.length === 0 && !error ? (
+            <div className="alert alert-info text-center p-3">
+              <i className="fas fa-exclamation-circle"></i>No hay consejos creados
+            </div>
+          ) : (
+            <div className="row">
+              {advices.map((advice) => (
+                <Advice 
+                    key={advice.id} 
+                    advice={advice} />
+              ))}
+            </div>
+          )}
+      
+      }
     </Fragment>
   );
 };
