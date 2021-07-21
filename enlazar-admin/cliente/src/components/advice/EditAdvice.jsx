@@ -138,7 +138,6 @@ const EditAdvice = () => {
                     onChange={handleImg}
                   />
 
-                  <label className="control-label pl-2">Imagen seleccionada</label>
                   <div className="bg-white fondo-imagen  m-2 align-items-center">
                   {advice.image !== null ? (
                       <img
