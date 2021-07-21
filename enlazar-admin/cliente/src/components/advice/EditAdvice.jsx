@@ -161,7 +161,7 @@ const EditAdvice = () => {
             { loading ? <Spinner /> : null }
             <div className="d-grid gap-2 d-md-flex justify-content-md-end mr-3">
                <Link to={'/list-advice'} className='btn btn-outline-primary me-md-2 mr-3'>
-               <i class="fas fa-times pr-2"></i>
+               <i className="fas fa-times pr-2"></i>
                     Cancelar
                 </Link>
               <button

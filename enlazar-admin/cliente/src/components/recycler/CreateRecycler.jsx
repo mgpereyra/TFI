@@ -174,7 +174,7 @@ const CreateRecycler = ({history}) => {
              
               <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
                 <Link to={'/list-recycler'} className='btn btn-outline-primary me-md-2 mr-3'>
-                <i class="fas fa-times pr-2"></i>
+                <i className="fas fa-times pr-2"></i>
                     Cancelar
                 </Link>
                 <button

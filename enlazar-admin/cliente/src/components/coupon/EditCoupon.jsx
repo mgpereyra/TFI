@@ -188,7 +188,7 @@ const EditCoupon = () => {
             { loading ? <Spinner /> : null }
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
               <Link to={'/list-coupon'} className='btn btn-outline-primary me-md-2 mr-3'>
-              <i class="fas fa-times pr-2"></i>
+              <i className="fas fa-times pr-2"></i>
                   Cancelar
               </Link>
               <button
