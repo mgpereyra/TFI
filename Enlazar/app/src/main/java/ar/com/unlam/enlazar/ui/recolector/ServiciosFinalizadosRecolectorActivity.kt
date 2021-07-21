@@ -65,7 +65,6 @@ class ServiciosFinalizadosRecolectorActivity : AppCompatActivity() {
 
     override fun onStart() {
         getServicesResponde2()
-        //viewModelServices.getServices()
         setObservers()
         super.onStart()
     }
@@ -175,7 +174,7 @@ class ServiciosFinalizadosRecolectorActivity : AppCompatActivity() {
 
     private fun toOnItemViewClick(servicio: Service) {
         if(servicio.estado==3){
-            Toast.makeText(this, "el servicio seleccionado está finalizado", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "El servicio seleccionado está finalizado", Toast.LENGTH_LONG).show()
         }else{
 
             val intent = Intent(this, RutaRecolectorMapActivity::class.java)

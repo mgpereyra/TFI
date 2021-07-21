@@ -35,7 +35,7 @@ class MisEncuentrosViewModel : ViewModel() {
                     for (data in snapshot.children) {
                         var model = data.getValue(PuntoEncuentro::class.java)
                         if (model != null) {
-                            list.add(model)
+                            if (model.estado==1) list.add(model)
                         }
                     }
                     misPuntosEncuentro.value = list
