@@ -25,28 +25,15 @@ export function createNewAdvice(advice) {
     });
 
     try {
-      const guardarImagen = async (advice) => {
+      if(advice.imagen !==  undefined){
         const imagen = advice.imagen.get("file");
-        try {
-          var storageRef = firebase.storage();
-          var imageRef = storageRef.ref().child("advice_image/" + imagen.name);
-          await imageRef.put(imagen).then(async (snapshot) => {
-            const uri = await storageRef
-              .ref("advice_image/" + advice.img)
-              .getDownloadURL();
-            advice.uri = uri;
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      async function save() {
-        await guardarImagen(advice);
+        var storageRef = firebase.storage();
+        await storageRef.ref().child("advice_image/" + imagen.name).put(imagen);
+        advice.uri = await storageRef.ref("advice_image/" + imagen.name).getDownloadURL();
+      }
+      
         await clienteAxios.post("/api/advice", advice);
         dispatch(addAdviceSuccess(advice));
-      }
-      save();
 
       //actualizo el state
 
@@ -171,7 +158,6 @@ export function modifyAdviceAction(advice) {
       dispatch({
         type: ADVICE_MODIFY_PROCESS
       });
-
 
       if(advice.imageData !==   undefined){
         const imagen = advice.imageData.get("file");

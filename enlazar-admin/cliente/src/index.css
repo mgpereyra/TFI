@@ -170,7 +170,7 @@ textarea {
   flex-shrink: 0;
   width: 100%;
   object-fit: cover;
-  height: 275px;
+  min-height: 100%;
 }
 
 
@@ -178,7 +178,7 @@ textarea {
   flex-shrink: 0;
   width: 100%;
   object-fit: cover;
-  height: 280px;
+  min-height: 100%;
 }
 body {
   background-color: #464646;
@@ -671,7 +671,7 @@ font-size: 1.2rem;
 text-align: center;
 width: 100%;
 box-shadow: 4px 4px 30px -3px rgba(0,0,0,0.6);
-
+z-index: 999;
 }
 @media (min-width:768px) {
 .alerta {

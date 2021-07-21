@@ -5,7 +5,7 @@ import { modifyAdviceAction } from "../../actions/adviceAction";
 import alertaContext from "../../context/alerta/alertaContext";
 import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
-
+import {categories} from "../../helpers"
 
 const EditAdvice = () => {
   const dispatch = useDispatch();
@@ -84,14 +84,21 @@ const EditAdvice = () => {
               <Col lg={7}>
                 <div className="form-group">
                   <label className="control-label">Categoría</label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    placeholder="Consejo semanal"
-                    name="tipe"
-                    value={tipe}
-                    onChange={handleChange}
-                  />
+                                   
+                  <select
+                      name="tipe"
+                      onChange={handleChange}
+                      value={tipe}
+                      className="custom-select"
+                    >
+                      <option value="">Selecciona una categoría...</option>
+
+                      {categories.map((r) => (
+                        <option value={r.id} key={r.id}>
+                          {r.name} 
+                        </option>
+                      ))}
+                    </select>
                 </div>
 
                 <div className="form-group">

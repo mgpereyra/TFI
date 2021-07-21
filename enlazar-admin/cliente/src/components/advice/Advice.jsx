@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAdviceAction, modifyAdvice } from "../../actions/adviceAction";
 import picture from "../../images/picture-grey.jpg";
+import {getCategory} from "../../helpers"
 
 const Advice = ({ advice }) => {
   const { tipe, title, content, id, img, uri, likes } = advice;
@@ -37,7 +38,7 @@ const Advice = ({ advice }) => {
           <div className="col-md-8">
             <div className="card-body">
               <div className="d-flex justify-content-between ">
-                <small className="text-muted small-text">{tipe}</small>
+                <small className="text-muted small-text"> CATEGORÍA | {getCategory(tipe)}</small>
                 <small className="text-estado activo text-right">
                   <i className="fas fa-heart"></i> {likes}
                 </small>
@@ -65,8 +66,11 @@ const Advice = ({ advice }) => {
                 </button>
               </div>
             </div>
-            <div className="card-footer py-2">
-              <small className="text-muted">{id}</small>
+            <div className="align-self-end mt-auto h-100">
+              <div className="card-footer pt-2 ">
+                <small className="text-muted">{id}</small>
+              </div>
+
             </div>
           </div>
         </div>

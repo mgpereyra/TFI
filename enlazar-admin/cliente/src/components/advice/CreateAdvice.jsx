@@ -1,20 +1,24 @@
 import React, { Fragment, useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewAdvice } from "../../actions/adviceAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import picture from '../../images/picture-grey.jpg'
+import {categories} from "../../helpers"
+import Spinner from "../Spinner";
 
 const CreateAdvice = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
+  const loading = useSelector((state) => state.advices.loading);
 
+  console.log(categories)
   //state del componente
   const [advice, setAdvice] = useState({
     img: "",
     tipe: "",
     title: "",
     content: "",
-    imagen: null,
+    imagen: null
   });
 
   const [fileUrl, setFileUrl] = useState(null);
@@ -28,6 +32,13 @@ const CreateAdvice = ({ history }) => {
     setAdvice({
       ...advice,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleChangeCategory = (e) => {
+    setAdvice({
+      ...advice,
+      tipe: e.target.value,
     });
   };
 
@@ -51,16 +62,29 @@ const CreateAdvice = ({ history }) => {
     //Validar
     if (
       tipe.trim() === "" ||
-      img.trim() === "" ||
       title.trim() === "" ||
       content.trim() === ""
     ) {
       mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
       return;
     }
+       //Validar
+       if (
+        img.trim() === ""
+      ) {
+        mostrarAlerta("Por favor seleccione una imagen", "alerta-error");
+        return;
+      }
+  
 
     addAdvice(advice);
+    
+    //redireccion
+    setTimeout(function () {
+      history.push("/list-advice");
+    }, 2500);
 
+    
     //reiniciar el form
     setAdvice({
       img: "",
@@ -70,11 +94,6 @@ const CreateAdvice = ({ history }) => {
       imagen: null,
       uri: "",
     });
-
-    //redireccion
-    setTimeout(function () {
-      history.push("/list-advice");
-    }, 1500);
   };
   return (
     <Fragment>
@@ -86,21 +105,28 @@ const CreateAdvice = ({ history }) => {
           <i className="fas fa-plus-circle"></i>Crear un nuevo consejo
         </h2>
       </div>
-      <div className="card bg-gris py-4">
+      <div className="card bg-gris py-4 card-advice">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <Row>
               <Col>
                 <div className="form-group">
                   <label className="control-label">Categoría</label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    placeholder="Consejo semanal"
-                    name="tipe"
-                    onChange={handleChange}
-                    value={tipe}
-                  />
+                
+                    <select
+                      name="tipe"
+                      onChange={handleChange}
+                      value={tipe}
+                      className="custom-select"
+                    >
+                      <option value="">Selecciona una categoría...</option>
+
+                      {categories.map((r) => (
+                        <option value={r.id} key={r.id}>
+                          {r.name} 
+                        </option>
+                      ))}
+                    </select>
                 </div>
 
                 <div className="form-group">
@@ -149,6 +175,8 @@ const CreateAdvice = ({ history }) => {
                 </div>
               </Col>
             </Row>
+            { loading ? <Spinner /> : null }
+
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
               <button
                 className="btn btn-primary me-md-2"

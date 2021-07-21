@@ -12,7 +12,7 @@ const ListAdvice = () => {
   const advices = useSelector((state) => state.advices.advices);
   const error = useSelector((state) => state.advices.error);
   const loading = useSelector((state) => state.advices.loading);
-
+  
   useEffect(() => {
       listAdvice();
       //eslint-disable-next-line

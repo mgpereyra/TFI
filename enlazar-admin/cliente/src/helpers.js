@@ -28,3 +28,23 @@ export const getState = (service) => {
 
     return state
 }
+
+
+export const categories = [
+    { id: "COMO_RECICLAR_BIEN", name: "Como reciclar bien"},
+    { id: "ECOINFORME", name: "Ecoinforme"},
+    { id: "CONSEJO_DE_LA_SEMANA", name: "Consejo de la semana"}
+]
+
+export const getCategory = (category) => {
+    if(category == "COMO_RECICLAR_BIEN"){
+        return( "Como reciclar bien")
+    }
+    else if(category == "ECOINFORME"){
+        return( "Ecoinforme")
+    }
+    else if(category == "CONSEJO_DE_LA_SEMANA"){
+        return( "Consejo de la semana")
+    }
+    return "Categoria no encontrada"
+}
