@@ -781,11 +781,12 @@ margin: 4rem
 
 .text-estado{
 border-radius: 5rem;
-letter-spacing: .5px;
+letter-spacing: .6px;
+
 }
 
 .activo{
-background: rgb(96, 231, 186);
+background: rgb(75, 235, 181);
 color: var(--verde2);
 }
 

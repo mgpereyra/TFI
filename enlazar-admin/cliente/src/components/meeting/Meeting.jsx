@@ -51,18 +51,19 @@ const Meeting = ({ meeting }) => {
         <div className="card-body px-3">
           <p className="card-text  text-right mb-3">
             <small className="text-estado mr-2 contador p-2">Asistentes <b>{asistentes !== undefined ? Object.values(asistentes).length : "0"}</b></small>
-            
-             
-                {estado === 1 ? 
-                 <button className=" text-estado activo btn py-0 px-2"
-                   onClick={() => handleState(meeting)}>
-                   <small>Activo</small> 
-                 </button>  
-                   : 
-                   <button className=" text-estado inactivo btn py-0 px-2"
-                   onClick={() => handleState(meeting)}>
-                <small>Inactivo</small>
-              </button>}
+            { asistentes === undefined ? 
+              (estado === 1 ? 
+                <button className=" text-estado activo btn py-0 px-2"
+                    onClick={() => handleState(meeting)}>
+                    <small><b>Activo</b> </small> 
+                </button>  
+                : 
+                  <button className=" text-estado inactivo btn py-0 px-2"
+                    onClick={() => handleState(meeting)}>
+                    <small>Inactivo</small>
+                  </button>)
+            : null }            
+                
           </p>
           <div className="contenedor-titulo mb-2">
             <h2 className="card-title color-third "> {title}</h2>
@@ -81,17 +82,15 @@ const Meeting = ({ meeting }) => {
           <div className="acciones">
             <button
               onClick={() => confirmDelete(id)}
-              className="btn btn-outline-primary w-100 btn-left"
+              className="btn btn-outline-danger btn-circle mr-2"
             >
               <i className="far fa-trash-alt"></i>
-              Eliminar
             </button>
             <button
               onClick={() => confirmEdit(meeting)}
-              className="btn btn-primary mr-2 w-100 btn-right"
+              className="btn btn-success  btn-circle"
             >
               <i className="far fa-edit"></i>
-              Editar
             </button>
           </div>
         </div>

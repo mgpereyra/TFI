@@ -7,7 +7,7 @@ exports.getListMeeting = async(req, res) => {
         const db = firebase.database().ref();
         const list = []
 
-        const snapshot = await db.child('MeetingPoint').orderByChild("date").once("value",snapshot => {
+        await db.child('MeetingPoint').orderByChild("date").once("value",snapshot => {
             
             if(snapshot.exists()){
                 snapshot.forEach((snap) => {
