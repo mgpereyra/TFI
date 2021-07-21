@@ -129,12 +129,13 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         viewModelServices.misServicios.observe(this, Observer {
             it.let {
                 it.forEach {
-                   createMarker(it.latitud!!.toDouble(),it.longitud!!.toDouble(),it.address!!)
+                    createMarker(it.latitud!!.toDouble(), it.longitud!!.toDouble(), it.address!!)
                 }
             }
 
         })
     }
+
     fun obtenerCurretPositionLoop(cancelarServicio: Boolean) {
         val TIEMPO: Long = 10000
         handler.postDelayed(object : Runnable {
@@ -235,6 +236,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                 }
         }
     }
+
     private fun bitmapDescriptorFromVector(
         context: Context,
         @DrawableRes vectorDrawableResourceId: Int
@@ -258,6 +260,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
+
     private fun trazarRuta(origen: LatLng, destino: LatLng) {
         val serviceAddress = intent.getStringExtra(SERVICE_ADDRESS)
         CoroutineScope(Dispatchers.IO).launch {
@@ -284,7 +287,12 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
                             val polyLine = map.addPolyline(mPolylineOptions)
                             polyLine.jointType // .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                             var marker: MarkerOptions =
-                                MarkerOptions().position(destino).title(serviceAddress).icon(bitmapDescriptorFromVector(this@RutaRecolectorMapActivity,R.drawable.ic_logo_marker_pe_vector))
+                                MarkerOptions().position(destino).title(serviceAddress).icon(
+                                    bitmapDescriptorFromVector(
+                                        this@RutaRecolectorMapActivity,
+                                        R.drawable.ic_logo_marker_pe_vector
+                                    )
+                                )
                             map.addMarker(marker)
                             map.animateCamera(
                                 CameraUpdateFactory.newLatLngZoom(
@@ -327,6 +335,7 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         finish()
         super.onBackPressed()
     }
+
     private fun actualizarServicio(comentario: String?) {
         database = FirebaseDatabase.getInstance()
         referaceServicio = database.getReference(Constants.SERVICE_REF)
@@ -336,7 +345,6 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         //val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
 
         finish()
-        //startActivity(intent)
     }
 
     private fun createPolylines() {
@@ -347,9 +355,14 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         polyLine.jointType
     }
 
-    private fun createMarker(lat:Double, long: Double,title:String) {
+    private fun createMarker(lat: Double, long: Double, title: String) {
         val coordinates = LatLng(lat, long)
-        val marker: MarkerOptions = MarkerOptions().position(coordinates).title(title).icon(bitmapDescriptorFromVector(this@RutaRecolectorMapActivity,R.drawable.ic_logo_marker_pe_vector))
+        val marker: MarkerOptions = MarkerOptions().position(coordinates).title(title).icon(
+            bitmapDescriptorFromVector(
+                this@RutaRecolectorMapActivity,
+                R.drawable.ic_logo_marker_pe_vector
+            )
+        )
         map.addMarker(marker)
         /*      map.animateCamera(
                   CameraUpdateFactory.newLatLngZoom(LatLng(-34.744774, -58.695204), 18f),

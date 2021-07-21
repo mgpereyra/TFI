@@ -41,7 +41,7 @@ class ServiciosRecolectorMapViewModel(
                     for (data in snapshot.children) {
                         var model = data.getValue(Service::class.java)
                         if (model != null) {
-                            if (model.estado==1){
+                            if (model.estado == 1) {
                                 list.add(model)
                             }
                         }
@@ -54,12 +54,5 @@ class ServiciosRecolectorMapViewModel(
                 }
             })
     }
-
- /*   val responseLiveData = liveData(Dispatchers.IO) {
-        emit(repository.getResponseFromRealtimeDatabaseUsingCoroutines())
-
-    }*/
-
-
 }
 
