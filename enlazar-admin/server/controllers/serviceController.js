@@ -56,11 +56,7 @@ exports.getListServicesPendings = async(req, res) => {
                 value.date = d.toLocaleDateString('en-GB');
               
                 list.push(value)
-                list.sort(function(a, b) {
-                    var dateA = new Date(a.dates)
-                    var dateB = new Date(b.dates)
-                    return b.dates - a.dates;
-                    });
+                list.sort(function(a, b) { return b.dates - a.dates; });
             })
 
            res.json(list)

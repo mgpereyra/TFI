@@ -28,7 +28,6 @@ const Recycler = ({ recycler }) => {
       <td>
         {name} {surname}
       </td>
-      <td>{district}</td>
       <td>{phone}</td>
       <td>{email}</td>
       <td>{password}</td>

@@ -8,12 +8,15 @@ import {
 import { getListRecyclers } from "../../actions/recyclerAction";
 import { Link } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
+import Spinner from "../Spinner";
 
 const ManageService = ({ history }) => {
   const recyclers = useSelector((state) => state.recyclers.recyclers);
   const services = useSelector((state) => state.services.servicesPendings);
   const error = useSelector((state) => state.recyclers.error);
   const loading = useSelector((state) => state.services.loading);
+  const loadingRecyclers = useSelector((state) => state.recyclers.loading);
+
 
   const { alerta, mostrarAlerta } = useContext(alertaContext);
 
@@ -74,14 +77,7 @@ const ManageService = ({ history }) => {
           <form onSubmit={handleSubmit}>
            
             {loading ? (
-              <div className="d-flex justify-content-center">
-                <div
-                  className="spinner-border spin text-secondary"
-                  role="status"
-                >
-                  <span className="sr-only">Cargando...</span>
-                </div>
-              </div>
+             <Spinner/>
             ) : services.length === 0 && !error ? (
               <div className="alert alert-info text-center p-3">
                 <i className="fas fa-exclamation-circle mr-2"></i>No hay servicios pendientes
@@ -139,12 +135,16 @@ const ManageService = ({ history }) => {
                   </div>
                 </div>
                 <div className=" d-grid gap-2 d-md-flex justify-content-md-end">
+                  <Link to={'/list-service'} className='btn btn-outline-primary me-md-2 mr-3'>
+                  <i className="fas fa-times pr-2"></i>
+                      Cancelar
+                  </Link>
                   <button
                     className="btn btn-primary me-md-2"
                     type="submit"
                     variant="primary"
                   >
-                    <i className="far fa-check"></i>
+                    <i className="far fa-check pr-2"></i>
                     Guardar asignación
                   </button>
                 </div>

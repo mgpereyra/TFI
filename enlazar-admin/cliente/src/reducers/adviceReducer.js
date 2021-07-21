@@ -11,7 +11,8 @@ import {
     GET_ADVICE_MODIFY,
     ADVICE_MODIFY_ERROR,
     ADVICE_MODIFY_SUCCESS,
-    PROCESS_COUPON_VERIFY
+    PROCESS_COUPON_VERIFY,
+    ADVICE_MODIFY_PROCESS
 } from '../types'
 
 // cada reducer tiene su propio state
@@ -29,6 +30,7 @@ export default function (state = initialState, action){
     switch(action.type){
         case ADD_ADVICE:
         case START_DOWNLOAD_ADVICES:  
+        case ADVICE_MODIFY_PROCESS:
             return {
                 ...state,
                 loading: true
@@ -74,7 +76,11 @@ export default function (state = initialState, action){
         case ADVICE_MODIFY_SUCCESS:
             return{
                 ...state,
-                adviceToModify: null
+                loading: false, 
+                advices: Object.values(state.advices).map( advice =>
+                    (advice.id === action.payload.id) ? advice = action.payload :
+                    advice
+                )
             }           
         default:
             return state;

@@ -73,6 +73,7 @@ exports.putCoupon = async (req, res) => {
   try {
     const key = req.params.id;
     const postData = req.body;
+
     postData.pointsCost = parseInt(postData.pointsCost, 10)
     postData.amount = parseInt(postData.amount, 10)
 

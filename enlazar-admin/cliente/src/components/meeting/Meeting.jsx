@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   modifyMeeting,
   deleteMeetingAction,
+  modifyStateMeeting
 } from "../../actions/meetingAction";
 
 const Meeting = ({ meeting }) => {
@@ -21,22 +22,54 @@ const Meeting = ({ meeting }) => {
     dispatch(modifyMeeting(meeting));
     history.push(`/edit-meeting/${id}`);
   };
+  const handleState = (meeting) => {
+    dispatch(modifyStateMeeting(meeting));
+    history.push(`/list-meeting`);
+
+  };
+
+  const formatDate = (date) =>{
+    let dateToday = new Date(date)
+    let day = dateToday.getDate() +1
+    let month = dateToday.getMonth() + 1
+    let year = dateToday.getFullYear()
+    let today= '';
+  
+    if(month < 10){
+      today = `${day}/0${month}/${year}`
+    }else{
+      today = `${day}/${month}/${year}`
+    }
+    return today;
+  }
+  
+
 
   return (
     <div className="col-lg-4">
       <div className="card border-secondary">
         <div className="card-body px-3">
           <p className="card-text  text-right mb-3">
-            <small className="text-estado mr-2 contador">Asistentes {asistentes !== undefined ? Object.values(asistentes).length : "0"}</small>
-            <small className="text-estado activo">
-              {estado === 1 ? "Activo" : "Inactivo"}
-            </small>
+            <small className="text-estado mr-2 contador p-2">Asistentes <b>{asistentes !== undefined ? Object.values(asistentes).length : "0"}</b></small>
+            { asistentes === undefined ? 
+              (estado === 1 ? 
+                <button className=" text-estado activo btn py-0 px-2"
+                    onClick={() => handleState(meeting)}>
+                    <small><b>Activo</b> </small> 
+                </button>  
+                : 
+                  <button className=" text-estado inactivo btn py-0 px-2"
+                    onClick={() => handleState(meeting)}>
+                    <small>Inactivo</small>
+                  </button>)
+            : null }            
+                
           </p>
           <div className="contenedor-titulo mb-2">
             <h2 className="card-title color-third "> {title}</h2>
           </div>
           <h3 className="card-title font-weight-bold">
-            {date} - {time}
+            {formatDate(date)} ~ {time}
           </h3>
           <div className="cortar-texto-meet">
             <h6>
@@ -49,21 +82,19 @@ const Meeting = ({ meeting }) => {
           <div className="acciones">
             <button
               onClick={() => confirmDelete(id)}
-              className="btn btn-outline-primary w-100 btn-left"
+              className="btn btn-outline-danger btn-circle mr-2"
             >
               <i className="far fa-trash-alt"></i>
-              Eliminar
             </button>
             <button
               onClick={() => confirmEdit(meeting)}
-              className="btn btn-primary mr-2 w-100 btn-right"
+              className="btn btn-success  btn-circle"
             >
               <i className="far fa-edit"></i>
-              Editar
             </button>
           </div>
         </div>
-        <div className="card-footer">
+        <div className="card-footer py-1">
           <small className="text-muted">{id}</small>
         </div>
       </div>

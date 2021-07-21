@@ -146,11 +146,12 @@ textarea {
   }
 
 .fondo-imagen{
-  height :255px;
+  height :300px;
+  padding: .1rem;
 }
 .img-edit{
   width: 100%;
-  height: 200px;
+  height: 296px;
   object-fit: cover;
 }
 
@@ -169,7 +170,7 @@ textarea {
   flex-shrink: 0;
   width: 100%;
   object-fit: cover;
-  height: 235px;
+  min-height: 100%;
 }
 
 
@@ -177,7 +178,7 @@ textarea {
   flex-shrink: 0;
   width: 100%;
   object-fit: cover;
-  height: 292px;
+  min-height: 100%;
 }
 body {
   background-color: #464646;
@@ -670,7 +671,7 @@ font-size: 1.2rem;
 text-align: center;
 width: 100%;
 box-shadow: 4px 4px 30px -3px rgba(0,0,0,0.6);
-
+z-index: 999;
 }
 @media (min-width:768px) {
 .alerta {
@@ -748,7 +749,7 @@ display: block;
 .cortar-parrafo:before {
   content:'...';
   position: absolute;
-  bottom: 5.2rem;
+  bottom: 7.8rem;
   right: 1rem;
 }
 .cortar-parrafo::after {
@@ -779,15 +780,20 @@ margin: 4rem
 
 
 .text-estado{
-padding: .5rem .8rem;
 border-radius: 5rem;
-letter-spacing: .5px;
+letter-spacing: .6px;
+
 }
 
 .activo{
-background: aquamarine;
-color: var(--verde);
+background: rgb(75, 235, 181);
+color: var(--verde2);
 }
+
+.inactivo{
+  background: rgb(255, 168, 127);
+  color: maroon;
+  }
 
 .contador{
 background:#fdfdb3       ;

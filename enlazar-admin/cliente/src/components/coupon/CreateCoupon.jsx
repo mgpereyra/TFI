@@ -3,6 +3,8 @@ import { Col, Row } from "react-bootstrap";
 import { createNewCoupon } from "../../actions/couponAction";
 import { useDispatch } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
+import picture from '../../images/picture-grey.jpg'
+import {Link} from 'react-router-dom'
 
 const CreateCoupon = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
@@ -10,7 +12,6 @@ const CreateCoupon = ({ history }) => {
   //state del componente
   const [coupon, setCoupon] = useState({
     image: "",
-    imageCode: "",
     description: "",
     amount: "",
     pointsCost: "",
@@ -18,15 +19,15 @@ const CreateCoupon = ({ history }) => {
     imageData: null,
   });
 
+  const [fileUrl, setFileUrl] = useState(null);
+
   const {
     imageData,
     image,
-    imageCode,
     title,
     description,
     amount,
-    pointsCost,
-    imageName
+    pointsCost
   } = coupon;
 
   //Llamando al action
@@ -46,9 +47,11 @@ const CreateCoupon = ({ history }) => {
 
     setCoupon({
       ...coupon,
-      imageData: formdata,
-      image: e.target.files[0].name,
+      imageData: formdata
     });
+
+    const imageUrl = URL.createObjectURL(e.target.files[0]);
+    setFileUrl(imageUrl);
   };
 
   const handleSubmit = (e) => {
@@ -62,7 +65,7 @@ const CreateCoupon = ({ history }) => {
       image.trim() === "" ||
       amount.trim() === ""
     ) {
-      mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
+      mostrarAlerta("Por favor complete todos los campos", "alerta-error");
       return;
     }
 
@@ -90,27 +93,14 @@ const CreateCoupon = ({ history }) => {
       ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-plus-circle"></i>Crear cupón
+          <i className="fas fa-plus-circle pr-2"></i>Crear cupón
         </h2>
       </div>
       <div className="card bg-gris py-4">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <Row>
-              <Col lg={4}>
-                <div className="form-group">
-                  <label className="control-label ">
-                    Selecciona una imagen
-                  </label>
-                  <input
-                    type="file"
-                    className="input-text text-white"
-                    id="imagen"
-                    name="imagen"
-                    onChange={handleImg}
-                  />
-                </div>
-              </Col>
+            
               <Col>
                 <div className="form-group">
                   <label className="control-label">Título</label>
@@ -128,6 +118,7 @@ const CreateCoupon = ({ history }) => {
                   <label className="control-label">Puntos de costo</label>
                   <input
                     type="number"
+                    placeholder="0"
                     className="input-text"
                     name="pointsCost"
                     onChange={handleChange}
@@ -139,6 +130,7 @@ const CreateCoupon = ({ history }) => {
                   <label className="control-label">Cantidad disponible</label>
                   <input
                     type="number"
+                    placeholder="0"
                     className="input-text"
                     name="amount"
                     onChange={handleChange}
@@ -157,15 +149,42 @@ const CreateCoupon = ({ history }) => {
                   />
                 </div>
               </Col>
+              <Col lg={5}>
+                <div className="form-group">
+                  <label className="control-label ml-2">
+                    Selecciona una imagen
+                  </label>
+                  <input
+                    type="file"
+                    className="input-text text-white"
+                    id="imagen"
+                    name="imagen"
+                    accept="image/jpeg, image/png"
+                    onChange={handleImg}
+                  />
+
+                  <div className="bg-white fondo-imagen  my-3 mx-2  align-items-center">
+                      {fileUrl !== null?
+                          <img className="img-edit " src={fileUrl} alt={title}></img>
+                      :
+                          <img className="img-edit " src={picture} alt={title}></img>
+                      }
+                  </div>
+                </div>
+              </Col>
             </Row>
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
+            <Link to={'/list-coupon'} className='btn btn-outline-primary me-md-2 mr-3'>
+               <i className="fas fa-times pr-2"></i>
+                    Cancelar
+                </Link>
               <button
                 className="btn btn-primary me-md-2"
                 type="submit"
                 variant="primary"
               >
-                <i className="far fa-check"></i>
-                Crear consejo
+                <i className="far fa-check pr-2"></i>
+                Crear cupón
               </button>
             </div>
           </form>

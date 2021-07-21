@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -33,16 +33,19 @@ const Search = ({ panTo }) => {
   const addLat = (lat, lng, ubication) => dispatch(saveData(lat, lng, ubication));
   const datos = useSelector((state) => state.maps);
 
+  const [ubicationInput, setubicationInput] = useState(datos.ubication)
+
   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
   const handleInput = (e) => {
     // TO DO QUE SEA EDITABLE
-    setValue(e.target.value);
+    setubicationInput(e.target.value);
+    setValue(e.target.value)
   };
 
   const handleSelect = async (address) => {
     setValue(address, false);
     clearSuggestions();
-
+    setubicationInput(address);
     try {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
@@ -59,7 +62,7 @@ const Search = ({ panTo }) => {
       <Combobox onSelect={handleSelect}>
         <ComboboxInput
           className="form-control form-control-lg mb-3 py-4"
-          value={datos.ubication !== '' ? datos.ubication : value}
+          value={ubicationInput}
           onChange={handleInput}
           disabled={!ready}
           placeholder="Ingresa una ubicación..."
