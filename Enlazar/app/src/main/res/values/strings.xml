@@ -97,6 +97,7 @@
     <string name="estado_cupon">Estado:</string>
     <string name="mis_canjes_realizados">Mis canjes realizados</string>
     <string name="no_tienes_servicios_asignados">No tienes servicios asignados</string>
+    <string name="no_tienes_servicios_finalizados">No tienes servicios finalizados</string>
 
 
 </resources>

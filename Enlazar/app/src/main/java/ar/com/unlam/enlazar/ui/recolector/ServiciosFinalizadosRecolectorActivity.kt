@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
@@ -25,7 +26,10 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_servicios_finalizados_recolector.*
 import kotlinx.android.synthetic.main.activity_servicios_recolector_ruta.*
+import kotlinx.android.synthetic.main.activity_servicios_recolector_ruta.no_serv_asignados_rec
+import kotlinx.android.synthetic.main.activity_servicios_recolector_ruta.toolbar_serv_list_rec
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -129,6 +133,11 @@ class ServiciosFinalizadosRecolectorActivity : AppCompatActivity() {
         viewModelServices.misServicios.observe(this, Observer {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
+            if(it.isEmpty()){
+                no_serv_finalizados_rec.visibility = View.VISIBLE
+            }else{
+                no_serv_finalizados_rec.visibility = View.GONE
+            }
         })
     }
 
