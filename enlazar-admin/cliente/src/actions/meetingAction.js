@@ -55,7 +55,7 @@ export function createNewMeeting(meeting) {
       type: ADD_MEETING,
     });
 
-    try {
+      try {
       await clienteAxios.post("/api/meeting", meeting);
 
       //actualizo el state

@@ -5,14 +5,28 @@ const {validationResult}= require('express-validator');
 exports.getListMeeting = async(req, res) => {
     try {
         const db = firebase.database().ref();
+        const list = []
+
         const snapshot = await db.child('MeetingPoint').orderByChild("date").once("value",snapshot => {
-            return snapshot
+            
+            if(snapshot.exists()){
+                snapshot.forEach((snap) => {
+                const value = snap.val()
+
+               // value.dates = d;
+              
+                list.push(value)
+                list.sort(function(a, b) {
+                    return b.date - a.date;
+                    });
+                })
+            }    
+
         });
      
         //validando existencia
-        if(snapshot.exists()){
-           res.json(snapshot.val())
-        }        
+       
+           res.json(list)
     } catch (error) {
         console.log(error)
         res.status(500).send('Error')

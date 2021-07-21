@@ -12,7 +12,18 @@ const EditMeeting = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { alerta, mostrarAlerta } = useContext(alertaContext);
-  const [loading, setloading] = useState(false)
+
+  let dateToday = new Date()
+  let day = dateToday.getDate()
+  let month = dateToday.getMonth() + 1
+  let year = dateToday.getFullYear()
+  let today= '';
+
+  if(month < 10){
+    today = `${year}-0${month}-${day}`
+  }else{
+    today = `${year}-${month}-${day}`
+  }
 
   //state del componente
   const [meeting, setMeeting] = useState({
@@ -37,8 +48,23 @@ const EditMeeting = () => {
   const addUbication = (meet) => dispatch(mostrar(meet));
   const clear = () => dispatch(clearMaps());
 
+  
   //carga los datos del elemento a modificar la 1ra vez
   useEffect(() => {
+    if(meetingToModify !== null){
+      let dated = new Date(meetingToModify.date)
+      let day = dated.getDate()+1
+      let month = dated.getMonth() + 1
+      let year = dated.getFullYear()
+    
+      if(month < 10){
+        meetingToModify.date = `${year}-0${month}-${day}`
+      }else{
+        meetingToModify.date = `${year}-${month}-${day}`
+      }
+      
+    }
+
     setMeeting(meetingToModify);
     
     addUbication(meetingToModify)
@@ -83,12 +109,8 @@ const EditMeeting = () => {
       lng: 0,
     });
 
-    setloading(true)
     //redireccion
-    setTimeout(() => {
-      setloading(false)
       history.push("/list-meeting");
-    }, 3500);
   };
   return (
     <Fragment>
@@ -131,10 +153,12 @@ const EditMeeting = () => {
                 <div className="form-group">
                   <label className="control-label">Día</label>
                   <input
-                    type="text"
+                    type="date"
                     className="input-text"
-                    placeholder="Ingresa una descripcion..."
+                    placeholder="Por ejemplo, 24/05/21..."
                     name="date"
+                    min={today}
+                    max="2021-12-31"
                     onChange={handleChange}
                     value={date}
                   />
@@ -170,7 +194,7 @@ const EditMeeting = () => {
             </Row>
             <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
               <Link to={'/list-meeting'} className='btn btn-outline-primary me-md-2 mr-3'>
-                <i class="fas fa-times pr-2"></i>
+                <i className="fas fa-times pr-2"></i>
                   Cancelar
               </Link>
 

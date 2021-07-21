@@ -22,6 +22,23 @@ const Meeting = ({ meeting }) => {
     history.push(`/edit-meeting/${id}`);
   };
 
+  const formatDate = (date) =>{
+    let dateToday = new Date(date)
+    let day = dateToday.getDate() +1
+    let month = dateToday.getMonth() + 1
+    let year = dateToday.getFullYear()
+    let today= '';
+  
+    if(month < 10){
+      today = `${day}/0${month}/${year}`
+    }else{
+      today = `${day}/${month}/${year}`
+    }
+    return today;
+  }
+  
+
+
   return (
     <div className="col-lg-4">
       <div className="card border-secondary">
@@ -36,7 +53,7 @@ const Meeting = ({ meeting }) => {
             <h2 className="card-title color-third "> {title}</h2>
           </div>
           <h3 className="card-title font-weight-bold">
-            {date} - {time}
+            {formatDate(date)} ~ {time}
           </h3>
           <div className="cortar-texto-meet">
             <h6>

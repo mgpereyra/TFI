@@ -11,9 +11,20 @@ const CreateMeeting = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
   const datos = useSelector((state) => state.maps);
   
+  let dated = new Date()
+  let day = dated.getDate()
+  let month = dated.getMonth() + 1
+  let year = dated.getFullYear()
+  let dates= '';
+
+  if(month < 10){
+    dates = `${year}-0${month}-${day}`
+  }else{
+    dates = `${year}-${month}-${day}`
+  }
   //state del componente
   const [meeting, setMeeting] = useState({
-    date: "",
+    date: dates,
     title: "",
     description: "",
     time: "",
@@ -122,10 +133,12 @@ const CreateMeeting = ({ history }) => {
                 <div className="form-group">
                   <label className="control-label">Día</label>
                   <input
-                    type="text"
+                    type="date"
                     className="input-text"
                     placeholder="Por ejemplo, 24/05/21..."
                     name="date"
+                    min={date}
+                    max="2021-12-31"
                     onChange={handleChange}
                     value={date}
                   />
@@ -133,7 +146,7 @@ const CreateMeeting = ({ history }) => {
               </Col>
               <Col>
                 <div className="form-group">
-                  <label className="control-label">Hora</label>
+                  <label className="control-label">Hora </label>
                   <input
                     type="text"
                     className="input-text"
@@ -161,7 +174,7 @@ const CreateMeeting = ({ history }) => {
             </Row>
             <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
               <Link to={'/list-meeting'} className='btn btn-outline-primary me-md-2 mr-3'>
-                <i class="fas fa-times pr-2"></i>
+                <i className="fas fa-times pr-2"></i>
                   Cancelar
               </Link>
               <button
