@@ -48,9 +48,11 @@ const ListRecycler = () => {
                 <tr>
                   <th scope="col">Dni</th>
                   <th scope="col">Nombre</th>
+                  <th scope="col">Dirección</th>
                   <th scope="col">Teléfono</th>
                   <th scope="col">Email</th>
                   <th scope="col">Password</th>
+
                   <th scope="col">Eliminar</th>
                   <th scope="col">Editar</th>
                 </tr>
