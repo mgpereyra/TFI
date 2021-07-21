@@ -6,6 +6,8 @@ import alertaContext from "../../context/alerta/alertaContext";
 import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
 import {categories} from "../../helpers"
+import {Link} from 'react-router-dom'
+
 
 const EditAdvice = () => {
   const dispatch = useDispatch();
@@ -158,12 +160,16 @@ const EditAdvice = () => {
             </Row>
             { loading ? <Spinner /> : null }
             <div className="d-grid gap-2 d-md-flex justify-content-md-end mr-3">
+               <Link to={'/list-advice'} className='btn btn-outline-primary me-md-2 mr-3'>
+               <i class="fas fa-times pr-2"></i>
+                    Cancelar
+                </Link>
               <button
                 className="btn btn-primary me-md-2"
                 type="submit"
                 variant="primary"
               >
-                <i className="far fa-check"></i>
+                <i className="far fa-check pr-2"></i>
                 Guardar cambios
               </button>
             </div>

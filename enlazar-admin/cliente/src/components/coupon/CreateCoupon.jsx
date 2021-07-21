@@ -4,6 +4,7 @@ import { createNewCoupon } from "../../actions/couponAction";
 import { useDispatch } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import picture from '../../images/picture-grey.jpg'
+import {Link} from 'react-router-dom'
 
 const CreateCoupon = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
@@ -92,7 +93,7 @@ const CreateCoupon = ({ history }) => {
       ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-plus-circle"></i>Crear cupón
+          <i className="fas fa-plus-circle pr-2"></i>Crear cupón
         </h2>
       </div>
       <div className="card bg-gris py-4">
@@ -117,6 +118,7 @@ const CreateCoupon = ({ history }) => {
                   <label className="control-label">Puntos de costo</label>
                   <input
                     type="number"
+                    placeholder="0"
                     className="input-text"
                     name="pointsCost"
                     onChange={handleChange}
@@ -128,6 +130,7 @@ const CreateCoupon = ({ history }) => {
                   <label className="control-label">Cantidad disponible</label>
                   <input
                     type="number"
+                    placeholder="0"
                     className="input-text"
                     name="amount"
                     onChange={handleChange}
@@ -171,13 +174,17 @@ const CreateCoupon = ({ history }) => {
               </Col>
             </Row>
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
+            <Link to={'/list-coupon'} className='btn btn-outline-primary me-md-2 mr-3'>
+               <i class="fas fa-times pr-2"></i>
+                    Cancelar
+                </Link>
               <button
                 className="btn btn-primary me-md-2"
                 type="submit"
                 variant="primary"
               >
-                <i className="far fa-check"></i>
-                Crear consejo
+                <i className="far fa-check pr-2"></i>
+                Crear cupón
               </button>
             </div>
           </form>

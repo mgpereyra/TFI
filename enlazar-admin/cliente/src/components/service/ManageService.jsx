@@ -139,12 +139,16 @@ const ManageService = ({ history }) => {
                   </div>
                 </div>
                 <div className=" d-grid gap-2 d-md-flex justify-content-md-end">
+                  <Link to={'/list-service'} className='btn btn-outline-primary me-md-2 mr-3'>
+                  <i class="fas fa-times pr-2"></i>
+                      Cancelar
+                  </Link>
                   <button
                     className="btn btn-primary me-md-2"
                     type="submit"
                     variant="primary"
                   >
-                    <i className="far fa-check"></i>
+                    <i className="far fa-check pr-2"></i>
                     Guardar asignación
                   </button>
                 </div>

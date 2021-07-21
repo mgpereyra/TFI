@@ -5,6 +5,7 @@ import { clearMaps } from "../../actions/mapsAction";
 import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
+import {Link} from 'react-router-dom'
 
 const CreateRecycler = ({history}) => {
 
@@ -88,7 +89,7 @@ const CreateRecycler = ({history}) => {
         ) : null}
         <div className="d-flex justify-content-between">
           <h2>
-            <i className="fas fa-plus-circle"></i>Crear reciclador
+            <i className="fas fa-plus-circle pr-2"></i>Crear reciclador
           </h2>
         </div>
         <div className="card bg-gris py-4">
@@ -172,12 +173,16 @@ const CreateRecycler = ({history}) => {
                 </Row>
              
               <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                <Link to={'/list-recycler'} className='btn btn-outline-primary me-md-2 mr-3'>
+                <i class="fas fa-times pr-2"></i>
+                    Cancelar
+                </Link>
                 <button
                   className="btn btn-primary me-md-2"
                   type="submit"
                   variant="primary"
                 >
-                  <i className="far fa-check"></i>
+                  <i className="far fa-check pr-2"></i>
                   Crear reciclador
                 </button>
               </div>

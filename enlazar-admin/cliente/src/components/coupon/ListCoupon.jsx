@@ -23,11 +23,11 @@ const ListCoupon = () => {
     <Fragment>
       <div className="d-flex justify-content-between px-4 mb-5">
         <h1>
-          <i className="fas fa-recycle mr-2"></i>Listado de cupones
+          <i className="fas fa-recycle pr-2"></i>Listado de cupones
         </h1>
         
         <Link to={"/create-coupon"} className="btn btn-primary mb-3">
-          <i className="fas fa-plus-circle mr-2"></i>
+          <i className="fas fa-plus-circle pr-2"></i>
          Nuevo cupón
         </Link>
       </div>

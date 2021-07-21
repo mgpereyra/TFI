@@ -18,10 +18,10 @@ const ListServices = () => {
     <Fragment>
       <div className="d-flex justify-content-between px-4 mb-5">
         <h1>
-         <i className="fas fa-street-view"></i>Listado de servicios
+         <i className="fas fa-street-view pr-2"></i>Listado de servicios
         </h1>
         <Link to={"/manage-service"} className="btn btn-primary mb-3">
-          <i className="fas fa-plus-circle"></i>
+          <i className="fas fa-plus-circle pr-2"></i>
             Administrador de servicios
         </Link>
       </div>

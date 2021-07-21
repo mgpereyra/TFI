@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
 import { mostrar, clearMaps } from "../../actions/mapsAction";
+import {Link} from 'react-router-dom'
+
 
 const EditRecycler = () => {
     const dispatch = useDispatch();
@@ -86,7 +88,7 @@ const EditRecycler = () => {
         ) : null}
         <div className="d-flex justify-content-between">
           <h2>
-          <i className="far fa-edit"></i>Editar recolector
+          <i className="far fa-edit pr-2"></i>Editar recolector
           </h2>
         </div>
         <div className="card bg-gris py-4">
@@ -170,12 +172,16 @@ const EditRecycler = () => {
                 </Row>
              
               <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
+              <Link to={'/list-recycler'} className='btn btn-outline-primary me-md-2 mr-3'>
+              <i class="fas fa-times pr-2"></i>
+                  Cancelar
+              </Link>
                 <button
                   className="btn btn-primary me-md-2"
                   type="submit"
                   variant="primary"
                 >
-                  <i className="far fa-check"></i>
+                  <i className="far fa-check pr-2"></i>
                   Guardar cambios
                 </button>
               </div>

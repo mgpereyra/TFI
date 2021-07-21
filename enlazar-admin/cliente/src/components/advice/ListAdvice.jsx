@@ -22,10 +22,10 @@ const ListAdvice = () => {
     <Fragment>
       <div className="d-flex justify-content-between px-4 mb-5">
         <h1>
-          <i className="fas fa-hands-helping"></i>Listado de consejos
+          <i className="fas fa-hands-helping pr-2"></i>Listado de consejos
         </h1>
         <Link to={"/create-advice"} className="btn btn-primary mb-3">
-          <i className="fas fa-plus-circle"></i>
+          <i className="fas fa-plus-circle pr-2"></i>
           Crear un nuevo consejo
         </Link>
       </div>

@@ -6,6 +6,8 @@ import alertaContext from "../../context/alerta/alertaContext";
 import picture from '../../images/picture-grey.jpg'
 import {categories} from "../../helpers"
 import Spinner from "../Spinner";
+import {Link} from 'react-router-dom'
+
 
 const CreateAdvice = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
@@ -84,7 +86,7 @@ const CreateAdvice = ({ history }) => {
       history.push("/list-advice");
     }, 2500);
 
-    
+
     //reiniciar el form
     setAdvice({
       img: "",
@@ -178,6 +180,10 @@ const CreateAdvice = ({ history }) => {
             { loading ? <Spinner /> : null }
 
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
+            <Link to={'/list-advice'} className='btn btn-outline-primary me-md-2 mr-3'>
+               <i class="fas fa-times pr-2"></i>
+                    Cancelar
+                </Link>
               <button
                 className="btn btn-primary me-md-2"
                 type="submit"

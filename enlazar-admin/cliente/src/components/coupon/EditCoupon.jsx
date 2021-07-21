@@ -5,6 +5,7 @@ import { modifyCouponAction } from "../../actions/couponAction";
 import { useHistory } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import Spinner from "../Spinner";
+import {Link} from 'react-router-dom'
 
 const EditCoupon = () => {
   const dispatch = useDispatch();
@@ -96,7 +97,7 @@ const EditCoupon = () => {
 
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-plus-circle"></i>Editar cupón
+          <i className="fas fa-plus-circle pr-2"></i>Editar cupón
         </h2>
       </div>
       <div className="card bg-gris py-4">
@@ -186,12 +187,16 @@ const EditCoupon = () => {
             </Row>
             { loading ? <Spinner /> : null }
             <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
+              <Link to={'/list-coupon'} className='btn btn-outline-primary me-md-2 mr-3'>
+              <i class="fas fa-times pr-2"></i>
+                  Cancelar
+              </Link>
               <button
                 className="btn btn-primary me-md-2"
                 type="submit"
                 variant="primary"
               >
-                <i className="far fa-check"></i>
+                <i className="far fa-check pr-2"></i>
                 Guardar cambios
               </button>
             </div>
