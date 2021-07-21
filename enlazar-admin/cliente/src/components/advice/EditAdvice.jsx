@@ -76,7 +76,7 @@ const EditAdvice = () => {
     <Fragment>
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="far fa-edit"></i>Editar consejo
+          <i className="far fa-edit pr-2"></i>Editar consejo
         </h2>
       </div>
       <div className="card bg-gris py-4">
@@ -121,6 +121,7 @@ const EditAdvice = () => {
                     className="input-text"
                     placeholder="Ingresa una descripción..."
                     name="content"
+                    rows="6" 
                     value={content}
                     onChange={handleChange}
                   />
