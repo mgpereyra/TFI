@@ -42,8 +42,8 @@ class MiCuentaActivity : AppCompatActivity() {
     }
 
     private fun actualizarCuenta() {
-        db.child("User").child(id).child("latitud").setValue(lat)
-        db.child("User").child(id).child("longitud").setValue(long)
+        db.child("User").child(id).child("latitud").setValue(lat.toString())
+        db.child("User").child(id).child("longitud").setValue(long.toString())
         db.child("User").child(id).child("address").setValue(address)
         db.child("User").child(id).child("locality").setValue(localidad.editText?.text.toString())
         db.child("User").child(id).child("name").setValue(name.editText?.text.toString()).addOnCompleteListener {
