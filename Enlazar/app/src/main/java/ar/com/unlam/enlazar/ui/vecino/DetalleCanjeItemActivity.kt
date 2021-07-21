@@ -185,7 +185,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
     }
 
     private fun setObservers(s: Item) {
-        cargarImagen(s.image, s.imageCode)
+        cargarImagen(s.image)
         cupon_titulo_detalle.setText(s.title)
         cantidad_diponible.setText(s.amount.toString())
         costo_cupon_detalle.setText(s.pointsCost.toString())
@@ -195,8 +195,8 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
 
     }
 
-    private fun cargarImagen(img: String, qr: String) {
-        im = qr
+    private fun cargarImagen(img: String) {
+        im = img
         Picasso.get()
             .load(img)
             .error(R.drawable.error)

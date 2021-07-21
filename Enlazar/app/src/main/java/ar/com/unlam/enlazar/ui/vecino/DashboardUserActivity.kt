@@ -17,9 +17,7 @@ import kotlinx.android.synthetic.main.activity_dashboard_usuario.*
 class DashboardUserActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().getReference()
 
-    enum class ProviderType{
-        BASIC
-    }
+
     var userId:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

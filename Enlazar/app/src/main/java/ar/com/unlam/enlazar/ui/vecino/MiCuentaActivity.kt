@@ -35,9 +35,24 @@ class MiCuentaActivity : AppCompatActivity() {
         btnVolver_deMiCuenta.setOnClickListener {
             finish()
         }
-
+        btn_guardar_cambios.setOnClickListener {
+            actualizarCuenta()
+        }
 
     }
+
+    private fun actualizarCuenta() {
+        db.child("User").child(id).child("latitud").setValue(lat)
+        db.child("User").child(id).child("longitud").setValue(long)
+        db.child("User").child(id).child("address").setValue(address)
+        db.child("User").child(id).child("locality").setValue(localidad.editText?.text.toString())
+        db.child("User").child(id).child("name").setValue(name.editText?.text.toString()).addOnCompleteListener {
+            Toast.makeText(this,"Cambios Guardados",Toast.LENGTH_LONG).show()
+        }
+        finish()
+
+    }
+
     private fun setUpPlaces() {
         if (!Places.isInitialized()) {
             Places.initialize(applicationContext, resources.getString(R.string.google_maps_key))
@@ -78,9 +93,7 @@ class MiCuentaActivity : AppCompatActivity() {
                 lat = snapshot.child("latitud").value.toString().toDouble()
                 long = snapshot.child("longitud").value.toString().toDouble()
                 localidad.editText?.setText(snapshot.child("locality").value.toString())
-                name.editText?.setText(snapshot.child("name").value.toString())
-                password.editText?.setText(snapshot.child("password").value.toString())
-            }
+                name.editText?.setText(snapshot.child("name").value.toString()) }
 
             override fun onCancelled(error: DatabaseError) {
                 container_datos.visibility=View.GONE

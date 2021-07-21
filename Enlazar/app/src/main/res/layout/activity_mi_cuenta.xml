@@ -110,7 +110,7 @@
                     android:textColorHint="@color/white"
                     android:textSize="20sp"
                     android:visibility="visible"
-                    app:boxBackgroundColor="@color/backGroundCustom"
+                    app:boxBackgroundColor="@color/white"
                     app:boxCornerRadiusBottomEnd="20dp"
                     app:boxCornerRadiusBottomStart="20dp"
                     app:boxCornerRadiusTopEnd="20dp"
@@ -198,42 +198,7 @@
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:hint="@string/contrasenia"
-                android:maxWidth="150dp"
-                android:minWidth="100dp"
-                android:textColorHint="@color/white"
-                android:textSize="20sp"
-                android:visibility="visible"
-                app:boxBackgroundColor="@color/backGroundCustom"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeColor="@color/white"
-                app:helperTextTextColor="@color/white"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/name">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:outlineSpotShadowColor="@color/white"
-                    android:shadowColor="@color/white"
-                    android:singleLine="true"
-                    android:textSize="20sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_guardar_cambios"
@@ -247,7 +212,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/password"
+                app:layout_constraintTop_toBottomOf="@id/name"
                 app:strokeColor="@color/emerald" />
 
             <androidx.appcompat.widget.AppCompatImageButton
@@ -258,7 +223,7 @@
                 app:layout_constraintBottom_toTopOf="@id/btn_guardar_cambios"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/password" />
+                app:layout_constraintTop_toBottomOf="@id/name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
