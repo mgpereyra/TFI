@@ -16,8 +16,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.001"
         app:title="Servicios finalizados" />
-
-
+    <TextView
+        android:id="@+id/no_serv_finalizados_rec"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
+        android:background="@color/backGroundCustom"
+        android:gravity="center"
+        android:shadowColor="@color/green"
+        android:text="@string/no_tienes_servicios_finalizados"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_serv_list_rec" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_ruta_servicios_finalizados_list"
         android:layout_width="match_parent"

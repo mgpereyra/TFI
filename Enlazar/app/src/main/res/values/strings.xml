@@ -20,7 +20,7 @@
     <string name="Calle">Calle</string>
     <string name="numero_de_calle">Direccion</string>
     <string name="Localidad">Localidad</string>
-    <string name="Telefono">Telefono</string>
+    <string name="Telefono">Teléfono</string>
     <string name="registrarme">registrar</string>
     <string name="inicio">Inicio</string>
     <string name="mis_direcciones">Mis direcciones</string>
@@ -96,8 +96,10 @@
     <string name="envases_pl_sticos_latas_bricks">Envases plásticos, latas, bricks</string>
     <string name="estado_cupon">Estado:</string>
     <string name="hubo_un_error_en_la_respuesta"> Error en<br/> la respuesta</string>
-    <string name="mis_canjes_realizados">Mis Canjes Realizados</string>
-    <string name="no_tienes_servicios_asignados">No Tenes Servicios Asignados</string>
+    <string name="mis_canjes_realizados">Mis canjes realizados</string>
+    <string name="no_tienes_servicios_asignados">No tienes servicios asignados</string>
+    <string name="no_tienes_servicios_finalizados">No tienes servicios finalizados</string>
+
 
 
 </resources>

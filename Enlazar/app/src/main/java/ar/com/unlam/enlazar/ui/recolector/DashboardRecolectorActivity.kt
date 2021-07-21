@@ -25,15 +25,7 @@ class DashboardRecolectorActivity : AppCompatActivity() {
         if (intent.hasExtra(DashboardUserActivity.IDKEY)) {
             userId = intent.extras!!.getString(DashboardUserActivity.IDKEY, "").toString()
         }
-        /*      val bundle = intent.extras
-              val idUser = bundle?.getString("idUser")
-              val email = bundle?.getString("email")
-              val typeUser = bundle?.getInt("typeUser")
-              val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE).edit()
-              pref.putString("idUser", idUser)
-              pref.putString("email", email)
-              pref.putInt("typeUser", typeUser!!)
-              pref.apply()*/
+
         setCardClickListeners()
         toolbar()
     }
