@@ -30,11 +30,20 @@ const EditRecycler = () => {
     const { name, surname, phone, email , ubication, dni} = recycler;
     const addUbication = (recycler) => dispatch(mostrar(recycler));
     const clear = () => dispatch(clearMaps());
-  /*
-    const confirmEdit = (coupon) => {
-      dispatch(modifyCoupon(coupon));
-      history.push(`/edit-coupon/${coupon.id}`);
-    };*/
+
+  const datos = useSelector((state) => state.maps);
+   
+    useEffect(() => {
+      setRecycler({
+        ...recycler,
+        ubication: datos.ubication,
+        lat: datos.lat,
+        lng:datos.lng
+  
+      }
+      );
+      //eslint-disable-next-line
+    }, [datos])
   
     const recyclerToModify = useSelector((state) => state.recyclers.recyclerToModify);
   
@@ -60,7 +69,9 @@ const EditRecycler = () => {
         surname.trim() === "" ||
         ubication.trim() === "" ||
         phone.trim() === ""||
-        email.trim() === ""
+        email.trim() === ""||
+        dni.trim() === ""
+
       ) {
         mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
         return;
@@ -136,12 +147,7 @@ const EditRecycler = () => {
                 </Col>
                
               </Row>
-              <Row>
-                <Col className="my-4">
-                <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
-                <GoogleMaps/>
-                </Col>
-              </Row>
+              
               <Row>
               <Col>
                   <div className="form-group">
@@ -170,6 +176,12 @@ const EditRecycler = () => {
                   </div>
                 </Col>
                 </Row>
+                <Row>
+                <Col className="mb-4">
+                <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
+                <GoogleMaps/>
+                </Col>
+              </Row>
              
               <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
               <Link to={'/list-recycler'} className='btn btn-outline-primary me-md-2 mr-3'>

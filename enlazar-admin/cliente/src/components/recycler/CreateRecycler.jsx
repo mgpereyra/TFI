@@ -56,7 +56,9 @@ const CreateRecycler = ({history}) => {
         surname.trim() === "" ||
         ubication.trim() === "" ||
         phone.trim() === ""||
-        email.trim() === ""
+        email.trim() === ""||
+        dni.trim() === ""
+
       ) {
         mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
         return;
@@ -137,12 +139,7 @@ const CreateRecycler = ({history}) => {
                 </Col>
                
               </Row>
-              <Row>
-                <Col className="my-4">
-                <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
-                <GoogleMaps/>
-                </Col>
-              </Row>
+            
               <Row>
               <Col>
                   <div className="form-group">
@@ -171,6 +168,12 @@ const CreateRecycler = ({history}) => {
                   </div>
                 </Col>
                 </Row>
+                <Row>
+                <Col className="mb-4">
+                <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
+                <GoogleMaps/>
+                </Col>
+              </Row>
              
               <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
                 <Link to={'/list-recycler'} className='btn btn-outline-primary me-md-2 mr-3'>
