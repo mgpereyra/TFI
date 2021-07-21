@@ -59,15 +59,19 @@ const Coupon = ({ coupon }) => {
                 <div className="ml-auto mt-4">
                   <button
                     onClick={() => confirmDelete(id)}
-                    className="btn btn-outline-danger btn-circle mr-2"
+                    className="btn btn-outline-danger btn-circle mr-2 tooltip"
                   >
                     <i className="far fa-trash-alt"></i>
+                 <span className="tooltiptext">Eliminar</span>
+
                   </button>
                   <button
                     onClick={() => confirmEdit(coupon)}
-                    className="btn btn-success  btn-circle"
+                    className="btn btn-success  btn-circle tooltip"
                   >
                     <i className="far fa-edit"></i>
+                  <span className="tooltiptext">Editar</span>
+
                   </button>
                 </div>
               </div>

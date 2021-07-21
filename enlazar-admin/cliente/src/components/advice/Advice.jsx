@@ -52,17 +52,18 @@ const Advice = ({ advice }) => {
               <div className="acciones">
                   <button
                   onClick={() => confirm(id)}
-                  className="btn btn-outline-danger btn-circle mr-2"
+                  className="btn btn-outline-danger btn-circle mr-2 tooltip"
                 >
                   <i className="far fa-trash-alt"></i>
-                 
+                 <span className="tooltiptext">Eliminar</span>
                 </button>
+
                 <button
                   onClick={() => confirmEdit(advice)}
-                  className="btn btn-success  btn-circle"
+                  className="btn btn-success  btn-circle tooltip"
                 >
-                  <i className="far fa-edit"></i>
-                  
+                  <i className="far fa-edit "></i>
+                  <span className="tooltiptext">Editar</span>
                 </button>
               </div>
             </div>

@@ -835,3 +835,54 @@ height: 60px;
   display: flex;
   align-items: center;
 }
+
+/*//////////////////////////////////////////////////////////////////*/
+
+/****TOOLTIP****/
+.tooltip {
+  position: relative!important;
+  display: inline-block!important;
+  opacity: 1;
+}
+
+.tooltip .tooltiptext {
+  margin-top: .2rem;
+  font-weight: 100!important;
+  visibility: hidden;
+  width: 80px;
+  background-color: var(--gris2);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+   top: 100%;
+  left: 50%;
+  margin-left: -40px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  z-index: 9999;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--gris2) transparent;
+}
+.tooltip .tooltiptext {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+}

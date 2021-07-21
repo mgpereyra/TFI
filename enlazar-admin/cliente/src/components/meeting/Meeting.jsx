@@ -49,22 +49,25 @@ const Meeting = ({ meeting }) => {
     <div className="col-lg-4">
       <div className="card border-secondary">
         <div className="card-body px-3">
-          <p className="card-text  text-right mb-3">
+          <div className="text-right mb-3">
             <small className="text-estado mr-2 contador p-2">Asistentes <b>{asistentes !== undefined ? Object.values(asistentes).length : "0"}</b></small>
             { asistentes === undefined ? 
               (estado === 1 ? 
-                <button className=" text-estado activo btn py-0 px-2"
+                <button className=" text-estado activo btn py-0 px-2 tooltip"
                     onClick={() => handleState(meeting)}>
                     <small><b>Activo</b> </small> 
+                    <span className="tooltiptext">Cambiar estado</span>
+
                 </button>  
                 : 
-                  <button className=" text-estado inactivo btn py-0 px-2"
+                  <button className=" text-estado inactivo btn py-0 px-2 tooltip"
                     onClick={() => handleState(meeting)}>
                     <small>Inactivo</small>
+                    <span className="tooltiptext">Cambiar estado</span>
                   </button>)
             : null }            
                 
-          </p>
+          </div>
           <div className="contenedor-titulo mb-2">
             <h2 className="card-title color-third "> {title}</h2>
           </div>
@@ -82,15 +85,19 @@ const Meeting = ({ meeting }) => {
           <div className="acciones">
             <button
               onClick={() => confirmDelete(id)}
-              className="btn btn-outline-danger btn-circle mr-2"
+              className="btn btn-outline-danger btn-circle mr-2 tooltip"
             >
               <i className="far fa-trash-alt"></i>
+              <span className="tooltiptext">Eliminar</span>
+
             </button>
             <button
               onClick={() => confirmEdit(meeting)}
-              className="btn btn-success  btn-circle"
+              className="btn btn-success  btn-circle tooltip"
             >
               <i className="far fa-edit"></i>
+              <span className="tooltiptext">Editar</span>
+
             </button>
           </div>
         </div>

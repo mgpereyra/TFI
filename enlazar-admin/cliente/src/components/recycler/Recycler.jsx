@@ -34,17 +34,21 @@ const Recycler = ({ recycler }) => {
       <td className='text-center'>
         <button
           onClick={() => confirmDelete(id)}
-          className="btn btn-outline-danger btn-circle"
+          className="btn btn-outline-danger btn-circle tooltip"
         >
           <i className="far fa-trash-alt"></i>
+          <span className="tooltiptext">Eliminar</span>
+
         </button>
       </td>
       <td className='text-center'>
         <button
           onClick={() => confirmEdit(recycler)}
-          className="btn btn-success btn-circle"
+          className="btn btn-success btn-circle tooltip"
         >
           <i className="far fa-edit"></i>
+          <span className="tooltiptext">Editar</span>
+
         </button>
       </td>
     </tr>
