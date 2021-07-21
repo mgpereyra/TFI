@@ -48,6 +48,18 @@ const EditMeeting = () => {
   const addUbication = (meet) => dispatch(mostrar(meet));
   const clear = () => dispatch(clearMaps());
 
+  useEffect(() => {
+    setMeeting({
+      ...meeting,
+      ubication: datos.ubication,
+      lat: datos.lat,
+      lng:datos.lng
+
+    }
+    );
+    //eslint-disable-next-line
+  }, [datos])
+
   
   //carga los datos del elemento a modificar la 1ra vez
   useEffect(() => {
@@ -66,12 +78,11 @@ const EditMeeting = () => {
     }
 
     setMeeting(meetingToModify);
-    
     addUbication(meetingToModify)
+
   }, [meetingToModify]);
 
-  
-
+ 
   const handleChange = (e) => {
     setMeeting({
       ...meeting,

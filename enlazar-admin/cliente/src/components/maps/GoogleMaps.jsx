@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import Search from './Search'
 import "@reach/combobox/styles.css";
 import {  useSelector } from "react-redux";
-
+import picture from "../../images/logo-svg.svg"
 
 const libraries = ["places"];
 const GoogleMaps = () => {
@@ -30,8 +30,8 @@ const GoogleMaps = () => {
   });
   
   const [markers, setMarkers] = useState({
-    lat: -34.751103,
-    lng:  -58.697586,
+    lat: datos.lat,
+    lng: datos.lng,
     time: Date,
   });
  
@@ -46,14 +46,17 @@ const GoogleMaps = () => {
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
-    //setMarkers({ lat, lng });
     mapRef.current = map;
+    setMarkers({ lat: datos.lat, lng: datos.lng });
+    console.log(datos)
+    mapRef.current.panTo({ lat:datos.lat, lng:datos.lng  });
   }, []);
 
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.setZoom(16);
-    setMarkers({ lat, lng });
+    setMarkers({ lat , lng });
+
     mapRef.current.panTo({ lat, lng });
   }, []);
 
@@ -80,7 +83,7 @@ const GoogleMaps = () => {
             lng: markers.lng,
           }}
           icon={{
-            url: "./logo-svg.svg",
+            url: picture,
             scaledSize: new window.google.maps.Size(50, 50),
             origin: new window.google.maps.Point(0, 0),
             anchor: new window.google.maps.Point(15, 15),
