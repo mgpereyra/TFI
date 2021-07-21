@@ -127,6 +127,36 @@ export function modifyMeetingAction(meeting) {
 }
 
 
+//Modificar un consejo
+export function modifyStateMeeting(meeting) {
+  return async (dispatch) => {
+    try {
+      if(meeting.estado === 1){
+        meeting.estado = 0
+      }else{
+        meeting.estado = 1
+      }
+      await clienteAxios.put(`/api/meeting/${meeting.id}`, meeting);
+
+      dispatch({
+        type: MEETING_MODIFY_SUCCESS,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: MEETING_MODIFY_ERROR,
+      });
+
+      //alerta
+      Swal.fire({
+        icon: "error",
+        title: "Oppss..",
+        text: "Ha ocurrido un error, intenta nuevamente",
+      });
+    }
+  };
+}
+
 //Eliminar un consejo
 export function deleteMeetingAction(id) {
   return async (dispatch) => {

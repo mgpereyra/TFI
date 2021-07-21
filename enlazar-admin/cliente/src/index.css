@@ -780,15 +780,19 @@ margin: 4rem
 
 
 .text-estado{
-padding: .5rem .8rem;
 border-radius: 5rem;
 letter-spacing: .5px;
 }
 
 .activo{
-background: aquamarine;
-color: var(--verde);
+background: rgb(96, 231, 186);
+color: var(--verde2);
 }
+
+.inactivo{
+  background: rgb(255, 168, 127);
+  color: maroon;
+  }
 
 .contador{
 background:#fdfdb3       ;

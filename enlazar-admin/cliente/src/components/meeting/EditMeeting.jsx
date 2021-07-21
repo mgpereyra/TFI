@@ -140,14 +140,7 @@ const EditMeeting = () => {
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col className="my-4">
-                <label className="control-label">
-                  Selecciona una de las sugerencias de ubicación
-                </label>
-                <GoogleMaps />
-              </Col>
-            </Row>
+            
             <Row>
               <Col>
                 <div className="form-group">
@@ -190,6 +183,14 @@ const EditMeeting = () => {
                     value={description}
                   />
                 </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="mb-4">
+                <label className="control-label">
+                  Selecciona una de las sugerencias de ubicación
+                </label>
+                <GoogleMaps />
               </Col>
             </Row>
             <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">

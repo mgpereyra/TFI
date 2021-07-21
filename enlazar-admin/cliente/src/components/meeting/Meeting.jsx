@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   modifyMeeting,
   deleteMeetingAction,
+  modifyStateMeeting
 } from "../../actions/meetingAction";
 
 const Meeting = ({ meeting }) => {
@@ -20,6 +21,11 @@ const Meeting = ({ meeting }) => {
   const confirmEdit = (meeting) => {
     dispatch(modifyMeeting(meeting));
     history.push(`/edit-meeting/${id}`);
+  };
+  const handleState = (meeting) => {
+    dispatch(modifyStateMeeting(meeting));
+    history.push(`/list-meeting`);
+
   };
 
   const formatDate = (date) =>{
@@ -44,10 +50,19 @@ const Meeting = ({ meeting }) => {
       <div className="card border-secondary">
         <div className="card-body px-3">
           <p className="card-text  text-right mb-3">
-            <small className="text-estado mr-2 contador">Asistentes {asistentes !== undefined ? Object.values(asistentes).length : "0"}</small>
-            <small className="text-estado activo">
-              {estado === 1 ? "Activo" : "Inactivo"}
-            </small>
+            <small className="text-estado mr-2 contador p-2">Asistentes <b>{asistentes !== undefined ? Object.values(asistentes).length : "0"}</b></small>
+            
+             
+                {estado === 1 ? 
+                 <button className=" text-estado activo btn py-0 px-2"
+                   onClick={() => handleState(meeting)}>
+                   <small>Activo</small> 
+                 </button>  
+                   : 
+                   <button className=" text-estado inactivo btn py-0 px-2"
+                   onClick={() => handleState(meeting)}>
+                <small>Inactivo</small>
+              </button>}
           </p>
           <div className="contenedor-titulo mb-2">
             <h2 className="card-title color-third "> {title}</h2>

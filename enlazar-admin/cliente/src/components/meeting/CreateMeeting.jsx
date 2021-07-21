@@ -122,12 +122,7 @@ const CreateMeeting = ({ history }) => {
               </Col>
              
             </Row>
-            <Row>
-              <Col className="my-4">
-              <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
-              <GoogleMaps meeting={meeting} setMeeting={setMeeting}/>
-              </Col>
-            </Row>
+           
             <Row>
             <Col>
                 <div className="form-group">
@@ -158,6 +153,7 @@ const CreateMeeting = ({ history }) => {
                 </div>
               </Col>
               </Row>
+           
             <Row>
               <Col>
                 <div className="form-group">
@@ -172,6 +168,13 @@ const CreateMeeting = ({ history }) => {
                 </div>
               </Col>
             </Row>
+            <Row>
+              <Col className="mb-4">
+              <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
+              <GoogleMaps meeting={meeting} setMeeting={setMeeting}/>
+              </Col>
+            </Row>
+
             <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
               <Link to={'/list-meeting'} className='btn btn-outline-primary me-md-2 mr-3'>
                 <i className="fas fa-times pr-2"></i>
