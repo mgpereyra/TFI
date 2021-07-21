@@ -17,7 +17,10 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_crear_cuenta.*
+import kotlinx.android.synthetic.main.activity_crear_cuenta.email
+import kotlinx.android.synthetic.main.activity_crear_cuenta.password
 import kotlinx.android.synthetic.main.activity_crear_cuenta.view.*
+import kotlinx.android.synthetic.main.activity_login.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -41,18 +44,16 @@ class CrearCuentaActivity : AppCompatActivity() {
         btnVolver.setOnClickListener {
             this@CrearCuentaActivity.finish()
         }
-        btn_login.setOnClickListener {
-            setup()
-            val intent = Intent(this, DashboardUserActivity::class.java)
-            this@CrearCuentaActivity.finish()
-        }
+        /* btn_login.setOnClickListener {
+             setup()
+             val intent = Intent(this, DashboardUserActivity::class.java)
+             this@CrearCuentaActivity.finish()
+         }*/
     }
 
     private fun setup() {
-        btn_login.setOnClickListener {
-            if (email.editText?.text.toString().isNotEmpty() && password.editText?.text.toString()
-                    .isNotEmpty()
-            ) {
+        btn_crear_cuenta.setOnClickListener {
+            if (validarCamposObligatorios()) {
                 val mailString = email.editText?.text.toString()
                 val passString = password.editText?.text.toString()
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(
@@ -67,7 +68,84 @@ class CrearCuentaActivity : AppCompatActivity() {
                     }
                 }
             }
+
         }
+    }
+
+    private fun validarCamposObligatorios(): Boolean {
+
+        if (email.editText?.text.toString().isNotEmpty()) {
+            if (name.editText?.text.toString().isNotEmpty()) {
+                if (!mAdress.equals(null)) {
+                    if (location.editText?.text.toString().isNotEmpty()) {
+                        if (partido.editText?.text.toString().isNotEmpty()) {
+                            if (telephone.editText?.text.toString().isNotEmpty()) {
+                                if (dni.editText?.text.toString().isNotEmpty()) {
+                                    if (password.editText?.text.toString().isNotEmpty()) {
+                                        return true
+                                    } else {
+                                        Toast.makeText(
+                                            this,
+                                            "Es necesario completar la Password (minimo siete dígitos)",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        return false
+                                    }
+                                } else {
+                                    Toast.makeText(
+                                        this,
+                                        "Es necesario completar el campo DNI",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                    return false
+                                }
+                            } else {
+                                Toast.makeText(
+                                    this,
+                                    "Es necesario completar el campo Teléfono",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                return false
+                            }
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "Es necesario completar el campo Partido",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            return false
+                        }
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Es necesario completar el campo Localidad",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        return false
+                    }
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Es necesario completar el campo Buscar",
+                        Toast.LENGTH_LONG
+                    )
+                        .show()
+                    return false
+                }
+            } else {
+                Toast.makeText(this, "Es necesario completar el campo nombre", Toast.LENGTH_LONG)
+                    .show()
+                return false
+            }
+        } else {
+            Toast.makeText(
+                this,
+                "Es necesario completar el email",
+                Toast.LENGTH_LONG
+            ).show()
+            return false
+        }
+
     }
 
     private fun setUpPlaces() {

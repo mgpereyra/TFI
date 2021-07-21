@@ -196,7 +196,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
     }
 
     private fun cargarImagen(img: String, qr: String) {
-        im = qr
+        im = img
         Picasso.get()
             .load(img)
             .error(R.drawable.error)

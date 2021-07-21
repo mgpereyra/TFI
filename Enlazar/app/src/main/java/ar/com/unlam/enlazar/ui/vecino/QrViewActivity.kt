@@ -15,5 +15,9 @@ class QrViewActivity : AppCompatActivity() {
 
      var   datosQr = intent.getStringExtra("qrDatos").toString()
         qrDetalleImg.setImageBitmap(QrUtils.generateQr(datosQr))
+
+        btnVolver_qrDetalle.setOnClickListener {
+            finish()
+        }
     }
 }

@@ -336,7 +336,6 @@ class RutaRecolectorMapActivity : AppCompatActivity(), OnMapReadyCallback,
         //val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)
 
         finish()
-        //startActivity(intent)
     }
 
     private fun createPolylines() {
