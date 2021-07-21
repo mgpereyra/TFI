@@ -54,7 +54,7 @@ class CrearCuentaActivity : AppCompatActivity() {
     private fun setup() {
         btn_crear_cuenta.setOnClickListener {
             if (validarCamposObligatorios()) {
-                val mailString = email.editText?.text.toString()
+                val mailString = email.editText?.text.toString().trim()
                 val passString = password.editText?.text.toString()
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                     mailString,
@@ -210,7 +210,7 @@ class CrearCuentaActivity : AppCompatActivity() {
             mAdress.toString(),
             partido.editText?.text.toString(),
             dni.editText?.text.toString(),
-            email.editText?.text.toString(),
+            email.editText?.text.toString().trim(),
             id,
             dateInString,
             mOriginLat.toString(),
