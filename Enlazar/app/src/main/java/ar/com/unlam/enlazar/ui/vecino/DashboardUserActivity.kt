@@ -35,6 +35,11 @@ class DashboardUserActivity : AppCompatActivity() {
 
         }*/
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+
+    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_bis,menu)
         //menu?.findItem(R.id.mis_direcciones_user)?.setVisible(false)

@@ -38,7 +38,11 @@ class MisPuntosActivity : AppCompatActivity() {
 
 
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun setData() {
         misPuntosViewModel.misCanjes.observe(this, {
             adapter.submitList(it)

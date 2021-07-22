@@ -52,6 +52,11 @@ class MisEncuentrosActivity : AppCompatActivity(), MisEncuentrosUserAdapter.OnRe
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+
+    }
     override fun onStart() {
         getMeetingPoints()
         super.onStart()

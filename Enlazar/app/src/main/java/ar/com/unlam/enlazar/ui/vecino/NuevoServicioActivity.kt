@@ -44,7 +44,11 @@ class NuevoServicioActivity : AppCompatActivity() {
         }
 
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun showTimePicker() {
         val timePicker = TimePickerFragment { onTimeSelected(it) }
         timePicker.show(supportFragmentManager, "time")

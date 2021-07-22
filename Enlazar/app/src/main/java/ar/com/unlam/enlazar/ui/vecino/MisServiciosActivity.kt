@@ -70,7 +70,11 @@ class MisServiciosActivity : AppCompatActivity() {
         btnVolver_mis_servicios.setOnClickListener { finish() }
         setServicios()
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     override fun onResume() {
         super.onResume()
         setServicios()

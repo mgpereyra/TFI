@@ -38,7 +38,11 @@ btnVolver.setOnClickListener {
     this.finish()
 }
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun getConsejo() {
 
         db.child("Advice").addValueEventListener(object : ValueEventListener {

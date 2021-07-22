@@ -62,7 +62,11 @@ class ServiciosFinalizadosRecolectorActivity : AppCompatActivity() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     override fun onStart() {
         getServicesResponde2()
         setObservers()

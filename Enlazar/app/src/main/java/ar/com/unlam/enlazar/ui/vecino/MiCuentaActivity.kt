@@ -40,7 +40,11 @@ class MiCuentaActivity : AppCompatActivity() {
         }
 
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun actualizarCuenta() {
         db.child("User").child(id).child("latitud").setValue(lat.toString())
         db.child("User").child(id).child("longitud").setValue(long.toString())

@@ -50,7 +50,11 @@ class MisCanjesActivity : AppCompatActivity() {
 
         setObserverInCanjes()
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     @Override
     public override fun onResume() {
         super.onResume()

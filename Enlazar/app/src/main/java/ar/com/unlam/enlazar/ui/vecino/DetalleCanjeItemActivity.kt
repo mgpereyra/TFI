@@ -49,7 +49,11 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
             )
         }
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun canjearItem2(
         costo: Int,
         cantidad: Int,
