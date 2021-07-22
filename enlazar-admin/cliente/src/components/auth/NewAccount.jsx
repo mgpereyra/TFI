@@ -4,7 +4,6 @@ import alertaContext from '../../context/alerta/alertaContext';
 import authContext from '../../context/auth/authContext';
 import logo from '../../images/enlazar-ocre.png';
 
-
 const NewAccount = (props) => {
 
   const {alerta, mostrarAlerta} = useContext(alertaContext);
@@ -75,14 +74,14 @@ const onSubmitLogin = e =>{
         {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
       <div className='contenedor-form sombra-dark'>
       <img className="logo-enlazar" src={logo}></img>
-        <h2 className="text-center mb-2 text-muted">Obtener una cuenta es muy fácil :</h2>
-        <h3 className="text-center mb-5 text-muted">completá los siguientes campos y enlazate</h3>
+      <h3 className="text-center mb-1 mt-0 text-muted">Completá los siguientes campos y enlazate</h3>
         <form onSubmit={onSubmitLogin}> 
 
-        <div className='campo-form'>
-            <label htmlFor="name ">Nombre</label>
+        <div className='form-group'>
+        <label className="control-label">Nombre</label>
             <input
               type='text'
+              className="input-text small"
               id='name'
               name='name'
               placeholder='Tu nombre'
@@ -90,11 +89,13 @@ const onSubmitLogin = e =>{
               onChange={onChangeLogin}
             />
           </div>
-          <div className='campo-form'>
-            <label htmlFor="email ">Email</label>
+          <div className='form-group'>
+          <label className="control-label">Email</label>
             <input
               type='email'
               id='email'
+              className="input-text small"
+
               name='email'
               placeholder='Tu email'
               value={email}
@@ -102,12 +103,13 @@ const onSubmitLogin = e =>{
             />
           </div>
 
-          <div className='campo-form'>
-            <label htmlFor="password">Password</label>
+          <div className='form-group'>
+          <label className="control-label">Password</label>
             <input
               type='password'
               id='password'
               name='password'
+              className="input-text small"
               placeholder='Tu password'
               autoComplete='cc-number'
               value={password}
@@ -115,27 +117,27 @@ const onSubmitLogin = e =>{
             />
           </div>
 
-          <div className='campo-form'>
-            <label htmlFor="confirmar">Confirmar Password</label>
+          <div className='form-group'>
+          <label className="control-label">Confirmar Password</label>
             <input
               type='password'
               id='confirmar'
+              className="input-text small"
               name='confirmar'
               placeholder='Repite tu password'
               autoComplete='cc-number'
               value={confirmar}
               onChange={onChangeLogin}
             />
-          </div>
-
-          <div className='campo-form'>
+</div>
+         
             <button
               type='submit'
-              className='btn btn-primary btn-block'
+              className='btn btn-primary btn-block mb-1'
               value='Registrar'
               >Registrar</button>
 
-          </div>
+       
         </form>
 
         <Link to={'/'} className='enlace-cuenta'>

@@ -288,7 +288,7 @@ footer {
 
 :root {
   --blanco: #ffffff;
-  --gris1: #edf2f6;
+  --gris1: #e4e9ec;
   --gris2: #2f3848;
   --gris3: #1a202d;
   --negro: #000000;
@@ -632,10 +632,11 @@ main {
 }
 
 .contenedor-form {
-  padding: 3.5rem 3rem;
+  padding: 1rem 2rem;
   max-width: 500px;
   width: 95%;
-  background-color: var(--blanco);
+  z-index: 1;
+  background-color: var(--gris1);
   border-radius: 1rem;
 }
 
@@ -660,7 +661,7 @@ flex: 1;
 }
 
 .enlace-cuenta {
-margin-top: 2rem;
+margin-top: 1rem;
 display: block;
 opacity: .7;
 }
@@ -812,11 +813,11 @@ height: 60px;
 .logo-enlazar{
   vertical-align: middle;
   border-style: none;
-  width: 30%;
+  width: 25%;
   text-align: center;
-  margin: auto;
+  margin: 0rem auto;
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .card-body {
