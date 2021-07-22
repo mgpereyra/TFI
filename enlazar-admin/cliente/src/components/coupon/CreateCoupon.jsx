@@ -1,4 +1,4 @@
-import React, {  useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewCoupon } from "../../actions/couponAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,11 +69,10 @@ const CreateCoupon = ({ history }) => {
 
     addCoupon(coupon);
 
-    
     //redireccion
     setTimeout(function () {
       history.push("/list-coupon");
-        //reiniciar el form
+      //reiniciar el form
       setCoupon({
         image: "",
         imageCode: "",
@@ -83,7 +82,6 @@ const CreateCoupon = ({ history }) => {
         title: "",
       });
     }, 1500);
-    
   };
   return (
     <div className="contenedor-app">
@@ -103,57 +101,71 @@ const CreateCoupon = ({ history }) => {
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <Row>
-                  <Col>
-                    <div className="form-group">
-                      <label className="control-label">Título</label>
-                      <input
-                        type="text"
-                        className="input-text"
-                        placeholder="Ingresa un título..."
-                        name="title"
-                        onChange={handleChange}
-                        value={title}
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label className="control-label">Puntos de costo</label>
-                      <input
-                        type="number"
-                        placeholder="0"
-                        className="input-text"
-                        name="pointsCost"
-                        onChange={handleChange}
-                        value={pointsCost}
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label className="control-label">
-                        Cantidad disponible
-                      </label>
-                      <input
-                        type="number"
-                        placeholder="0"
-                        className="input-text"
-                        name="amount"
-                        onChange={handleChange}
-                        value={amount}
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label className="control-label">Descripción</label>
-                      <textarea
-                        className="input-text"
-                        placeholder="Ingresa una descripción..."
-                        name="description"
-                        rows="3"
-                        onChange={handleChange}
-                        value={description}
-                      />
-                    </div>
+                  <Col lg={7}>
+                    <Row>
+                      <Col lg={12}>
+                        <div className="form-group">
+                          <label className="control-label">Título</label>
+                          <input
+                            type="text"
+                            className="input-text"
+                            placeholder="Ingresa un título..."
+                            name="title"
+                            onChange={handleChange}
+                            value={title}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg={6}>
+                        <div className="form-group">
+                          <label className="control-label">
+                            Puntos de costo
+                          </label>
+                          <input
+                            type="number"
+                            placeholder="0"
+                            className="input-text"
+                            name="pointsCost"
+                            onChange={handleChange}
+                            value={pointsCost}
+                          />
+                        </div>
+                      </Col>
+                      <Col>
+                        <div className="form-group">
+                          <label className="control-label">
+                            Cantidad disponible
+                          </label>
+                          <input
+                            type="number"
+                            placeholder="0"
+                            className="input-text"
+                            name="amount"
+                            onChange={handleChange}
+                            value={amount}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <div className="form-group">
+                          <label className="control-label">Descripción</label>
+                          <textarea
+                            className="input-text"
+                            placeholder="Ingresa una descripción..."
+                            name="description"
+                            rows="3"
+                            onChange={handleChange}
+                            value={description}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
                   </Col>
+
                   <Col lg={5}>
                     <div className="form-group">
                       <label className="control-label ml-2">
