@@ -39,7 +39,11 @@ class CrearCuentaActivity : AppCompatActivity() {
         setup()
         setUpPlaces()
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun setOnClickListeners() {
         btnVolver.setOnClickListener {
             this@CrearCuentaActivity.finish()

@@ -29,7 +29,11 @@ class DashboardRecolectorActivity : AppCompatActivity() {
         setCardClickListeners()
         toolbar()
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun setCardClickListeners() {
         cardView_ir_mis_servicios.setOnClickListener {
             val intent = Intent(this, ServiciosRecolectorRutaActivity::class.java)

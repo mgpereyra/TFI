@@ -29,10 +29,7 @@ class NuevoServicioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_servicio)
 
-
-
         getDirection(id)
-
         dia_picker.setOnClickListener { showDatePicker() }
         horario_picker.setOnClickListener { showTimePicker() }
         btn_finalizar.setOnClickListener {
@@ -47,7 +44,11 @@ class NuevoServicioActivity : AppCompatActivity() {
         }
 
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun showTimePicker() {
         val timePicker = TimePickerFragment { onTimeSelected(it) }
         timePicker.show(supportFragmentManager, "time")

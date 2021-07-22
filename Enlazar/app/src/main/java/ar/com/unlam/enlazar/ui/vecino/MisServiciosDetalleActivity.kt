@@ -34,7 +34,11 @@ class MisServiciosDetalleActivity : AppCompatActivity() {
         }
 
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun cancelarServicio(id: String) {
         /*  db.child("Service").child(id).child("estado").setValue(Estado.CANCELADO.ordinal)
               .addOnCompleteListener {

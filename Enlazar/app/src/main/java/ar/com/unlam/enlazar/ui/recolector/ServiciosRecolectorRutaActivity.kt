@@ -67,7 +67,11 @@ toolbar()
        // getServicesResponde2()
 
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     override fun onStart() {
         getServicesResponde2()
         super.onStart()

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ar.com.unlam.enlazar.model.CuponCanje
+import ar.com.unlam.enlazar.ui.Estado
 import ar.com.unlam.enlazar.ui.ValorMaterial
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -65,7 +66,8 @@ class MisPuntosViewModel() : ViewModel() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (postSnapshot in snapshot.children) {
                         if (postSnapshot.child("userId").value.toString() == id &&
-                            postSnapshot.child("calculado").value.toString() == false.toString()
+                            postSnapshot.child("calculado").value.toString() == false.toString()&&
+                                    postSnapshot.child("estado").value.toString().toInt()== Estado.FINALIZADO.ordinal
                         ) {
                             db.child("Service").child(postSnapshot.child("id").value.toString())
                                 .child("calculado")

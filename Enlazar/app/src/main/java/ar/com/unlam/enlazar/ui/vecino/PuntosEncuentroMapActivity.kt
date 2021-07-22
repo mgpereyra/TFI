@@ -71,7 +71,11 @@ class PuntosEncuentroMapActivity : AppCompatActivity() , OnMapReadyCallback,
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         createFragment()
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     override fun onStart() {
         getMeetingPoints()
         super.onStart()

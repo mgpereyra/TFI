@@ -29,7 +29,11 @@ class SeccionInformativaDetalleActivity : AppCompatActivity() {
         }
 
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
 
+    }
     private fun verConsejo(id: String) {
         db.child("Advice").child(id).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
