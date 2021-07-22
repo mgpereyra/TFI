@@ -49,7 +49,7 @@ const ListRecycler = () => {
           ) : (
             <div className="row">
             <div className="card mb-4 border-secondary">
-            <div className="row table-responsive">
+            <div className="row">
               <table className="table table-hover">
                 <thead>
                   <tr>

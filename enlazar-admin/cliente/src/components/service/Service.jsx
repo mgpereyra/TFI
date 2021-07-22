@@ -5,8 +5,9 @@ const Service = ({service}) => {
 
     const {address, date,time, 
       envasesCarton, envasesPlasticos, envasesVidrio,
-      comentario } = service;
+      comentario, recycler } = service;
 
+      console.log(service)
 
     const get = getState(service)
 
@@ -23,7 +24,7 @@ const Service = ({service}) => {
         {get.stateString}
         </td>
         <td>
-          Juan jsjsjjjsssssss
+          {recycler}
         </td>
         <td className="text-center"> 
           {envasesCarton+envasesPlasticos+envasesVidrio}
