@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import Service from "./Service";
 import { getListServices } from "../../actions/serviceAction";
 import Spinner from "../Spinner";
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const ListServices = () => {
   const services = useSelector((state) => state.services.services);
@@ -18,7 +21,11 @@ const ListServices = () => {
     //eslint-disable-next-line
   }, []);
   return (
-    <Fragment>
+    <div className="contenedor-app">
+      <Sidebar />
+      <div className="seccion-principal">
+        <Header />
+        <main>
       <div className="d-flex justify-content-between px-4 mb-5">
         <h1>
          <i className="fas fa-street-view pr-2"></i>Listado de servicios
@@ -57,7 +64,11 @@ const ListServices = () => {
 
           </div>
         )}
-    </Fragment>
+        </main>
+        <Footer />
+      </div>
+    </div>
+    
   );
 };
 

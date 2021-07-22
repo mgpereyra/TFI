@@ -9,6 +9,9 @@ import { getListRecyclers } from "../../actions/recyclerAction";
 import { Link } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import Spinner from "../Spinner";
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const ManageService = ({ history }) => {
   const recyclers = useSelector((state) => state.recyclers.recyclers);
@@ -63,7 +66,11 @@ const ManageService = ({ history }) => {
   };
 
   return (
-    <Fragment>
+    <div className="contenedor-app">
+    <Sidebar />
+    <div className="seccion-principal">
+      <Header />
+      <main>
       {alerta ? (
         <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
       ) : null}
@@ -153,7 +160,10 @@ const ManageService = ({ history }) => {
           </form>
         </div>
       </div>
-    </Fragment>
+      </main>
+        <Footer />
+      </div>
+    </div>
   );
 };
 

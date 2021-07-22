@@ -1,6 +1,5 @@
 import React from "react";
 import { getState } from "../../helpers";
-import { Form } from "react-bootstrap";
 
 const ServicePendings = ({ service, setService, serviceState }) => {
   const { address, id, date, time, estado } = service;

@@ -8,6 +8,9 @@ import GoogleMaps from "../maps/GoogleMaps"
 import { mostrar, clearMaps } from "../../actions/mapsAction";
 import {Link} from 'react-router-dom'
 import { getRecycler} from "../../actions/recyclerAction";
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const EditRecycler = () => {
     const dispatch = useDispatch();
@@ -102,7 +105,11 @@ const EditRecycler = () => {
       history.push("/list-recycler");
     };
     return ( 
-        <Fragment>
+      <div className="contenedor-app">
+      <Sidebar />
+      <div className="seccion-principal">
+        <Header />
+        <main>
         {alerta ? (
           <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
         ) : null}
@@ -209,7 +216,10 @@ const EditRecycler = () => {
             </form>
           </div>
         </div>
-      </Fragment>
+        </main>
+        <Footer />
+      </div>
+    </div>
      );
 }
  

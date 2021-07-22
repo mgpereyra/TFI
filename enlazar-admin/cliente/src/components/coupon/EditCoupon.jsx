@@ -5,8 +5,11 @@ import { modifyCouponAction } from "../../actions/couponAction";
 import { useHistory, useParams } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import Spinner from "../Spinner";
-import {Link, Redirect} from 'react-router-dom'
-import { getCoupon} from "../../actions/couponAction";
+import { Link, Redirect } from "react-router-dom";
+import { getCoupon } from "../../actions/couponAction";
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const EditCoupon = () => {
   const dispatch = useDispatch();
@@ -30,26 +33,25 @@ const EditCoupon = () => {
   const [fileUrl, setFileUrl] = useState(null);
 
   const { title, description, amount, pointsCost } = coupon;
- 
+
   const couponToModify = useSelector((state) => state.coupons.couponToModify);
   const error = useSelector((state) => state.coupons.error);
 
   //carga los datos del elemento a modificar la 1ra vez
-  
-  const {id}  = useParams()
- 
+
+  const { id } = useParams();
+
   useEffect(() => {
-    if(couponToModify!== null){
+    if (couponToModify !== null) {
       setCoupon(couponToModify);
-    }else{
+    } else {
       //dispatch(modifyMeeting(meeting));
-       dispatch(getCoupon(id));;
+      dispatch(getCoupon(id));
     }
   }, [couponToModify]);
 
-  
-  if(error){
-    return <Redirect to="/list-advice" />
+  if (error) {
+    return <Redirect to="/list-advice" />;
   }
   const handleChange = (e) => {
     setCoupon({
@@ -105,116 +107,130 @@ const EditCoupon = () => {
   };
   return (
     <Fragment>
-      {alerta ? (
-        <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
-      ) : null}
+      <div className="contenedor-app">
+        <Sidebar />
+        <div className="seccion-principal">
+          <Header />
+          <main>
+            {alerta ? (
+              <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
+            ) : null}
 
-      <div className="d-flex justify-content-between">
-        <h2>
-          <i className="fas fa-plus-circle pr-2"></i>Editar cupón
-        </h2>
-      </div>
-      <div className="card bg-gris py-4">
-        <div className="card-body">
-          <form onSubmit={handleSubmit}>
-            <Row>
-              <Col>
-                <div className="form-group">
-                  <label className="control-label">Título</label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    placeholder="Ingresa un título..."
-                    name="title"
-                    onChange={handleChange}
-                    value={title}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="control-label">Puntos de costo</label>
-                  <input
-                    type="number"
-                    className="input-text"
-                    name="pointsCost"
-                    onChange={handleChange}
-                    value={pointsCost}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="control-label">Cantidad disponible</label>
-                  <input
-                    type="number"
-                    className="input-text"
-                    name="amount"
-                    onChange={handleChange}
-                    value={amount}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="control-label">Descripción</label>
-                  <textarea
-                    className="input-text"
-                    placeholder="Ingresa una descripción..."
-                    name="description"
-                    onChange={handleChange}
-                    value={description}
-                  />
-                </div>
-              </Col>
-              <Col lg={5}>
-                <div className="form-group">
-                  <label className="control-label ml-2">
-                    Selecciona una imagen
-                  </label>
-                  <input
-                    type="file"
-                    className="input-text text-white"
-                    id="imagen"
-                    name="imagen"
-                    accept="image/jpeg, image/png"
-                    onChange={handleImg}
-                  />
-
-                  <label className="control-label pl-2">
-                    Imagen seleccionada
-                  </label>
-                  <div className="bg-white fondo-imagen  m-2 align-items-center">
-                    {coupon.image !== null ? (
-                      <img
-                        className="img-edit "
-                        src={coupon.image}
-                        alt={title}
-                      ></img>
-                    ) : (
-                      <img
-                        className="img-edit "
-                        src={fileUrl}
-                        alt={title}
-                      ></img>
-                    )}
-                  </div>
-                </div>
-              </Col>
-            </Row>
-            { loading ? <Spinner /> : null }
-            <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
-              <Link to={'/list-coupon'} className='btn btn-outline-primary me-md-2 mr-3'>
-              <i className="fas fa-times pr-2"></i>
-                  Cancelar
-              </Link>
-              <button
-                className="btn btn-primary me-md-2"
-                type="submit"
-                variant="primary"
-              >
-                <i className="far fa-check pr-2"></i>
-                Guardar cambios
-              </button>
+            <div className="d-flex justify-content-between">
+              <h2>
+                <i className="fas fa-plus-circle pr-2"></i>Editar cupón
+              </h2>
             </div>
-          </form>
+            <div className="card bg-gris py-4">
+              <div className="card-body">
+                <form onSubmit={handleSubmit}>
+                  <Row>
+                    <Col>
+                      <div className="form-group">
+                        <label className="control-label">Título</label>
+                        <input
+                          type="text"
+                          className="input-text"
+                          placeholder="Ingresa un título..."
+                          name="title"
+                          onChange={handleChange}
+                          value={title}
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label className="control-label">Puntos de costo</label>
+                        <input
+                          type="number"
+                          className="input-text"
+                          name="pointsCost"
+                          onChange={handleChange}
+                          value={pointsCost}
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label className="control-label">
+                          Cantidad disponible
+                        </label>
+                        <input
+                          type="number"
+                          className="input-text"
+                          name="amount"
+                          onChange={handleChange}
+                          value={amount}
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label className="control-label">Descripción</label>
+                        <textarea
+                          className="input-text"
+                          placeholder="Ingresa una descripción..."
+                          name="description"
+                          onChange={handleChange}
+                          value={description}
+                        />
+                      </div>
+                    </Col>
+                    <Col lg={5}>
+                      <div className="form-group">
+                        <label className="control-label ml-2">
+                          Selecciona una imagen
+                        </label>
+                        <input
+                          type="file"
+                          className="input-text text-white"
+                          id="imagen"
+                          name="imagen"
+                          accept="image/jpeg, image/png"
+                          onChange={handleImg}
+                        />
+
+                        <label className="control-label pl-2">
+                          Imagen seleccionada
+                        </label>
+                        <div className="bg-white fondo-imagen  m-2 align-items-center">
+                          {coupon.image !== null ? (
+                            <img
+                              className="img-edit "
+                              src={coupon.image}
+                              alt={title}
+                            ></img>
+                          ) : (
+                            <img
+                              className="img-edit "
+                              src={fileUrl}
+                              alt={title}
+                            ></img>
+                          )}
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+                  {loading ? <Spinner /> : null}
+                  <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
+                    <Link
+                      to={"/list-coupon"}
+                      className="btn btn-outline-primary me-md-2 mr-3"
+                    >
+                      <i className="fas fa-times pr-2"></i>
+                      Cancelar
+                    </Link>
+                    <button
+                      className="btn btn-primary me-md-2"
+                      type="submit"
+                      variant="primary"
+                    >
+                      <i className="far fa-check pr-2"></i>
+                      Guardar cambios
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </main>
+          <Footer />
         </div>
       </div>
     </Fragment>

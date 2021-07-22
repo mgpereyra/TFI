@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
 import {Link} from 'react-router-dom'
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const CreateRecycler = ({history}) => {
 
@@ -82,7 +85,11 @@ const CreateRecycler = ({history}) => {
       },1000)
     };
     return ( 
-        <Fragment>
+      <div className="contenedor-app">
+      <Sidebar />
+      <div className="seccion-principal">
+        <Header />
+        <main>
         {alerta ? (
           <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
         ) : null}
@@ -189,7 +196,10 @@ const CreateRecycler = ({history}) => {
             </form>
           </div>
         </div>
-      </Fragment>
+        </main>
+        <Footer />
+      </div>
+    </div>
      );
 }
  
