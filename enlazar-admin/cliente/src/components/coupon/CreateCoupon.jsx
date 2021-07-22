@@ -1,16 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, {  useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewCoupon } from "../../actions/couponAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import picture from "../../images/picture-grey.jpg";
 import { Link } from "react-router-dom";
 import Sidebar from "../layout/Sidebar";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import Spinner from "../Spinner";
 
 const CreateCoupon = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
+  const loading = useSelector((state) => state.coupons.loading);
 
   //state del componente
   const [coupon, setCoupon] = useState({
@@ -24,7 +26,7 @@ const CreateCoupon = ({ history }) => {
 
   const [fileUrl, setFileUrl] = useState(null);
 
-  const { image, title, description, amount, pointsCost } = coupon;
+  const { imageData, image, title, description, amount, pointsCost } = coupon;
 
   //Llamando al action
   const dispatch = useDispatch();
@@ -58,7 +60,7 @@ const CreateCoupon = ({ history }) => {
       title.trim() === "" ||
       description.trim() === "" ||
       pointsCost.trim() === "" ||
-      image.trim() === "" ||
+      fileUrl.trim() === "" ||
       amount.trim() === ""
     ) {
       mostrarAlerta("Por favor complete todos los campos", "alerta-error");
@@ -67,20 +69,21 @@ const CreateCoupon = ({ history }) => {
 
     addCoupon(coupon);
 
-    //reiniciar el form
-    setCoupon({
-      image: "",
-      imageCode: "",
-      description: "",
-      amount: "",
-      pointsCost: "",
-      title: "",
-    });
-
+    
     //redireccion
     setTimeout(function () {
       history.push("/list-coupon");
+        //reiniciar el form
+      setCoupon({
+        image: "",
+        imageCode: "",
+        description: "",
+        amount: "",
+        pointsCost: "",
+        title: "",
+      });
     }, 1500);
+    
   };
   return (
     <div className="contenedor-app">
@@ -93,10 +96,10 @@ const CreateCoupon = ({ history }) => {
           ) : null}
           <div className="d-flex justify-content-between">
             <h2>
-              <i className="fas fa-plus-circle pr-2"></i>Crear cupón
+              <i className="fas fa-plus-circle pr-2"></i>Crear nuevo cupón
             </h2>
           </div>
-          <div className="card bg-gris py-4">
+          <div className="card bg-light py-4">
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <Row>
@@ -145,6 +148,7 @@ const CreateCoupon = ({ history }) => {
                         className="input-text"
                         placeholder="Ingresa una descripción..."
                         name="description"
+                        rows="3"
                         onChange={handleChange}
                         value={description}
                       />
@@ -182,6 +186,7 @@ const CreateCoupon = ({ history }) => {
                     </div>
                   </Col>
                 </Row>
+                {loading ? <Spinner /> : null}
                 <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
                   <Link
                     to={"/list-coupon"}

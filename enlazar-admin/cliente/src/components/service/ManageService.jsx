@@ -74,10 +74,10 @@ const ManageService = ({ history }) => {
       ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-street-view"></i>Administrar servicios pendientes
+          <i className="fas fa-street-view pr-2"></i>Administrar servicios pendientes
         </h2>
       </div>
-      <div className="card bg-gris py-4">
+      <div className="card bg-light py-4">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
            
@@ -90,6 +90,7 @@ const ManageService = ({ history }) => {
             ) : (
               <Fragment>
                 <div className="row">
+                <label className="control-label">Servicios pendientes</label>
                   <table className="table table-hover">
                     <thead className="thead-light">
                       <tr>
@@ -113,7 +114,8 @@ const ManageService = ({ history }) => {
                   </table>
                 </div>
 
-                <div className="row mt-5">
+                <div className="row mt-4">
+                <label className="control-label">Selecciona un recolector</label>
                   <div className="input-group mb-3">
                     <div className="input-group-prepend">
                       <label

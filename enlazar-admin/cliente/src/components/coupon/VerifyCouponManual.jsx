@@ -61,7 +61,7 @@ const VerifyCouponManual = () => {
                 <i className="fas fa-plus-circle pr-2"></i>Verificar cupón
               </h2>
             </div>
-            <div className="card bg-gris py-4">
+            <div className="card bg-light py-4">
               <div className="card-body">
                 <form onSubmit={handleSubmit}>
                   <Row>

@@ -119,7 +119,7 @@ const EditRecycler = () => {
           <i className="far fa-edit pr-2"></i>Editar recolector
           </h2>
         </div>
-        <div className="card bg-gris py-4">
+        <div className="card bg-light py-4">
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <Row>
@@ -185,8 +185,9 @@ const EditRecycler = () => {
                     <input
                       type="email"
                       className="input-text"
-                      placeholder="Ingresa un email válido"
+                      readonly
                       disabled
+                      placeholder="Ingresa un email válido"
                       name="email"
                       value={email}
                     />

@@ -122,76 +122,88 @@ const EditCoupon = () => {
                 <i className="fas fa-plus-circle pr-2"></i>Editar cupón
               </h2>
             </div>
-            <div className="card bg-gris py-4">
+            <div className="card bg-light py-4">
               <div className="card-body">
                 <form onSubmit={handleSubmit}>
-                  <Row>
-                    <Col>
-                      <div className="form-group">
-                        <label className="control-label">Título</label>
-                        <input
-                          type="text"
-                          className="input-text"
-                          placeholder="Ingresa un título..."
-                          name="title"
-                          onChange={handleChange}
-                          value={title}
-                        />
-                      </div>
-
-                      <div className="form-group">
-                        <label className="control-label">Puntos de costo</label>
-                        <input
-                          type="number"
-                          className="input-text"
-                          name="pointsCost"
-                          onChange={handleChange}
-                          value={pointsCost}
-                        />
-                      </div>
-
-                      <div className="form-group">
-                        <label className="control-label">
-                          Cantidad disponible
-                        </label>
-                        <input
-                          type="number"
-                          className="input-text"
-                          name="amount"
-                          onChange={handleChange}
-                          value={amount}
-                        />
-                      </div>
-
+                <Row>
+                    <Col lg={7}>
+                    <Row>
+                        <Col lg={12}>
+                          <div className="form-group">
+                            <label className="control-label">Título</label>
+                            <input
+                              type="text"
+                              className="input-text"
+                              placeholder="Ingresa un título..."
+                              name="title"
+                              onChange={handleChange}
+                              value={title}
+                            />
+                          </div>
+                          </Col>
+                          </Row>
+                      <Row>
+                        <Col lg={6}>
+                        <div className="form-group">
+                          <label className="control-label">Puntos de costo</label>
+                          <input
+                            type="number"
+                            className="input-text"
+                            name="pointsCost"
+                            onChange={handleChange}
+                            value={pointsCost}
+                          />
+                        </div>
+                        </Col>
+                        <Col>
+                        <div className="form-group">
+                          <label className="control-label">
+                            Cantidad disponible
+                          </label>
+                          <input
+                            type="number"
+                            className="input-text"
+                            name="amount"
+                            onChange={handleChange}
+                            value={amount}
+                          />
+                        </div>
+                        </Col>
+                      </Row>
+                      <Row>
+                      <Col >
                       <div className="form-group">
                         <label className="control-label">Descripción</label>
                         <textarea
                           className="input-text"
                           placeholder="Ingresa una descripción..."
                           name="description"
+                          rows="7"
                           onChange={handleChange}
                           value={description}
                         />
                       </div>
                     </Col>
+
+                    </Row>
+                    </Col>
+
                     <Col lg={5}>
                       <div className="form-group">
                         <label className="control-label ml-2">
-                          Selecciona una imagen
+                          Cambiar imagen
                         </label>
                         <input
                           type="file"
-                          className="input-text text-white"
+                          className="input-text"
                           id="imagen"
                           name="imagen"
                           accept="image/jpeg, image/png"
                           onChange={handleImg}
                         />
 
-                        <label className="control-label pl-2">
-                          Imagen seleccionada
-                        </label>
-                        <div className="bg-white fondo-imagen  m-2 align-items-center">
+                        
+                        <div className="bg-white fondo-imagen mt-4 m-2 align-items-center">
                           {coupon.image !== null ? (
                             <img
                               className="img-edit "
@@ -208,7 +220,8 @@ const EditCoupon = () => {
                         </div>
                       </div>
                     </Col>
-                  </Row>
+                  </Row>  
+
                   {loading ? <Spinner /> : null}
                   <div className="d-grid gap-2 d-md-flex mr-3 justify-content-md-end">
                     <Link

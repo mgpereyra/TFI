@@ -2,7 +2,7 @@ const firebase = require("firebase");
 const { validationResult } = require("express-validator");
 
 exports.createCoupon = async (req, res) => {
-  const { image, title, description, imageCode, amount, pointsCost } = req.body;
+  const { image, title, description,  amount, pointsCost } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -21,7 +21,7 @@ exports.createCoupon = async (req, res) => {
       image,
       title,
       description,
-      imageCode,
+      imageCode: "",
       amount: parseInt(amount, 10),
       pointsCost: parseInt(pointsCost, 10),
       id,

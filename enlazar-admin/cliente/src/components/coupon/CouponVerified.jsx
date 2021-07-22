@@ -27,9 +27,9 @@ const CouponVerified = ({ couponToVerify }) => {
           <i className="fas fa-info-circle mr-2"></i>
 
           {estadoCupon ? (
-            <b> El cupón ingresado ya fue canjeado</b>
+            "El cupón ingresado ya fue canjeado"
           ) : (
-            <b> El cupón está pendiente de canje</b>
+             "El cupón está pendiente de canje"
           )}
         </h6>
         <label>Resultados de la búsqueda: </label>
@@ -38,9 +38,15 @@ const CouponVerified = ({ couponToVerify }) => {
             <div className="row">
               <div className="col-md-7 border-right px-1">
                 <p className="card-text  text-right mb-3">
-                  <small className="text-estado mr-2 contador">
-                    Estado ~<b>{estadoCupon ? " CANJEADO" : "PENDIENTE"}</b>
-                  </small>
+                   <b>{estadoCupon ? 
+                      <small className="text-estado mr-2 inactivo p-2">
+                      Estado ~ <b>CANJEADO</b>
+                      </small>
+                      :
+                      <small className="text-estado mr-2 activo p-2">
+                      Estado ~ <b>PENDIENTE</b>
+                      </small>
+                    }</b>
                 </p>
                 <small className="text-secondary">Producto</small>
                 <h3 className="card-title color-third"> {title}</h3>
@@ -53,16 +59,14 @@ const CouponVerified = ({ couponToVerify }) => {
                   imageCode !== undefined &&
                   imageCode !== "" ? (
                     <div className="border">
-                      <a href={imageCode} download={"Código QR-" + title}>
                         <img className="qr-div" src={imageCode} alt="QR" />
-                      </a>
                     </div>
                   ) : null}
                 </div>
               </div>
               <div className="col-md-5 px-2">
                 <p className="card-text  text-right mb-3">
-                  <small className="text-estado mr-2 contador">
+                  <small className="text-estado mr-2 contador p-2">
                     DNI ~ <b>{dni}</b>
                   </small>
                 </p>

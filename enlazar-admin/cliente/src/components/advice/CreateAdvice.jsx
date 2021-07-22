@@ -97,7 +97,7 @@ const CreateAdvice = ({ history }) => {
               <i className="fas fa-plus-circle pr-2"></i>Crear un nuevo consejo
             </h2>
           </div>
-          <div className="card bg-gris py-4 card-advice">
+          <div className="card bg-light py-4 card-advice">
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <Row>
@@ -139,6 +139,7 @@ const CreateAdvice = ({ history }) => {
                         className="input-text"
                         placeholder="Ingresa una descripción..."
                         name="content"
+                        rows="6"
                         onChange={handleChange}
                         value={content}
                       />

@@ -64,32 +64,18 @@ export function createNewCoupon(coupon) {
     });
 
     try {
-      const guardarImagen = async (coupon) => {
-        const imagen = coupon.imageData.get("file");
-        try {
+        if(coupon.imageData !==  undefined){
+          const imagen = coupon.imageData.get("file");
           var storageRef = firebase.storage();
-          var imageRef = storageRef.ref().child("item_image/" + imagen.name);
-          await imageRef.put(imagen).then(async (snapshot) => {
-            const uri = await storageRef
-              .ref("item_image/" + imagen.name)
-              .getDownloadURL();
-            coupon.image = uri;
-          });
-        } catch (error) {
-          console.log(error);
+          await storageRef.ref().child("item_image/" + imagen.name).put(imagen);
+          coupon.image = await storageRef.ref("item_image/" + imagen.name).getDownloadURL();
         }
-      };
-
-
-      async function save() {
-        await guardarImagen(coupon);
+      
         await clienteAxios.post("/api/coupon", coupon);
         dispatch(addCouponSuccess(coupon));
-      }
-      save();
-
-      //alerta
-      Swal.fire("Genial!", "El cupón se agregó correctamente", "success");
+          
+        //alerta
+        Swal.fire("Genial!", "El cupón se agregó correctamente", "success");
 
     } catch (error) {
       console.log(error);

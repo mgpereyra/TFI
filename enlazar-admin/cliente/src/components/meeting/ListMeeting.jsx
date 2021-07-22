@@ -27,7 +27,7 @@ const ListMeeting = () => {
       <div className="seccion-principal">
         <Header />
         <main>
-          <div className="d-flex justify-content-between px-4 mb-5">
+          <div className="d-flex justify-content-between px-3 mb-5">
             <h1>
               <i className="fas fa-hand-holding-heart pr-2"></i>Listado de
               puntos de encuentro

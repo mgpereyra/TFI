@@ -29,7 +29,7 @@ const ListRecycler = () => {
       <div className="seccion-principal">
         <Header />
         <main>
-          <div className="d-flex justify-content-between px-4 mb-5">
+          <div className="d-flex justify-content-between px-3 mb-5">
             <h1>
               <i className="fas fa-recycle pr-2"></i>Listado de recolectores
             </h1>
@@ -48,7 +48,9 @@ const ListRecycler = () => {
             </div>
           ) : (
             <div className="row">
-              <table className="table table-hover mx-2">
+            <div className="card mb-4 border-secondary">
+            <div className="row table-responsive">
+              <table className="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">Dni</th>
@@ -66,6 +68,8 @@ const ListRecycler = () => {
                   ))}
                 </tbody>
               </table>
+            </div>
+            </div>
             </div>
           )}
         </main>

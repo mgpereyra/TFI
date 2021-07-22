@@ -110,7 +110,7 @@ const CreateMeeting = ({ history }) => {
               encuentro
             </h2>
           </div>
-          <div className="card bg-gris py-4">
+          <div className="card bg-light py-4">
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <Row>

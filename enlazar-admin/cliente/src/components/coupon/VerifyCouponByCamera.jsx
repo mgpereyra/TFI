@@ -58,7 +58,7 @@ const VerifyCouponByCamera = () => {
                 cámara web
               </h2>
             </div>
-            <div className="card bg-gris py-4">
+            <div className="card bg-light py-4">
               <div className="card-body">
                 <Row>
                   <Col lg={4}>

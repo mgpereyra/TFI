@@ -153,6 +153,7 @@ textarea {
   width: 100%;
   height: 310px;
   object-fit: cover;
+  border: 1px solid #ced4da;
 }
 
 .img-card{
@@ -289,6 +290,7 @@ footer {
 :root {
   --blanco: #ffffff;
   --gris1: #e4e9ec;
+  --gris: #ced2d4;
   --gris2: #2f3848;
   --gris3: #1a202d;
   --negro: #000000;
@@ -340,6 +342,12 @@ h3 {
   font-size: 1.2rem;
 }
 
+.control-label{
+  font-size: small;
+}
+.bg-light{
+  background-color: var(--blanco)!important;
+}
 ul {
   list-style: none;
   padding: 0;
@@ -405,8 +413,13 @@ a {
       background-color: var(--blanco);
       flex: 0 0 220px;
   }
+
+  .input-text:disabled{
+    background: var(--gris);
+  }
   .seccion-principal {
       flex: 1;
+      background-color: var(--gris1);
   }
 
 }
@@ -424,11 +437,19 @@ aside  {
   border-bottom: 1.5px dotted grey;
 
 }
-.formulario-nuevo-proyecto .input-text {
-  border-bottom: 1px solid var(--gris2);
+.input-text {
+  border: 1px solid  #ced4da!important;
   border-radius: 0;
-  background-color: var(--gris1);
+  background-color: var(--blanco);
+  padding: .375rem 1.75rem .375rem .75rem!important;
+  
 }
+
+input[type="file"]{
+  border: none!important;
+  padding: 1px 8px!important
+}
+
 .formulario-nuevo-proyecto .input-text::placeholder{
   color: var(--gris2);
 }

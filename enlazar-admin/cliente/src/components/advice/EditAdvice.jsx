@@ -99,7 +99,7 @@ const EditAdvice = () => {
               <i className="far fa-edit pr-2"></i>Editar consejo
             </h2>
           </div>
-          <div className="card bg-gris py-4">
+          <div className="card bg-light py-4">
             <div className="card-body">
               <form onSubmit={submitForm}>
                 <Row>
@@ -150,7 +150,7 @@ const EditAdvice = () => {
                   <Col lg={5}>
                     <div className="form-group">
                       <label className="control-label ml-2">
-                        Selecciona una imagen
+                        Cambiar imagen
                       </label>
                       <input
                         type="file"

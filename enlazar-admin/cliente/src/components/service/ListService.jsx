@@ -26,7 +26,7 @@ const ListServices = () => {
       <div className="seccion-principal">
         <Header />
         <main>
-      <div className="d-flex justify-content-between px-4 mb-5">
+      <div className="d-flex justify-content-between px-3 mb-5">
         <h1>
          <i className="fas fa-street-view pr-2"></i>Listado de servicios
         </h1>
@@ -45,14 +45,18 @@ const ListServices = () => {
           </div>
         ) : (
           <div className="row">
-            <table className="table table-hover  mx-2">
+          <div className="card mb-4 border-secondary">
+          <div className="row table-responsive">
+            <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">Fecha</th>
                   <th scope="col">Dirección</th>
                   <th scope="col">Hora</th>
                   <th scope="col">Estado</th>
-                  
+                  <th scope="col">Recolector</th>
+                  <th scope="col">Cantidad de bolsas</th>
+                  <th scope="col">Comentario</th>
                 </tr>
               </thead>
               <tbody>
@@ -61,8 +65,9 @@ const ListServices = () => {
                 ))}
               </tbody>
             </table>
-
-          </div>
+            </div>
+            </div>
+            </div>
         )}
         </main>
         <Footer />
