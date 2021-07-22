@@ -16,8 +16,7 @@ exports.getListServices = async(req, res) => {
                
                value.dates = d;
                value.date = d.toLocaleDateString('en-GB');
-              
-                list.push(value)
+               list.push(value)
                // console.log(list)
                 list.sort(function(a, b) {
                     var dateA = new Date(a.dates)

@@ -54,8 +54,10 @@ const ListServices = () => {
                   <th scope="col">Dirección</th>
                   <th scope="col">Hora</th>
                   <th scope="col">Estado</th>
-                  <th scope="col">Recolector</th>
-                  <th scope="col">Cantidad de bolsas</th>
+                  <th scope="col">Vidrio</th>
+                  <th scope="col">Plástico</th>
+                  <th scope="col">Cartón</th>
+                  <th scope="col">Bolsas totales</th>
                   <th scope="col">Comentario</th>
                 </tr>
               </thead>
