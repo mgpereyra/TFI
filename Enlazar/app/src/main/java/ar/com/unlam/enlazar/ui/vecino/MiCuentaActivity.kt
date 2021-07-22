@@ -18,13 +18,14 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_mi_cuenta.*
 import java.util.*
+import kotlin.properties.Delegates
 
 class MiCuentaActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance().getReference()
     var id = FirebaseAuth.getInstance().currentUser!!.uid
-    var address:String? = null
-    var lat:Double=0.0
-    var long:Double=0.0
+    var address: String?=null
+    var lat :Double?=null
+    var long:Double?=null
     lateinit var mPlaces: PlacesClient
     var mAutocomplete: AutocompleteSupportFragment? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,20 +41,33 @@ class MiCuentaActivity : AppCompatActivity() {
         }
 
     }
+
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
 
     }
+
     private fun actualizarCuenta() {
-        db.child("User").child(id).child("latitud").setValue(lat.toString())
-        db.child("User").child(id).child("longitud").setValue(long.toString())
-        db.child("User").child(id).child("address").setValue(address)
-        db.child("User").child(id).child("locality").setValue(localidad.editText?.text.toString())
-        db.child("User").child(id).child("name").setValue(name.editText?.text.toString()).addOnCompleteListener {
-            Toast.makeText(this,"Cambios Guardados",Toast.LENGTH_LONG).show()
+        if (address?.isNotEmpty() == true && long.toString().isNotEmpty() && lat.toString().isNotEmpty()) {
+            db.child("User").child(id).child("latitud").setValue(lat.toString())
+            db.child("User").child(id).child("longitud").setValue(long.toString())
+            db.child("User").child(id).child("address").setValue(address)
+            db.child("User").child(id).child("locality")
+                .setValue(localidad.editText?.text.toString())
+            db.child("User").child(id).child("name").setValue(name.editText?.text.toString())
+                .addOnCompleteListener {
+                    Toast.makeText(this, "Cambios Guardados", Toast.LENGTH_LONG).show()
+                }
+            finish()
+        } else {
+            Toast.makeText(
+                this,
+                "No puede actualizar la cuenta sin una direccion ingresada",
+                Toast.LENGTH_LONG
+            ).show()
+
         }
-        finish()
 
     }
 
@@ -74,7 +88,7 @@ class MiCuentaActivity : AppCompatActivity() {
         )
         mAutocomplete?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                address = place.name
+                address = place.name!!
                 lat = place.latLng?.latitude!!
                 long = place.latLng?.longitude!!
 
@@ -88,20 +102,22 @@ class MiCuentaActivity : AppCompatActivity() {
             }
         })
     }
-    private fun getUsuario(idUser:String) {
+
+    private fun getUsuario(idUser: String) {
         db.child("User").child(idUser).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                container_datos.visibility=View.VISIBLE
-                sin_datos.visibility=View.GONE
+                container_datos.visibility = View.VISIBLE
+                sin_datos.visibility = View.GONE
                 mAutocomplete?.setText(snapshot.child("address").value.toString())
                 lat = snapshot.child("latitud").value.toString().toDouble()
                 long = snapshot.child("longitud").value.toString().toDouble()
                 localidad.editText?.setText(snapshot.child("locality").value.toString())
-                name.editText?.setText(snapshot.child("name").value.toString()) }
+                name.editText?.setText(snapshot.child("name").value.toString())
+            }
 
             override fun onCancelled(error: DatabaseError) {
-                container_datos.visibility=View.GONE
-                sin_datos.visibility=View.VISIBLE
+                container_datos.visibility = View.GONE
+                sin_datos.visibility = View.VISIBLE
                 Toast.makeText(
                     this@MiCuentaActivity,
                     "Debes tener al menos una bolsa con material para reciclar",
@@ -109,5 +125,5 @@ class MiCuentaActivity : AppCompatActivity() {
                 ).show()
             }
         })
-}
+    }
 }

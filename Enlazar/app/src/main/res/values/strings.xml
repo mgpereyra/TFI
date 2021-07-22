@@ -18,7 +18,7 @@
     <string name="nombre">Nombre</string>
     <string name="apellido">Apellido</string>
     <string name="Calle">Calle</string>
-    <string name="numero_de_calle">Direccion</string>
+    <string name="numero_de_calle">Dirección (Calle y Número), se lo más preciso posible</string>
     <string name="Localidad">Localidad</string>
     <string name="Telefono">Teléfono</string>
     <string name="registrarme">registrar</string>
