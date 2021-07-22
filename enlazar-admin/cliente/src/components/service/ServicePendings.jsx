@@ -2,7 +2,7 @@ import React from "react";
 import { getState } from "../../helpers";
 
 const ServicePendings = ({ service, setService, serviceState }) => {
-  const { address, id, date, time, estado } = service;
+  const { address, id, date, time } = service;
   const properties = getState(service);
 
   const handleChangeService = (e) => {

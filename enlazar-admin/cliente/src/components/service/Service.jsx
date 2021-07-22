@@ -3,7 +3,7 @@ import { getState } from '../../helpers'
 
 const Service = ({service}) => {
 
-    const {address, id, date,time, estado} = service;
+    const {address, date,time} = service;
 
 
     const get = getState(service)

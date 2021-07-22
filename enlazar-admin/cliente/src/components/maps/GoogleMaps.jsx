@@ -35,21 +35,13 @@ const GoogleMaps = () => {
     time: Date,
   });
  
-  const onClickMap = (e) => {
-    console.log(e);
-    setMarkers({
-      lat: e.latLng.lat(),
-      lng: e.latLng.lng(),
-      time: new Date(),
-    });
-  };
-
-  const mapRef = React.useRef();
+   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
     setMarkers({ lat: datos.lat, lng: datos.lng });
     console.log(datos)
     mapRef.current.panTo({ lat:datos.lat, lng:datos.lng  });
+     //eslint-disable-next-line
   }, []);
 
 

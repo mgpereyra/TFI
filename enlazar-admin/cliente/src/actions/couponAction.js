@@ -281,6 +281,7 @@ export function verifyCouponCamera(result) {
 
     
     } catch (error) {
+      console.log(error.response)
       const msg = error.response.data.msg;
       dispatch({
         type: COUPON_VERIFY_ERROR
@@ -303,7 +304,7 @@ export function confirmCanjeAction(couponToVerify) {
   return async (dispatch) => {
     try {
       const idUser = couponToVerify.user.id;
-      const response = await clienteAxios.put(`/api/coupon/confirm/${idUser}`, couponToVerify);
+      await clienteAxios.put(`/api/coupon/confirm/${idUser}`, couponToVerify);
 
       dispatch({
         type: COUPON_VERIFY_SUCCESS

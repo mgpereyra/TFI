@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, {  useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewAdvice } from "../../actions/adviceAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,6 @@ const CreateAdvice = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
   const loading = useSelector((state) => state.advices.loading);
 
-  console.log(categories);
   //state del componente
   const [advice, setAdvice] = useState({
     img: "",
@@ -38,14 +37,7 @@ const CreateAdvice = ({ history }) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleChangeCategory = (e) => {
-    setAdvice({
-      ...advice,
-      tipe: e.target.value,
-    });
-  };
-
+  
   const handleImg = (e) => {
     let f = new FormData();
     f.append("file", e.target.files[0]);

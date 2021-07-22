@@ -15,7 +15,8 @@ import { useDispatch , useSelector} from "react-redux";
 
 const Search = ({ panTo }) => {
   const {
-    ready,
+    ready, 
+    //eslint-disable-next-line 
     value,
     suggestions: { status, data },
     setValue,
@@ -28,7 +29,6 @@ const Search = ({ panTo }) => {
   });
 
   const dispatch = useDispatch();
-  const addUbication = (ubication) => dispatch(saveData( ubication));
  
   const addLat = (lat, lng, ubication) => dispatch(saveData(lat, lng, ubication));
   const datos = useSelector((state) => state.maps);

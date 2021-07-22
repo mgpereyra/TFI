@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import React, {  useState, useEffect, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyAdviceAction } from "../../actions/adviceAction";
@@ -32,7 +32,7 @@ const EditAdvice = () => {
   const loading = useSelector((state) => state.advices.loading);
   const error = useSelector((state) => state.advices.error);
 
-  const { tipe, title, content, uri } = advice;
+  const { tipe, title, content } = advice;
 
   const { id } = useParams();
 
@@ -43,6 +43,7 @@ const EditAdvice = () => {
     } else {
       dispatch(getAdvice(id));
     }
+    //eslint-disable-next-line
   }, [adviceToModify]);
 
   if (error) {
@@ -90,6 +91,9 @@ const EditAdvice = () => {
       <div className="seccion-principal">
         <Header />
         <main>
+        {alerta ? (
+            <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
+          ) : null}
           <div className="d-flex justify-content-between">
             <h2>
               <i className="far fa-edit pr-2"></i>Editar consejo

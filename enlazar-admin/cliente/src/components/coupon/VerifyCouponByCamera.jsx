@@ -14,6 +14,7 @@ import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 
 const VerifyCouponByCamera = () => {
+  //eslint-disable-next-line
   const [scanResultWebCam, setScanResultWebCam] = useState("");
   const couponToVerify = useSelector((state) => state.coupons.couponToVerify);
   const loading = useSelector((state) => state.coupons.loading);
@@ -26,6 +27,7 @@ const VerifyCouponByCamera = () => {
 
   useEffect(() => {
     cleanCoupon();
+    //eslint-disable-next-line  
   }, []);
 
   const handleErrorWebCam = (error) => {

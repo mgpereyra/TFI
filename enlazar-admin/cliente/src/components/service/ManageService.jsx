@@ -18,8 +18,6 @@ const ManageService = ({ history }) => {
   const services = useSelector((state) => state.services.servicesPendings);
   const error = useSelector((state) => state.recyclers.error);
   const loading = useSelector((state) => state.services.loading);
-  const loadingRecyclers = useSelector((state) => state.recyclers.loading);
-
 
   const { alerta, mostrarAlerta } = useContext(alertaContext);
 

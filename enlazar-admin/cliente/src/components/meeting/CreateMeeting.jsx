@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
+import React, {  useState, useContext, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewMeeting } from "../../actions/meetingAction";
 import { clearMaps } from "../../actions/mapsAction";

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewCoupon } from "../../actions/couponAction";
 import { useDispatch } from "react-redux";
@@ -24,7 +24,7 @@ const CreateCoupon = ({ history }) => {
 
   const [fileUrl, setFileUrl] = useState(null);
 
-  const { imageData, image, title, description, amount, pointsCost } = coupon;
+  const { image, title, description, amount, pointsCost } = coupon;
 
   //Llamando al action
   const dispatch = useDispatch();

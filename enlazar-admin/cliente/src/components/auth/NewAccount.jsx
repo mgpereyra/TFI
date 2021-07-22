@@ -73,7 +73,7 @@ const onSubmitLogin = e =>{
       <div className='form-usuario'>
         {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
       <div className='contenedor-form sombra-dark'>
-      <img className="logo-enlazar" src={logo}></img>
+      <img className="logo-enlazar" src={logo} alt="logo"></img>
       <h3 className="text-center mb-1 mt-0 text-muted">Completá los siguientes campos y enlazate</h3>
         <form onSubmit={onSubmitLogin}> 
 

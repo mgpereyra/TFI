@@ -33,6 +33,7 @@ const Dashboard = () => {
             </span>
             <a
               className="text-success"
+              rel="noreferrer" 
               href="mailto:enlazarunlam@gmail.com?Subject=Consulta"
               target="_blank"
             >

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import React, {  useState, useEffect, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyMeetingAction } from "../../actions/meetingAction";
@@ -83,6 +83,7 @@ const EditMeeting = () => {
     } else {
       dispatch(getMeeting(id));
     }
+    //eslint-disable-next-line
   }, [meetingToModify]);
 
   if (error) {

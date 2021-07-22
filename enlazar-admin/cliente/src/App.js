@@ -2,7 +2,6 @@ import React from 'react';
 import Login from './components/auth/Login'
 import NewAccount from './components/auth/NewAccount'
 
-import Footer from './components/layout/Footer' 
 import Dashboard from './components/dashboard/Dashboard'
 
 import ListAdvice from './components/advice/ListAdvice'

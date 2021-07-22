@@ -24,6 +24,7 @@ const VerifyCouponByImage = () => {
   const couponToVerify = useSelector((state) => state.coupons.couponToVerify);
   const loading = useSelector((state) => state.coupons.loading);
 
+  //eslint-disable-next-line  
   const [scanResultFile, setScanResultFile] = useState("");
   const qrRef = useRef(null);
 
@@ -34,6 +35,7 @@ const VerifyCouponByImage = () => {
 
   useEffect(() => {
     cleanCoupon();
+    //eslint-disable-next-line
   }, []);
 
   const handleErrorFile = (error) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { confirmCanjeAction } from "../../actions/couponAction";
 import { useHistory } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const CouponVerified = ({ couponToVerify }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { title, description, imageCode, estadoCupon, id } =
+  const { title, description, imageCode, estadoCupon   } =
     couponToVerify.cupon;
 
   const { name, dni, email, locality, address } = couponToVerify.user;

@@ -56,7 +56,7 @@ const onSubmitLogin = e =>{
       <div className='form-usuario'>
         {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
       <div className='contenedor-form sombra-dark'>
-        <img className="logo-enlazar" src={logo}></img>
+        <img className="logo-enlazar" src={logo} alt="logo"></img>
         <h3 className="text-center mb-4">¡Hola! Inicia sesión para comenzar </h3>
         <form onSubmit={onSubmitLogin}> 
         <div className='campo-form'>

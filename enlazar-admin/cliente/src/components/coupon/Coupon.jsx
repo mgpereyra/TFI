@@ -7,7 +7,7 @@ import picture from "../../images/picture-grey.jpg";
 const Coupon = ({ coupon }) => {
   const loading = useSelector((state) => state.coupons.loading);
 
-  const { image, title, description, imageCode, amount, pointsCost, id } =
+  const { image, title, description , amount, pointsCost, id } =
     coupon;
 
   const dispatch = useDispatch();

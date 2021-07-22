@@ -48,6 +48,7 @@ const EditCoupon = () => {
       //dispatch(modifyMeeting(meeting));
       dispatch(getCoupon(id));
     }
+    //eslint-disable-next-line
   }, [couponToModify]);
 
   if (error) {

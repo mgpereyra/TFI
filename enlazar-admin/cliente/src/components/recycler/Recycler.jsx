@@ -10,7 +10,7 @@ const Recycler = ({ recycler }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { id, name, surname, district, dni, phone, email, password } = recycler;
+  const { id, name, surname,  dni, phone, email, password } = recycler;
 
   //eliminar
   const confirmDelete = (id) => {
