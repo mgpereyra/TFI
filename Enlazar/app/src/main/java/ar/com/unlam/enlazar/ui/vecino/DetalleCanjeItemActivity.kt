@@ -78,7 +78,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
                 db.child("User").child(id).child("puntos").setValue(restantes)
                 db.child("Item").child(id_item_detalle).child("amount").setValue(cant)
                 db.child("User").child(id).child("Cupon").child(cuponId).setValue(cupon)
-                Toast.makeText(this,"Se ha realizado el caje correctamente",
+                Toast.makeText(this,"Se ha realizado el canje correctamente",
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
