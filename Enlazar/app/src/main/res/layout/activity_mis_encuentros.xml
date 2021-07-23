@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.vecino.MisEncuentrosActivity">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="match_parent"
-        tools:context=".ui.vecino.DetalleServicioActivity"
+        tools:context=".ui.vecino.MisEncuentrosActivity"
         android:background="@color/backGroundCustom">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,11 +73,3 @@
             app:layout_constraintTop_toBottomOf="@+id/irMisPuntosEncuentroMap"
             tools:listitem="@layout/card_encuentro" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    <com.google.android.material.navigation.NavigationView
-        android:visibility="visible"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/menu"
-        android:fitsSystemWindows="true"/>-->
-</androidx.drawerlayout.widget.DrawerLayout>

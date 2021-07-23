@@ -49,12 +49,12 @@ class CuponAdapter : RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
 
            // holder.itemView.codigo.setImageBitmap(QrUtils.generateQr(idRecolector + "/" + it.id + "/" + it.id_item))
 
-            holder.itemView.codigo.setOnClickListener {
+            holder.itemView.setOnClickListener {
                 val intent = Intent(holder.itemView.context, QrViewActivity::class.java)
                 intent.putExtra("qrDatos", datosQr)
                 holder.itemView.codigo.context.startActivity(intent)
             }
-            Picasso.get().load(it.imageCode).error(R.drawable.error).into(holder.itemView.codigo)
+            Picasso.get().load(it.imageCode).placeholder(R.drawable.ic_baseline_image_24).error(R.drawable.error).into(holder.itemView.codigo)
             holder.itemView.cardInfo_elemento_canje.text = it.title
             holder.itemView.label_puntos_de_costo.text = "Estado " // getText(R.string.estado_cupon)
             holder.itemView.label_cantidad_disponible.visibility = View.GONE
