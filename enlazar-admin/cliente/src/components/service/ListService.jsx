@@ -1,9 +1,12 @@
-import React, { Fragment, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Service from "./Service";
 import { getListServices } from "../../actions/serviceAction";
 import Spinner from "../Spinner";
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const ListServices = () => {
   const services = useSelector((state) => state.services.services);
@@ -18,8 +21,12 @@ const ListServices = () => {
     //eslint-disable-next-line
   }, []);
   return (
-    <Fragment>
-      <div className="d-flex justify-content-between px-4 mb-5">
+    <div className="contenedor-app">
+      <Sidebar />
+      <div className="seccion-principal">
+        <Header />
+        <main>
+      <div className="d-flex justify-content-between px-3 mb-5">
         <h1>
          <i className="fas fa-street-view pr-2"></i>Listado de servicios
         </h1>
@@ -38,14 +45,20 @@ const ListServices = () => {
           </div>
         ) : (
           <div className="row">
-            <table className="table table-hover  mx-2">
+          <div className="card mb-4 border-secondary">
+          <div className="row table-responsive">
+            <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">Fecha</th>
                   <th scope="col">Dirección</th>
                   <th scope="col">Hora</th>
                   <th scope="col">Estado</th>
-                  
+                  <th scope="col">Vidrio</th>
+                  <th scope="col">Plástico</th>
+                  <th scope="col">Cartón</th>
+                  <th scope="col">Bolsas totales</th>
+                  <th scope="col">Comentario</th>
                 </tr>
               </thead>
               <tbody>
@@ -54,10 +67,15 @@ const ListServices = () => {
                 ))}
               </tbody>
             </table>
-
-          </div>
+            </div>
+            </div>
+            </div>
         )}
-    </Fragment>
+        </main>
+        <Footer />
+      </div>
+    </div>
+    
   );
 };
 

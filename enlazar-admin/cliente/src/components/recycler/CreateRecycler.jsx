@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
+import React, {  useState, useContext, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewRecycler } from "../../actions/recyclerAction";
 import { clearMaps } from "../../actions/mapsAction";
@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
 import GoogleMaps from "../maps/GoogleMaps"
 import {Link} from 'react-router-dom'
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const CreateRecycler = ({history}) => {
 
@@ -82,7 +85,11 @@ const CreateRecycler = ({history}) => {
       },1000)
     };
     return ( 
-        <Fragment>
+      <div className="contenedor-app">
+      <Sidebar />
+      <div className="seccion-principal">
+        <Header />
+        <main>
         {alerta ? (
           <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
         ) : null}
@@ -91,7 +98,7 @@ const CreateRecycler = ({history}) => {
             <i className="fas fa-plus-circle pr-2"></i>Crear reciclador
           </h2>
         </div>
-        <div className="card bg-gris py-4">
+        <div className="card bg-light py-4">
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <Row>
@@ -189,7 +196,10 @@ const CreateRecycler = ({history}) => {
             </form>
           </div>
         </div>
-      </Fragment>
+        </main>
+        <Footer />
+      </div>
+    </div>
      );
 }
  

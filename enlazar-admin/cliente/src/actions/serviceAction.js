@@ -91,7 +91,7 @@ import {
   
       try {
         serviceState.forEach(async (id)=> {
-          const response = await clienteAxios.put(`/api/service/${id}`, {recycler});
+          await clienteAxios.put(`/api/service/${id}`, {recycler});
         })
 
         //actualizo el state

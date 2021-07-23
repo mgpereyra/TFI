@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import React, {  useState, useEffect, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  modifyRecyclerAction } from "../../actions/recyclerAction";
@@ -8,6 +8,9 @@ import GoogleMaps from "../maps/GoogleMaps"
 import { mostrar, clearMaps } from "../../actions/mapsAction";
 import {Link} from 'react-router-dom'
 import { getRecycler} from "../../actions/recyclerAction";
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const EditRecycler = () => {
     const dispatch = useDispatch();
@@ -59,6 +62,7 @@ const EditRecycler = () => {
       }else{
         dispatch(getRecycler(id));
       }
+      //eslint-disable-next-line
     }, [recyclerToModify]);
     
     if(error){
@@ -102,7 +106,11 @@ const EditRecycler = () => {
       history.push("/list-recycler");
     };
     return ( 
-        <Fragment>
+      <div className="contenedor-app">
+      <Sidebar />
+      <div className="seccion-principal">
+        <Header />
+        <main>
         {alerta ? (
           <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
         ) : null}
@@ -111,7 +119,7 @@ const EditRecycler = () => {
           <i className="far fa-edit pr-2"></i>Editar recolector
           </h2>
         </div>
-        <div className="card bg-gris py-4">
+        <div className="card bg-light py-4">
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <Row>
@@ -177,8 +185,9 @@ const EditRecycler = () => {
                     <input
                       type="email"
                       className="input-text"
-                      placeholder="Ingresa un email válido"
+                      readonly
                       disabled
+                      placeholder="Ingresa un email válido"
                       name="email"
                       value={email}
                     />
@@ -209,7 +218,10 @@ const EditRecycler = () => {
             </form>
           </div>
         </div>
-      </Fragment>
+        </main>
+        <Footer />
+      </div>
+    </div>
      );
 }
  

@@ -56,15 +56,16 @@ const onSubmitLogin = e =>{
       <div className='form-usuario'>
         {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) :null}
       <div className='contenedor-form sombra-dark'>
-        <img className="logo-enlazar" src={logo}></img>
+        <img className="logo-enlazar" src={logo} alt="logo"></img>
         <h3 className="text-center mb-4">¡Hola! Inicia sesión para comenzar </h3>
         <form onSubmit={onSubmitLogin}> 
-          <div className='campo-form'>
+        <div className='campo-form'>
             <label htmlFor="email">Email</label>
             <input
               type='email'
               id='email'
               name='email'
+               className="input-text small"
               placeholder='Tu email'
               value={email}
               onChange={onChangeLogin}
@@ -77,6 +78,7 @@ const onSubmitLogin = e =>{
               type='password'
               id='password'
               name='password'
+              className="input-text small"
               placeholder='Tu password'
               autoComplete='cc-number'
               value={password}
@@ -84,14 +86,12 @@ const onSubmitLogin = e =>{
             />
           </div>
 
-          <div className='campo-form '>
              <button
-                className="btn btn-primary btn-block"
+                className="btn btn-primary btn-block mt-3"
                 type="submit"
                 variant="primary"
               >Iniciar sesión</button>
 
-          </div>
         </form>
 
         <Link to={'/new-account'} className='enlace-cuenta'>

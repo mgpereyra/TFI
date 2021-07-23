@@ -9,14 +9,15 @@ import { getListRecyclers } from "../../actions/recyclerAction";
 import { Link } from "react-router-dom";
 import alertaContext from "../../context/alerta/alertaContext";
 import Spinner from "../Spinner";
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const ManageService = ({ history }) => {
   const recyclers = useSelector((state) => state.recyclers.recyclers);
   const services = useSelector((state) => state.services.servicesPendings);
   const error = useSelector((state) => state.recyclers.error);
   const loading = useSelector((state) => state.services.loading);
-  const loadingRecyclers = useSelector((state) => state.recyclers.loading);
-
 
   const { alerta, mostrarAlerta } = useContext(alertaContext);
 
@@ -63,16 +64,20 @@ const ManageService = ({ history }) => {
   };
 
   return (
-    <Fragment>
+    <div className="contenedor-app">
+    <Sidebar />
+    <div className="seccion-principal">
+      <Header />
+      <main>
       {alerta ? (
         <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
       ) : null}
       <div className="d-flex justify-content-between">
         <h2>
-          <i className="fas fa-street-view"></i>Administrar servicios pendientes
+          <i className="fas fa-street-view pr-2"></i>Administrar servicios pendientes
         </h2>
       </div>
-      <div className="card bg-gris py-4">
+      <div className="card bg-light py-4">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
            
@@ -85,6 +90,7 @@ const ManageService = ({ history }) => {
             ) : (
               <Fragment>
                 <div className="row">
+                <label className="control-label">Servicios pendientes</label>
                   <table className="table table-hover">
                     <thead className="thead-light">
                       <tr>
@@ -108,7 +114,8 @@ const ManageService = ({ history }) => {
                   </table>
                 </div>
 
-                <div className="row mt-5">
+                <div className="row mt-4">
+                <label className="control-label">Selecciona un recolector</label>
                   <div className="input-group mb-3">
                     <div className="input-group-prepend">
                       <label
@@ -153,7 +160,10 @@ const ManageService = ({ history }) => {
           </form>
         </div>
       </div>
-    </Fragment>
+      </main>
+        <Footer />
+      </div>
+    </div>
   );
 };
 

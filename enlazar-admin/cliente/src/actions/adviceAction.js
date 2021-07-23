@@ -51,24 +51,7 @@ export function createNewAdvice(advice) {
     }
   };
 }
-
-const guardarImageng = async (advice) => {
-  const imagen = advice.imagen.get("file");
-  try {
-    var storageRef = firebase.storage();
-    var imageRef = storageRef.ref().child("advice_image/" + imagen.name);
-    await imageRef.put(imagen).then(async (snapshot) => {
-      const uri = await storageRef
-        .ref("advice_image/" + advice.img)
-        .getDownloadURL();
-      console.log(uri);
-      return uri;
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
+    
 const addAdviceSuccess = (advice) => ({
   type: ADD_ADVICE_SUCCESS,
   payload: advice,

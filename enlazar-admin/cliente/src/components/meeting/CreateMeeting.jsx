@@ -1,26 +1,29 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
+import React, {  useState, useContext, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { createNewMeeting } from "../../actions/meetingAction";
 import { clearMaps } from "../../actions/mapsAction";
 import { useDispatch, useSelector } from "react-redux";
 import alertaContext from "../../context/alerta/alertaContext";
-import GoogleMaps from "../maps/GoogleMaps"
-import {Link} from 'react-router-dom'
+import GoogleMaps from "../maps/GoogleMaps";
+import { Link } from "react-router-dom";
+import Sidebar from "../layout/Sidebar";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const CreateMeeting = ({ history }) => {
   const { alerta, mostrarAlerta } = useContext(alertaContext);
   const datos = useSelector((state) => state.maps);
-  
-  let dated = new Date()
-  let day = dated.getDate()
-  let month = dated.getMonth() + 1
-  let year = dated.getFullYear()
-  let dates= '';
 
-  if(month < 10){
-    dates = `${year}-0${month}-${day}`
-  }else{
-    dates = `${year}-${month}-${day}`
+  let dated = new Date();
+  let day = dated.getDate();
+  let month = dated.getMonth() + 1;
+  let year = dated.getFullYear();
+  let dates = "";
+
+  if (month < 10) {
+    dates = `${year}-0${month}-${day}`;
+  } else {
+    dates = `${year}-${month}-${day}`;
   }
   //state del componente
   const [meeting, setMeeting] = useState({
@@ -30,22 +33,22 @@ const CreateMeeting = ({ history }) => {
     time: "",
     estado: "",
     asistentes: {},
-    ubication:'',
+    ubication: "",
     lat: 0,
-    lng: 0
+    lng: 0,
   });
 
-  const { date, description, title, time , ubication} = meeting;
+  const { date, description, title, time, ubication } = meeting;
 
   useEffect(() => {
     setMeeting({
       ...meeting,
       ubication: datos.ubication,
       lat: datos.lat,
-      lng:datos.lng
+      lng: datos.lng,
     });
     //eslint-disable-next-line
-  }, [datos])
+  }, [datos]);
 
   const dispatch = useDispatch();
   const addMeeting = (meeting) => dispatch(createNewMeeting(meeting));
@@ -66,7 +69,7 @@ const CreateMeeting = ({ history }) => {
       title.trim() === "" ||
       time.trim() === "" ||
       date.trim() === "" ||
-      description.trim() === ""||
+      description.trim() === "" ||
       ubication.trim() === ""
     ) {
       mostrarAlerta("Por favor complete todos lo campos", "alerta-error");
@@ -84,115 +87,126 @@ const CreateMeeting = ({ history }) => {
       time: "",
       estado: "",
       asistentes: [],
-      ubication:'',
+      ubication: "",
       lat: 0,
-      lng: 0
+      lng: 0,
     });
 
     //redireccion
-      history.push("/list-meeting");
+    history.push("/list-meeting");
   };
   return (
-    <Fragment>
-      {alerta ? (
-        <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
-      ) : null}
-      <div className="d-flex justify-content-between">
-        <h2>
-          <i className="fas fa-plus-circle pr-2"></i>Crear punto de
-          encuentro
-        </h2>
-      </div>
-      <div className="card bg-gris py-4">
-        <div className="card-body">
-          <form onSubmit={handleSubmit}>
-            <Row>
-              <Col>
-                <div className="form-group">
-                  <label className="control-label">Título del evento</label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    placeholder="Por ejemplo, evento por el dia del reciclaje"
-                    name="title"
-                    onChange={handleChange}
-                    value={title}
-                  />
-                </div>
-              </Col>
-             
-            </Row>
-           
-            <Row>
-            <Col>
-                <div className="form-group">
-                  <label className="control-label">Día</label>
-                  <input
-                    type="date"
-                    className="input-text"
-                    placeholder="Por ejemplo, 24/05/21..."
-                    name="date"
-                    min={date}
-                    max="2021-12-31"
-                    onChange={handleChange}
-                    value={date}
-                  />
-                </div>
-              </Col>
-              <Col>
-                <div className="form-group">
-                  <label className="control-label">Hora </label>
-                  <input
-                    type="text"
-                    className="input-text"
-                    placeholder="De 14 a 18 hs"
-                    name="time"
-                    onChange={handleChange}
-                    value={time}
-                  />
-                </div>
-              </Col>
-              </Row>
-           
-            <Row>
-              <Col>
-                <div className="form-group">
-                  <label className="control-label">Descripción</label>
-                  <textarea
-                    className="input-text"
-                    placeholder="Ingresa una descripción del evento..."
-                    name="description"
-                    onChange={handleChange}
-                    value={description}
-                  />
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col className="mb-4">
-              <label className="control-label">Selecciona una de las sugerencias de ubicación</label>
-              <GoogleMaps meeting={meeting} setMeeting={setMeeting}/>
-              </Col>
-            </Row>
+    <div className="contenedor-app">
+      <Sidebar />
+      <div className="seccion-principal">
+        <Header />
+        <main>
+          {alerta ? (
+            <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
+          ) : null}
+          <div className="d-flex justify-content-between">
+            <h2>
+              <i className="fas fa-plus-circle pr-2"></i>Crear punto de
+              encuentro
+            </h2>
+          </div>
+          <div className="card bg-light py-4">
+            <div className="card-body">
+              <form onSubmit={handleSubmit}>
+                <Row>
+                  <Col>
+                    <div className="form-group">
+                      <label className="control-label">Título del evento</label>
+                      <input
+                        type="text"
+                        className="input-text"
+                        placeholder="Por ejemplo, evento por el dia del reciclaje"
+                        name="title"
+                        onChange={handleChange}
+                        value={title}
+                      />
+                    </div>
+                  </Col>
+                </Row>
 
-            <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
-              <Link to={'/list-meeting'} className='btn btn-outline-primary me-md-2 mr-3'>
-                <i className="fas fa-times pr-2"></i>
-                  Cancelar
-              </Link>
-              <button
-                className="btn btn-primary me-md-2"
-                type="submit"
-                variant="primary"
-              >
-                <i className="far fa-check pr-2"></i>
-                Crear punto de encuentro
-              </button>
+                <Row>
+                  <Col>
+                    <div className="form-group">
+                      <label className="control-label">Día</label>
+                      <input
+                        type="date"
+                        className="input-text"
+                        placeholder="Por ejemplo, 24/05/21..."
+                        name="date"
+                        min={date}
+                        max="2021-12-31"
+                        onChange={handleChange}
+                        value={date}
+                      />
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="form-group">
+                      <label className="control-label">Hora </label>
+                      <input
+                        type="text"
+                        className="input-text"
+                        placeholder="De 14 a 18 hs"
+                        name="time"
+                        onChange={handleChange}
+                        value={time}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <div className="form-group">
+                      <label className="control-label">Descripción</label>
+                      <textarea
+                        className="input-text"
+                        placeholder="Ingresa una descripción del evento..."
+                        name="description"
+                        onChange={handleChange}
+                        value={description}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className="mb-4">
+                    <label className="control-label">
+                      Selecciona una de las sugerencias de ubicación
+                    </label>
+                    <GoogleMaps meeting={meeting} setMeeting={setMeeting} />
+                  </Col>
+                </Row>
+
+                <div className="mr-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                  <Link
+                    to={"/list-meeting"}
+                    className="btn btn-outline-primary me-md-2 mr-3"
+                  >
+                    <i className="fas fa-times pr-2"></i>
+                    Cancelar
+                  </Link>
+                  <button
+                    className="btn btn-primary me-md-2"
+                    type="submit"
+                    variant="primary"
+                  >
+                    <i className="far fa-check pr-2"></i>
+                    Crear punto de encuentro
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
+          </div>
+        </main>
+        <Footer />
       </div>
-    </Fragment>
+    </div>
   );
 };
 

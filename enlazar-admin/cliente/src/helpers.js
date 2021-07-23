@@ -37,13 +37,13 @@ export const categories = [
 ]
 
 export const getCategory = (category) => {
-    if(category == "COMO_RECICLAR_BIEN"){
+    if(category === "COMO_RECICLAR_BIEN"){
         return( "Como reciclar bien")
     }
-    else if(category == "ECOINFORME"){
+    else if(category === "ECOINFORME"){
         return( "Ecoinforme")
     }
-    else if(category == "CONSEJO_DE_LA_SEMANA"){
+    else if(category === "CONSEJO_DE_LA_SEMANA"){
         return( "Consejo de la semana")
     }
     return "Categoria no encontrada"

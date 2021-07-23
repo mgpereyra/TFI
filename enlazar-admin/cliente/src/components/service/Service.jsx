@@ -3,8 +3,11 @@ import { getState } from '../../helpers'
 
 const Service = ({service}) => {
 
-    const {address, id, date,time, estado} = service;
+    const {address, date,time, 
+      envasesCarton, envasesPlasticos, envasesVidrio,
+      comentario, recolectorId } = service;
 
+      console.log(service)
 
     const get = getState(service)
 
@@ -19,7 +22,21 @@ const Service = ({service}) => {
         </td>
         <td>
         {get.stateString}
-         
+        </td>
+        <td className="text-center"> 
+          {envasesVidrio}
+        </td>
+        <td className="text-center"> 
+          {envasesPlasticos}
+        </td>
+        <td className="text-center"> 
+          {envasesCarton}
+        </td>
+        <td className="text-center"> 
+          {envasesCarton+envasesPlasticos+envasesVidrio}
+        </td>
+        <td>
+         {comentario}
         </td>
       </tr>
       );
