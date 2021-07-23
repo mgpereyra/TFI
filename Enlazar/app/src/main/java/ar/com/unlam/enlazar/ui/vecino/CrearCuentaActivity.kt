@@ -47,7 +47,7 @@ class CrearCuentaActivity : AppCompatActivity() {
     }
     private fun setOnClickListeners() {
         btnVolver.setOnClickListener {
-            this@CrearCuentaActivity.finish()
+           irDashboardLoginActivity()
         }
         /* btn_login.setOnClickListener {
              setup()
