@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import ar.com.unlam.enlazar.R
 import ar.com.unlam.enlazar.model.Service
 import ar.com.unlam.enlazar.model.User
+import ar.com.unlam.enlazar.ui.LoginActivity
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -66,7 +67,7 @@ class CrearCuentaActivity : AppCompatActivity() {
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         createUser()
-                        irDashboardUserActivity()
+                        irDashboardLoginActivity()
                     } else {
                         showAlert()
                     }
@@ -193,10 +194,10 @@ class CrearCuentaActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun irDashboardUserActivity() {
-        val darsheboardActivity = Intent(this, DashboardUserActivity::class.java)
-        darsheboardActivity.putExtra(DashboardUserActivity.IDKEY, id!!)
+    private fun irDashboardLoginActivity() {
+        val darsheboardActivity = Intent(this, LoginActivity::class.java)
         this.startActivity(darsheboardActivity)
+            finish()
         /*.apply {
      putExtra("email",email)
      putExtra("provider",provider)
