@@ -175,7 +175,7 @@ class NuevoServicioActivity : AppCompatActivity() {
     }
 
     private fun showDatePicker() {
-        val datePicker = DatePickerFragent { day, month, year -> onDateSelected(day, month, year) }
+        val datePicker = DatePickerFragent { day, month, year -> onDateSelected(day, month+1, year) }
         datePicker.show(supportFragmentManager, "datePicker")
 
     }
