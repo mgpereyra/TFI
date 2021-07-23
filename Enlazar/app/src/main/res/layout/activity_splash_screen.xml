@@ -9,9 +9,9 @@
     android:background="@color/emerald">
 
 <ImageView
-    android:layout_width="200dp"
-    android:layout_height="200dp"
-    android:src="@mipmap/ic_launcher"
+    android:layout_width="220dp"
+    android:layout_height="180dp"
+    android:src="@mipmap/ic_launcher_round"
     android:layout_centerInParent="true"
     android:id="@+id/sp_logo"
     />
