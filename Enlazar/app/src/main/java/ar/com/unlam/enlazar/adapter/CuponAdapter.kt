@@ -49,7 +49,7 @@ class CuponAdapter : RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
 
            // holder.itemView.codigo.setImageBitmap(QrUtils.generateQr(idRecolector + "/" + it.id + "/" + it.id_item))
 
-            holder.itemView.codigo.setOnClickListener {
+            holder.itemView.setOnClickListener {
                 val intent = Intent(holder.itemView.context, QrViewActivity::class.java)
                 intent.putExtra("qrDatos", datosQr)
                 holder.itemView.codigo.context.startActivity(intent)
