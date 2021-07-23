@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:showAsAction="always"
     >
-    <item
+<!--    <item
         android:id="@+id/inicio_rec"
         android:title="@string/inicio" />
     <item
@@ -17,7 +17,7 @@
         android:title="@string/invita_a_amigos" />
     <item
         android:id="@+id/guardado_rec"
-        android:title="@string/guardado" />
+        android:title="@string/guardado" />-->
     <item
         android:id="@+id/mi_cuenta_rec"
         android:title="@string/mi_cuenta" />

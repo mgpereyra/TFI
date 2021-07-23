@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
+<!--    <item
         android:id="@+id/op1"
         android:title="@string/inicio" />
     <item
@@ -15,7 +15,7 @@
         android:title="@string/invita_a_amigos" />
     <item
         android:id="@+id/op5"
-        android:title="@string/guardado" />
+        android:title="@string/guardado" />-->
     <item
         android:id="@+id/op6"
         android:title="@string/mi_cuenta" />

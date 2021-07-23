@@ -49,7 +49,7 @@ class DashboardUserActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.mis_direcciones_user-> {
+     /*       R.id.mis_direcciones_user-> {
                 Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
             }
             R.id.inicio_user  -> {
@@ -63,7 +63,7 @@ class DashboardUserActivity : AppCompatActivity() {
             }
             R.id.guardado_user  -> {
                 Toast.makeText(this,"Próximamente",Toast.LENGTH_SHORT).show()
-            }
+            }*/
             R.id.mi_cuenta_user  -> {
                val intent=Intent(this,MiCuentaActivity::class.java)
                 startActivity(intent)

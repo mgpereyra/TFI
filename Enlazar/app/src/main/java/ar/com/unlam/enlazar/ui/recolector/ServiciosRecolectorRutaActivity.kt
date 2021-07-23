@@ -92,7 +92,7 @@ toolbar()
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.inicio_rec -> {
+ /*           R.id.inicio_rec -> {
                 Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
             }
             R.id.mis_canjes_rec -> {
@@ -103,7 +103,7 @@ toolbar()
             }
             R.id.guardado_rec -> {
                 Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
-            }
+            }*/
             R.id.mi_cuenta_rec -> {
                 Toast.makeText(this, "Próximamente", Toast.LENGTH_SHORT).show()
             }
