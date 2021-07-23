@@ -41,9 +41,10 @@ var cardInfoList=mutableListOf<CardInfo>()
 
             Picasso.get()
                 .load(it.uri)
-                //.resize(160,190)
+                .placeholder(R.drawable.ic_baseline_image_24)
                 .centerCrop()
                 .fit()
+                .error(R.drawable.error)
                 .into(holder.itemView.cardInfo_image_advice)
 
                 holder.card=it

@@ -55,6 +55,8 @@ class SeccionInformativaDetalleActivity : AppCompatActivity() {
     private fun cargarImagen(img: String) {
         Picasso.get()
             .load(img)
+            .placeholder(R.drawable.ic_baseline_image_24)
+            .error(R.drawable.error)
             .into(picture_detalle_Advice)
 
     }

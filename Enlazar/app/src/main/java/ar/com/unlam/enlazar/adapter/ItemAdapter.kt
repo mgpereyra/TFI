@@ -41,7 +41,10 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         listItem[position].let {
             holder.itemView.cardInfoId.text = it.id
             Picasso.get()
-                .load(it.image).error(R.drawable.error).into(holder.itemView.codigo)
+                .load(it.image)
+                .placeholder(R.drawable.ic_baseline_image_24)
+                .error(R.drawable.error)
+                .into(holder.itemView.codigo)
             holder.itemView.cardInfo_elemento_canje.text = it.title
             holder.itemView.label_puntos_de_costo.text = "Puntos de costo: " // getText(R.string.estado_cupon)
             holder.itemView.cardInfo_costo.text = it.pointsCost.toString()

@@ -141,6 +141,7 @@ class DetalleCanjeItemActivity : AppCompatActivity() {
         im = img
         Picasso.get()
             .load(img)
+            .placeholder(R.drawable.ic_baseline_image_24)
             .error(R.drawable.error)
             .into(codigo)
     }
